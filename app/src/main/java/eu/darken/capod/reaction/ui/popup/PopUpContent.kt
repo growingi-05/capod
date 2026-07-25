@@ -187,7 +187,7 @@ private fun BatteryColumn(
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
-            // 4. 애플 팝업처럼 디바이스 이미지를 크게 렌더링 (48.dp -> 84.dp)
+            // 4. 애플 팝업처럼 디바이스 이미지를 크게 렌렌더링 (48.dp -> 84.dp)
             modifier = Modifier.size(84.dp),
             contentScale = ContentScale.Fit,
         )
