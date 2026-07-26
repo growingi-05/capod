@@ -1,7 +1,7 @@
 name: Build APK Only
 
 on:
-  workflow_dispatch: # 수동으로 버튼을 눌러 실행할 수 있게 함
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,11 +22,11 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
-      - name: Build Debug APK (테스트 및 린트 무시)
+      - name: Build Debug APK (테스트 및 린트 강제 무시)
         run: ./gradlew assembleDebug -x test -x lint
 
-      - name: Upload APK
+      - name: Upload All APKs
         uses: actions/upload-artifact@v4
         with:
           name: capod-debug-apk
-          path: '**/build/outputs/apk/debug/*.apk'
+          path: '**/*.apk'
