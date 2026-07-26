@@ -7,16 +7,17 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.WindowManager
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleRegistry
@@ -62,7 +63,6 @@ class PopUpWindow @Inject constructor(
     private var composeView: ComposeView? = null
     private var lifecycleOwner: OverlayLifecycleOwner? = null
     private var deviceState: MutableState<PodDevice?>? = null
-    // 애니메이션 트리거를 위한 상태 변수 추가
     private var isVisibleState: MutableState<Boolean>? = null
 
     @Volatile var isMainActivityVisible: Boolean = false
@@ -78,7 +78,6 @@ class PopUpWindow @Inject constructor(
             if (composeView?.parent != null && deviceState != null) {
                 log(TAG) { "Popup already visible, updating device." }
                 deviceState?.value = device
-                // 이미 뷰가 있다면 애니메이션 상태만 확실히 켜줌
                 isVisibleState?.value = true
                 return
             }
@@ -88,7 +87,6 @@ class PopUpWindow @Inject constructor(
             val state = mutableStateOf<PodDevice?>(device)
             deviceState = state
             
-            // 처음엔 false로 시작 (그려진 직후에 true로 바꿔서 애니메이션 발생)
             val visibleState = mutableStateOf(false)
             isVisibleState = visibleState
 
@@ -102,20 +100,33 @@ class PopUpWindow @Inject constructor(
                     val currentDevice = state.value
                     if (currentDevice != null) {
                         CapodTheme(state = generalSettings.currentThemeState) {
-                            // 🍎 여기서 애플 감성의 스프링 애니메이션 적용!
-                            AnimatedVisibility(
-                                visible = visibleState.value,
-                                enter = slideInVertically(
-                                    initialOffsetY = { it }, // 아래에서 출발
-                                    animationSpec = spring(
-                                        dampingRatio = 0.65f, // 적당히 통통 튀는 탄성
+                            
+                            // Compose가 그려질 준비가 되면 애니메이션 시작
+                            LaunchedEffect(Unit) {
+                                visibleState.value = true
+                            }
+
+                            val isVisible = visibleState.value
+                            // 0f(제자리/완전보임) <-> 1f(아래로 숨김/투명) 사이를 애니메이션
+                            val animatedOffset by animateFloatAsState(
+                                targetValue = if (isVisible) 0f else 1f,
+                                animationSpec = if (isVisible) {
+                                    spring(
+                                        dampingRatio = 0.65f, // 애플 특유의 통통 튀는 텐션
                                         stiffness = Spring.StiffnessMediumLow
                                     )
-                                ) + fadeIn(),
-                                exit = slideOutVertically(
-                                    targetOffsetY = { it },
-                                    animationSpec = tween(250) // 내려갈 땐 깔끔하고 빠르게
-                                ) + fadeOut()
+                                } else {
+                                    tween(250) // 내려갈 땐 0.25초만에 부드럽게
+                                },
+                                label = "popup_animation"
+                            )
+
+                            // WindowManager 크기는 풀사이즈로 유지하되, 내부 내용물만 위아래로 이동시킴
+                            Box(
+                                modifier = Modifier.graphicsLayer {
+                                    translationY = size.height * animatedOffset
+                                    alpha = 1f - animatedOffset
+                                }
                             ) {
                                 PopUpContent(device = currentDevice, onClose = { close() })
                             }
@@ -130,11 +141,6 @@ class PopUpWindow @Inject constructor(
             owner.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
 
             windowManager.addView(view, layoutParams)
-            
-            // 뷰가 WindowManager에 추가된 직후에 상태를 true로 변경하여 올라오는 애니메이션 실행
-            Handler(Looper.getMainLooper()).post {
-                visibleState.value = true
-            }
         } catch (e: Exception) {
             log(TAG, ERROR) { "open() failed: ${e.asLog()}" }
         }
@@ -143,15 +149,18 @@ class PopUpWindow @Inject constructor(
     fun close() = try {
         log(TAG, INFO) { "close()" }
         
-        // 닫기 명령이 오면 뷰를 바로 없애지 않고 퇴장 애니메이션 시작
+        // 1. 퇴장 애니메이션 시작 (아래로 내려감)
         isVisibleState?.value = false 
         
-        // 애니메이션이 끝날 시간(약 300ms)을 기다렸다가 실제로 뷰를 제거
+        // 2. 애니메이션이 끝날 때까지 기다렸다가 화면에서 뷰를 제거
         Handler(Looper.getMainLooper()).postDelayed({
-            if (composeView?.parent != null) {
-                teardown()
-            } else {
-                log(TAG) { "View was not added" }
+            // 그 사이(0.3초)에 팝업이 다시 열렸다면 파괴하지 않음 (안전 장치)
+            if (isVisibleState?.value == false) {
+                if (composeView?.parent != null) {
+                    teardown()
+                } else {
+                    log(TAG) { "View was not added" }
+                }
             }
         }, 300)
     } catch (e: Exception) {
