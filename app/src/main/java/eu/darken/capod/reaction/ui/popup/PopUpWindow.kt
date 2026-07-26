@@ -12,6 +12,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -19,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.setViewTreeLifecycleOwner
@@ -47,17 +50,13 @@ class PopUpWindow @Inject constructor(
 
     private val windowManager = appContext.getSystemService(WINDOW_SERVICE) as WindowManager
     private val layoutParams = WindowManager.LayoutParams(
-        WindowManager.LayoutParams.WRAP_CONTENT,
+        WindowManager.LayoutParams.MATCH_PARENT,
         WindowManager.LayoutParams.WRAP_CONTENT,
         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
         PixelFormat.TRANSLUCENT
     ).apply {
         gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
-        val dm = appContext.resources.displayMetrics
-        val margin = (24 * dm.density).toInt()
-        width = minOf(dm.widthPixels - margin * 2, (400 * dm.density).toInt())
-        y = (8 * dm.density).toInt()
     }
 
     private var composeView: ComposeView? = null
@@ -121,14 +120,23 @@ class PopUpWindow @Inject constructor(
                                 label = "popup_animation"
                             )
 
-                            // WindowManager 크기는 풀사이즈로 유지하되, 내부 내용물만 위아래로 이동시킴
+                            // 1. 최상단(루트) Box: WindowManager 크기 고정 및 오버슛(위로 튕김) 공간 제공
+                            // top 60.dp를 통해 카드가 위로 튕겨도 잘리지 않는 투명한 빈 공간(버퍼)을 확보합니다.
                             Box(
-                                modifier = Modifier.graphicsLayer {
-                                    translationY = size.height * animatedOffset
-                                    alpha = 1f - animatedOffset
-                                }
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 60.dp)
                             ) {
-                                PopUpContent(device = currentDevice, onClose = { close() })
+                                // 2. 내부 Box: 실제로 위아래로 애니메이션되는 컨텐츠
+                                Box(
+                                    modifier = Modifier.graphicsLayer {
+                                        translationY = size.height * animatedOffset
+                                        // 위로 오버슛 될 때 offset이 음수가 되어 alpha가 1.0을 넘는 것을 방지
+                                        alpha = (1f - animatedOffset).coerceIn(0f, 1f)
+                                    }
+                                ) {
+                                    PopUpContent(device = currentDevice, onClose = { close() })
+                                }
                             }
                         }
                     }
