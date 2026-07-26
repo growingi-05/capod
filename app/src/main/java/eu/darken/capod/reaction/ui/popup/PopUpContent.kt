@@ -10,12 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.BatteryChargingFull
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -24,18 +24,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import eu.darken.capod.R
 import eu.darken.capod.common.compose.Preview2
 import eu.darken.capod.common.compose.PreviewWrapper
 import eu.darken.capod.common.compose.preview.MockPodDataProvider
-import eu.darken.capod.main.ui.overview.cards.components.SignalIndicator
 import eu.darken.capod.monitor.core.PodDevice
 import eu.darken.capod.pods.core.apple.PodModel
 import eu.darken.capod.pods.core.apple.ble.formatBatteryPercent
@@ -52,7 +54,6 @@ fun PopUpContent(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            // padding의 매개변수 타입을 맞추어 에러 해결
             .padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 24.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
@@ -61,36 +62,32 @@ fun PopUpContent(
                 .widthIn(max = 400.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
+            // 배경은 닫기 버튼(순백색)과 구분되는 약간 어두운 흰색 (iOS 시스템 그룹 배경색 느낌)
+            colors = CardDefaults.cardColors(containerColor = Color(0xFFF2F2F7)),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
-                    .padding(top = 20.dp, bottom = 12.dp),
+                    // 상하 여백을 늘려 전반적인 길이를 증가시킴
+                    .padding(top = 28.dp, bottom = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Header: label + signal indicator (sits right after the text)
-                Row(
+                // Header: iOS 스타일로 폰트 두께, 자간, 중앙 정렬 적용 (신호 세기 제거됨)
+                Text(
+                    text = device.getLabel(context),
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = (-0.8).sp // iOS 특유의 좁은 자간
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    Text(
-                        text = device.getLabel(context),
-                        style = MaterialTheme.typography.titleLarge,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f, fill = false),
-                    )
-                    SignalIndicator(
-                        signalQuality = device.rssiQuality,
-                        isLive = device.isLive,
-                        modifier = Modifier.padding(start = 6.dp),
-                    )
-                }
+                )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(32.dp))
 
                 // Device-specific content
                 when {
@@ -98,15 +95,25 @@ fun PopUpContent(
                     device.model != PodModel.UNKNOWN -> SinglePodContent(device)
                 }
 
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(36.dp))
 
-                // Close button
+                // Close button: 밝은 흰색 배경에 검은색 글씨, 높이 증가
                 Button(
                     onClick = onClose,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(24.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White,
+                        contentColor = Color.Black
+                    )
                 ) {
-                    Text(text = stringResource(R.string.general_close_action))
+                    Text(
+                        text = stringResource(R.string.general_close_action),
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 16.sp
+                    )
                 }
             }
         }
@@ -172,7 +179,7 @@ private fun BatteryColumn(
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
-            modifier = Modifier.size(48.dp),
+            modifier = Modifier.size(72.dp), // 세 이미지 크기 증가 (기존 48dp -> 72dp)
             contentScale = ContentScale.Fit,
         )
 
@@ -187,6 +194,7 @@ private fun BatteryColumn(
                     imageVector = Icons.TwoTone.BatteryChargingFull,
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
+                    tint = Color(0xFF34C759) // 충전 중일 때 iOS 그린 색상 적용
                 )
             } else {
                 Icon(
@@ -197,10 +205,13 @@ private fun BatteryColumn(
             }
             Text(
                 text = formatBatteryPercent(context, batteryPercent),
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.Medium
+                ),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
+                modifier = Modifier.padding(start = 2.dp)
             )
         }
     }
