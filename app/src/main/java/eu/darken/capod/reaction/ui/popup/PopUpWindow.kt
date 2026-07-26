@@ -3,8 +3,18 @@ package eu.darken.capod.reaction.ui.popup
 import android.content.Context
 import android.content.Context.WINDOW_SERVICE
 import android.graphics.PixelFormat
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.view.WindowManager
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
@@ -52,6 +62,8 @@ class PopUpWindow @Inject constructor(
     private var composeView: ComposeView? = null
     private var lifecycleOwner: OverlayLifecycleOwner? = null
     private var deviceState: MutableState<PodDevice?>? = null
+    // 애니메이션 트리거를 위한 상태 변수 추가
+    private var isVisibleState: MutableState<Boolean>? = null
 
     @Volatile var isMainActivityVisible: Boolean = false
 
@@ -66,6 +78,8 @@ class PopUpWindow @Inject constructor(
             if (composeView?.parent != null && deviceState != null) {
                 log(TAG) { "Popup already visible, updating device." }
                 deviceState?.value = device
+                // 이미 뷰가 있다면 애니메이션 상태만 확실히 켜줌
+                isVisibleState?.value = true
                 return
             }
 
@@ -73,6 +87,10 @@ class PopUpWindow @Inject constructor(
 
             val state = mutableStateOf<PodDevice?>(device)
             deviceState = state
+            
+            // 처음엔 false로 시작 (그려진 직후에 true로 바꿔서 애니메이션 발생)
+            val visibleState = mutableStateOf(false)
+            isVisibleState = visibleState
 
             val owner = OverlayLifecycleOwner()
             lifecycleOwner = owner
@@ -84,7 +102,23 @@ class PopUpWindow @Inject constructor(
                     val currentDevice = state.value
                     if (currentDevice != null) {
                         CapodTheme(state = generalSettings.currentThemeState) {
-                            PopUpContent(device = currentDevice, onClose = { close() })
+                            // 🍎 여기서 애플 감성의 스프링 애니메이션 적용!
+                            AnimatedVisibility(
+                                visible = visibleState.value,
+                                enter = slideInVertically(
+                                    initialOffsetY = { it }, // 아래에서 출발
+                                    animationSpec = spring(
+                                        dampingRatio = 0.65f, // 적당히 통통 튀는 탄성
+                                        stiffness = Spring.StiffnessMediumLow
+                                    )
+                                ) + fadeIn(),
+                                exit = slideOutVertically(
+                                    targetOffsetY = { it },
+                                    animationSpec = tween(250) // 내려갈 땐 깔끔하고 빠르게
+                                ) + fadeOut()
+                            ) {
+                                PopUpContent(device = currentDevice, onClose = { close() })
+                            }
                         }
                     }
                 }
@@ -96,6 +130,11 @@ class PopUpWindow @Inject constructor(
             owner.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
 
             windowManager.addView(view, layoutParams)
+            
+            // 뷰가 WindowManager에 추가된 직후에 상태를 true로 변경하여 올라오는 애니메이션 실행
+            Handler(Looper.getMainLooper()).post {
+                visibleState.value = true
+            }
         } catch (e: Exception) {
             log(TAG, ERROR) { "open() failed: ${e.asLog()}" }
         }
@@ -103,11 +142,18 @@ class PopUpWindow @Inject constructor(
 
     fun close() = try {
         log(TAG, INFO) { "close()" }
-        if (composeView?.parent != null) {
-            teardown()
-        } else {
-            log(TAG) { "View was not added" }
-        }
+        
+        // 닫기 명령이 오면 뷰를 바로 없애지 않고 퇴장 애니메이션 시작
+        isVisibleState?.value = false 
+        
+        // 애니메이션이 끝날 시간(약 300ms)을 기다렸다가 실제로 뷰를 제거
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (composeView?.parent != null) {
+                teardown()
+            } else {
+                log(TAG) { "View was not added" }
+            }
+        }, 300)
     } catch (e: Exception) {
         log(TAG, ERROR) { "close() failed: ${e.asLog()}" }
     }
@@ -124,12 +170,9 @@ class PopUpWindow @Inject constructor(
         composeView = null
         lifecycleOwner = null
         deviceState = null
+        isVisibleState = null
     }
 
-    /**
-     * Minimal [SavedStateRegistryOwner] for hosting a [ComposeView] inside a WindowManager overlay,
-     * where no Activity or Fragment lifecycle is available.
-     */
     private class OverlayLifecycleOwner : SavedStateRegistryOwner {
         private val lifecycleRegistry = LifecycleRegistry(this)
         private val savedStateRegistryController = SavedStateRegistryController.create(this)
