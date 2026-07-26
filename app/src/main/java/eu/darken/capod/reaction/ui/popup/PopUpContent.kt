@@ -44,8 +44,6 @@ import eu.darken.capod.pods.core.apple.ble.formatBatteryPercent
 import eu.darken.capod.pods.core.apple.ble.getBatteryIcon
 
 private val AppleBatteryGreen = Color(0xFF34C759)
-private val AppleBlue = Color(0xFF007AFF)
-// 아주 조금 어두운 흰색 (iOS 배경 톤)
 private val OffWhite = Color(0xFFF5F5F5)
 
 @Composable
@@ -56,20 +54,18 @@ fun PopUpContent(
 ) {
     val context = LocalContext.current
 
-    // 좌, 우, 하단 여백 제거 (top 여백만 조금 남겨둠)
-    Box(modifier = modifier.padding(top = 12.dp)) {
+    // 좌, 우, 하단 여백 원상복구
+    Box(modifier = modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 16.dp)) {
         Card(
             modifier = Modifier.fillMaxWidth(),
-            // 곡률 조금 증가 (36 -> 42). 하단 여백이 0이므로 상단만 둥글게 처리하는 것이 자연스럽습니다.
-            // 만약 하단도 둥글길 원하시면 RoundedCornerShape(42.dp) 로 변경하세요.
-            shape = RoundedCornerShape(topStart = 42.dp, topEnd = 42.dp),
+            // 여백이 생겼으므로 다시 상/하단 모든 모서리를 둥글게 처리
+            shape = RoundedCornerShape(42.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
             colors = CardDefaults.cardColors(containerColor = OffWhite)
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    // 좌우 여백을 줄여(24->16) 내부 콘텐츠와 닫기 버튼이 가로로 더 길어지게 함
                     .padding(horizontal = 16.dp)
                     .padding(top = 28.dp, bottom = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -104,7 +100,7 @@ fun PopUpContent(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // 닫기 버튼 원상복구 및 스타일 적용
+                // 닫기 버튼
                 Button(
                     onClick = onClose,
                     modifier = Modifier
@@ -112,8 +108,8 @@ fun PopUpContent(
                         .height(54.dp),
                     shape = RoundedCornerShape(100),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White, // 밝은 흰색 배경
-                        contentColor = AppleBlue      // 대비를 위해 글자는 파란색
+                        containerColor = Color.White,
+                        contentColor = Color.Black // 파란색에서 검은색으로 변경
                     )
                 ) {
                     Text(
