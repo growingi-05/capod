@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.BatteryChargingFull
 import androidx.compose.material3.Card
@@ -26,11 +28,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import eu.darken.capod.R
 import eu.darken.capod.common.compose.Preview2
 import eu.darken.capod.common.compose.PreviewWrapper
 import eu.darken.capod.common.compose.preview.MockPodDataProvider
@@ -39,33 +43,38 @@ import eu.darken.capod.pods.core.apple.PodModel
 import eu.darken.capod.pods.core.apple.ble.formatBatteryPercent
 import eu.darken.capod.pods.core.apple.ble.getBatteryIcon
 
-// iOS 느낌을 내기 위한 커스텀 컬러 정의 (버튼 색상 제거, 배터리 색상만 유지)
 private val AppleBatteryGreen = Color(0xFF34C759)
+private val AppleBlue = Color(0xFF007AFF)
+// 아주 조금 어두운 흰색 (iOS 배경 톤)
+private val OffWhite = Color(0xFFF5F5F5)
 
 @Composable
 fun PopUpContent(
     device: PodDevice,
-    onClose: () -> Unit, // 외부 호출부 에러 방지를 위해 파라미터는 유지
+    onClose: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
 
-    Box(modifier = modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 16.dp)) {
+    // 좌, 우, 하단 여백 제거 (top 여백만 조금 남겨둠)
+    Box(modifier = modifier.padding(top = 12.dp)) {
         Card(
             modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(36.dp),
+            // 곡률 조금 증가 (36 -> 42). 하단 여백이 0이므로 상단만 둥글게 처리하는 것이 자연스럽습니다.
+            // 만약 하단도 둥글길 원하시면 RoundedCornerShape(42.dp) 로 변경하세요.
+            shape = RoundedCornerShape(topStart = 42.dp, topEnd = 42.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            colors = CardDefaults.cardColors(containerColor = OffWhite)
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
-                    // 버튼이 사라졌으므로 상하 여백을 동일하게(28.dp) 맞추어 안정감 부여
+                    // 좌우 여백을 줄여(24->16) 내부 콘텐츠와 닫기 버튼이 가로로 더 길어지게 함
+                    .padding(horizontal = 16.dp)
                     .padding(top = 28.dp, bottom = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Header (신호 세기 제거, 텍스트만 중앙 정렬)
+                // Header
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
@@ -91,6 +100,30 @@ fun PopUpContent(
                 when {
                     device.hasDualPods -> DualPodContent(device)
                     device.model != PodModel.UNKNOWN -> SinglePodContent(device)
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                // 닫기 버튼 원상복구 및 스타일 적용
+                Button(
+                    onClick = onClose,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(54.dp),
+                    shape = RoundedCornerShape(100),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White, // 밝은 흰색 배경
+                        contentColor = AppleBlue      // 대비를 위해 글자는 파란색
+                    )
+                ) {
+                    Text(
+                        text = stringResource(R.string.general_close_action),
+                        style = MaterialTheme.typography.labelLarge.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp,
+                            letterSpacing = 0.sp
+                        )
+                    )
                 }
             }
         }
