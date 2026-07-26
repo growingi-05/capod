@@ -192,7 +192,9 @@ dependencies {
     addDataStore()
     addNavigation3()
     addSerialization()
-
+    // ✅ Compose Animation (팝업 애니메이션을 위해 필수)
+    implementation(platform("androidx.compose:compose-bom:${Versions.Compose.bom}"))
+    implementation("androidx.compose.animation:animation")
     addTesting()
 
     "gplayImplementation"("com.android.billingclient:billing:8.0.0")
