@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -62,24 +63,24 @@ fun PopUpContent(
                 .widthIn(max = 400.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
-            // 배경은 닫기 버튼(순백색)과 구분되는 약간 어두운 흰색 (iOS 시스템 그룹 배경색 느낌)
-            colors = CardDefaults.cardColors(containerColor = Color(0xFFF2F2F7)),
+            // 배경과 버튼 색상 스왑 (카드 배경을 완전한 흰색으로 변경)
+            colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
-                    // 상하 여백을 늘려 전반적인 길이를 증가시킴
                     .padding(top = 28.dp, bottom = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Header: iOS 스타일로 폰트 두께, 자간, 중앙 정렬 적용 (신호 세기 제거됨)
+                // 기기 이름: 글자 크기 증가 (26.sp)
                 Text(
                     text = device.getLabel(context),
                     style = MaterialTheme.typography.titleLarge.copy(
                         fontWeight = FontWeight.SemiBold,
-                        letterSpacing = (-0.8).sp // iOS 특유의 좁은 자간
+                        letterSpacing = (-0.8).sp,
+                        fontSize = 26.sp 
                     ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -97,7 +98,7 @@ fun PopUpContent(
 
                 Spacer(modifier = Modifier.height(36.dp))
 
-                // Close button: 밝은 흰색 배경에 검은색 글씨, 높이 증가
+                // Close button: 배경을 연한 회색으로 변경하고 글자 크기 증가
                 Button(
                     onClick = onClose,
                     modifier = Modifier
@@ -105,14 +106,15 @@ fun PopUpContent(
                         .height(50.dp),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White,
+                        containerColor = Color(0xFFF2F2F7), // 기존 카드 배경색
                         contentColor = Color.Black
                     )
                 ) {
+                    // 닫기 글씨: 크기 증가 (18.sp)
                     Text(
                         text = stringResource(R.string.general_close_action),
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 16.sp
+                        fontSize = 18.sp
                     )
                 }
             }
@@ -179,39 +181,48 @@ private fun BatteryColumn(
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
-            modifier = Modifier.size(72.dp), // 세 이미지 크기 증가 (기존 48dp -> 72dp)
+            modifier = Modifier.size(72.dp),
             contentScale = ContentScale.Fit,
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp)) // 배터리 아이콘과의 간격
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
+        // 기존 Row를 Column으로 변경하여 아이콘 아래에 텍스트 배치
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
             if (isCharging) {
                 Icon(
                     imageVector = Icons.TwoTone.BatteryChargingFull,
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp),
-                    tint = Color(0xFF34C759) // 충전 중일 때 iOS 그린 색상 적용
+                    modifier = Modifier
+                        .size(24.dp) // 커진 글씨체에 맞춰 아이콘 크기도 약간 상향
+                        .rotate(90f), // 오른쪽(가로)으로 90도 회전
+                    tint = Color(0xFF34C759)
                 )
             } else {
                 Icon(
                     imageVector = getBatteryIcon(batteryPercent),
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .rotate(90f), // 오른쪽(가로)으로 90도 회전
                 )
             }
+            
+            Spacer(modifier = Modifier.height(4.dp))
+            
+            // 배터리 수치: 얇게(Light), 크게(18.sp)
             Text(
                 text = formatBatteryPercent(context, batteryPercent),
                 style = MaterialTheme.typography.bodyMedium.copy(
-                    fontWeight = FontWeight.Medium
+                    fontWeight = FontWeight.Light, 
+                    fontSize = 18.sp
                 ),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(start = 2.dp)
             )
         }
     }
