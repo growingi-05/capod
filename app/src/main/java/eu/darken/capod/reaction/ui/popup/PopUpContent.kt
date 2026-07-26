@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.BatteryChargingFull
 import androidx.compose.material3.Card
@@ -24,27 +24,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import eu.darken.capod.R
 import eu.darken.capod.common.compose.Preview2
 import eu.darken.capod.common.compose.PreviewWrapper
 import eu.darken.capod.common.compose.preview.MockPodDataProvider
+import eu.darken.capod.main.ui.overview.cards.components.SignalIndicator
 import eu.darken.capod.monitor.core.PodDevice
 import eu.darken.capod.pods.core.apple.PodModel
 import eu.darken.capod.pods.core.apple.ble.formatBatteryPercent
 import eu.darken.capod.pods.core.apple.ble.getBatteryIcon
-
-private val AppleBatteryGreen = Color(0xFF34C759)
-private val OffWhite = Color(0xFFF5F5F5)
 
 @Composable
 fun PopUpContent(
@@ -54,23 +49,27 @@ fun PopUpContent(
 ) {
     val context = LocalContext.current
 
-    // 좌, 우, 하단 여백 원상복구
-    Box(modifier = modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp, bottom = 16.dp)) {
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, bottom = 24.dp, top = 16.dp),
+        contentAlignment = Alignment.BottomCenter
+    ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
-            // 여백이 생겼으므로 다시 상/하단 모든 모서리를 둥글게 처리
-            shape = RoundedCornerShape(42.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 16.dp),
-            colors = CardDefaults.cardColors(containerColor = OffWhite)
+            modifier = Modifier
+                .widthIn(max = 400.dp)
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(24.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 28.dp, bottom = 28.dp),
+                    .padding(horizontal = 20.dp)
+                    .padding(top = 20.dp, bottom = 12.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                // Header
+                // Header: label + signal indicator (sits right after the text)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
@@ -78,19 +77,19 @@ fun PopUpContent(
                 ) {
                     Text(
                         text = device.getLabel(context),
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 22.sp,
-                            letterSpacing = (-0.5).sp
-                        ),
+                        style = MaterialTheme.typography.titleLarge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.weight(1f, fill = false)
+                        modifier = Modifier.weight(1f, fill = false),
+                    )
+                    SignalIndicator(
+                        signalQuality = device.rssiQuality,
+                        isLive = device.isLive,
+                        modifier = Modifier.padding(start = 6.dp),
                     )
                 }
 
-                Spacer(modifier = Modifier.height(28.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
                 // Device-specific content
                 when {
@@ -98,28 +97,15 @@ fun PopUpContent(
                     device.model != PodModel.UNKNOWN -> SinglePodContent(device)
                 }
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-                // 닫기 버튼
+                // Close button
                 Button(
                     onClick = onClose,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(54.dp),
-                    shape = RoundedCornerShape(100),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White,
-                        contentColor = Color.Black // 파란색에서 검은색으로 변경
-                    )
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(24.dp),
                 ) {
-                    Text(
-                        text = stringResource(R.string.general_close_action),
-                        style = MaterialTheme.typography.labelLarge.copy(
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp,
-                            letterSpacing = 0.sp
-                        )
-                    )
+                    Text(text = stringResource(R.string.general_close_action))
                 }
             }
         }
@@ -131,8 +117,8 @@ private fun DualPodContent(device: PodDevice) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.Bottom 
     ) {
+        // Left pod
         BatteryColumn(
             iconRes = device.leftPodIcon,
             batteryPercent = device.batteryLeft,
@@ -140,15 +126,17 @@ private fun DualPodContent(device: PodDevice) {
             modifier = Modifier.weight(1f),
         )
 
+        // Case (only if device has one)
         if (device.hasCase) {
             BatteryColumn(
                 iconRes = device.caseIcon,
                 batteryPercent = device.batteryCase,
                 isCharging = device.isCaseCharging ?: false,
-                modifier = Modifier.weight(1.2f), 
+                modifier = Modifier.weight(1f),
             )
         }
 
+        // Right pod
         BatteryColumn(
             iconRes = device.rightPodIcon,
             batteryPercent = device.batteryRight,
@@ -183,35 +171,48 @@ private fun BatteryColumn(
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
-            modifier = Modifier.size(86.dp),
+            modifier = Modifier.size(48.dp),
             contentScale = ContentScale.Fit,
         )
 
-        Spacer(modifier = Modifier.height(6.dp)) 
+        Spacer(modifier = Modifier.height(8.dp))
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
-            Icon(
-                imageVector = if (isCharging) Icons.TwoTone.BatteryChargingFull else getBatteryIcon(batteryPercent),
-                contentDescription = null,
-                modifier = Modifier.size(22.dp),
-                tint = if (isCharging) AppleBatteryGreen else MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            
-            Spacer(modifier = Modifier.width(4.dp))
-            
+            if (isCharging) {
+                Icon(
+                    imageVector = Icons.TwoTone.BatteryChargingFull,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                )
+            } else {
+                Icon(
+                    imageVector = getBatteryIcon(batteryPercent),
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                )
+            }
             Text(
                 text = formatBatteryPercent(context, batteryPercent),
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.SemiBold, 
-                    fontSize = 15.sp
-                ),
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center,
             )
         }
     }
+}
+
+@Preview2
+@Composable
+private fun PopUpContentDualPodPreview() = PreviewWrapper {
+    PopUpContent(device = MockPodDataProvider.dualPodMonitoredMixed(), onClose = {})
+}
+
+@Preview2
+@Composable
+private fun PopUpContentSinglePodPreview() = PreviewWrapper {
+    PopUpContent(device = MockPodDataProvider.singlePodMonitored(), onClose = {})
 }
