@@ -52,7 +52,8 @@ fun PopUpContent(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, bottom = 24.dp, top = 16.dp),
+            // padding의 매개변수 타입을 맞추어 에러 해결
+            .padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 24.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
         Card(
