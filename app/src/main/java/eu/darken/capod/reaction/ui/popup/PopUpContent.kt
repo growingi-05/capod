@@ -200,5 +200,80 @@ private fun BatteryColumn(
             }
 
             Canvas(modifier = Modifier.fillMaxSize()) {
-                val strokeWidth = 3.dp.toPx()
-                val stroke = Stroke(width = stroke
+                // 1. 바탕이 되는 빈 궤도 (연한 회색)
+                drawArc(
+                    color = Color(0xFFE5E5EA),
+                    startAngle = 0f,
+                    sweepAngle = 360f,
+                    useCenter = false,
+                    style = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
+                )
+
+                // 2. 배터리 잔량 게이지 그리기
+                drawArc(
+                    color = activeColor,
+                    startAngle = -90f, // 12시 방향에서 시작
+                    sweepAngle = 360f * batteryPercent.coerceIn(0f, 1f), 
+                    useCenter = false,
+                    style = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
+                )
+            }
+
+            // 충전 중일 때는 링 한가운데에 직접 그린 초록색 번개 아이콘 배치
+            if (isCharging) {
+                BoltIcon(
+                    modifier = Modifier.size(12.dp),
+                    color = activeColor
+                )
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(8.dp))
+        
+        // 배터리 수치
+        Text(
+            text = formatBatteryPercent(context, batteryPercent),
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontWeight = FontWeight.Light, 
+                fontSize = 18.sp
+            ),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+/**
+ * 라이브러리 에러 없이 깔끔한 번개 모양을 직접 그리는 커스텀 컴포저블 뷰
+ */
+@Composable
+private fun BoltIcon(modifier: Modifier = Modifier, color: Color) {
+    Canvas(modifier = modifier) {
+        val path = Path().apply {
+            val w = size.width
+            val h = size.height
+            // 번개 모양 꼭지점 좌표 그리기
+            moveTo(w * 0.55f, 0f)
+            lineTo(w * 0.15f, h * 0.55f)
+            lineTo(w * 0.45f, h * 0.55f)
+            lineTo(w * 0.35f, h)
+            lineTo(w * 0.85f, h * 0.35f)
+            lineTo(w * 0.5f, h * 0.35f)
+            close()
+        }
+        drawPath(path = path, color = color)
+    }
+}
+
+@Preview2
+@Composable
+private fun PopUpContentDualPodPreview() = PreviewWrapper {
+    PopUpContent(device = MockPodDataProvider.dualPodMonitoredMixed(), onClose = {})
+}
+
+@Preview2
+@Composable
+private fun PopUpContentSinglePodPreview() = PreviewWrapper {
+    PopUpContent(device = MockPodDataProvider.singlePodMonitored(), onClose = {})
+}
