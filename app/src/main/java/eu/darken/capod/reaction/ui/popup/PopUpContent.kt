@@ -14,19 +14,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.BatteryChargingFull
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
@@ -182,7 +180,7 @@ private fun BatteryColumn(
         Image(
             painter = painterResource(iconRes),
             contentDescription = null,
-            modifier = Modifier.size(72.dp), // 커진 이미지 크기 유지
+            modifier = Modifier.size(72.dp),
             contentScale = ContentScale.Fit,
         )
 
@@ -193,72 +191,14 @@ private fun BatteryColumn(
             modifier = Modifier.size(28.dp),
             contentAlignment = Alignment.Center
         ) {
-            // 잔량 상태에 따른 색상 분기 로직 수정 (0.0~1.0 기준)
+            // 요청하신 잔량 상태에 따른 색상 분기 로직
             val activeColor = when {
-                isCharging -> Color(0xFF34C759)      // 충전 중: 애플 시스템 그린
+                isCharging -> Color(0xFF34C759)              // 충전 중: 무조건 초록색
                 batteryPercent <= 0.20f -> Color(0xFFFF3B30) // 20% 이하: 빨간색
-                else -> Color.Black                  // 평상시: 검은색
+                batteryPercent <= 0.40f -> Color(0xFFFF9500) // 40% 이하: 주황(노랑)색
+                else -> Color(0xFF34C759)                    // 그 외 (41% 이상): 초록색
             }
 
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val strokeWidth = 3.dp.toPx()
-                val stroke = Stroke(width = strokeWidth, cap = StrokeCap.Round)
-
-                // 1. 바탕이 되는 빈 궤도 (연한 회색)
-                drawArc(
-                    color = Color(0xFFE5E5EA),
-                    startAngle = 0f,
-                    sweepAngle = 360f,
-                    useCenter = false,
-                    style = stroke
-                )
-
-                // 2. 배터리 잔량 게이지 그리기
-                drawArc(
-                    color = activeColor,
-                    startAngle = -90f, // 12시 방향에서 시작
-                    // batteryPercent가 이미 비율값이므로 바로 360을 곱함
-                    sweepAngle = 360f * batteryPercent.coerceIn(0f, 1f), 
-                    useCenter = false,
-                    style = stroke
-                )
-            }
-
-            // 충전 중일 때는 링 한가운데에 기존에 쓰던 충전 아이콘을 작게 배치
-            if (isCharging) {
-                Icon(
-                    imageVector = Icons.TwoTone.BatteryChargingFull,
-                    contentDescription = "Charging",
-                    modifier = Modifier.size(16.dp),
-                    tint = activeColor
-                )
-            }
-        }
-        
-        Spacer(modifier = Modifier.height(8.dp))
-        
-        // 배터리 수치: 링 게이지 바로 아래에 위치, 얇고 크게 적용
-        Text(
-            text = formatBatteryPercent(context, batteryPercent),
-            style = MaterialTheme.typography.bodyMedium.copy(
-                fontWeight = FontWeight.Light, 
-                fontSize = 18.sp
-            ),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.Center,
-        )
-    }
-}
-
-@Preview2
-@Composable
-private fun PopUpContentDualPodPreview() = PreviewWrapper {
-    PopUpContent(device = MockPodDataProvider.dualPodMonitoredMixed(), onClose = {})
-}
-
-@Preview2
-@Composable
-private fun PopUpContentSinglePodPreview() = PreviewWrapper {
-    PopUpContent(device = MockPodDataProvider.singlePodMonitored(), onClose = {})
-}
+                val stroke = Stroke(width = stroke
