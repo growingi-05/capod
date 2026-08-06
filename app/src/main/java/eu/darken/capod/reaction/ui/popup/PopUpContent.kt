@@ -2,6 +2,7 @@ package eu.darken.capod.reaction.ui.popup
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,10 +15,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -51,6 +54,11 @@ fun PopUpContent(
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
+    
+    // 다크모드 여부에 따른 색상 정의
+    val isDark = isSystemInDarkTheme()
+    val cardBgColor = if (isDark) Color(0xFF1C1C1E) else Color.White
+    val textColor = if (isDark) Color.White else Color.Black
 
     Box(
         modifier = modifier
@@ -63,58 +71,61 @@ fun PopUpContent(
                 .widthIn(max = 400.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
-            // 배경색: iOS 스타일 완전한 흰색
-            colors = CardDefaults.cardColors(containerColor = Color.White),
+            // 다크모드 대응 카드 배경색
+            colors = CardDefaults.cardColors(containerColor = cardBgColor),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
-                    .padding(top = 28.dp, bottom = 20.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                // 기기 이름: iOS 스타일로 크고 굵게 적용
-                Text(
-                    text = device.getLabel(context),
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.SemiBold,
-                        letterSpacing = (-0.8).sp,
-                        fontSize = 26.sp 
-                    ),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
-                Spacer(modifier = Modifier.height(32.dp))
-
-                // Device-specific content (AirPods 유닛 및 본체)
-                when {
-                    device.hasDualPods -> DualPodContent(device)
-                    device.model != PodModel.UNKNOWN -> SinglePodContent(device)
-                }
-
-                Spacer(modifier = Modifier.height(36.dp))
-
-                // Close button: 연한 회색 배경에 검은색 글씨
-                Button(
+            // Box를 사용하여 우측 상단에 X 버튼을 겹쳐서 배치
+            Box(modifier = Modifier.fillMaxWidth()) {
+                
+                // 우측 상단 X(닫기) 버튼
+                IconButton(
                     onClick = onClose,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFF2F2F7), // iOS 시스템 연한 회색
-                        contentColor = Color.Black
-                    )
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp) // 끝에서 살짝 띄워주는 여백
                 ) {
-                    Text(
-                        text = stringResource(R.string.general_close_action),
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = stringResource(R.string.general_close_action),
+                        tint = textColor // 다크/라이트 모드에 맞춰 색상 변경
                     )
+                }
+
+                // 메인 배터리 정보 컨텐츠
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                        .padding(top = 32.dp, bottom = 36.dp), // 하단 버튼이 사라졌으므로 위아래 균형 맞춤
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    // 기기 이름
+                    Text(
+                        text = device.getLabel(context),
+                        color = textColor,
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = (-0.8).sp,
+                            fontSize = 28.sp 
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 24.dp), // X 버튼과 글씨가 겹치지 않도록 좌우 여백 확보
+                    )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    // Device-specific content (AirPods 유닛 및 본체)
+                    when {
+                        device.hasDualPods -> DualPodContent(device, isDark)
+                        device.model != PodModel.UNKNOWN -> SinglePodContent(device, isDark)
+                    }
+                    
+                    // 기존에 있던 거대한 하단 Spacer와 닫기 버튼 부분은 완전 삭제됨
                 }
             }
         }
@@ -122,7 +133,7 @@ fun PopUpContent(
 }
 
 @Composable
-private fun DualPodContent(device: PodDevice) {
+private fun DualPodContent(device: PodDevice, isDark: Boolean) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -132,6 +143,7 @@ private fun DualPodContent(device: PodDevice) {
             iconRes = device.leftPodIcon,
             batteryPercent = device.batteryLeft,
             isCharging = device.isLeftPodCharging ?: false,
+            isDark = isDark,
             modifier = Modifier.weight(1f),
         )
 
@@ -141,6 +153,7 @@ private fun DualPodContent(device: PodDevice) {
                 iconRes = device.caseIcon,
                 batteryPercent = device.batteryCase,
                 isCharging = device.isCaseCharging ?: false,
+                isDark = isDark,
                 modifier = Modifier.weight(1f),
             )
         }
@@ -150,28 +163,33 @@ private fun DualPodContent(device: PodDevice) {
             iconRes = device.rightPodIcon,
             batteryPercent = device.batteryRight,
             isCharging = device.isRightPodCharging ?: false,
+            isDark = isDark,
             modifier = Modifier.weight(1f),
         )
     }
 }
 
 @Composable
-private fun SinglePodContent(device: PodDevice) {
+private fun SinglePodContent(device: PodDevice, isDark: Boolean) {
     BatteryColumn(
         iconRes = device.iconRes,
         batteryPercent = device.batteryHeadset,
         isCharging = device.isHeadsetBeingCharged ?: false,
+        isDark = isDark
     )
 }
 
 @Composable
 private fun BatteryColumn(
     iconRes: Int,
-    batteryPercent: Float, // 배터리 비율 (0.0f ~ 1.0f 범위를 가정)
+    batteryPercent: Float, 
     isCharging: Boolean = false,
+    isDark: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
+    val textColor = if (isDark) Color.White else Color.Black
+    val trackColor = if (isDark) Color(0xFF3A3A3C) else Color(0xFFE5E5EA)
 
     Column(
         modifier = modifier,
@@ -191,31 +209,34 @@ private fun BatteryColumn(
             modifier = Modifier.size(28.dp),
             contentAlignment = Alignment.Center
         ) {
-            // 요청하신 잔량 상태에 따른 색상 분기 로직
+            // 다크모드 대응 잔량 상태에 따른 색상 분기 로직
             val activeColor = when {
-                isCharging -> Color(0xFF34C759)              // 충전 중: 무조건 초록색
-                batteryPercent <= 0.20f -> Color(0xFFFF3B30) // 20% 이하: 빨간색
-                batteryPercent <= 0.40f -> Color(0xFFFF9500) // 40% 이하: 주황(노랑)색
-                else -> Color(0xFF34C759)                    // 그 외 (41% 이상): 초록색
+                isCharging -> Color(0xFF34C759)              
+                batteryPercent <= 0.20f -> Color(0xFFFF3B30) 
+                batteryPercent <= 0.40f -> Color(0xFFFF9500) 
+                else -> if (isDark) Color.White else Color.Black 
             }
 
             Canvas(modifier = Modifier.fillMaxSize()) {
-                // 1. 바탕이 되는 빈 궤도 (연한 회색)
+                val strokeWidth = 3.dp.toPx()
+                val stroke = Stroke(width = strokeWidth, cap = StrokeCap.Round)
+
+                // 1. 바탕이 되는 빈 궤도 (다크모드 대응 회색)
                 drawArc(
-                    color = Color(0xFFE5E5EA),
+                    color = trackColor,
                     startAngle = 0f,
                     sweepAngle = 360f,
                     useCenter = false,
-                    style = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
+                    style = stroke
                 )
 
                 // 2. 배터리 잔량 게이지 그리기
                 drawArc(
                     color = activeColor,
-                    startAngle = -90f, // 12시 방향에서 시작
+                    startAngle = -90f, 
                     sweepAngle = 360f * batteryPercent.coerceIn(0f, 1f), 
                     useCenter = false,
-                    style = Stroke(width = 3.dp.toPx(), cap = StrokeCap.Round)
+                    style = stroke
                 )
             }
 
@@ -230,9 +251,10 @@ private fun BatteryColumn(
         
         Spacer(modifier = Modifier.height(8.dp))
         
-        // 배터리 수치
+        // 배터리 수치 텍스트 (다크모드 색상 반영)
         Text(
             text = formatBatteryPercent(context, batteryPercent),
+            color = textColor,
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Light, 
                 fontSize = 18.sp
