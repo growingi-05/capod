@@ -69,7 +69,7 @@ fun PopUpContent(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            // 좌우 여백을 줄여 베젤과의 간격 최소화 (기존 24.dp -> 12.dp), 하단은 24.dp 유지
+            // 좌우 여백 12.dp 유지 (화면 베젤과 가까운 간격)
             .padding(start = 12.dp, end = 12.dp, top = 16.dp, bottom = 24.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
@@ -79,22 +79,22 @@ fun PopUpContent(
                 .fillMaxWidth()
                 // 빈 공간 터치 시 닫히는 기능과 충돌하지 않도록 카드 터치 이벤트 무시
                 .pointerInput(Unit) { detectTapGestures(onTap = {}) },
-            shape = RoundedCornerShape(24.dp),
+            shape = RoundedCornerShape(36.dp), // 곡률 대폭 증가 (기존 24.dp -> 36.dp)
             colors = CardDefaults.cardColors(containerColor = cardBgColor),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 36.dp), // 하단 여백 설정
+                    .padding(bottom = 44.dp), // 콘텐츠와 하단 배경 사이의 여백 증가 (기존 36.dp -> 44.dp)
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 // 상단 헤더 영역: 텍스트와 X 버튼을 동일 선상에 정렬
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        // 상단과 우측 여백을 24.dp로 동일하게 설정하여 균일한 간격 유지
-                        .padding(top = 24.dp, start = 24.dp, end = 24.dp)
+                        // 텍스트/버튼과 배경 상단/좌우 사이의 여백을 넉넉하게 증가 (기존 24.dp -> 32.dp)
+                        .padding(top = 32.dp, start = 32.dp, end = 32.dp)
                 ) {
                     // 기기 이름 (중앙 정렬)
                     Text(
@@ -103,14 +103,14 @@ fun PopUpContent(
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.SemiBold,
                             letterSpacing = (-0.8).sp,
-                            fontSize = 28.sp 
+                            fontSize = 30.sp // 글자 크기 소폭 증가 (기존 28.sp -> 30.sp)
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .align(Alignment.Center)
-                            .padding(horizontal = 32.dp) // X 버튼과 겹치지 않도록 방어 여백
+                            .padding(horizontal = 36.dp) // X 버튼과 겹치지 않도록 방어 여백
                     )
 
                     // 닫기 X 버튼 (우측 중앙 정렬, 회색 원형 배경)
@@ -132,7 +132,7 @@ fun PopUpContent(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(40.dp)) // 상단 이름과 에어팟 아이콘 사이 간격을 늘려 팝업 높이 확장
 
                 // Device-specific content (AirPods 유닛 및 본체)
                 when {
@@ -148,15 +148,15 @@ fun PopUpContent(
 private fun DualPodContent(device: PodDevice, isDark: Boolean) {
     Row(
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
+        // 좌우 유닛과 케이스 사이의 간격을 16.dp로 좁히고 중앙으로 타이트하게 모음
+        horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
     ) {
-        // Left pod
+        // Left pod (weight Modifier 제거)
         BatteryColumn(
             iconRes = device.leftPodIcon,
             batteryPercent = device.batteryLeft,
             isCharging = device.isLeftPodCharging ?: false,
             isDark = isDark,
-            modifier = Modifier.weight(1f),
         )
 
         // Case (only if device has one)
@@ -166,17 +166,15 @@ private fun DualPodContent(device: PodDevice, isDark: Boolean) {
                 batteryPercent = device.batteryCase,
                 isCharging = device.isCaseCharging ?: false,
                 isDark = isDark,
-                modifier = Modifier.weight(1f),
             )
         }
 
-        // Right pod
+        // Right pod (weight Modifier 제거)
         BatteryColumn(
             iconRes = device.rightPodIcon,
             batteryPercent = device.batteryRight,
             isCharging = device.isRightPodCharging ?: false,
             isDark = isDark,
-            modifier = Modifier.weight(1f),
         )
     }
 }
@@ -221,12 +219,12 @@ private fun BatteryColumn(
             modifier = Modifier.size(28.dp),
             contentAlignment = Alignment.Center
         ) {
-            // 잔량 상태에 따른 색상 분기 로직 (41% 이상은 무조건 초록색으로 변경)
+            // 잔량 상태에 따른 색상 분기 로직 (41% 이상은 무조건 초록색으로 고정)
             val activeColor = when {
                 isCharging -> Color(0xFF34C759)              
                 batteryPercent <= 0.20f -> Color(0xFFFF3B30) 
                 batteryPercent <= 0.40f -> Color(0xFFFF9500) 
-                else -> Color(0xFF34C759) // 41% 이상 초록색 고정
+                else -> Color(0xFF34C759) 
             }
 
             Canvas(modifier = Modifier.fillMaxSize()) {
