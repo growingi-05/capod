@@ -2,6 +2,9 @@ package eu.darken.capod.reaction.ui.popup
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
@@ -20,16 +24,17 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -59,48 +64,39 @@ fun PopUpContent(
     val isDark = isSystemInDarkTheme()
     val cardBgColor = if (isDark) Color(0xFF1C1C1E) else Color.White
     val textColor = if (isDark) Color.White else Color.Black
+    val buttonBgColor = if (isDark) Color(0xFF2C2C2E) else Color(0xFFF2F2F7)
 
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 24.dp, end = 24.dp, top = 16.dp, bottom = 24.dp),
+            // 좌우 여백을 줄여 베젤과의 간격 최소화 (기존 24.dp -> 12.dp), 하단은 24.dp 유지
+            .padding(start = 12.dp, end = 12.dp, top = 16.dp, bottom = 24.dp),
         contentAlignment = Alignment.BottomCenter
     ) {
         Card(
             modifier = Modifier
                 .widthIn(max = 400.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                // 빈 공간 터치 시 닫히는 기능과 충돌하지 않도록 카드 터치 이벤트 무시
+                .pointerInput(Unit) { detectTapGestures(onTap = {}) },
             shape = RoundedCornerShape(24.dp),
-            // 다크모드 대응 카드 배경색
             colors = CardDefaults.cardColors(containerColor = cardBgColor),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
-            // Box를 사용하여 우측 상단에 X 버튼을 겹쳐서 배치
-            Box(modifier = Modifier.fillMaxWidth()) {
-                
-                // 우측 상단 X(닫기) 버튼
-                IconButton(
-                    onClick = onClose,
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(8.dp) // 끝에서 살짝 띄워주는 여백
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Close,
-                        contentDescription = stringResource(R.string.general_close_action),
-                        tint = textColor // 다크/라이트 모드에 맞춰 색상 변경
-                    )
-                }
-
-                // 메인 배터리 정보 컨텐츠
-                Column(
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 36.dp), // 하단 여백 설정
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                // 상단 헤더 영역: 텍스트와 X 버튼을 동일 선상에 정렬
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                        .padding(top = 32.dp, bottom = 36.dp), // 하단 버튼이 사라졌으므로 위아래 균형 맞춤
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                        // 상단과 우측 여백을 24.dp로 동일하게 설정하여 균일한 간격 유지
+                        .padding(top = 24.dp, start = 24.dp, end = 24.dp)
                 ) {
-                    // 기기 이름
+                    // 기기 이름 (중앙 정렬)
                     Text(
                         text = device.getLabel(context),
                         color = textColor,
@@ -113,19 +109,35 @@ fun PopUpContent(
                         overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 24.dp), // X 버튼과 글씨가 겹치지 않도록 좌우 여백 확보
+                            .align(Alignment.Center)
+                            .padding(horizontal = 32.dp) // X 버튼과 겹치지 않도록 방어 여백
                     )
 
-                    Spacer(modifier = Modifier.height(32.dp))
-
-                    // Device-specific content (AirPods 유닛 및 본체)
-                    when {
-                        device.hasDualPods -> DualPodContent(device, isDark)
-                        device.model != PodModel.UNKNOWN -> SinglePodContent(device, isDark)
+                    // 닫기 X 버튼 (우측 중앙 정렬, 회색 원형 배경)
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
+                            .size(30.dp)
+                            .clip(CircleShape)
+                            .background(color = buttonBgColor)
+                            .clickable(onClick = onClose),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = stringResource(R.string.general_close_action),
+                            tint = textColor,
+                            modifier = Modifier.size(16.dp)
+                        )
                     }
-                    
-                    // 기존에 있던 거대한 하단 Spacer와 닫기 버튼 부분은 완전 삭제됨
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                // Device-specific content (AirPods 유닛 및 본체)
+                when {
+                    device.hasDualPods -> DualPodContent(device, isDark)
+                    device.model != PodModel.UNKNOWN -> SinglePodContent(device, isDark)
                 }
             }
         }
@@ -209,12 +221,12 @@ private fun BatteryColumn(
             modifier = Modifier.size(28.dp),
             contentAlignment = Alignment.Center
         ) {
-            // 다크모드 대응 잔량 상태에 따른 색상 분기 로직
+            // 잔량 상태에 따른 색상 분기 로직 (41% 이상은 무조건 초록색으로 변경)
             val activeColor = when {
                 isCharging -> Color(0xFF34C759)              
                 batteryPercent <= 0.20f -> Color(0xFFFF3B30) 
                 batteryPercent <= 0.40f -> Color(0xFFFF9500) 
-                else -> if (isDark) Color.White else Color.Black 
+                else -> Color(0xFF34C759) // 41% 이상 초록색 고정
             }
 
             Canvas(modifier = Modifier.fillMaxSize()) {
