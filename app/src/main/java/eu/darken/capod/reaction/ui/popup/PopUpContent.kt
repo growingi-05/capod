@@ -76,24 +76,24 @@ fun PopUpContent(
             modifier = Modifier
                 .widthIn(max = 400.dp)
                 .fillMaxWidth()
-                // 380.dp 고정을 제거하여 내용물에 맞춰 유동적으로 줄어들게(wrap_content) 설정
+                // 내용물에 맞춰 유동적으로 줄어들게(wrap_content) 설정
                 .pointerInput(Unit) { detectTapGestures(onTap = {}) },
-            shape = RoundedCornerShape(60.dp), // 곡률 60.dp로 증가
+            shape = RoundedCornerShape(54.dp), // 곡률 54.dp로 조정
             colors = CardDefaults.cardColors(containerColor = cardBgColor),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 36.dp), // 배터리 수치 하단 여백 유지
+                    .padding(bottom = 45.dp), // 하단 여백 45.dp로 증가
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 // 상단 헤더 영역: 텍스트와 X 버튼을 동일 선상에 정렬
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        // 기기명 위의 상단 여백 증가 (top = 40.dp)
-                        .padding(top = 40.dp, start = 24.dp, end = 24.dp)
+                        // 기기명 위의 상단 여백 45.dp로 증가
+                        .padding(top = 45.dp, start = 24.dp, end = 24.dp)
                 ) {
                     // 기기 이름 (중앙 정렬)
                     Text(
@@ -131,7 +131,7 @@ fun PopUpContent(
                     }
                 }
 
-                // 기기명과 에어팟 이미지 사이의 여백 감소
+                // 기기명과 에어팟 이미지 사이의 여백
                 Spacer(modifier = Modifier.height(24.dp))
 
                 // Device-specific content (AirPods 유닛 및 본체)
