@@ -11,17 +11,19 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.setViewTreeLifecycleOwner
@@ -51,7 +53,8 @@ class PopUpWindow @Inject constructor(
     private val windowManager = appContext.getSystemService(WINDOW_SERVICE) as WindowManager
     private val layoutParams = WindowManager.LayoutParams(
         WindowManager.LayoutParams.MATCH_PARENT,
-        WindowManager.LayoutParams.WRAP_CONTENT,
+        // 빈 공간 터치 인식을 위해 창 높이를 전체화면으로 확장
+        WindowManager.LayoutParams.MATCH_PARENT, 
         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
         PixelFormat.TRANSLUCENT
@@ -100,40 +103,41 @@ class PopUpWindow @Inject constructor(
                     if (currentDevice != null) {
                         CapodTheme(state = generalSettings.currentThemeState) {
                             
-                            // Compose가 그려질 준비가 되면 애니메이션 시작
                             LaunchedEffect(Unit) {
                                 visibleState.value = true
                             }
 
                             val isVisible = visibleState.value
-                            // 0f(제자리/완전보임) <-> 1f(아래로 숨김/투명) 사이를 애니메이션
                             val animatedOffset by animateFloatAsState(
                                 targetValue = if (isVisible) 0f else 1f,
                                 animationSpec = if (isVisible) {
                                     spring(
-                                        dampingRatio = 0.65f, // 애플 특유의 통통 튀는 텐션
+                                        dampingRatio = 0.65f, 
                                         stiffness = Spring.StiffnessMediumLow
                                     )
                                 } else {
-                                    tween(250) // 내려갈 땐 0.25초만에 부드럽게
+                                    tween(250)
                                 },
                                 label = "popup_animation"
                             )
 
-                            // 1. 최상단(루트) Box: WindowManager 크기 고정 및 오버슛(위로 튕김) 공간 제공
-                            // top 60.dp를 통해 카드가 위로 튕겨도 잘리지 않는 투명한 빈 공간(버퍼)을 확보합니다.
+                            // 1. 최상단(루트) Box: 화면 전체를 덮으며, 탭(터치)할 경우 창 닫기 수행
                             Box(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 60.dp)
-                            ) {
-                                // 2. 내부 Box: 실제로 위아래로 애니메이션되는 컨텐츠
-                                Box(
-                                    modifier = Modifier.graphicsLayer {
-                                        translationY = size.height * animatedOffset
-                                        // 위로 오버슛 될 때 offset이 음수가 되어 alpha가 1.0을 넘는 것을 방지
-                                        alpha = (1f - animatedOffset).coerceIn(0f, 1f)
+                                    .fillMaxSize()
+                                    .pointerInput(Unit) {
+                                        detectTapGestures(onTap = { close() })
                                     }
+                            ) {
+                                // 2. 내부 Box: 하단에 붙어서 애니메이션으로 위아래로 움직이는 컨텐츠
+                                Box(
+                                    modifier = Modifier
+                                        .align(Alignment.BottomCenter) // 카드를 화면 아래로 배치
+                                        .fillMaxWidth()
+                                        .graphicsLayer {
+                                            translationY = size.height * animatedOffset
+                                            alpha = (1f - animatedOffset).coerceIn(0f, 1f)
+                                        }
                                 ) {
                                     PopUpContent(device = currentDevice, onClose = { close() })
                                 }
@@ -157,12 +161,9 @@ class PopUpWindow @Inject constructor(
     fun close() = try {
         log(TAG, INFO) { "close()" }
         
-        // 1. 퇴장 애니메이션 시작 (아래로 내려감)
         isVisibleState?.value = false 
         
-        // 2. 애니메이션이 끝날 때까지 기다렸다가 화면에서 뷰를 제거
         Handler(Looper.getMainLooper()).postDelayed({
-            // 그 사이(0.3초)에 팝업이 다시 열렸다면 파괴하지 않음 (안전 장치)
             if (isVisibleState?.value == false) {
                 if (composeView?.parent != null) {
                     teardown()
