@@ -9,13 +9,25 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.capod.common.datastore.basicReader
+import eu.darken.capod.common.datastore.basicWriter
 import eu.darken.capod.common.datastore.createValue
+import eu.darken.capod.common.debug.logging.Logging.Priority.WARN
+import eu.darken.capod.common.debug.logging.asLog
+import eu.darken.capod.common.debug.logging.log
+import eu.darken.capod.common.debug.logging.logTag
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private val Context.gplayDataStore: DataStore<Preferences> by preferencesDataStore(
+// Retained legacy migration: installs that predate the DataStore move still carry their upgrade
+// state in the "settings_gplay" SharedPreferences file.
+private val Context.billingCacheDataStore by preferencesDataStore(
     name = "settings_gplay",
-    produceMigrations = { ctx -> listOf(SharedPreferencesMigration(ctx, "settings_gplay")) }
+    produceMigrations = { ctx -> listOf(SharedPreferencesMigration(ctx, "settings_gplay")) },
 )
 
 @Singleton
@@ -23,50 +35,94 @@ class BillingCache internal constructor(
     private val dataStore: DataStore<Preferences>,
 ) {
 
-    @Inject constructor(@ApplicationContext context: Context) : this(context.gplayDataStore)
+    @Inject constructor(@ApplicationContext context: Context) : this(context.billingCacheDataStore)
 
-    val lastProStateAt = dataStore.createValue(KEY_LAST_PRO_AT.name, 0L)
+    // Test seam: the bounded reads/writes below run on real dispatchers, so a virtual-time test
+    // cannot advance the production bound. Same pattern as UpgradeRepoGplay.launchTimeoutMs.
+    internal var cacheTimeoutMs: Long = CACHE_TIMEOUT_MS
 
-    // SKU id of the last confirmed Pro purchase — determines which grace window applies.
-    // Empty for legacy installs that were Pro before this field existed.
-    val lastProStateSku = dataStore.createValue(KEY_LAST_PRO_SKU.name, "")
+    // Raw keys shared between the DataStoreValues and stampLastProState's transaction — one
+    // source of truth for key name and encoding.
+    private val lastProStateAtKey = longPreferencesKey("gplay.cache.lastProAt")
+    private val lastProStateSkuKey = stringPreferencesKey("gplay.cache.lastProSku")
+    private val proUnconfirmedSinceKey = longPreferencesKey("gplay.cache.proUnconfirmedAt")
 
-    // Start of the current "fresh data can't confirm Pro" episode, 0 = no open episode. Drives
-    // the two-stage grace UI (calm confirmation phase first, diagnostics once the episode ages).
-    val proUnconfirmedAt = dataStore.createValue(KEY_PRO_UNCONFIRMED_AT.name, 0L)
+    val lastProStateAt = dataStore.createValue(
+        key = lastProStateAtKey,
+        reader = basicReader(0L),
+        writer = basicWriter(),
+    )
+    val lastProStateSku = dataStore.createValue(
+        key = lastProStateSkuKey,
+        reader = basicReader(""),
+        writer = basicWriter(),
+    )
 
-    // One transaction: a confirmed Pro purchase stamps the anchor (SKU only when the caller wants
-    // to move it) and atomically closes any unconfirmed episode. Observers and crash recovery
-    // must never see the anchor updated but the episode still open, or vice versa.
-    suspend fun stampLastProState(skuId: String?, at: Long) {
-        dataStore.edit { prefs ->
-            skuId?.let { prefs[KEY_LAST_PRO_SKU] = it }
-            prefs[KEY_LAST_PRO_AT] = at
-            prefs[KEY_PRO_UNCONFIRMED_AT] = 0L
+    // Start of the current "fresh data can't confirm Pro" episode (0 = none/confirmed). Drives the
+    // delayed grace hint on the upgrade screen; stamped only from fresh billing reconciliations —
+    // see UpgradeRepoGplay.recordProUnconfirmed().
+    val proUnconfirmedSince = dataStore.createValue(
+        key = proUnconfirmedSinceKey,
+        reader = basicReader(0L),
+        writer = basicWriter(),
+    )
+
+    // Point-in-time view of all three values. Reading them via three separate .value() calls can
+    // straddle a concurrent stampLastProState() and observe a combination that never existed --
+    // that write is transactional precisely because the values are only meaningful together.
+    data class Snapshot(
+        val lastProStateAt: Long,
+        val lastProStateSku: String,
+        val proUnconfirmedSince: Long,
+    )
+
+    // Bounded on purpose: a wedged DataStore file lock would otherwise hang the caller forever.
+    // A timeout must NOT fall back to the default snapshot -- that would report "never bought"
+    // for an install whose evidence merely couldn't be read, which is the exact distinction the
+    // debug-log header exists to make.
+    suspend fun snapshot(): Snapshot {
+        val prefs = withTimeoutOrNull(cacheTimeoutMs) { dataStore.data.first() } ?: run {
+            log(TAG, WARN) { "snapshot() timed out after ${cacheTimeoutMs}ms" }
+            throw IOException("BillingCache snapshot timed out after ${cacheTimeoutMs}ms")
         }
+        return Snapshot(
+            lastProStateAt = prefs[lastProStateAtKey] ?: 0L,
+            lastProStateSku = prefs[lastProStateSkuKey] ?: "",
+            proUnconfirmedSince = prefs[proUnconfirmedSinceKey] ?: 0L,
+        )
     }
 
-    // Starts the unconfirmed episode clock. Set-if-unset: follow-up failures must not push the
-    // diagnostics threshold out. An episode only exists relative to a previous confirmation, and
-    // a stored stamp from before that confirmation or from the future is corrupt state that gets
-    // repaired instead of trusted.
-    suspend fun recordProUnconfirmed(at: Long) {
-        dataStore.edit { prefs ->
-            val lastProAt = prefs[KEY_LAST_PRO_AT] ?: 0L
-            // Also rejects failures arriving moments after a confirmation: a confirmation and a
-            // conflicting empty snapshot within the same minute is emission reordering around a
-            // racing purchase event, not a real unconfirmed state.
-            if (lastProAt <= 0L || at - lastProAt < MIN_CONFIRMATION_AGE_MS) return@edit
-            val current = prefs[KEY_PRO_UNCONFIRMED_AT] ?: 0L
-            val corrupt = current != 0L && (current <= lastProAt || current > at)
-            if (current == 0L || corrupt) prefs[KEY_PRO_UNCONFIRMED_AT] = at
+    // One transaction for all three values: the timestamp gates the grace period, the SKU modifies
+    // its window length, and a confirmation closes the unconfirmed episode — none of it may be
+    // observable half-updated. `at` is the confirmation's OCCURRENCE time (commit time of the Play
+    // round-trip). The episode is closed only if it began at or before `at`: a failure that occurred
+    // AFTER this confirmation (e.g. a connection drop right after this success, delivered to the
+    // entitlement layer out of order) opened a still-valid episode that this older confirmation must
+    // not erase.
+    suspend fun stampLastProState(skuId: String, at: Long) {
+        // Fail-soft: this decorates the entitlement path, it must never be the thing that blocks it.
+        // A wedged file lock (timeout) and a broken write (IOException, corrupt file, no disk space)
+        // are the same to the caller — the stamp is lost, the bookkeeping around it carries on.
+        try {
+            withTimeoutOrNull(cacheTimeoutMs) {
+                dataStore.edit { prefs ->
+                    prefs[lastProStateSkuKey] = skuId
+                    prefs[lastProStateAtKey] = at
+                    val episodeStart = prefs[proUnconfirmedSinceKey] ?: 0L
+                    if (episodeStart in 1..at) prefs[proUnconfirmedSinceKey] = 0L
+                }
+            } ?: log(TAG, WARN) { "stampLastProState($skuId, $at) timed out after ${cacheTimeoutMs}ms, write skipped" }
+        } catch (e: CancellationException) {
+            // Caught before the general case on purpose: our caller going away is not a write
+            // failure, and swallowing it would break their structured concurrency.
+            throw e
+        } catch (e: Exception) {
+            log(TAG, WARN) { "stampLastProState($skuId, $at) failed, write skipped: ${e.asLog()}" }
         }
     }
 
     companion object {
-        private val KEY_LAST_PRO_AT = longPreferencesKey("gplay.cache.lastProAt")
-        private val KEY_LAST_PRO_SKU = stringPreferencesKey("gplay.cache.lastProSku")
-        private val KEY_PRO_UNCONFIRMED_AT = longPreferencesKey("gplay.cache.proUnconfirmedAt")
-        internal const val MIN_CONFIRMATION_AGE_MS = 60_000L
+        private const val CACHE_TIMEOUT_MS = 2_000L
+        private val TAG = logTag("Upgrade", "Gplay", "BillingCache")
     }
 }

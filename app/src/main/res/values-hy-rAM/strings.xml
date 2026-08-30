@@ -6,11 +6,13 @@
     <string name="general_copy_action">Պատճենել</string>
     <string name="general_thank_you_label">Շնորհակալություն</string>
     <string name="general_upgrade_action">Թարմացնել</string>
+    <string name="general_retry_action">Կրկնել</string>
     <string name="common_feature_requires_pro_msg">Բարելավե՛ք՝ ապակողպելու համար:</string>
     <string name="common_upgrade_required_label">Պահանջում է թարմացում</string>
     <string name="general_donate_action">Նվիրաբերել</string>
     <string name="general_check_action">Ստուգել</string>
     <string name="general_close_action">Փակել</string>
+    <string name="general_dismiss_action">Մերժել</string>
     <string name="general_edit_action">Խմբագրել</string>
     <string name="general_save_action">Պահպանել</string>
     <string name="general_guide_action">Ուղեցույց</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Ազդանշանի նվազագույն որակ</string>
     <string name="settings_signal_minimum_description">Ազդանշանի նվազագույն որակը, որը պետք է ունենա սարքը՝ ձերը համարվելու համար։</string>
     <string name="settings_autoconnect_label">Ինքնամիացում</string>
-    <string name="settings_autoconnect_description">Եթե Android-ն ինքնաբերաբար չի միանում, մենք նույնպես կարող ենք դա պահանջել։ Սա մոնիթորինգի ռեժիմի կարգավորումը կդնի \"Միշտ\" վիճակում։</string>
+    <string name="settings_autoconnect_description">Եթե Android-ը ինքնաբերաբար չի միանում, մենք կարող ենք այն հարցնել նաև: Սա պահում է CAPod մոնիտորինգը ֆոնային ռեժիմում ամբողջ ժամանակ:</string>
     <string name="settings_autoconnect_info_android12">Ավտոմատ կապը հիմնված է համակարգի հատկության վրա, որը Android 12-ը և ավելի նոր տարբերակները սահմանափակում են: Հնարավոր է այն չաշխատի ձեր սարքում:</string>
     <string name="settings_autoconnect_condition_label">Ինքնամիացման պայման</string>
     <string name="settings_autoconnect_condition_description">Ե՞րբ պետք է փորձենք միանալ ձեր սարքին։</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Համատեղելիության ընտրանքներ</string>
     <string name="settings_category_compatibility_options_description">Մի դիպչեք, եթե ամեն ինչ աշխատում է ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Անջատել սարքակազմային զտումը</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Տվյալների զտումը մի՛ հանձնարարեք համակարգին, փոխարենը ստացեք բոլոր տվյալները և զտեք հավելվածի ներսում։</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Փորձիր դա, եթե քո AirPods-ները երբեք հայտնաբերված չեն: Հավելվածը ինքն իրենով կստուգի բոլոր մոտակա Bluetooth ազդանշանները՝ ոչ թե թույլ տալ քո հեռախոսին դրանք նախ ընտրել:</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Անջատել սարքակազմային խմբավորումը</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Թույլ մի՛ տվեք համակարգին խմբավորել հավաքագրված BLE տվյալները՝ նախքան դրանք մեզ փոխանցելը։</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Փորձիր դա, եթե մարտկոցի մակարդակը թարմացվում է միայն ուշ կամ հաստիքով: Քո հեռախոսը անմիջապես կանցկացնի յուրաքանչյուր Bluetooth ազդանշան, ոչ թե նախ դրանք հավաքել:</string>
     <string name="settings_onepod_mode_label">Մեկ ականջակալի ռեժիմ</string>
     <string name="settings_onepod_mode_description">Ավտոմատ նվագարկում/դադար և ավտոկապը արձագանքում են մեկ ականջակալի, այլ ոչ թե պահանջում են երկուսն էլ:</string>
     <string name="settings_popup_caseopen_label">Ցուցադրել պատյանի բացվող պատուհանը</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Սարքի կարգավիճակը</string>
     <string name="notification_channel_device_status_connected_label">Միացված սարք</string>
     <string name="monitor_notification_extra_enabled_hint">Կարող եք անջատել այս ծանուցումը համակարգի կարգավորումներում:</string>
+    <string name="monitor_notification_starting">Մեկնարկում է…</string>
     <string name="support_debuglog_label">Կարգաբերման մատյան</string>
     <string name="support_debuglog_desc">Գրանցեք այն ամենը, ինչ անում է հավելվածը տեքստային ֆայլում, որը կարող եք կիսվել։</string>
     <string name="debug_debuglog_size_label">Չափը</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Կանաչ</string>
     <string name="widget_config_preset_red">Կարմիր</string>
     <string name="settings_compat_indirectcallback_title">Անուղղակի տվյալների առաքում</string>
-    <string name="settings_compat_indirectcallback_summary">Օգտագործեք այլընտրանքային մեթոդ՝ համակարգից BLE տվյալներ ստանալու համար (հեռարձակում՝ հետկանչի փոխարեն)։</string>
+    <string name="settings_compat_indirectcallback_summary">Փորձիր դա, եթե համատեղելիության մյուս ընտրանքները չօգնել են: Android-ը կանցկացնի Bluetooth ազդանշանները հավելվածին ֆոնային ռեժիմում, ոչ թե հավելվածը ուղղակիորեն լսել դրանք:</string>
     <string name="troubleshooter_title">Խնդիրների լուծիչ</string>
     <string name="troubleshooter_summary">Ախտորոշել և շտկել Bluetooth միացման խնդիրները։</string>
     <string name="troubleshooter_ble_intro_title">Bluetooth Low Energy հեռարձակումներ</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Դուք կարող եք թարմացնել CAPod Pro-ին՝ լրացուցիչ գործառույթներ ստանալու և մշակմանն աջակցելու համար։</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">Հասանելի չէ</string>
     <string name="general_error_label">Սխալ</string>
     <string name="general_grant_permission_action">Տալ թույլտվություն</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth-ը անջատված է, միացրեք այն ;)</string>
     <string name="overview_monitoring_active_label">Սարքերի մոնիթորինգ</string>
     <string name="overview_monitoring_active_description">Համոզվեք, որ ձեր սարքը մոտակայքում է և ակտիվ է։</string>
+    <string name="overview_monitoring_off_label">Ֆոնային մոնիտորինգն անջատված է</string>
+    <string name="overview_monitoring_off_description">Ոչ մի պրոֆիլ չունի զուգակցված Bluetooth սարք, ուստի CAPod-ը թարմացվում է միայն հավելվածը բաց լինելիս: Ընտրեք մեկը, որպեսզի միացնեք ֆոնային մոնիտորինգը, ընթացիկ ծանուցումը և ռեակցիաները:</string>
+    <string name="overview_monitoring_off_action">Ընտրել զուգակցված սարքը</string>
     <string name="overview_troubleshoot_suggestion_label">Միացված է, բայց տվյալներ չկան</string>
     <string name="overview_troubleshoot_suggestion_description">Ձեր սարքը միացված է, սակայն CAPod-ը կենդանի տվյալներ չի ստանում դրանից: Ձեր հեռախոսը կարող է կոմպատիբիլության տարբերակի կարիք ունենալ — խնդիրների լուծիչը կարող է ավտոմատ կերպով գտնել համապատասխանը:</string>
     <string name="overview_troubleshoot_suggestion_action">Գործարկել խնդիրների լուծիչը</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Կրկնակի սեղմում զանգը ավարտելու համար</string>
     <string name="device_settings_open_cd">Բացել սառքի կառավարումները</string>
     <string name="overview_card_missing_paired_device">Այս պրոֆիլը չունի զուգակցված Bluetooth սարք:</string>
+    <string name="overview_card_missing_paired_device_consequence">Առանց դրա սարքի կարգավորումները և ինքնավար միացումը հասանելի չեն:</string>
     <string name="overview_reactions_hint_title">Ռեակցիաները կարգավորվում են ըստ սարքի</string>
     <string name="overview_reactions_hint_body">Ավտոնվագարկումը, ավտոդադարը և բացվող պատուհանները այժմ կարգավորվում են ըստ սարքի: Կտտացրեք կարգավորումների պատկերակին քարտի վրա, մինչ ձեր ականջակալները միացված են:</string>
+    <string name="review_app_review_action">Կարծիք</string>
+    <string name="review_app_dismiss_action">Գուցե ավելի ուշ</string>
+    <string name="review_app_body">Ցանկանո՞ւմ եք կարծիք թողնել CAPod-ի համար? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Ընդհանուր</string>
     <string name="device_settings_microphone_mode_label">Խոսափող</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth կարգաբերումներ</string>
     <string name="device_settings_send_failed">Չհաջողվեց կիրառել կարգավորումը՝ %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Անջատ ռեժիմը հասանելի չէ այս սարքին: Միացրեք «Թույլատրել Անջատ ռեժիմը» Աղմուկի կառավարման բաժնում:</string>
+    <string name="anc_mode_not_confirmed_message">AirPods-ը չհաստատեցին լսելու ռեժիմի փոփոխությունը:</string>
     <string name="device_settings_category_battery_label">Մարտկոց</string>
     <string name="device_settings_charge_cap_label">Լիցքի օպտիմիզացված սահման</string>
     <string name="device_settings_charge_cap_description">Սովորեք ձեր ռեժիմը և դադարեցրեք լիցքավորումը մոտ 80%%-ի դեպքում՝ մարտկոցի ծառայության ժամկետը երկարացնելու համար՝ pods-երը լիցքավորելով նախքան դրանք օգտագործելը։</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">Վերականգնել կանխադրվածները</string>
     <string name="press_controls_reset_confirm_message">Վերականգնե՞լ բոլոր սեղմումների կարգավորումները կանխադրվածների:</string>
     <string name="device_settings_noise_control_open_press_controls_action">Բացել Սեղմումների կառավարումը</string>
+    <string name="general_navigate_up_action">Նավարկել վերև</string>
+    <string name="general_progress_loading">Բեռնում</string>
 </resources>

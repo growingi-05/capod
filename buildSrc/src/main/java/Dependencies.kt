@@ -44,13 +44,13 @@ fun DependencyHandlerScope.addBaseKotlin() {
 fun DependencyHandlerScope.addDagger() {
     implementation("com.google.dagger:dagger:${Versions.Dagger.core}")
     implementation("com.google.dagger:dagger-android:${Versions.Dagger.core}")
-    implementation("androidx.hilt:hilt-common:1.0.0")
+    implementation("androidx.hilt:hilt-common:${Versions.AndroidX.Hilt.core}")
 
     ksp("com.google.dagger:dagger-compiler:${Versions.Dagger.core}")
     ksp("com.google.dagger:dagger-android-processor:${Versions.Dagger.core}")
 
     implementation("com.google.dagger:hilt-android:${Versions.Dagger.core}")
-    ksp("androidx.hilt:hilt-compiler:1.0.0")
+    ksp("androidx.hilt:hilt-compiler:${Versions.AndroidX.Hilt.core}")
     ksp("com.google.dagger:hilt-android-compiler:${Versions.Dagger.core}")
 
     testImplementation("com.google.dagger:hilt-android-testing:${Versions.Dagger.core}")
@@ -130,6 +130,20 @@ fun DependencyHandlerScope.addDataStore() {
     implementation("androidx.datastore:datastore-preferences:1.1.4")
 }
 
+fun DependencyHandlerScope.addWorkerManager() {
+    // Resolved transitively via Glance today; declared explicitly so the safety-net worker does not
+    // depend on Glance's choice. work-runtime-ktx is NOT an empty shell at this version: at 2.7.1
+    // CoroutineWorker, OperationKt.await, OneTimeWorkRequestBuilder and workDataOf all live in the
+    // ktx artifact (they only moved into work-runtime on later releases).
+    val version = "2.7.1"
+    implementation("androidx.work:work-runtime:$version")
+    implementation("androidx.work:work-runtime-ktx:$version")
+    testImplementation("androidx.work:work-testing:$version")
+
+    // @HiltWorker is processed by the androidx.hilt compiler that addDagger() already registers.
+    implementation("androidx.hilt:hilt-work:${Versions.AndroidX.Hilt.core}")
+}
+
 fun DependencyHandlerScope.addGlance() {
     implementation("androidx.glance:glance-appwidget:${Versions.Glance.core}")
     implementation("androidx.glance:glance-material3:${Versions.Glance.core}")
@@ -147,8 +161,8 @@ fun DependencyHandlerScope.addTesting() {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
-    testImplementation("io.mockk:mockk:1.12.4")
-    androidTestImplementation("io.mockk:mockk-android:1.12.4")
+    testImplementation("io.mockk:mockk:1.14.9")
+    androidTestImplementation("io.mockk:mockk-android:1.14.9")
 
     testImplementation("io.kotest:kotest-runner-junit5:4.6.4")
     testImplementation("io.kotest:kotest-assertions-core-jvm:4.6.4")

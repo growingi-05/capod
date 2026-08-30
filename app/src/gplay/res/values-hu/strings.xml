@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">A Google Play szerint már megvásároltad ezt a frissítést, de nem sikerült visszaállítani. Győződj meg róla, hogy azzal a Google-fiókkal vagy bejelentkezve, amellyel a vásárlást végezted. A Play Store szinkronizálása eltarthat egy ideig – próbáld meg újraindítani a készüléket, törölni a Google Play gyorsítótárát, vagy egyszerűen várj egy kicsit.</string>
     <string name="upgrade_restore_action">Vásárlás visszaállítása</string>
     <string name="upgrade_badge_label">Pro</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">Szerezd meg a %1$s-t</string>
     <string name="upgrade_preamble">A CAPod-ot egyetlen ember fejleszti. A frissítés extra funkciókat old fel, és segít életben tartani az alkalmazást.</string>
     <string name="upgrade_screen_options_description">Ugyanazok a funkciók, eltérő árazás. Az előfizetés ingyenes próbaidőszakot tartalmaz, és bármikor lemondható.</string>
     <string name="upgrade_screen_options_description_no_trial">Ugyanazok a funkciók, eltérő árazás. Az előfizetés bármikor lemondható.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">Ez egy külön vásárlás – nem mondja le és nem téríti vissza az előfizetésedet. Használd ugyanazt a Google-fiókot.</string>
     <string name="upgrade_screen_sub_still_renewing_title">Az előfizetés még aktív</string>
     <string name="upgrade_screen_sub_still_renewing_message">Az előfizetésed még mindig megújulásra van állítva. Először mondd le a Google Playben, majd válts át az egyszeri vásárlásra. Most mondtad le? Adj egy kis időt a Google Playnek, és próbáld újra.</string>
-    <string name="upgrade_screen_sub_check_failed_title">Az előfizetés ellenőrzése sikertelen</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nem sikerült ellenőrizni az előfizetésed állapotát a Google Playnél. A kétszeres vásárlás elkerülése érdekében próbáld újra egy kicsit később.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nem sikerült ellenőrizni a vásárlásaidat a Google Play-en. A kettős vásárlás elkerülése érdekében próbálkozz újra egy pillanat múlva.</string>
+    <string name="upgrade_screen_pending_card_title">Fizetés függőben</string>
+    <string name="upgrade_screen_pending_card_body">A Google Play még feldolgozza a fizetésedet. A Pro automatikusan feloldódik, amikor a fizetés feldolgozódik. Egyes fizetési módok feldolgozása több ideig is tarthat. Nem kell tenned semmi mást.</string>
+    <string name="upgrade_screen_pending_dialog_message">A Google Play egy függőben lévő vásárlást talált és feldolgozza. A Pro automatikusan feloldódik, amikor a fizetés feldolgozódik.</string>
     <string name="upgrade_screen_grace_title">A vásárlásod megerősítése</string>
     <string name="upgrade_screen_grace_body_short">A Google Play még nem erősítette meg a vásárlásodat. A Pro továbbra is aktív – nincs teendő.</string>
     <string name="upgrade_screen_grace_body">A Google Play egy ideje nem erősítette meg a vásárlásodat. A Pro továbbra is aktív. Győződj meg róla, hogy online vagy, és be vagy jelentkezve a vásárláshoz használt Google-fiókkal, majd próbáld meg visszaállítani.</string>
-    <string name="settings_upgrade_status_label">CAPod Pro</string>
-    <string name="settings_upgrade_status_description">Az előfizetésed és vásárlásod állapota.</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">Frissítési lehetőségek</string>
+    <string name="upgrade_screen_offers_or">vagy</string>
+    <string name="upgrade_screen_offers_body">Azonos funkciók, csak különböző árképzési modellek.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Az árak nem érhetők el</string>
+    <string name="upgrade_screen_offers_unavailable_message">A Google Play most nem adta vissza az árakat. Ellenőrizze az internetkapcsolatot, és próbálja újra később.</string>
+    <string name="upgrade_screen_subscription_offer_title">Éves előfizetés</string>
+    <string name="upgrade_screen_subscription_offer_body">Az ingyenes próbaidőszak után éves alapon megújul. Bármikor lemondható a Google Play-ben.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Éves alapon megújul. Bármikor lemondható a Google Play-ben.</string>
+    <string name="upgrade_screen_iap_offer_body">Egy fizetés, nincs megújítás.</string>
+    <string name="upgrade_screen_benefits_title">Frissítés előnyei</string>
+    <string name="upgrade_screen_restore_body">A helyreállítás megkéri a Google Play-t, hogy újra ellenőrizze az alkalmazás vásárlásait az aktuális fiók esetén. Nem kezdeményez új vásárlást.</string>
+    <string name="upgrade_screen_restore_checked_message">A CAPod éppen ellenőrizte a Google Play-t, de nem lehetett megerősíteni a Pro vásárlást az olyan fiók esetén, amelyet a Google Play használ ehhez az alkalmazáshoz.</string>
+    <string name="upgrade_screen_restore_contact_hint">Még mindig nem működik? Vegye fel a kapcsolatot az ügyfélszolgálattal abból az e-mail-fiókból, amely a vásárlást végezte, és adja meg Google Play rendelésszámát.</string>
+    <string name="upgrade_screen_contact_support_action">Lépjen kapcsolatba az ügyfélszolgálattal</string>
+    <string name="settings_upgrade_status_description">Az Ön frissítésének és vásárlásának állapota.</string>
+    <string name="upgrades_gplay_unavailable_error_description">A CAPod nem tud csatlakozni a Google Playhez. Telepítve és naprakész a Google Play? Be vagy jelentkezve Google-fiókkal? Próbáld meg törölni a Google Play alkalmazás gyorsítótárát és indítsd újra az eszközt.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Nem sikerült megnyitni a Google Play-t. Lehetséges, hogy hiányzik, le van tiltva vagy korlátozva van ezen az eszközön.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play hiba</string>
+    <string name="upgrades_gplay_internal_error_description">Belső Google Play hiba történt. Próbáld meg a következőket:\n\n• Indítsd újra az eszközt\n• Töröld a Google Play Store gyorsítótárát\n• Próbáld meg később</string>
+    <string name="upgrades_gplay_network_error_title">Csatlakozási hiba</string>
+    <string name="upgrades_gplay_network_error_description">Nem sikerült csatlakozni a Google Playhez. Ellenőrizd az internetkapcsolatot és próbáld meg újra.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Az ajánlat nem elérhető</string>
+    <string name="upgrades_gplay_offer_unavailable_description">A Google Play jelenleg nem kínálja ezt a frissítési lehetőséget. Próbáld meg később vagy ellenőrizd a Google Play Store-t.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">A Google Play ellenőrzése nem fejeződött be időben, így a vásárlási státuszod még ismeretlen. Semmi sem változott a fiókodban.</string>
 </resources>

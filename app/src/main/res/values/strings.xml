@@ -11,6 +11,7 @@
     <string name="general_donate_action">Donate</string>
     <string name="general_check_action">Check</string>
     <string name="general_close_action">Close</string>
+    <string name="general_dismiss_action">Dismiss</string>
     <string name="general_edit_action">Edit</string>
     <string name="general_save_action">Save</string>
     <string name="general_guide_action">Guide</string>
@@ -34,7 +35,7 @@
 
 
     <string name="settings_monitor_connected_notification_label">Extra notification</string>
-    <string name="settings_monitor_connected_notification_description">Shows an extra notification when a device is connected. This lets you hide the permanent \"No devices\" notification by disabling the \"Device status\" channel.</string>
+    <string name="settings_monitor_connected_notification_description">Shows a second notification that only appears while a device is connected. With this on, you can hide the permanent \"No devices\" notification: turn off the \"Device status\" category in Android\'s notification settings for CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Keep notification after disconnect</string>
     <string name="settings_keep_notification_after_disconnect_description">Continue showing the last known battery levels even after your AirPods disconnect</string>
     <string name="settings_autopause_label">Auto pause</string>
@@ -48,7 +49,7 @@
     <string name="settings_signal_minimum_label">Minimum signal quality</string>
     <string name="settings_signal_minimum_description">The minimum signal quality that a device needs to have to be considered yours.</string>
     <string name="settings_autoconnect_label">Auto connect</string>
-    <string name="settings_autoconnect_description">If Android does not automatically connect, we can ask it too. This will set the monitor mode setting to \'Always\'.</string>
+    <string name="settings_autoconnect_description">If Android does not automatically connect, we can ask it too. This keeps CAPod monitoring in the background at all times.</string>
     <string name="settings_autoconnect_info_android12">Auto connect relies on a system feature that Android 12 and newer restricts. It may not work on your device.</string>
     <string name="settings_autoconnect_condition_label">Auto connect condition</string>
     <string name="settings_autoconnect_condition_description">When should we try to connect to your device?</string>
@@ -60,9 +61,9 @@
     <string name="settings_category_compatibility_options_title">Compatibility options</string>
     <string name="settings_category_compatibility_options_description">Don\'t touch if everything works ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Disable hardware filtering</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Don\'t delegate data filtering to the system, instead get all data and filter within the app.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Try this if your AirPods are never detected. The app will look through all nearby Bluetooth signals itself, instead of letting your phone pre-select them.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Disable hardware batching</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Don\'t let the system group collected BLE data before forwarding it to us.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Try this if battery levels only update late or in bursts. Your phone will pass on each Bluetooth signal right away, instead of collecting them first.</string>
 
     <string name="settings_onepod_mode_label">One pod mode</string>
     <string name="settings_onepod_mode_description">Auto play/pause and auto-connect react to a single pod instead of requiring both.</string>
@@ -86,6 +87,7 @@
     <string name="notification_channel_device_status_label">Device status</string>
     <string name="notification_channel_device_status_connected_label">Connected device</string>
     <string name="monitor_notification_extra_enabled_hint">You can disable this notification in system settings.</string>
+    <string name="monitor_notification_starting">Starting up…</string>
 
     <string name="support_debuglog_label">Debug log</string>
     <string name="support_debuglog_desc">Record everything the app is doing into a text file that you can share.</string>
@@ -127,11 +129,11 @@
     <string name="settings_overview_hide_unmatched_label">Hide unmatched devices</string>
     <string name="settings_overview_hide_unmatched_description">Don\'t show nearby devices that don\'t match any of your profiles in the overview, e.g. other people\'s AirPods.</string>
     <string name="device_battery_estimate_toggle_label">Battery estimates</string>
-    <string name="device_battery_estimate_card_desc">Learn how this device charges and drains to estimate time remaining, time until charged, and battery health.</string>
+    <string name="device_battery_estimate_card_desc">Learn how this device charges and drains to estimate time remaining, time until charged, and how much of its rated listening time it still reaches.</string>
     <string name="device_battery_estimate_reset_action">Reset learned data</string>
     <string name="device_battery_estimate_reset_desc">Start over from the rated battery life.</string>
     <string name="device_battery_estimate_reset_confirm_title">Reset learned data?</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod will forget this device\'s measured drain, charging speed and battery health, and start over from the rated battery life.</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod will forget this device\'s measured drain, charging speed and listening time, and start over from the rated battery life.</string>
     <string name="settings_acknowledgements_label">Acknowledgements</string>
 
     <string name="settings_debug_autoreports_label">Automatic bug reports</string>
@@ -181,7 +183,7 @@
     <string name="widget_config_preset_green">Green</string>
     <string name="widget_config_preset_red">Red</string>
     <string name="settings_compat_indirectcallback_title">Indirect data delivery</string>
-    <string name="settings_compat_indirectcallback_summary">Use an alternative method to receive BLE data from the system (broadcast instead of callback).</string>
+    <string name="settings_compat_indirectcallback_summary">Try this if the other compatibility options didn\'t help. Android will hand Bluetooth signals to the app in the background, instead of the app listening for them directly.</string>
 
     <string name="troubleshooter_title">Troubleshooter</string>
     <string name="troubleshooter_summary">Diagnose and fix Bluetooth connectivity issues.</string>
@@ -207,8 +209,9 @@
 
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
 
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">Error</string>
@@ -224,6 +227,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth is disabled, enable it ;)</string>
     <string name="overview_monitoring_active_label">Monitoring for devices</string>
     <string name="overview_monitoring_active_description">Make sure your device is nearby and active.</string>
+    <string name="overview_monitoring_off_label">Background monitoring is off</string>
+    <string name="overview_monitoring_off_description">No profile has a paired Bluetooth device, so CAPod only updates while the app is open. Select one to enable background monitoring, the ongoing notification and reactions.</string>
+    <string name="overview_monitoring_off_action">Select paired device</string>
     <string name="overview_troubleshoot_suggestion_label">Connected, but no data</string>
     <string name="overview_troubleshoot_suggestion_description">Your device is connected, but CAPod isn\'t receiving any live data from it. Your phone may need a compatibility option — the troubleshooter can try to find one automatically.</string>
     <string name="overview_troubleshoot_suggestion_action">Run troubleshooter</string>
@@ -268,6 +274,24 @@
     <string name="pods_dual_right_short_label">R</string>
     <string name="pods_case_label">Case</string>
     <string name="battery_unavailable_label">Battery unavailable</string>
+    <string name="battery_state_low_cd">Battery low</string>
+    <string name="battery_state_critical_cd">Battery critically low</string>
+    <!-- Case charges: how often the case can still fully recharge BOTH earbuds. Not charge cycles, and not a statement that anything is charging right now. -->
+    <plurals name="battery_case_charges_approx">
+        <item quantity="one">~%d more full charge for both earbuds</item>
+        <item quantity="other">~%d more full charges for both earbuds</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="one">At least %d more full charge for both earbuds</item>
+        <item quantity="other">At least %d more full charges for both earbuds</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">Less than one more full charge for both earbuds</string>
+    <string name="battery_case_charges_empty">Case is empty, no charges left for your earbuds</string>
+    <!-- Shown when the case reading is too coarse to name any number of charges. Must not mention a count. -->
+    <string name="battery_case_charges_uncertain">Not sure how many full charges are left for both earbuds</string>
+    <string name="battery_case_charges_state_enough_cd">Enough for a full charge</string>
+    <string name="battery_case_charges_state_not_enough_cd">Not enough for a full charge</string>
+    <string name="battery_case_charges_state_uncertain_cd">May not be enough for a full charge</string>
     <string name="pods_case_status_open_label">Open</string>
     <string name="pods_case_status_closed_label">Closed</string>
     <string name="pods_connection_state_disconnected_label">Not connected to a device</string>
@@ -469,11 +493,14 @@
     <string name="device_settings_info_right_serial_label">Right Pod Serial</string>
     <string name="device_settings_info_left_bonded_label">Left Bonded</string>
     <string name="device_settings_info_right_bonded_label">Right Bonded</string>
-    <string name="device_settings_info_battery_health_label">Battery Health (estimated)</string>
-    <string name="device_settings_info_battery_health_left_label">Left Battery Health (est.)</string>
-    <string name="device_settings_info_battery_health_right_label">Right Battery Health (est.)</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">Estimated listening time</string>
+    <string name="device_settings_info_battery_health_left_label">Left pod listening time</string>
+    <string name="device_settings_info_battery_health_right_label">Right pod listening time</string>
+    <string name="device_settings_info_battery_health_value">~%1$d%% of rated</string>
     <string name="device_settings_info_battery_health_pending">Still determining, check back later</string>
+    <string name="device_settings_battery_runtime_warning_title">Listening time is much shorter than rated</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: about %2$d%% of the rated listening time. Tap for details.</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">These headphones</string>
     <string name="device_settings_info_details_label">Device Details</string>
     <string name="device_settings_info_details_action">Show device details</string>
     <string name="device_settings_info_status_label">Status</string>
@@ -526,8 +553,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Double press to end call</string>
     <string name="device_settings_open_cd">Open device settings</string>
     <string name="overview_card_missing_paired_device">This profile has no paired Bluetooth device.</string>
+    <string name="overview_card_missing_paired_device_consequence">Without one, device settings and auto-connect aren\'t available.</string>
     <string name="overview_reactions_hint_title">Reactions are per device</string>
     <string name="overview_reactions_hint_body">Auto-play, auto-pause and pop-ups are now configured per device. Tap the settings icon on a card while your headphones are connected.</string>
+    <string name="review_app_review_action">Review</string>
+    <string name="review_app_dismiss_action">Maybe later</string>
+    <string name="review_app_body">Would you like to leave CAPod a review? ❤️</string>
 
     <!-- New device settings -->
     <string name="device_settings_category_general_label">General</string>
@@ -567,6 +598,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth Settings</string>
     <string name="device_settings_send_failed">Could not apply setting: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Off mode isn\'t enabled on this device. Enable \"Allow Off mode\" under Noise Control.</string>
+    <string name="anc_mode_not_confirmed_message">The AirPods didn\'t confirm the listening mode change.</string>
     <string name="device_settings_category_battery_label">Battery</string>
     <string name="device_settings_charge_cap_label">Optimized Charge Limit</string>
     <string name="device_settings_charge_cap_description">Learn your routine and pause charging around 80%% to extend battery life, topping the pods off before you\'re likely to use them.</string>
@@ -609,4 +641,6 @@
     <string name="press_controls_reset_confirm_message">Reset all press mappings to defaults?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Open Press Controls</string>
 
+    <string name="general_navigate_up_action">Navigate up</string>
+    <string name="general_progress_loading">Loading</string>
 </resources>

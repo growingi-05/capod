@@ -1,5 +1,6 @@
 package eu.darken.capod.main.ui.overview
 
+import android.app.Activity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.capod.common.TimeSource
 import eu.darken.capod.common.bluetooth.BluetoothManager2
@@ -15,6 +16,7 @@ import eu.darken.capod.common.flow.combine
 import eu.darken.capod.common.flow.throttleLatest
 import eu.darken.capod.common.navigation.Nav
 import eu.darken.capod.common.permissions.Permission
+import eu.darken.capod.common.review.ReviewTool
 import eu.darken.capod.common.uix.ViewModel4
 import eu.darken.capod.common.upgrade.UpgradeRepo
 import eu.darken.capod.main.core.GeneralSettings
@@ -26,13 +28,14 @@ import eu.darken.capod.monitor.core.PodDevice
 import eu.darken.capod.monitor.core.battery.BatteryEstimate
 import eu.darken.capod.monitor.core.battery.BatteryEstimator
 import eu.darken.capod.monitor.core.battery.estimateFor
-import eu.darken.capod.monitor.core.tierRank
+import eu.darken.capod.monitor.core.podDeviceTierComparator
 import eu.darken.capod.monitor.core.worker.MonitorControl
 import eu.darken.capod.pods.core.apple.aap.AapConnectionManager
 import eu.darken.capod.pods.core.apple.aap.protocol.AapCommand
 import eu.darken.capod.pods.core.apple.aap.protocol.AapSetting
 import eu.darken.capod.profiles.core.DeviceProfile
 import eu.darken.capod.profiles.core.DeviceProfilesRepo
+import eu.darken.capod.profiles.core.ProfileId
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
@@ -64,12 +67,14 @@ class OverviewViewModel @Inject constructor(
     private val monitorModeResolver: MonitorModeResolver,
     private val batteryEstimator: BatteryEstimator,
     private val timeSource: TimeSource,
+    private val reviewTool: ReviewTool,
 ) : ViewModel4(dispatcherProvider) {
 
     val requestPermissionEvent = SingleEventFlow<Permission>()
 
     sealed interface Event {
         data object OffModeRejectedByDevice : Event
+        data object AncModeNotConfirmedByDevice : Event
     }
 
     val events = SingleEventFlow<Event>()
@@ -78,6 +83,14 @@ class OverviewViewModel @Inject constructor(
         launch {
             aapManager.offRejectedEvents.collect {
                 events.tryEmit(Event.OffModeRejectedByDevice)
+            }
+        }
+        launch {
+            // OFF has its own, more specific message via offRejectedEvents.
+            aapManager.settingRejectedEvents.collect { (_, command) ->
+                if (command is AapCommand.SetAncMode && command.mode != AapSetting.AncMode.Value.OFF) {
+                    events.tryEmit(Event.AncModeNotConfirmedByDevice)
+                }
             }
         }
     }
@@ -90,6 +103,8 @@ class OverviewViewModel @Inject constructor(
         val hideUnmatchedDevices: Boolean,
         val showTroubleshootSuggestion: Boolean,
         val batteryEstimates: Map<String, BatteryEstimate>,
+        val effectiveMode: MonitorMode,
+        val reviewState: ReviewTool.State,
     )
 
     /**
@@ -121,17 +136,23 @@ class OverviewViewModel @Inject constructor(
         .onStart { emit(false) }
         .distinctUntilChanged()
 
-    private val overviewUiSettings = combineFlows(
+    private val overviewUiSettings = combine(
         generalSettings.reactionsHintDismissed.flow,
         generalSettings.hideUnmatchedDevices.flow,
         troubleshootSuggestion,
         batteryEstimator.estimates,
-    ) { reactionsHintDismissed, hideUnmatched, showTroubleshootSuggestion, batteryEstimates ->
+        monitorModeResolver.effectiveMode,
+        // The review prompt is a nice-to-have: a failing review backend must never take the whole
+        // overview down with it, so it falls back to "don't ask".
+        reviewTool.state.catch { emit(ReviewTool.State()) },
+    ) { reactionsHintDismissed, hideUnmatched, showTroubleshootSuggestion, batteryEstimates, effectiveMode, reviewState ->
         OverviewUiSettings(
             reactionsHintDismissed = reactionsHintDismissed,
             hideUnmatchedDevices = hideUnmatched,
             showTroubleshootSuggestion = showTroubleshootSuggestion,
             batteryEstimates = batteryEstimates,
+            effectiveMode = effectiveMode,
+            reviewState = reviewState,
         )
     }
 
@@ -208,12 +229,13 @@ class OverviewViewModel @Inject constructor(
         val currentProfileIds = profiles.map { it.id }.toSet()
         val prunedExpandedIds = expandedIds.filter { it in currentProfileIds }.toSet()
 
-        State(
+        val state = State(
             now = timeSource.now(),
             permissions = permissions,
             devices = devices,
             isDebug = isDebug,
             isBluetoothEnabled = isBluetoothEnabled,
+            effectiveMode = uiSettings.effectiveMode,
             profiles = profiles,
             upgradeInfo = upgradeInfo,
             showUnmatchedDevices = showUnmatched,
@@ -223,9 +245,20 @@ class OverviewViewModel @Inject constructor(
             showTroubleshootSuggestion = uiSettings.showTroubleshootSuggestion,
             batteryEstimates = uiSettings.batteryEstimates,
         )
+
+        // Asking for a review is the lowest priority thing the overview can say: it only appears on
+        // an otherwise quiet screen, never stacked on top of something the user has to act on.
+        val showReviewCard = uiSettings.reviewState.shouldAskForReview && !state.hasHigherPriorityCard
+        if (uiSettings.reviewState.shouldAskForReview && !showReviewCard) {
+            log(TAG) { "Could show review card but higher priority cards are currently being shown" }
+        }
+
+        state.copy(showReviewCard = showReviewCard)
     }.asLiveState()
 
     enum class BluetoothIconState { HIDDEN, DISABLED, NEARBY, CONNECTED }
+
+    enum class MonitoringStatus { HIDDEN, SEARCHING, BACKGROUND_OFF }
 
     data class State(
         val now: Instant,
@@ -233,6 +266,7 @@ class OverviewViewModel @Inject constructor(
         val devices: List<PodDevice>,
         val isDebug: Boolean,
         val isBluetoothEnabled: Boolean,
+        val effectiveMode: MonitorMode,
         val profiles: List<DeviceProfile>,
         val upgradeInfo: UpgradeRepo.Info,
         val showUnmatchedDevices: Boolean,
@@ -241,6 +275,7 @@ class OverviewViewModel @Inject constructor(
         val hideUnmatchedDevices: Boolean = false,
         val showTroubleshootSuggestion: Boolean = false,
         val batteryEstimates: Map<String, BatteryEstimate> = emptyMap(),
+        val showReviewCard: Boolean = false,
     ) {
         val isScanBlocked: Boolean get() = permissions.any { it.isScanBlocking }
 
@@ -256,14 +291,22 @@ class OverviewViewModel @Inject constructor(
         }
 
         val profiledDevices: List<PodDevice> by lazy {
-            devices.filter { it.profileId != null }.sortedWith(
-                compareBy<PodDevice> { it.tierRank() }
-                    .thenBy { profileOrder[it.profileId] ?: Int.MAX_VALUE }
-            )
+            devices.filter { it.profileId != null }.sortedWith(podDeviceTierComparator(profileOrder))
         }
 
+        /**
+         * Truncate to the free limit ONLY when the entitlement is hard-locked: billing settled,
+         * error-free and reporting no purchase. During the GPlay cold-start seed (unsettled, and
+         * non-Pro even for paying users) or an error state the full list stays visible — a paying
+         * user's devices must not disappear and reappear on every launch.
+         *
+         * Predicate inlined on purpose: `UpgradeRepoExtensions` stays byte-identical to canonical.
+         */
         val visibleProfiledDevices: List<PodDevice>
-            get() = if (upgradeInfo.isPro) profiledDevices else profiledDevices.take(FREE_DEVICE_LIMIT)
+            get() {
+                val hardLocked = upgradeInfo.error == null && upgradeInfo.isSettled && !upgradeInfo.isPro
+                return if (hardLocked) profiledDevices.take(FREE_DEVICE_LIMIT) else profiledDevices
+            }
         val hiddenProfiledDeviceCount: Int get() = profiledDevices.size - visibleProfiledDevices.size
         val unmatchedDevices: List<PodDevice> get() = devices.filter { it.profileId == null }
 
@@ -281,6 +324,35 @@ class OverviewViewModel @Inject constructor(
                 profiledDevices.any { it.isLive } -> BluetoothIconState.NEARBY
                 else -> BluetoothIconState.HIDDEN
             }
+
+        /**
+         * [MonitoringStatus.BACKGROUND_OFF] is deliberately not conditioned on the absence of device
+         * cards: an address-less wildcard profile can still match an unrecognised Apple payload, and
+         * the resulting card carries neither the missing-paired-device banner nor an edit action.
+         */
+        val monitoringStatus: MonitoringStatus
+            get() = when {
+                isScanBlocked || !isBluetoothEnabled -> MonitoringStatus.HIDDEN
+                profiles.isEmpty() -> MonitoringStatus.HIDDEN
+                effectiveMode == MonitorMode.MANUAL -> MonitoringStatus.BACKGROUND_OFF
+                profiledDevices.isEmpty() && !shouldShowUnmatchedSection -> MonitoringStatus.SEARCHING
+                else -> MonitoringStatus.HIDDEN
+            }
+
+        /**
+         * Whether the overview is currently showing a card that outranks the review prompt: a
+         * missing permission, the troubleshooter hint, the background-monitoring-off notice, the
+         * no-profiles setup card or the enable-Bluetooth prompt. All of those ask the user to do
+         * something, so the review prompt stays hidden while any of them is on screen.
+         */
+        val hasHigherPriorityCard: Boolean
+            get() = permissions.isNotEmpty() ||
+                    showTroubleshootSuggestion ||
+                    monitoringStatus == MonitoringStatus.BACKGROUND_OFF ||
+                    !isBluetoothEnabled ||
+                    (profiles.isEmpty() && !isScanBlocked && isBluetoothEnabled)
+
+        val soleProfileId: ProfileId? get() = profiles.singleOrNull()?.id
 
         fun isPinned(device: PodDevice, index: Int): Boolean =
             device.isSystemConnected || index == 0
@@ -328,6 +400,10 @@ class OverviewViewModel @Inject constructor(
 
     fun goToEditProfile(device: PodDevice) {
         val profileId = device.profileId ?: return
+        goToEditProfile(profileId)
+    }
+
+    fun goToEditProfile(profileId: ProfileId) {
         log(TAG, INFO) { "goToEditProfile(profileId=$profileId)" }
         navTo(Nav.Main.DeviceProfileCreation(profileId = profileId))
     }
@@ -354,6 +430,16 @@ class OverviewViewModel @Inject constructor(
         launch {
             generalSettings.reactionsHintDismissed.value(true)
         }
+    }
+
+    fun reviewNow(activity: Activity) {
+        log(TAG, INFO) { "reviewNow($activity)" }
+        launch { reviewTool.reviewNow(activity) }
+    }
+
+    fun reviewDismiss() {
+        log(TAG, INFO) { "reviewDismiss()" }
+        launch { reviewTool.dismiss() }
     }
 
     fun requestPermission(permission: Permission) {

@@ -6,11 +6,13 @@
     <string name="general_copy_action">Kopioi</string>
     <string name="general_thank_you_label">Kiitos</string>
     <string name="general_upgrade_action">Päivitä</string>
+    <string name="general_retry_action">Yritä uudelleen</string>
     <string name="common_feature_requires_pro_msg">Päivitä avataksesi.</string>
     <string name="common_upgrade_required_label">Vaatii päivityksen</string>
     <string name="general_donate_action">Lahjoita</string>
     <string name="general_check_action">Tarkista</string>
     <string name="general_close_action">Sulje</string>
+    <string name="general_dismiss_action">Hylkää</string>
     <string name="general_edit_action">Muokkaa</string>
     <string name="general_save_action">Tallenna</string>
     <string name="general_guide_action">Opas</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Tue kehittäjää</string>
     <string name="upgrade_benefit_disclaimer">Ominaisuuksien saatavuus riippuu kuulokkeistasi ja laitteestasi.</string>
     <string name="settings_monitor_connected_notification_label">Lisäilmoitus</string>
-    <string name="settings_monitor_connected_notification_description">Näyttää lisäilmoituksen, kun laite on yhdistetty. Tämä antaa sinun piilottaa pysyvän \"Ei laitteita\" -ilmoituksen poistamalla \"Laitteen tila\" -kanavan käytöstä.</string>
+    <string name="settings_monitor_connected_notification_description">Näyttää toisen ilmoituksen, joka näkyy vain laitteen ollessa yhteydessä. Kun tämä on käytössä, voit piilottaa pysyvän \"Ei laitteita\" -ilmoituksen: poista \"Laitteen tila\" -kategoria käytöstä CAPodin Android-ilmoitusasetuksissa.</string>
     <string name="settings_keep_notification_after_disconnect_label">Säilytä ilmoitus yhteyden katkaisun jälkeen</string>
     <string name="settings_keep_notification_after_disconnect_description">Jatka viimeisten tunnettujen akkutasojen näyttämistä senkin jälkeen, kun AirPodit katkaisevat yhteyden</string>
     <string name="settings_autopause_label">Automaattinen tauko</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Signaalin vähimmäislaatu</string>
     <string name="settings_signal_minimum_description">Signaalin vähimmäislaatu, joka laitteella on oltava, jotta se katsotaan omaksesi.</string>
     <string name="settings_autoconnect_label">Automaattinen yhdistäminen</string>
-    <string name="settings_autoconnect_description">Jos Android ei yhdistä automaattisesti, voimme myös pyytää sitä. Tämä asettaa valvontatilan asetukseksi \'Aina\'.</string>
+    <string name="settings_autoconnect_description">Jos Android ei yhdistä automaattisesti, voimme pyytää sitä tekemään niin. Näin CAPod pysyy jatkuvasti taustalla valvomassa.</string>
     <string name="settings_autoconnect_info_android12">Automaattinen yhteys perustuu järjestelmäominaisuuteen, jota Android 12 ja uudemmat rajoittavat. Se ei välttämättä toimi laitteellasi.</string>
     <string name="settings_autoconnect_condition_label">Automaattisen yhdistämisen ehto</string>
     <string name="settings_autoconnect_condition_description">Milloin meidän pitäisi yrittää yhdistää laitteeseesi?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Yhteensopivuusasetukset</string>
     <string name="settings_category_compatibility_options_description">Älä koske, jos kaikki toimii ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Poista laitteistosuodatus käytöstä</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Älä delegoi tietojen suodatusta järjestelmälle, vaan hanki kaikki tiedot ja suodata ne sovelluksessa.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Kokeile tätä, jos AirPodejasi ei koskaan havaita. Sovellus käy itse läpi kaikki lähellä olevat Bluetooth-signaalit sen sijaan, että puhelin esivalitsisi ne.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Poista laitteistoeräajo käytöstä</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Älä anna järjestelmän ryhmitellä kerättyjä BLE-tietoja ennen niiden välittämistä meille.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Kokeile tätä, jos akkutasot päivittyvät vain myöhässä tai ryppäissä. Puhelimesi välittää jokaisen Bluetooth-signaalin heti sen sijaan, että keräisi niitä ensin.</string>
     <string name="settings_onepod_mode_label">Yhden kuulokkeen tila</string>
     <string name="settings_onepod_mode_description">Automaattinen toisto/tauko ja automaattinen yhdistäminen reagoivat yhteen kuulokkeeseen sen sijaan, että molempia tarvittaisiin.</string>
     <string name="settings_popup_caseopen_label">Näytä kotelon ponnahdusikkuna</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Laitteen tila</string>
     <string name="notification_channel_device_status_connected_label">Yhdistetty laite</string>
     <string name="monitor_notification_extra_enabled_hint">Voit poistaa tämän ilmoituksen käytöstä järjestelmäasetuksissa.</string>
+    <string name="monitor_notification_starting">Käynnistyy…</string>
     <string name="support_debuglog_label">Virheenkorjausloki</string>
     <string name="support_debuglog_desc">Tallenna kaikki sovelluksen tekemiset tekstitiedostoon, jonka voit jakaa.</string>
     <string name="debug_debuglog_size_label">Koko</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Vihreä</string>
     <string name="widget_config_preset_red">Punainen</string>
     <string name="settings_compat_indirectcallback_title">Epäsuora tietojen toimitus</string>
-    <string name="settings_compat_indirectcallback_summary">Käytä vaihtoehtoista tapaa vastaanottaa BLE-tietoja järjestelmästä (lähetys takaisinkutsun sijaan).</string>
+    <string name="settings_compat_indirectcallback_summary">Kokeile tätä, jos muut yhteensopivuusasetukset eivät auttaneet. Android välittää Bluetooth-signaalit sovellukselle taustalla sen sijaan, että sovellus kuuntelisi niitä suoraan.</string>
     <string name="troubleshooter_title">Vianmääritys</string>
     <string name="troubleshooter_summary">Diagnosoi ja korjaa Bluetooth-yhteysongelmia.</string>
     <string name="troubleshooter_ble_intro_title">Bluetooth Low Energy -lähetykset</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Voit päivittää CAPod Prohon saadaksesi lisäominaisuuksia ja tukeaksesi kehitystä.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">Ei saatavilla</string>
     <string name="general_error_label">Virhe</string>
     <string name="general_grant_permission_action">Myönnä lupa</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth on pois käytöstä, ota se käyttöön ;)</string>
     <string name="overview_monitoring_active_label">Etsitään laitteita</string>
     <string name="overview_monitoring_active_description">Varmista, että laitteesi on lähellä ja aktiivinen.</string>
+    <string name="overview_monitoring_off_label">Taustaseuranta on pois päältä</string>
+    <string name="overview_monitoring_off_description">Mikään profiili ei ole yhdistetty Bluetooth-laitteeseen, joten CAPod päivittyy vain, kun sovellus on avoinna. Valitse yksi ottaaksesi taustaseurannan, jatkuvan ilmoituksen ja reaktiot käyttöön.</string>
+    <string name="overview_monitoring_off_action">Valitse yhdistetty laite</string>
     <string name="overview_troubleshoot_suggestion_label">Yhdistetty, mutta ei dataa</string>
     <string name="overview_troubleshoot_suggestion_description">Laitteesi on yhdistetty, mutta CAPod ei vastaanota siitä reaaliaikaista dataa. Puhelimesi saattaa tarvita yhteensopivuusasetuksen — vianmääritys voi yrittää löytää sellaisen automaattisesti.</string>
     <string name="overview_troubleshoot_suggestion_action">Käynnistä vianmääritys</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Kaksoispainallus lopettaa puhelun</string>
     <string name="device_settings_open_cd">Avaa laiteasetukset</string>
     <string name="overview_card_missing_paired_device">Tällä profiililla ei ole yhdistettyä Bluetooth-laitetta.</string>
+    <string name="overview_card_missing_paired_device_consequence">Ilman sitä laitteen asetukset ja automaattinen yhteys eivät ole käytettävissä.</string>
     <string name="overview_reactions_hint_title">Reaktiot ovat laitekohtaisia</string>
     <string name="overview_reactions_hint_body">Automaattinen toisto, automaattinen tauko ja ponnahdusikkunat on nyt määritetty laitekohtaisesti. Napauta kortissa olevaa asetuskuvaketta, kun kuulokkeet ovat yhdistettynä.</string>
+    <string name="review_app_review_action">Arvostele</string>
+    <string name="review_app_dismiss_action">Ehkä myöhemmin</string>
+    <string name="review_app_body">Haluaisitko jättää CAPodille arvostelun? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Yleiset</string>
     <string name="device_settings_microphone_mode_label">Mikrofoni</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth-asetukset</string>
     <string name="device_settings_send_failed">Asetusta ei voitu ottaa käyttöön: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Pois-tila ei ole käytössä tässä laitteessa. Ota käyttöön \"Salli Pois-tila\" Melunhallinnassa.</string>
+    <string name="anc_mode_not_confirmed_message">AirPodit eivät vahvistaneet kuuntelutilan muutosta.</string>
     <string name="device_settings_category_battery_label">Akku</string>
     <string name="device_settings_charge_cap_label">Optimoitu latausraja</string>
     <string name="device_settings_charge_cap_description">Oppii rutiinisi ja keskeyttää lataamisen noin 80 %%:iin akkukeston pidentämiseksi, täydentäen kuulokkeet ennen todennäköistä käyttöä.</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">Palauta oletukset</string>
     <string name="press_controls_reset_confirm_message">Palautetaanko kaikki painalluksen määritykset oletuksiin?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Avaa painallushallinta</string>
+    <string name="general_navigate_up_action">Siirry ylös</string>
+    <string name="general_progress_loading">Ladataan</string>
 </resources>

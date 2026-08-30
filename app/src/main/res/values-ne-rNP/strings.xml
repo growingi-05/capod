@@ -6,11 +6,13 @@
     <string name="general_copy_action">प्रतिलिपि गर्नुहोस्</string>
     <string name="general_thank_you_label">धन्यवाद</string>
     <string name="general_upgrade_action">अपग्रेड गर्नुहोस्</string>
+    <string name="general_retry_action">पुनः प्रयास</string>
     <string name="common_feature_requires_pro_msg">अनलक गर्न अपग्रेड गर्नुहोस्।</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक छ</string>
     <string name="general_donate_action">दान दिनुहोस्</string>
     <string name="general_check_action">जाँच गर्नुहोस्</string>
     <string name="general_close_action">बन्द गर्नुहोस्</string>
+    <string name="general_dismiss_action">बन्द गर्नुहोस्</string>
     <string name="general_edit_action">सम्पादन गर्नुहोस्</string>
     <string name="general_save_action"> सुरक्षित गर्नुहोस्</string>
     <string name="general_guide_action">मार्गनिर्देशन</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">डेभलपरलाई सहयोग गर्नुहोस्</string>
     <string name="upgrade_benefit_disclaimer">सुविधाको उपलब्धता तपाईंको हेडफोन र उपकरणमा निर्भर गर्छ।</string>
     <string name="settings_monitor_connected_notification_label">अतिरिक्त सूचना</string>
-    <string name="settings_monitor_connected_notification_description">उपकरण जडान हुँदा अतिरिक्त सूचना देखाउँछ। यसले तपाईंलाई \"उपकरण स्थिति\" च्यानल असक्षम गरेर स्थायी \"कुनै उपकरण छैन\" सूचना लुकाउन अनुमति दिन्छ।</string>
+    <string name="settings_monitor_connected_notification_description">यन्त्र जोडिएको बेला मात्र देखिने दोस्रो सूचना देखाउँछ। यो सक्षम गरेपछि, तपाईं स्थायी \"कुनै यन्त्र छैन\" सूचना लुकाउन सक्नुहुन्छ: Android को सूचना सेटिङमा CAPod को लागि \"यन्त्र स्थिति\" श्रेणी बन्द गर्नुहोस्।</string>
     <string name="settings_keep_notification_after_disconnect_label">विच्छेद पछि सूचना राख्नुहोस्</string>
     <string name="settings_keep_notification_after_disconnect_description">तपाईंको AirPods विच्छेद भएपछि पनि अन्तिम ज्ञात ब्याट्री स्तर देखाउन जारी राख्नुहोस्</string>
     <string name="settings_autopause_label">स्वत: पज</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">न्यूनतम सिग्नल गुणस्तर</string>
     <string name="settings_signal_minimum_description">उपकरणलाई तपाइँको मान्नको लागि आवश्यक पर्ने न्यूनतम सिग्नल गुणस्तर।</string>
     <string name="settings_autoconnect_label">स्वत: जडान</string>
-    <string name="settings_autoconnect_description">यदि एन्ड्रोइडले स्वचालित रूपमा जडान गर्दैन भने, हामी पनि अनुरोध गर्न सक्छौं। यसले मोनिटर मोड सेटिङलाई \"सधैं\" मा सेट गर्नेछ।</string>
+    <string name="settings_autoconnect_description">यदि Android स्वचालित रूपमा जोडिँदैन भने, हामी पनि यसलाई अनुरोध गर्न सक्छौं। यसले CAPod लाई सधैं पृष्ठभूमिमा अनुगमन गरिरहन मद्दत गर्छ।</string>
     <string name="settings_autoconnect_info_android12">स्वतः जडान Android 12 र त्यसभन्दा नयाँले प्रतिबन्धित गरेको एउटा प्रणाली सुविधामा निर्भर छ। यो तपाईंको उपकरणमा काम नगर्न सक्छ।</string>
     <string name="settings_autoconnect_condition_label">स्वत: जडान अवस्था</string>
     <string name="settings_autoconnect_condition_description">हामीले कहिले तपाइँको उपकरणमा जडान गर्ने प्रयास गर्नुपर्छ?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">अनुकूलता विकल्पहरू</string>
     <string name="settings_category_compatibility_options_description">सबै कुरा ठीकठाक चलिरहेको छ भने नचलाउनुहोस् ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">हार्डवेयर फिल्टरिङ असक्षम गर्नुहोस्</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">डाटा फिल्टरिङलाई प्रणालीमा प्रत्यायोजित नगर्नुहोस्, बरु सबै डाटा प्राप्त गर्नुहोस् र एप भित्र फिल्टर गर्नुहोस्।</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">यदि तपाईंको AirPods कहिल्यै पत्ता लाग्दैन भने यो प्रयास गर्नुहोस्। फोनलाई तिनीहरू पूर्व-चयन गर्न दिनुको सट्टा, एप आफैंले नजिकैका सबै ब्लुटुथ सिग्नलहरू खोज्नेछ।</string>
     <string name="settings_compat_offloaded_batching_disabled_title">हार्डवेयर ब्याचिङ असक्षम गर्नुहोस्</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">हामीलाई फर्वार्ड गर्नु अघि प्रणालीलाई सङ्कलन गरिएको BLE डाटा समूहबद्ध गर्न नदिनुहोस्।</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">यदि ब्याट्री स्तर ढिलो वा गुच्छाहरूमा मात्र अद्यावधिक हुन्छ भने यो प्रयास गर्नुहोस्। तपाईंको फोनले पहिले सिग्नलहरू सङ्कलन गर्नुको सट्टा प्रत्येक ब्लुटुथ सिग्नल तुरुन्तै पठाउनेछ।</string>
     <string name="settings_onepod_mode_label">एक पोड मोड</string>
     <string name="settings_onepod_mode_description">स्वतः प्ले/पज र स्वतः-जडानले दुवै आवश्यक नगरी एउटै पड प्रति प्रतिक्रिया दिन्छ।</string>
     <string name="settings_popup_caseopen_label">केस पपअप देखाउनुहोस्</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">उपकरण स्थिति</string>
     <string name="notification_channel_device_status_connected_label">जडान भएको उपकरण</string>
     <string name="monitor_notification_extra_enabled_hint">तपाईं यो सूचना प्रणाली सेटिङमा अक्षम गर्न सक्नुहुन्छ।</string>
+    <string name="monitor_notification_starting">सुरु भइरहेको छ…</string>
     <string name="support_debuglog_label">डिबग लग</string>
     <string name="support_debuglog_desc">एपले गर्ने सबै कुरालाई तपाईंले साझेदारी गर्न सक्ने टेक्स्ट फाइलमा रेकर्ड गर्नुहोस्।</string>
     <string name="debug_debuglog_size_label">आकार</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">हरियो</string>
     <string name="widget_config_preset_red">रातो</string>
     <string name="settings_compat_indirectcallback_title">अप्रत्यक्ष डाटा डेलिभरी</string>
-    <string name="settings_compat_indirectcallback_summary">प्रणालीबाट BLE डाटा प्राप्त गर्न वैकल्पिक विधि प्रयोग गर्नुहोस् (कलब्याकको सट्टा प्रसारण)।</string>
+    <string name="settings_compat_indirectcallback_summary">यदि अन्य अनुकूलता विकल्पहरूले मद्दत गरेनन् भने यो प्रयास गर्नुहोस्। एपले सिग्नलहरू सिधै सुन्नुको सट्टा, Android ले पृष्ठभूमिमा एपलाई ब्लुटुथ सिग्नलहरू सुम्पिनेछ।</string>
     <string name="troubleshooter_title">समस्या निवारक</string>
     <string name="troubleshooter_summary">Bluetooth जडान समस्याहरूको निदान र समाधान गर्नुहोस्।</string>
     <string name="troubleshooter_ble_intro_title">ब्लुटुथ कम ऊर्जा प्रसारणहरू</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">थप सुविधाहरू प्राप्त गर्न र विकासलाई समर्थन गर्न तपाईं CAPod Pro मा अपग्रेड गर्न सक्नुहुन्छ।</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">उपलब्ध छैन</string>
     <string name="general_error_label">त्रुटि</string>
     <string name="general_grant_permission_action">अनुमति दिनुहोस्</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth असक्षम छ, यसलाई सक्षम गर्नुहोस् ;)</string>
     <string name="overview_monitoring_active_label">उपकरणहरू खोज्दै</string>
     <string name="overview_monitoring_active_description">तपाईंको उपकरण नजिकै र सक्रिय छ भनी सुनिश्चित गर्नुहोस्।</string>
+    <string name="overview_monitoring_off_label">पृष्ठभूमि निगरानी बन्द छ</string>
+    <string name="overview_monitoring_off_description">कुनै प्रोफाइलमा जोडीबद्ध Bluetooth उपकरण छैन, त्यसैले CAPod केवल एप खुला हुँदा अपडेट गर्छ। पृष्ठभूमि निगरानी, चलिरहेको सूचना र प्रतिक्रियाहरु सक्षम गर्न एक छनोट गर्नुहोस्।</string>
+    <string name="overview_monitoring_off_action">जोडीबद्ध उपकरण छनोट गर्नुहोस्</string>
     <string name="overview_troubleshoot_suggestion_label">जोडिएको छ, तर डेटा छैन</string>
     <string name="overview_troubleshoot_suggestion_description">तपाईंको यन्त्र जोडिएको छ, तर CAPod ले यसबाट कुनै लाइभ डेटा प्राप्त गरिरहेको छैन। तपाईंको फोनलाई अनुकूलता विकल्पको आवश्यकता पर्न सक्छ — समस्या निवारकले स्वतः एउटा खोज्ने प्रयास गर्न सक्छ।</string>
     <string name="overview_troubleshoot_suggestion_action">समस्या निवारक चलाउनुस्</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">कल समाप्त गर्न दुईपटक थिच्नुहोस्</string>
     <string name="device_settings_open_cd">उपकरण सेटिङहरू खोल्नुहोस्</string>
     <string name="overview_card_missing_paired_device">यस प्रोफाइलमा कुनै जोडिएको Bluetooth उपकरण छैन।</string>
+    <string name="overview_card_missing_paired_device_consequence">बिना यो, उपकरण सेटिङ्ग र स्वचालित जडान उपलब्ध छैन।</string>
     <string name="overview_reactions_hint_title">प्रतिक्रियाहरू प्रति यन्त्र छन्</string>
     <string name="overview_reactions_hint_body">अटो-प्ले, अटो-पज र पप-अपहरू अब प्रति यन्त्र कन्फिगर गरिएका छन्। आफ्नो हेडफोन जडान भएको बेला कार्डमा सेटिङ आइकनमा ट्याप गर्नुहोस्।</string>
+    <string name="review_app_review_action">समीक्षा</string>
+    <string name="review_app_dismiss_action">पछि गर्ने</string>
+    <string name="review_app_body">के तपाई CAPod को लागि एक समीक्षा दिन चाहनुहुन्छ? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">सामान्य</string>
     <string name="device_settings_microphone_mode_label">माइक्रोफोन</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">ब्लुटुथ सेटिङहरू</string>
     <string name="device_settings_send_failed">सेटिङ लागू गर्न सकिएन: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">अफ मोड यस उपकरणमा सक्षम छैन। ध्वनि नियन्त्रण अन्तर्गत \"अफ मोड अनुमति दिनुहोस्\" सक्षम गर्नुहोस्।</string>
+    <string name="anc_mode_not_confirmed_message">AirPods ले सुन्ने मोड परिवर्तनको पुष्टि गरेन।</string>
     <string name="device_settings_category_battery_label">ब्याट्री</string>
     <string name="device_settings_charge_cap_label">अनुकूलित चार्ज सीमा</string>
     <string name="device_settings_charge_cap_description">तपाईंको दिनचर्या सिकेर ब्याट्री जीवन बढाउन ८०%% को आसपास चार्जिङ रोक्छ र तपाईंले प्रयोग गर्ने सम्भावना हुँदा पड्सलाई पूर्ण गर्छ।</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">पूर्वनिर्धारितमा रिसेट गर्नुहोस्</string>
     <string name="press_controls_reset_confirm_message">सबै थिचाइ म्यापिङहरू पूर्वनिर्धारितमा रिसेट गर्ने?</string>
     <string name="device_settings_noise_control_open_press_controls_action">थिचाइ नियन्त्रण खोल्नुहोस्</string>
+    <string name="general_navigate_up_action">माथि जानुहोस्</string>
+    <string name="general_progress_loading">लोड गर्दै</string>
 </resources>

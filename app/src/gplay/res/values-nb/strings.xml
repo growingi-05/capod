@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">Google Play rapporterer at du allerede eier denne oppgraderingen, men den kunne ikke gjenopprettes. Sørg for at du bruker Google-kontoen du kjøpte med. Synkronisering med Play Store kan ta tid — prøv å starte på nytt, tømme Google Play-hurtigbufferen eller bare vente.</string>
     <string name="upgrade_restore_action">Gjenopprett kjøp</string>
     <string name="upgrade_badge_label">Pro</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">Få %1$s</string>
     <string name="upgrade_preamble">CAPod er utviklet av én person. Oppgradering låser opp ekstra funksjoner og hjelper med å holde appen i live.</string>
     <string name="upgrade_screen_options_description">Samme funksjoner, ulik prising. Abonnementet inkluderer en gratis prøveperiode og kan kanselleres når som helst.</string>
     <string name="upgrade_screen_options_description_no_trial">Samme funksjoner, ulik prising. Abonnementet kan kanselleres når som helst.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">Dette er et separat kjøp — det kansellerer eller refunderer ikke abonnementet ditt. Bruk samme Google-konto.</string>
     <string name="upgrade_screen_sub_still_renewing_title">Abonnementet er fortsatt aktivt</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonnementet ditt er fortsatt satt til å fornyes. Kanseller det i Google Play først, og bytt deretter til engangskjøpet. Nettopp kansellert? Gi Google Play litt tid og prøv igjen.</string>
-    <string name="upgrade_screen_sub_check_failed_title">Kontroll av abonnement mislyktes</string>
-    <string name="upgrade_screen_sub_check_failed_message">Kunne ikke kontrollere abonnementsstatusen din med Google Play. For å unngå et dobbelt kjøp, prøv igjen om litt.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Kunne ikke sjekke kjøpene dine med Google Play. For å unngå et dobbelt kjøp, prøv igjen om en stund.</string>
+    <string name="upgrade_screen_pending_card_title">Ventende betaling</string>
+    <string name="upgrade_screen_pending_card_body">Google Play behandler fortsatt betalingen din. Pro låses opp automatisk når betalingen er gjennomført. Noen betalingsmåter kan ta en stund. Det er ingenting annet du trenger å gjøre.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play fant et kjøp med en ventende betaling og behandler det fortsatt. Pro låses opp automatisk når betalingen er gjennomført.</string>
     <string name="upgrade_screen_grace_title">Bekrefter kjøpet ditt</string>
     <string name="upgrade_screen_grace_body_short">Google Play har ikke bekreftet kjøpet ditt ennå. Pro er fortsatt aktivt — ingen handling nødvendig.</string>
     <string name="upgrade_screen_grace_body">Google Play har ikke bekreftet kjøpet ditt på en stund. Pro er fortsatt aktivt. Sørg for at du er tilkoblet internett og logget inn med Google-kontoen som ble brukt til kjøpet, og prøv deretter å gjenopprette.</string>
-    <string name="settings_upgrade_status_label">CAPod Pro</string>
-    <string name="settings_upgrade_status_description">Din oppgraderings- og kjøpsstatus.</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">Oppgraderingsalternativer</string>
+    <string name="upgrade_screen_offers_or">eller</string>
+    <string name="upgrade_screen_offers_body">De samme funksjonene, bare med forskjellige prismodeller.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Priser ikke tilgjengelige</string>
+    <string name="upgrade_screen_offers_unavailable_message">Google Play returnerte ikke priser akkurat nå. Sjekk forbindelsen din og prøv igjen om en liten stund.</string>
+    <string name="upgrade_screen_subscription_offer_title">Årlig abonnement</string>
+    <string name="upgrade_screen_subscription_offer_body">Fornyes årlig etter gratisprøveperioden. Avbryt når som helst i Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Fornyes årlig. Avbryt når som helst i Google Play.</string>
+    <string name="upgrade_screen_iap_offer_body">En betaling, ingen fornyelser.</string>
+    <string name="upgrade_screen_benefits_title">Fordeler ved oppgradering</string>
+    <string name="upgrade_screen_restore_body">Gjenoppretting ber Google Play om å sjekke på nytt denne appens kjøp for gjeldende konto. Det starter ikke et nytt kjøp.</string>
+    <string name="upgrade_screen_restore_checked_message">CAPod sjekket nettopp Google Play, men ingen Pro-kjøp kunne bekreftes for kontoen Google Play bruker for denne appen.</string>
+    <string name="upgrade_screen_restore_contact_hint">Sitter du fast? Kontakt support fra e-posten som gjorde kjøpet, og ta med Google Play-ordrenummeret ditt.</string>
+    <string name="upgrade_screen_contact_support_action">Kontakt support</string>
+    <string name="settings_upgrade_status_description">Status for din oppgradering og kjøp.</string>
+    <string name="upgrades_gplay_unavailable_error_description">CAPod kan ikke koble til Google Play. Er Google Play installert og oppdatert? Er Google-kontoen din pålogget? Prøv å tømme hurtigbufferen for Google Play-appen og start enheten på nytt.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Klarte ikke å åpne Google Play. Den kan være manglende, deaktivert eller begrenset på denne enheten.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play-feil</string>
+    <string name="upgrades_gplay_internal_error_description">En intern Google Play-feil oppstod. Prøv følgende:\n\n• Start enheten på nytt\n• Tøm Google Play Store-hurtigbufferen\n• Prøv igjen senere</string>
+    <string name="upgrades_gplay_network_error_title">Tilkoblingsfeil</string>
+    <string name="upgrades_gplay_network_error_description">Kan ikke koble til Google Play. Kontroller internettforbindelsen din og prøv igjen.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Tilbud utilgjengelig</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play tilbyr ikke dette oppgraderingsalternativet for øyeblikket. Prøv igjen senere eller sjekk Google Play Store.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Kontrollen med Google Play ble ikke fullført i tide, så kjøpstatusen din er fortsatt ukjent. Ingenting har endret seg på kontoen din.</string>
 </resources>

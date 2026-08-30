@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">Google Play бул жаңыртууну мурунтан эле сатып алганыңызды билдирет, бирок аны калыбына келтирүү мүмкүн болбоду. Сатып алган Google каттоо эсебиңизди колдонуп жатканыңызды текшериңиз. Play Store синхрондоштуруусу убакытты талап кылышы мүмкүн — түзмөктү өчүрүп-күйгүзүп көрүңүз, Google Play кэшин тазалаңыз же жөн эле күтө туруңуз.</string>
     <string name="upgrade_restore_action">Сатып алууну калыбына келтирүү</string>
     <string name="upgrade_badge_label">Pro</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">%1$s алыңыз</string>
     <string name="upgrade_preamble">CAPod бир адам тарабынан иштелип чыгууда. Жаңыртуу кошумча мүмкүнчүлүктөрдү ачат жана колдонмонун иштешин колдоого жардам берет.</string>
     <string name="upgrade_screen_options_description">Бирдей мүмкүнчүлүктөр, ар кандай баа. Жазылууга акысыз сыноо мөөнөтү кирет жана каалаган убакытта жокко чыгарууга болот.</string>
     <string name="upgrade_screen_options_description_no_trial">Бирдей мүмкүнчүлүктөр, ар кандай баа. Жазылууну каалаган убакытта жокко чыгарууга болот.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">Бул өзүнчө сатып алуу — ал жазылууңузду жокко чыгарбайт же акчаны кайтарбайт. Ошол эле Google каттоо эсебин колдонуңуз.</string>
     <string name="upgrade_screen_sub_still_renewing_title">Жазылуу дагы эле активдүү</string>
     <string name="upgrade_screen_sub_still_renewing_message">Жазылууңуз дагы эле жаңылануучу кылып койулган. Адегенде аны Google Play\'де жокко чыгарыңыз, андан кийин бир жолку сатып алууга которулуңуз. Жаңы эле жокко чыгардыңызбы? Google Play\'ге бир аз убакыт бериңиз жана кайра аракет кылыңыз.</string>
-    <string name="upgrade_screen_sub_check_failed_title">Жазылууну текшерүү ишке ашкан жок</string>
-    <string name="upgrade_screen_sub_check_failed_message">Жазылуу статусуңузду Google Play менен текшерүү мүмкүн болбоду. Эки жолу сатып алуудан качуу үчүн бир аздан кийин кайра аракет кылыңыз.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Сатып алууларыңызды Google Play менен текшере алган жокпуз. Кайра сатып алуудан алдын алуу үчүн, бир аздан кийин кайра аракет кылыңыз.</string>
+    <string name="upgrade_screen_pending_card_title">Төлөм күтүлүүдө</string>
+    <string name="upgrade_screen_pending_card_body">Google Play төлөмүңүздү дагы эле иштетип жатат. Төлөм өткөндөн кийин Pro автоматтык түрдө ачылат. Кээ бир төлөм ыкмалары бир аз убакытты алышы мүмкүн. Сизге башка эч нерсе кылуунун кереги жок.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play күтүлүп жаткан төлөмү бар сатып алууну тапты жана аны дагы эле иштетип жатат. Төлөм өткөндөн кийин Pro автоматтык түрдө ачылат.</string>
     <string name="upgrade_screen_grace_title">Сатып алууңуз ырасталууда</string>
     <string name="upgrade_screen_grace_body_short">Google Play сатып алууңузду азырынча ырастаган жок. Pro дагы эле активдүү — эч нерсе кылуунун кереги жок.</string>
     <string name="upgrade_screen_grace_body">Google Play сатып алууңузду бир далай убакыттан бери ырастаган жок. Pro дагы эле активдүү. Онлайн экениңизди жана сатып алуу үчүн колдонулган Google каттоо эсеби менен кирип турганыңызды текшериңиз, андан кийин калыбына келтирип көрүңүз.</string>
-    <string name="settings_upgrade_status_label">CAPod Pro</string>
-    <string name="settings_upgrade_status_description">Жаңыртуу жана сатып алуу статусуңуз.</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">Жогорулатуу варианттары</string>
+    <string name="upgrade_screen_offers_or">же</string>
+    <string name="upgrade_screen_offers_body">Бирдей функциялар, жөн гана башка баа модельдери.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Баалар жеткиликсиз</string>
+    <string name="upgrade_screen_offers_unavailable_message">Google Play баалар жүктөй албады. Интернет байланышын текшерип, азыр сынап көрүңүз.</string>
+    <string name="upgrade_screen_subscription_offer_title">Жылдык жазылуу</string>
+    <string name="upgrade_screen_subscription_offer_body">Акысыз сынообуну аяктагандан кийин жыл сайын жаңыланат. Каалаган убакта Google Play-де жокко чыгара аласыз.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Жыл сайын жаңыланат. Каалаган убакта Google Play-де жокко чыгара аласыз.</string>
+    <string name="upgrade_screen_iap_offer_body">Бир төлөм, жаңылоо жок.</string>
+    <string name="upgrade_screen_benefits_title">Жакштыруунун артыкчылыктары</string>
+    <string name="upgrade_screen_restore_body">Калыбына келтирүү Google Play-ден бул колдонмонун сатып алуулары азыркы аккаунт үчүн кайра текшерүүсүн сурайт. Ал жаңы сатып алуу башталтпайт.</string>
+    <string name="upgrade_screen_restore_checked_message">CAPod жаңы эле Google Play текшерди, бирок бул колдонмо үчүн Google Play колдонулган аккаунт үчүн Pro сатып алуусу ырастаналган жок.</string>
+    <string name="upgrade_screen_restore_contact_hint">Дагы эле мүмкүн эмес беле? Сатып алуу жасаган электронды почтадан колдоо менен байланышын жана Google Play заказынын номерин коюңуз.</string>
+    <string name="upgrade_screen_contact_support_action">Колдоо менен байланышуу</string>
+    <string name="settings_upgrade_status_description">Жакштыруу жана сатып алуу абалы</string>
+    <string name="upgrades_gplay_unavailable_error_description">CAPod Google Play менен туташтыра албайт. Google Play орнотулгандыбы жана актуалдаштырылгандыбы? Google Аккаунтуңуз кирген болсоңузбу? Google Play приложениесинин кэшин тазалап, түзмөгүңүздү кайра жүктөңүз.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play ачылбай калды. Бул курулмада ал жок болушу, өчүрүлгөн же чектелген болушу мүмкүн.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play катасы</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play ичтеги катасы болду. Төмөнкүлөрдү сынап көрүңүз:\n\n• Түзмөгүңүздү кайра жүктөңүз\n• Google Play Store кэшин тазалаңыз\n• Кечээрээк сынап көрүңүз</string>
+    <string name="upgrades_gplay_network_error_title">Туташтыруу катасы</string>
+    <string name="upgrades_gplay_network_error_description">Google Play менен туташтыруу мүмкүн эмес. Интернет байланышын текшеп, кайра сынап көрүңүз.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Сунуш жеткиликсиз</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play учурда бул жогорулоо вариантын сунуш кылып жатпайт. Кечээрээк сынап көрүңүз же Google Play Store сокчусун текшеңиз.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Google Play менен текшеруу убакытында аяктала алган жок, ошондуктан сатып алуу статусуңуз дээле белгисиз. Аккаунтуңузда эч нерсе өзгөргөн жок.</string>
 </resources>

@@ -6,11 +6,13 @@
     <string name="general_copy_action">Αντιγραφή</string>
     <string name="general_thank_you_label">Ευχαριστώ</string>
     <string name="general_upgrade_action">Αναβάθμιση</string>
+    <string name="general_retry_action">Δοκιμάστε ξανά</string>
     <string name="common_feature_requires_pro_msg">Αναβάθμιση για ξεκλείδωμα.</string>
     <string name="common_upgrade_required_label">Απαιτείται αναβάθμιση</string>
     <string name="general_donate_action">Δωρεά</string>
     <string name="general_check_action">Έλεγχος</string>
     <string name="general_close_action">Κλείσιμο</string>
+    <string name="general_dismiss_action">Κλείσιμο</string>
     <string name="general_edit_action">Επεξεργασία</string>
     <string name="general_save_action">Αποθήκευση</string>
     <string name="general_guide_action">Οδηγός</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Υποστηρίξτε τον προγραμματιστή</string>
     <string name="upgrade_benefit_disclaimer">Η διαθεσιμότητα λειτουργιών εξαρτάται από τα ακουστικά και τη συσκευή σας.</string>
     <string name="settings_monitor_connected_notification_label">Επιπλέον ειδοποίηση</string>
-    <string name="settings_monitor_connected_notification_description">Εμφανίζει μια επιπλέον ειδοποίηση όταν μια συσκευή είναι συνδεδεμένη. Αυτό σας επιτρέπει να αποκρύψετε τη μόνιμη ειδοποίηση \"Δεν υπάρχουν συσκευές\" απενεργοποιώντας το κανάλι \"Κατάσταση συσκευής\".</string>
+    <string name="settings_monitor_connected_notification_description">Εμφανίζει μια δεύτερη ειδοποίηση που εμφανίζεται μόνο όταν είναι συνδεδεμένη μια συσκευή. Με αυτό ενεργοποιημένο, μπορείς να κρύψεις τη μόνιμη ειδοποίηση \"Καμία συσκευή\": απενεργοποίησε την κατηγορία \"Κατάσταση συσκευής\" στις ρυθμίσεις ειδοποιήσεων του Android για το CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Διατήρηση ειδοποίησης μετά την αποσύνδεση</string>
     <string name="settings_keep_notification_after_disconnect_description">Συνεχίστε να εμφανίζετε τα τελευταία γνωστά επίπεδα μπαταρίας ακόμα και μετά την αποσύνδεση των AirPods σας</string>
     <string name="settings_autopause_label">Αυτόματη παύση</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Ελάχιστη ποιότητα σήματος</string>
     <string name="settings_signal_minimum_description">Η ελάχιστη ποιότητα σήματος που πρέπει να έχει μια συσκευή για να θεωρηθεί δική σας.</string>
     <string name="settings_autoconnect_label">Αυτόματη σύνδεση</string>
-    <string name="settings_autoconnect_description">Εάν το Android δε συνδεθεί αυτόματα, μπορούμε να το ζητήσουμε εμείς. Αυτό θα ορίσει τη ρύθμιση της λειτουργίας παρακολούθησης σε \"Πάντα\".</string>
+    <string name="settings_autoconnect_description">Αν το Android δεν συνδέεται αυτόματα, μπορούμε να το ζητήσουμε κι εμείς. Αυτό κάνει το CAPod να παρακολουθεί στο παρασκήνιο πάντα.</string>
     <string name="settings_autoconnect_info_android12">Η αυτόματη σύνδεση βασίζεται σε λειτουργία συστήματος που το Android 12 και νεότερες εκδόσεις περιορίζουν. Ενδέχεται να μην λειτουργεί στη συσκευή σας.</string>
     <string name="settings_autoconnect_condition_label">Συνθήκη αυτόματης σύνδεσης</string>
     <string name="settings_autoconnect_condition_description">Πότε πρέπει να προσπαθήσουμε να συνδεθούμε στη συσκευή σας;</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Επιλογές συμβατότητας</string>
     <string name="settings_category_compatibility_options_description">Μην αγγίζετε αν όλα λειτουργούν ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Απενεργοποίηση φιλτραρίσματος υλικού</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Μην αναθέτετε το φιλτράρισμα δεδομένων στο σύστημα, αντίθετα λάβετε όλα τα δεδομένα και φιλτράρετε εντός της εφαρμογής.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Δοκίμασε αυτό αν τα AirPods σου δεν ανιχνεύονται ποτέ. Η εφαρμογή θα σαρώσει όλα τα κοντινά σήματα Bluetooth μόνη της, αντί να αφήσει το τηλέφωνό σου να τα προεπιλέξει.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Απενεργοποίηση ομαδοποίησης υλικού</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Μην αφήσετε το σύστημα να ομαδοποιήσει τα συλλεγμένα δεδομένα BLE πριν μας τα προωθήσει.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Δοκίμασε αυτό αν τα επίπεδα μπαταρίας ενημερώνονται μόνο αργά ή κατά περιόδους. Το τηλέφωνό σου θα περνάει κάθε σήμα Bluetooth αμέσως, αντί να τα συλλέγει πρώτα.</string>
     <string name="settings_onepod_mode_label">Λειτουργία ενός pod</string>
     <string name="settings_onepod_mode_description">Η αυτόματη αναπαραγωγή/παύση και η αυτόματη σύνδεση αντιδρούν σε ένα μόνο pod αντί να απαιτούν και τα δύο.</string>
     <string name="settings_popup_caseopen_label">Εμφάνιση αναδυόμενου παραθύρου θήκης</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Κατάσταση συσκευής</string>
     <string name="notification_channel_device_status_connected_label">Συνδεδεμένη συσκευή</string>
     <string name="monitor_notification_extra_enabled_hint">Μπορείτε να απενεργοποιήσετε αυτήν την ειδοποίηση στις ρυθμίσεις του συστήματος.</string>
+    <string name="monitor_notification_starting">Ξεκίνημα…</string>
     <string name="support_debuglog_label">Αρχείο καταγραφής εντοπισμού σφαλμάτων</string>
     <string name="support_debuglog_desc">Καταγράψτε ό,τι κάνει η εφαρμογή σε ένα αρχείο κειμένου που μπορείτε να μοιραστείτε.</string>
     <string name="debug_debuglog_size_label">Μέγεθος</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Πράσινο</string>
     <string name="widget_config_preset_red">Κόκκινο</string>
     <string name="settings_compat_indirectcallback_title">Έμμεση παράδοση δεδομένων</string>
-    <string name="settings_compat_indirectcallback_summary">Χρησιμοποιήστε μια εναλλακτική μέθοδο για τη λήψη δεδομένων BLE από το σύστημα (μετάδοση αντί για επανάκληση).</string>
+    <string name="settings_compat_indirectcallback_summary">Δοκίμασε αυτό αν οι άλλες επιλογές συμβατότητας δεν βοήθησαν. Το Android θα δίνει τα σήματα Bluetooth στην εφαρμογή στο παρασκήνιο, αντί η εφαρμογή να τα ακούει άμεσα.</string>
     <string name="troubleshooter_title">Αντιμετώπιση προβλημάτων</string>
     <string name="troubleshooter_summary">Διάγνωση και επίλυση προβλημάτων συνδεσιμότητας Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">Εκπομπές Bluetooth Χαμηλής Ενέργειας</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Μπορείτε να κάνετε αναβάθμιση σε CAPod Pro για να αποκτήσετε επιπλέον λειτουργίες και να υποστηρίξετε την ανάπτυξη.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">Μ/Δ</string>
     <string name="general_error_label">Σφάλμα</string>
     <string name="general_grant_permission_action">Παραχώρηση άδειας</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Το Bluetooth είναι απενεργοποιημένο, ενεργοποιήστε το ;)</string>
     <string name="overview_monitoring_active_label">Παρακολούθηση συσκευών</string>
     <string name="overview_monitoring_active_description">Βεβαιωθείτε ότι η συσκευή σας είναι κοντά και ενεργή.</string>
+    <string name="overview_monitoring_off_label">Η παρακολούθηση υποβάθρου είναι απενεργοποιημένη</string>
+    <string name="overview_monitoring_off_description">Κανένα προφίλ δεν διαθέτει μια συνδεδεμένη συσκευή Bluetooth, οπότε το CAPod ενημερώνεται μόνο όταν η εφαρμογή είναι ανοιχτή. Επιλέξτε ένα για να ενεργοποιήσετε την παρακολούθηση υποβάθρου, τη συνεχή ειδοποίηση και τις αντιδράσεις.</string>
+    <string name="overview_monitoring_off_action">Επιλέξτε συνδεμένη συσκευή</string>
     <string name="overview_troubleshoot_suggestion_label">Συνδέθηκε, αλλά χωρίς δεδομένα</string>
     <string name="overview_troubleshoot_suggestion_description">Η συσκευή σου είναι συνδεδεμένη, αλλά το CAPod δεν λαμβάνει ζωντανά δεδομένα από αυτήν. Το τηλέφωνό σου μπορεί να χρειαστεί μια επιλογή συμβατότητας — ο εντοπισμός προβλημάτων μπορεί να προσπαθήσει να βρει μία αυτόματα.</string>
     <string name="overview_troubleshoot_suggestion_action">Εκτέλεση εντοπισμού προβλημάτων</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Διπλή πίεση για τερματισμό κλήσης</string>
     <string name="device_settings_open_cd">Άνοιγμα ρυθμίσεων συσκευής</string>
     <string name="overview_card_missing_paired_device">Αυτό το προφίλ δεν έχει συζευγμένη συσκευή Bluetooth.</string>
+    <string name="overview_card_missing_paired_device_consequence">Χωρίς αυτό, οι ρυθμίσεις συσκευής και η αυτόματη σύνδεση δεν είναι διαθέσιμες.</string>
     <string name="overview_reactions_hint_title">Οι αντιδράσεις είναι ανά συσκευή</string>
     <string name="overview_reactions_hint_body">Η αυτόματη αναπαραγωγή, η αυτόματη παύση και τα αναδυόμενα παράθυρα διαμορφώνονται πλέον ανά συσκευή. Πατήστε το εικονίδιο ρυθμίσεων σε μια κάρτα ενώ τα ακουστικά σας είναι συνδεδεμένα.</string>
+    <string name="review_app_review_action">Αξιολόγηση</string>
+    <string name="review_app_dismiss_action">Ίσως αργότερα</string>
+    <string name="review_app_body">Θα θέλατε να αφήσετε μια αξιολόγηση για το CAPod; ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Γενικά</string>
     <string name="device_settings_microphone_mode_label">Μικρόφωνο</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Ρυθμίσεις Bluetooth</string>
     <string name="device_settings_send_failed">Δεν ήταν δυνατή η εφαρμογή ρύθμισης: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Η λειτουργία Απενεργοποίησης δεν είναι ενεργοποιημένη σε αυτή τη συσκευή. Ενεργοποιήστε «Να επιτρέπεται η λειτουργία Απενεργοποίησης» στον Έλεγχο Θορύβου.</string>
+    <string name="anc_mode_not_confirmed_message">Τα AirPods δεν επιβεβαίωσαν την αλλαγή της κατάστασης ακρόασης.</string>
     <string name="device_settings_category_battery_label">Μπαταρία</string>
     <string name="device_settings_charge_cap_label">Βελτιστοποιημένο Όριο Φόρτισης</string>
     <string name="device_settings_charge_cap_description">Μαθαίνει τη ρουτίνα σας και διακόπτει τη φόρτιση γύρω στο 80%% για να παρατείνει τη διάρκεια ζωής της μπαταρίας, φορτίζοντας πλήρως τα pods πριν τα χρησιμοποιήσετε.</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">Επαναφορά στις προεπιλογές</string>
     <string name="press_controls_reset_confirm_message">Επαναφορά όλων των αντιστοιχίσεων πίεσης στις προεπιλογές;</string>
     <string name="device_settings_noise_control_open_press_controls_action">Άνοιγμα Ελέγχων Πίεσης</string>
+    <string name="general_navigate_up_action">Πλοήγηση προς τα πάνω</string>
+    <string name="general_progress_loading">Φόρτωση</string>
 </resources>

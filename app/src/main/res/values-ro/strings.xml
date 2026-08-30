@@ -6,11 +6,13 @@
     <string name="general_copy_action">Copiază</string>
     <string name="general_thank_you_label">Mulțumesc</string>
     <string name="general_upgrade_action">Actualizare</string>
+    <string name="general_retry_action">Reîncearcă</string>
     <string name="common_feature_requires_pro_msg">Actualizați pentru a debloca.</string>
     <string name="common_upgrade_required_label">Necesită upgrade</string>
     <string name="general_donate_action">Donează</string>
     <string name="general_check_action">Verifică</string>
     <string name="general_close_action">Închide</string>
+    <string name="general_dismiss_action">Respinge</string>
     <string name="general_edit_action">Editează</string>
     <string name="general_save_action">Salvare</string>
     <string name="general_guide_action">Ghid</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Susțineți dezvoltatorul</string>
     <string name="upgrade_benefit_disclaimer">Disponibilitatea funcțiilor depinde de căștile și dispozitivul dvs.</string>
     <string name="settings_monitor_connected_notification_label">Notificare suplimentară</string>
-    <string name="settings_monitor_connected_notification_description">Afișează o notificare suplimentară atunci când un dispozitiv este conectat. Acest lucru vă permite să ascundeți notificarea permanentă \"Niciun dispozitiv\" prin dezactivarea canalului \"Stare dispozitiv\".</string>
+    <string name="settings_monitor_connected_notification_description">Afișează a doua notificare care apare doar atunci când un dispozitiv este conectat. Cu această opțiune activată, poți ascunde notificarea permanentă „Niciun dispozitiv”: dezactivează categoria „Starea dispozitivului” din setările de notificări ale Android pentru CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Păstrează notificarea după deconectare</string>
     <string name="settings_keep_notification_after_disconnect_description">Continuă să afișeze ultimele niveluri cunoscute ale bateriei chiar și după deconectarea AirPods</string>
     <string name="settings_autopause_label">Pauză automată</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Calitatea minimă a semnalului</string>
     <string name="settings_signal_minimum_description">Calitatea minimă a semnalului pe care trebuie să o aibă un dispozitiv trebuie să fie considerată a dvs.</string>
     <string name="settings_autoconnect_label">Conectare automată</string>
-    <string name="settings_autoconnect_description">Dacă Android nu se conectează automat, îl putem întreba și noi. Aceasta va seta setarea modului monitorizare la „Întotdeauna”.</string>
+    <string name="settings_autoconnect_description">Dacă Android nu se conectează automat, îi putem cere și noi. Aceasta menține monitorizarea CAPod în fundal în permanență.</string>
     <string name="settings_autoconnect_info_android12">Conectarea automată se bazează pe o funcție de sistem restricționată în Android 12 și versiunile mai noi. Este posibil să nu funcționeze pe dispozitivul tău.</string>
     <string name="settings_autoconnect_condition_label">Condiția de conectare automată</string>
     <string name="settings_autoconnect_condition_description">Când ar trebui să încercăm să ne conectăm la dispozitivul dvs.?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Opțiuni de compatibilitate</string>
     <string name="settings_category_compatibility_options_description">Nu atingeți dacă totul funcționează ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Dezactivați filtrarea hardware-ului</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Nu delegați filtrarea datelor către sistem, în schimb, obțineți toate datele și filtrați în cadrul aplicației.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Încearcă aceasta dacă AirPods-urile tale nu sunt detectate niciodată. Aplicația va căuta prin toate semnalele Bluetooth din apropiere, în loc să lași telefonul să le preselecteze.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Dezactivați lotizarea hardware</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Nu lăsați sistemul să grupeze datele BLE colectate înainte de a ni le transmite.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Încearcă aceasta dacă nivelurile de baterie se actualizează doar cu întârziere sau în rafale. Telefonul tău va transmite fiecare semnal Bluetooth imediat, în loc să le colecteze mai întâi.</string>
     <string name="settings_onepod_mode_label">Modul de utilizare o singură cască</string>
     <string name="settings_onepod_mode_description">Redarea/pauza automată și conectarea automată reacționează la un singur pod în loc să necesite ambele.</string>
     <string name="settings_popup_caseopen_label">Afișați pop-upul carcasei</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Starea dispozitivului</string>
     <string name="notification_channel_device_status_connected_label">Dispozitiv conectat</string>
     <string name="monitor_notification_extra_enabled_hint">Puteți dezactiva această notificare în setările sistemului.</string>
+    <string name="monitor_notification_starting">Se inițiază…</string>
     <string name="support_debuglog_label">Jurnal de depanare</string>
     <string name="support_debuglog_desc">Înregistrați tot ce face aplicația într-un fișier text pe care îl puteți partaja.</string>
     <string name="debug_debuglog_size_label">Dimensiune</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Verde</string>
     <string name="widget_config_preset_red">Roșu</string>
     <string name="settings_compat_indirectcallback_title">Livrarea indirectă a datelor</string>
-    <string name="settings_compat_indirectcallback_summary">Utilizați o metodă alternativă pentru a primi date BLE de la sistem (difuzare în loc de apel invers).</string>
+    <string name="settings_compat_indirectcallback_summary">Încearcă aceasta dacă celelalte opțiuni de compatibilitate nu au ajutat. Android va transmite semnalele Bluetooth aplicației în fundal, în loc ca aplicația să le asculte direct.</string>
     <string name="troubleshooter_title">Depanator</string>
     <string name="troubleshooter_summary">Diagnosticați și remediați problemele de conectivitate Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">Transmisii Bluetooth Energie Scăzută (BLE)</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Puteți face upgrade la CAPod Pro pentru a obține funcții suplimentare și pentru a sprijini dezvoltarea.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">Eroare</string>
     <string name="general_grant_permission_action">Acordă permisiunea</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth este dezactivat, activați-l ;)</string>
     <string name="overview_monitoring_active_label">Monitorizare dispozitive</string>
     <string name="overview_monitoring_active_description">Asigurați-vă că dispozitivul este în apropiere și activ.</string>
+    <string name="overview_monitoring_off_label">Monitorizarea de fundal este oprită</string>
+    <string name="overview_monitoring_off_description">Niciun profil nu are un dispozitiv Bluetooth asociat, deci CAPod se actualizează doar cât timp aplicația este deschisă. Selectează unul pentru a activa monitorizarea de fundal, notificarea continuă și reacțiile.</string>
+    <string name="overview_monitoring_off_action">Selectează dispozitivul asociat</string>
     <string name="overview_troubleshoot_suggestion_label">Conectat, dar fără date</string>
     <string name="overview_troubleshoot_suggestion_description">Dispozitivul tău este conectat, dar CAPod nu primește date în timp real de la acesta. Este posibil ca telefonul tău să aibă nevoie de o opțiune de compatibilitate — depuratorul poate încerca să găsească una automat.</string>
     <string name="overview_troubleshoot_suggestion_action">Rulează depuratorul</string>
@@ -487,8 +494,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Dublă apăsare pentru a încheia apelul</string>
     <string name="device_settings_open_cd">Deschide setările dispozitivului</string>
     <string name="overview_card_missing_paired_device">Acest profil nu are niciun dispozitiv Bluetooth asociat.</string>
+    <string name="overview_card_missing_paired_device_consequence">Fără unul, setările dispozitivului și conectarea automată nu sunt disponibile.</string>
     <string name="overview_reactions_hint_title">Reacțiile sunt per dispozitiv</string>
     <string name="overview_reactions_hint_body">Redarea automată, pauza automată și ferestrele pop-up sunt acum configurate per dispozitiv. Apasă pictograma de setări de pe un card în timp ce căștile tale sunt conectate.</string>
+    <string name="review_app_review_action">Revizuire</string>
+    <string name="review_app_dismiss_action">Poate mai târziu</string>
+    <string name="review_app_body">Ți-ar plăcea să lași o recenzie pentru CAPod? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">General</string>
     <string name="device_settings_microphone_mode_label">Microfon</string>
@@ -527,6 +538,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Setări Bluetooth</string>
     <string name="device_settings_send_failed">Nu s-a putut aplica setarea: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Modul Off nu este activat pe acest dispozitiv. Activând \"Permite modul Off\" la Controlul zgomotului.</string>
+    <string name="anc_mode_not_confirmed_message">AirPods-urile nu au confirmat schimbarea modului de ascultare.</string>
     <string name="device_settings_category_battery_label">Baterie</string>
     <string name="device_settings_charge_cap_label">Limită de încărcare optimizată</string>
     <string name="device_settings_charge_cap_description">Îvăță rutina ta și întrerupe încărcarea la aproximativ 80%% pentru a prelungi durata de viață a bateriei, reîncărcând căștile înainte să fie necesare.</string>
@@ -566,4 +578,6 @@
     <string name="press_controls_reset_label">Resetare la valori implicite</string>
     <string name="press_controls_reset_confirm_message">Resetare toate mapările apăsărilor la valori implicite?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Deschide controalele apăsării</string>
+    <string name="general_navigate_up_action">Navigare în sus</string>
+    <string name="general_progress_loading">Se încarcă</string>
 </resources>

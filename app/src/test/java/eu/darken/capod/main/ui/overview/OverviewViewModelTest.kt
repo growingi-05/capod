@@ -5,6 +5,7 @@ import eu.darken.capod.common.bluetooth.BluetoothDevice2
 import eu.darken.capod.common.bluetooth.BluetoothManager2
 import eu.darken.capod.common.debug.Bugs
 import eu.darken.capod.common.permissions.Permission
+import eu.darken.capod.common.review.ReviewTool
 import eu.darken.capod.common.upgrade.UpgradeRepo
 import eu.darken.capod.main.core.GeneralSettings
 import eu.darken.capod.main.core.MonitorMode
@@ -16,6 +17,7 @@ import eu.darken.capod.monitor.core.battery.BatteryEstimate
 import eu.darken.capod.monitor.core.battery.BatteryEstimator
 import eu.darken.capod.monitor.core.worker.MonitorControl
 import eu.darken.capod.pods.core.apple.PodModel
+import eu.darken.capod.pods.core.apple.ble.BlePodSnapshot
 import eu.darken.capod.profiles.core.AppleDeviceProfile
 import eu.darken.capod.profiles.core.DeviceProfile
 import eu.darken.capod.profiles.core.DeviceProfilesRepo
@@ -59,6 +61,7 @@ class OverviewViewModelTest : BaseTest() {
     private lateinit var profilesRepo: DeviceProfilesRepo
     private lateinit var monitorModeResolver: MonitorModeResolver
     private lateinit var batteryEstimator: BatteryEstimator
+    private lateinit var reviewTool: ReviewTool
     private val timeSource: TimeSource = TestTimeSource()
 
     private lateinit var missingPermissionsFlow: MutableStateFlow<Set<Permission>>
@@ -69,6 +72,7 @@ class OverviewViewModelTest : BaseTest() {
     private lateinit var hadLegacyReactionDataFlow: MutableStateFlow<Boolean>
     private lateinit var upgradeInfoFlow: MutableStateFlow<UpgradeRepo.Info>
     private lateinit var effectiveModeFlow: MutableStateFlow<MonitorMode>
+    private lateinit var reviewStateFlow: MutableStateFlow<ReviewTool.State>
     private lateinit var fakeReactionsHintDismissed: FakeDataStoreValue<Boolean>
     private lateinit var fakeHideUnmatchedDevices: FakeDataStoreValue<Boolean>
 
@@ -82,8 +86,12 @@ class OverviewViewModelTest : BaseTest() {
         isBluetoothEnabledFlow = MutableStateFlow(true)
         profilesFlow = MutableStateFlow(emptyList())
         hadLegacyReactionDataFlow = MutableStateFlow(false)
-        upgradeInfoFlow = MutableStateFlow(mockk<UpgradeRepo.Info>(relaxed = true))
+        upgradeInfoFlow = MutableStateFlow(mockk<UpgradeRepo.Info>(relaxed = true).also {
+            every { it.isSettled } returns true
+            every { it.error } returns null
+        })
         effectiveModeFlow = MutableStateFlow(MonitorMode.AUTOMATIC)
+        reviewStateFlow = MutableStateFlow(ReviewTool.State())
         fakeReactionsHintDismissed = FakeDataStoreValue(false)
         fakeHideUnmatchedDevices = FakeDataStoreValue(false)
         Bugs.isDebug.value = false
@@ -127,6 +135,12 @@ class OverviewViewModelTest : BaseTest() {
             every { it.profiles } returns profilesFlow
             every { it.hadLegacyReactionData } returns hadLegacyReactionDataFlow
         }
+
+        // Explicitly stubbed, never relaxed: a relaxed mock hands back a flow that never emits,
+        // which would starve the combine backing `state` and hang every test in this class.
+        reviewTool = mockk<ReviewTool>().also {
+            every { it.state } returns reviewStateFlow
+        }
     }
 
     @AfterEach
@@ -148,6 +162,7 @@ class OverviewViewModelTest : BaseTest() {
         monitorModeResolver = monitorModeResolver,
         batteryEstimator = batteryEstimator,
         timeSource = timeSource,
+        reviewTool = reviewTool,
     )
 
     @Nested
@@ -205,6 +220,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(profiled, unmatched),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = mockk(relaxed = true),
                 showUnmatchedDevices = false,
@@ -232,6 +248,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(profiled, unmatched),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = mockk(relaxed = true),
                 showUnmatchedDevices = false,
@@ -244,6 +261,8 @@ class OverviewViewModelTest : BaseTest() {
         fun `free user with no profiled devices - visible empty, hidden 0`() {
             val upgradeInfo = mockk<UpgradeRepo.Info> {
                 every { isPro } returns false
+                every { isSettled } returns true
+                every { error } returns null
                 every { type } returns UpgradeRepo.Type.GPLAY
             }
             val state = OverviewViewModel.State(
@@ -252,6 +271,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = emptyList(),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = upgradeInfo,
                 showUnmatchedDevices = false,
@@ -265,6 +285,8 @@ class OverviewViewModelTest : BaseTest() {
         fun `free user with 1 profiled device - visible 1, hidden 0`() {
             val upgradeInfo = mockk<UpgradeRepo.Info> {
                 every { isPro } returns false
+                every { isSettled } returns true
+                every { error } returns null
                 every { type } returns UpgradeRepo.Type.GPLAY
             }
             val profiled = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
@@ -274,6 +296,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(profiled),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = upgradeInfo,
                 showUnmatchedDevices = false,
@@ -287,6 +310,8 @@ class OverviewViewModelTest : BaseTest() {
         fun `free user with 3 profiled devices - visible 1, hidden 2`() {
             val upgradeInfo = mockk<UpgradeRepo.Info> {
                 every { isPro } returns false
+                every { isSettled } returns true
+                every { error } returns null
                 every { type } returns UpgradeRepo.Type.GPLAY
             }
             val device1 = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
@@ -298,6 +323,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(device1, device2, device3),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = upgradeInfo,
                 showUnmatchedDevices = false,
@@ -311,6 +337,8 @@ class OverviewViewModelTest : BaseTest() {
         fun `pro user with multiple profiled devices - all visible, hidden 0`() {
             val upgradeInfo = mockk<UpgradeRepo.Info> {
                 every { isPro } returns true
+                every { isSettled } returns true
+                every { error } returns null
                 every { type } returns UpgradeRepo.Type.GPLAY
             }
             val device1 = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
@@ -322,6 +350,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(device1, device2, device3),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = upgradeInfo,
                 showUnmatchedDevices = false,
@@ -332,9 +361,67 @@ class OverviewViewModelTest : BaseTest() {
         }
 
         @Test
+        fun `unsettled cold start does not truncate a paying users device list`() {
+            // GPlay seed before the first billing result: non-Pro AND unsettled. Truncating here
+            // would make a paying user's devices vanish and reappear on every launch.
+            val upgradeInfo = mockk<UpgradeRepo.Info> {
+                every { isPro } returns false
+                every { isSettled } returns false
+                every { error } returns null
+                every { type } returns UpgradeRepo.Type.GPLAY
+            }
+            val device1 = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
+            val device2 = PodDevice(profileId = "id-2", ble = mockk(relaxed = true), aap = null)
+            val device3 = PodDevice(profileId = "id-3", ble = mockk(relaxed = true), aap = null)
+            val state = OverviewViewModel.State(
+                now = java.time.Instant.now(),
+                permissions = emptySet(),
+                devices = listOf(device1, device2, device3),
+                isDebug = false,
+                isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
+                profiles = emptyList(),
+                upgradeInfo = upgradeInfo,
+                showUnmatchedDevices = false,
+            )
+
+            state.visibleProfiledDevices shouldBe listOf(device1, device2, device3)
+            state.hiddenProfiledDeviceCount shouldBe 0
+        }
+
+        @Test
+        fun `a settled error state does not truncate the device list`() {
+            // Billing settled into an error: ownership is unknown, so fail open like the gates do.
+            val upgradeInfo = mockk<UpgradeRepo.Info> {
+                every { isPro } returns false
+                every { isSettled } returns true
+                every { error } returns IllegalStateException("billing broke")
+                every { type } returns UpgradeRepo.Type.GPLAY
+            }
+            val device1 = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
+            val device2 = PodDevice(profileId = "id-2", ble = mockk(relaxed = true), aap = null)
+            val state = OverviewViewModel.State(
+                now = java.time.Instant.now(),
+                permissions = emptySet(),
+                devices = listOf(device1, device2),
+                isDebug = false,
+                isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
+                profiles = emptyList(),
+                upgradeInfo = upgradeInfo,
+                showUnmatchedDevices = false,
+            )
+
+            state.visibleProfiledDevices shouldBe listOf(device1, device2)
+            state.hiddenProfiledDeviceCount shouldBe 0
+        }
+
+        @Test
         fun `unmatched devices unchanged regardless of pro status`() {
             val upgradeInfo = mockk<UpgradeRepo.Info> {
                 every { isPro } returns false
+                every { isSettled } returns true
+                every { error } returns null
                 every { type } returns UpgradeRepo.Type.GPLAY
             }
             val profiled1 = PodDevice(profileId = "id-1", ble = mockk(relaxed = true), aap = null)
@@ -346,6 +433,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(profiled1, profiled2, unmatched),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = upgradeInfo,
                 showUnmatchedDevices = false,
@@ -383,6 +471,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(unmatched),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = mockk(relaxed = true),
                 showUnmatchedDevices = false,
@@ -408,6 +497,7 @@ class OverviewViewModelTest : BaseTest() {
                 devices = listOf(unmatched),
                 isDebug = false,
                 isBluetoothEnabled = true,
+                effectiveMode = MonitorMode.AUTOMATIC,
                 profiles = emptyList(),
                 upgradeInfo = mockk(relaxed = true),
                 showUnmatchedDevices = false,
@@ -416,6 +506,127 @@ class OverviewViewModelTest : BaseTest() {
 
             state.profiledDevices shouldBe emptyList()
             state.shouldShowUnmatchedSection shouldBe false
+        }
+    }
+
+    @Nested
+    inner class MonitoringStatusTests {
+
+        private fun addressLessProfile(): DeviceProfile = AppleDeviceProfile(
+            label = "My Headphones",
+            model = PodModel.UNKNOWN,
+        )
+
+        private fun addressedProfile(): DeviceProfile = AppleDeviceProfile(
+            label = "My AirPods",
+            model = PodModel.AIRPODS_PRO2,
+            address = "AA:BB:CC:DD:EE:FF",
+        )
+
+        private fun monitoringState(
+            effectiveMode: MonitorMode,
+            profiles: List<DeviceProfile>,
+            devices: List<PodDevice> = emptyList(),
+            permissions: Set<Permission> = emptySet(),
+            isBluetoothEnabled: Boolean = true,
+        ) = OverviewViewModel.State(
+            now = java.time.Instant.now(),
+            permissions = permissions,
+            devices = devices,
+            isDebug = false,
+            isBluetoothEnabled = isBluetoothEnabled,
+            effectiveMode = effectiveMode,
+            profiles = profiles,
+            upgradeInfo = mockk(relaxed = true),
+            showUnmatchedDevices = false,
+        )
+
+        @Test
+        fun `MANUAL with an address-less profile reports background monitoring off`() {
+            val state = monitoringState(
+                effectiveMode = MonitorMode.MANUAL,
+                profiles = listOf(addressLessProfile()),
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.BACKGROUND_OFF
+        }
+
+        @Test
+        fun `MANUAL still reports background monitoring off while an unknown device card shows`() {
+            // The auto-created wildcard profile can match an unrecognised Apple payload, and that
+            // card carries neither the missing-paired-device banner nor an edit action.
+            val unknownDevice = PodDevice(
+                profileId = "auto-created",
+                ble = mockk<BlePodSnapshot>(relaxed = true) {
+                    every { model } returns PodModel.UNKNOWN
+                },
+                aap = null,
+            )
+            val state = monitoringState(
+                effectiveMode = MonitorMode.MANUAL,
+                profiles = listOf(addressLessProfile()),
+                devices = listOf(unknownDevice),
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.BACKGROUND_OFF
+        }
+
+        @Test
+        fun `AUTOMATIC without devices reports searching`() {
+            val state = monitoringState(
+                effectiveMode = MonitorMode.AUTOMATIC,
+                profiles = listOf(addressedProfile()),
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.SEARCHING
+        }
+
+        @Test
+        fun `hidden while a scan-blocking permission is missing`() {
+            val state = monitoringState(
+                effectiveMode = MonitorMode.MANUAL,
+                profiles = listOf(addressLessProfile()),
+                permissions = setOf(Permission.BLUETOOTH_SCAN),
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.HIDDEN
+        }
+
+        @Test
+        fun `hidden while bluetooth is disabled`() {
+            val state = monitoringState(
+                effectiveMode = MonitorMode.MANUAL,
+                profiles = listOf(addressLessProfile()),
+                isBluetoothEnabled = false,
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.HIDDEN
+        }
+
+        @Test
+        fun `hidden when there are no profiles at all`() {
+            val state = monitoringState(
+                effectiveMode = MonitorMode.MANUAL,
+                profiles = emptyList(),
+            )
+
+            state.monitoringStatus shouldBe OverviewViewModel.MonitoringStatus.HIDDEN
+        }
+
+        @Test
+        fun `effectiveMode tracks the resolver`() = runTest(testDispatcher) {
+            effectiveModeFlow.value = MonitorMode.MANUAL
+            val vm = createViewModel()
+            var latest: OverviewViewModel.State? = null
+            backgroundScope.launch { vm.state.collect { latest = it } }
+
+            advanceTimeBy(1_000)
+            latest!!.effectiveMode shouldBe MonitorMode.MANUAL
+
+            effectiveModeFlow.value = MonitorMode.ALWAYS
+
+            advanceTimeBy(1_000)
+            latest!!.effectiveMode shouldBe MonitorMode.ALWAYS
         }
     }
 
@@ -648,6 +859,104 @@ class OverviewViewModelTest : BaseTest() {
         }
     }
 
+    @Nested
+    inner class ReviewCardTests {
+
+        private val connectedAddress = "AA:BB:CC:DD:EE:FF"
+
+        private fun profile(): DeviceProfile = AppleDeviceProfile(
+            label = "Test",
+            model = PodModel.AIRPODS_PRO2,
+            address = connectedAddress,
+        )
+
+        /** Quiet overview: a set up profile, no missing permissions, nothing else to act on. */
+        private fun quietOverview() {
+            profilesFlow.value = listOf(profile())
+            missingPermissionsFlow.value = emptySet()
+            effectiveModeFlow.value = MonitorMode.AUTOMATIC
+            reviewStateFlow.value = ReviewTool.State(shouldAskForReview = true)
+        }
+
+        @Test
+        fun `shown on a quiet overview when the tool asks for it`() = runTest(testDispatcher) {
+            quietOverview()
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe true
+        }
+
+        @Test
+        fun `not shown while the tool does not ask for it`() = runTest(testDispatcher) {
+            quietOverview()
+            reviewStateFlow.value = ReviewTool.State(shouldAskForReview = false)
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe false
+        }
+
+        @Test
+        fun `suppressed by a missing permission`() = runTest(testDispatcher) {
+            quietOverview()
+            missingPermissionsFlow.value = setOf(Permission.BLUETOOTH_SCAN)
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe false
+        }
+
+        @Test
+        fun `suppressed by the no-profiles setup card`() = runTest(testDispatcher) {
+            quietOverview()
+            profilesFlow.value = emptyList()
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe false
+        }
+
+        @Test
+        fun `suppressed by the background-monitoring-off card`() = runTest(testDispatcher) {
+            quietOverview()
+            effectiveModeFlow.value = MonitorMode.MANUAL
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe false
+        }
+
+        @Test
+        fun `suppressed by the enable-Bluetooth prompt`() = runTest(testDispatcher) {
+            quietOverview()
+            isBluetoothEnabledFlow.value = false
+
+            val vm = createViewModel()
+
+            vm.state.first().showReviewCard shouldBe false
+        }
+
+        @Test
+        fun `suppressed by the troubleshooter suggestion`() = runTest(testDispatcher) {
+            quietOverview()
+            // Connected via audio but no live data: the hint appears after its debounce window.
+            connectedDevicesFlow.value = listOf(
+                mockk<BluetoothDevice2>(relaxed = true) { every { address } returns connectedAddress }
+            )
+            devicesFlow.value = emptyList()
+
+            val vm = createViewModel()
+            var latest: OverviewViewModel.State? = null
+            backgroundScope.launch { vm.state.collect { latest = it } }
+
+            advanceTimeBy(20_000)
+
+            latest!!.showTroubleshootSuggestion shouldBe true
+            latest!!.showReviewCard shouldBe false
+        }
+    }
+
     @Test
     fun `estimateFor is null when the device has the estimate disabled`() {
         val device = mockk<PodDevice> {
@@ -684,6 +993,7 @@ class OverviewViewModelTest : BaseTest() {
             devices = listOf(device),
             isDebug = false,
             isBluetoothEnabled = true,
+            effectiveMode = MonitorMode.AUTOMATIC,
             profiles = emptyList(),
             upgradeInfo = mockk(relaxed = true),
             showUnmatchedDevices = false,

@@ -6,11 +6,13 @@
     <string name="general_copy_action">Kopyala</string>
     <string name="general_thank_you_label">Teşekkürler</string>
     <string name="general_upgrade_action">Güncelle</string>
+    <string name="general_retry_action">Yeniden Dene</string>
     <string name="common_feature_requires_pro_msg">Açmak için yükselt.</string>
     <string name="common_upgrade_required_label">Yükseltme gerektirir</string>
     <string name="general_donate_action">Bağış yap</string>
     <string name="general_check_action">Kontrol et</string>
     <string name="general_close_action">Kapat</string>
+    <string name="general_dismiss_action">Yoksay</string>
     <string name="general_edit_action">Düzenle</string>
     <string name="general_save_action">Kaydet</string>
     <string name="general_guide_action">Rehber</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Geliştriciyi destekle</string>
     <string name="upgrade_benefit_disclaimer">Özellik kullanılabilirliği kulaklistığinize ve cihazınıza bağlıdır.</string>
     <string name="settings_monitor_connected_notification_label">Ek bildirim</string>
-    <string name="settings_monitor_connected_notification_description">Bir cihaz bağlandığında ek bir bildirim gösterir. Bu, \"Cihaz durumu\" kanalını devre dışı bırakarak kalıcı \"Cihaz yok\" bildirimini gizlemenizi sağlar.</string>
+    <string name="settings_monitor_connected_notification_description">Yalnızca bir cihaz bağlıyken görünen ikinci bir bildirim gösterir. Bunu açtığında, kalıcı \"Cihaz yok\" bildirimini gizleyebilirsin: Android\'in bildirim ayarlarında CAPod için \"Cihaz durumu\" kategorisini kapat.</string>
     <string name="settings_keep_notification_after_disconnect_label">Bağlantı kesildikten sonra bildirimi koru</string>
     <string name="settings_keep_notification_after_disconnect_description">AirPods bağlantısı kesildikten sonra bile bilinen son pil seviyelerini göstermeye devam et</string>
     <string name="settings_autopause_label">Otomatik duraklat</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Minimum sinyal kalitesi</string>
     <string name="settings_signal_minimum_description">Bir aygıtın size ait olduğunun anlaşılması için sahip olması gereken minimum sinyal kalitesi.</string>
     <string name="settings_autoconnect_label">Otomatik bağlan</string>
-    <string name="settings_autoconnect_description">Android otomatik olarak bağlanmazsa, bizde sorabiliriz. Monitör modu ayarı \'Her Zaman\' olarak ayarlanacaktır.</string>
+    <string name="settings_autoconnect_description">Android otomatik olarak bağlanmazsa, biz de bağlanmasını isteyebiliriz. Bu, CAPod\'un her zaman arka planda izlemeye devam etmesini sağlar.</string>
     <string name="settings_autoconnect_info_android12">Otomatik bağlanma Android 12 ve daha yenisinde olan bir sistem özelliğine dayanır. Bu cihazınızda çalışmayabilir.</string>
     <string name="settings_autoconnect_condition_label">Otomatik bağlantı şartı</string>
     <string name="settings_autoconnect_condition_description">Aygıtınıza ne zaman bağlanmayı denemeliyiz?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Uyumluluk seçenekleri</string>
     <string name="settings_category_compatibility_options_description">Eğer her şey düzgün çalışıyorsa lütfen dokunma ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Donanım filtrelemeyi kapat</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Veri filtrelemeyi sisteme devretme, bunun yerine tüm verileri al ve uygulama içinde filtrele.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">AirPods\'un hiç algılanmıyorsa bunu dene. Uygulama, telefonunun önceden seçim yapmasına izin vermek yerine yakındaki tüm Bluetooth sinyallerini kendisi tarar.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Donanımsal toplu işlemeyi kapat</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Sistem grubunun BLE verilerini bize iletmeden toplamasına izin verme.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Pil seviyeleri yalnızca geç veya aniden güncelleniyorsa bunu dene. Telefonun, sinyalleri önce toplamak yerine her Bluetooth sinyalini hemen iletir.</string>
     <string name="settings_onepod_mode_label">Tek kulaklık modu</string>
     <string name="settings_onepod_mode_description">Otomatik oynatma/durdurma ve otomatik bağlanma ikisi yerine tek bir kulaklığa tepki verir.</string>
     <string name="settings_popup_caseopen_label">Şarj kutusu için açılır pencere göster</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Aygıt durumu</string>
     <string name="notification_channel_device_status_connected_label">Bağlı cihaz</string>
     <string name="monitor_notification_extra_enabled_hint">Bu bildirimi sistem ayarlarından devre dışı bırakabilirsin.</string>
+    <string name="monitor_notification_starting">Başlatılıyor…</string>
     <string name="support_debuglog_label">Hata ayıklama günlüğü</string>
     <string name="support_debuglog_desc">Uygulamanın yaptığı her şeyi paylaşabileceğiniz bir metin dosyasına kaydeder.</string>
     <string name="debug_debuglog_size_label">Boyut</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Yeşil</string>
     <string name="widget_config_preset_red">Kırmızı</string>
     <string name="settings_compat_indirectcallback_title">Dolaylı veri teslimi</string>
-    <string name="settings_compat_indirectcallback_summary">Sistemden BLE verilerini almak için alternatif bir yöntem kullanır (geri arama yerine yayın yapar).</string>
+    <string name="settings_compat_indirectcallback_summary">Diğer uyumluluk seçenekleri işe yaramadıysa bunu dene. Uygulamanın sinyalleri doğrudan dinlemesi yerine, Android Bluetooth sinyallerini arka planda uygulamaya iletir.</string>
     <string name="troubleshooter_title">Sorun giderici</string>
     <string name="troubleshooter_summary">Bluetooth bağlantı sorunlarını teşhis edin ve düzeltin.</string>
     <string name="troubleshooter_ble_intro_title">Bluetooth Düşük Enerji Yayınları</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Ekstra özellikler kazanmak ve geliştirmeyi desteklemek için CAPod Pro\'ya yükseltebilirsiniz.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">Hata</string>
     <string name="general_grant_permission_action">İzin ver</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth devre dışı, etkinleştirin ;)</string>
     <string name="overview_monitoring_active_label">Cihazlar izleniyor</string>
     <string name="overview_monitoring_active_description">Cihazınızın yakınında ve etkin olduğundan emin olun.</string>
+    <string name="overview_monitoring_off_label">Arka Plan İzlemesi Kapalı</string>
+    <string name="overview_monitoring_off_description">Hiçbir profilde eşleştirilmiş bir Bluetooth cihazı yok, bu nedenle CAPod yalnızca uygulama açıkken güncellenir. Arka plan izlemesini, devam eden bildirimleri ve tepkileri etkinleştirmek için birini seçin.</string>
+    <string name="overview_monitoring_off_action">Eşleştirilmiş Cihazı Seçin</string>
     <string name="overview_troubleshoot_suggestion_label">Bağlı, ancak veri yok</string>
     <string name="overview_troubleshoot_suggestion_description">Cihazınız bağlı, ancak CAPod ondan canlı veri almıyor. Telefonunuzun bir uyumluluk seçeneğine ihtiyacı olabilir — sorun giderici otomatik olarak bir tane bulmaya çalışabilir.</string>
     <string name="overview_troubleshoot_suggestion_action">Sorun gidericiyi çalıştır</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Aramayı bitirmek için çift basım</string>
     <string name="device_settings_open_cd">Cihaz ayarlarını aç</string>
     <string name="overview_card_missing_paired_device">Bu profilde eşlenmiş bir Bluetooth cihazı yok.</string>
+    <string name="overview_card_missing_paired_device_consequence">Birisi olmadan, cihaz ayarları ve otomatik bağlantı kullanılamaz.</string>
     <string name="overview_reactions_hint_title">Tepkiler cihaz başına ayarlanır</string>
     <string name="overview_reactions_hint_body">Otomatik oynatma, otomatik duraklatma ve açılır pencereler artık cihaz başına yapılandırılmaktadır. Kulaklıklarınız bağlıyken karttaki ayarlar simgesine dokunun.</string>
+    <string name="review_app_review_action">Değerlendir</string>
+    <string name="review_app_dismiss_action">Belki daha sonra</string>
+    <string name="review_app_body">CAPod\'e bir inceleme bırakmak ister misiniz? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Genel</string>
     <string name="device_settings_microphone_mode_label">Mikrofon</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth Ayarları</string>
     <string name="device_settings_send_failed">Ayar uygulanamadı: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Bu cihazda Kapalı modu etkin değil. Gürültü Kontrolü altında \"Kapalı moda izin ver\" seçeneğini etkinleştirin.</string>
+    <string name="anc_mode_not_confirmed_message">AirPods, dinleme modu değişikliğini onaylamadı.</string>
     <string name="device_settings_category_battery_label">Pil</string>
     <string name="device_settings_charge_cap_label">Optimize Edilmiş Şarj Limiti</string>
     <string name="device_settings_charge_cap_description">Rutininizi öğrenin ve pil ömrünü uzatmak için şarjı %80 civarında duraklatın; kullanmadan önce kulaklıkları tamamen şarj eder.</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">Varsayılanlara sıfırla</string>
     <string name="press_controls_reset_confirm_message">Tüm basma atmaları varsayılanlara sıfırlansın mı?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Basma Kontrollerini Aç</string>
+    <string name="general_navigate_up_action">Yukarı Git</string>
+    <string name="general_progress_loading">Yükleniyor</string>
 </resources>

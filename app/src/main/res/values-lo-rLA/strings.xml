@@ -6,11 +6,13 @@
     <string name="general_copy_action">ສຳເນົາ</string>
     <string name="general_thank_you_label">ຂອບໃຈ</string>
     <string name="general_upgrade_action">ອັບເກຣດ</string>
+    <string name="general_retry_action">ລອງໃໝ່</string>
     <string name="common_feature_requires_pro_msg">ອັບເກຣດເພື່ອປົດລັອກ.</string>
     <string name="common_upgrade_required_label">ຕ້ອງການອັບເກຣດ</string>
     <string name="general_donate_action">ບໍລິຈາກ</string>
     <string name="general_check_action">ກວດສອບ</string>
     <string name="general_close_action">ປິດ</string>
+    <string name="general_dismiss_action">ປະຕິເສດ</string>
     <string name="general_edit_action">ແກ້ໄຂ</string>
     <string name="general_save_action">ບັນທຶກ</string>
     <string name="general_guide_action">ຄູ່ມື</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">ສະໜັບສະໜູນຜູ້ພັດທະນາ</string>
     <string name="upgrade_benefit_disclaimer">ການມີອີກຸ່ມຂຶ້ນອຍູ່ກັບຫູຟັງແລະອຸປະກອນຂອງທ່ານ.</string>
     <string name="settings_monitor_connected_notification_label">ການແຈ້ງເຕືອນເພີ່ມເຕີມ</string>
-    <string name="settings_monitor_connected_notification_description">ສະແດງການແຈ້ງເຕືອນເພີ່ມເຕີມເມື່ອອຸປະກອນເຊື່ອມຕໍ່ແລ້ວ. ນີ້ຊ່ວຍໃຫ້ທ່ານສາມາດເຊື່ອງການແຈ້ງເຕືອນຖາວອນ \"ບໍ່ມີອຸປະກອນ\" ໂດຍການປິດຊ່ອງ \"ສະຖານະອຸປະກອນ\" .</string>
+    <string name="settings_monitor_connected_notification_description">ສະແດງການແຈ້ງເຕືອນທີສອງທີ່ຈະປາກົດຂຶ້ນສະເພາະເມື່ອອຸປະກອນເຊື່ອມຕໍ່ຢູ່. ເມື່ອເປີດໃຊ້ອັນນີ້ ທ່ານສາມາດເຊື່ອງການແຈ້ງເຕືອນ \"ບໍ່ມີອຸປະກອນ\" ຖາວອນໄດ້: ໃຫ້ປິດໝວດໝູ່ \"ສະຖານະອຸປະກອນ\" ໃນການຕັ້ງຄ່າການແຈ້ງເຕືອນຂອງ Android ສຳລັບ CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">ຮັກສາການແຈ້ງເຕືອນຫຼັງຈາກຕັດການເຊື່ອມຕໍ່</string>
     <string name="settings_keep_notification_after_disconnect_description">ສືບຕໍ່ສະແດງລະດັບແບັດເຕີລີ້ທີ່ຮູ້ຈັກຫຼ້າສຸດແມ້ຫຼັງຈາກ AirPods ຕັດການເຊື່ອມຕໍ່</string>
     <string name="settings_autopause_label">ຢຸດອັດຕະໂນມັດ</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">ຄຸນນະພາບສັນຍານຂັ້ນຕໍ່າ</string>
     <string name="settings_signal_minimum_description">ຄຸນນະພາບສັນຍານຂັ້ນຕໍ່າທີ່ອຸປະກອນຕ້ອງມີເພື່ອຖືວ່າເປັນຂອງທ່ານ.</string>
     <string name="settings_autoconnect_label">ເຊື່ອມຕໍ່ອັດຕະໂນມັດ</string>
-    <string name="settings_autoconnect_description">ຖ້າ Android ບໍ່ເຊື່ອມຕໍ່ອັດຕະໂນມັດ, ພວກເຮົາກໍສາມາດຮ້ອງຂໍໄດ້. ນີ້ຈະຕັ້ງຄ່າໂໝດຕິດຕາມເປັນ \"ສະເໝີ\" .</string>
+    <string name="settings_autoconnect_description">ຖ້າ Android ບໍ່ເຊື່ອມຕໍ່ໂດຍອັດຕະໂນມັດ, ພວກເຮົາສາມາດຂໍໃຫ້ມັນເຮັດໄດ້. ອັນນີ້ຈະຮັກສາການຕິດຕາມຂອງ CAPod ໃຫ້ເຮັດວຽກຢູ່ພື້ນຫຼັງຕະຫຼອດເວລາ.</string>
     <string name="settings_autoconnect_info_android12">ການເຊື່ອມຕໍ່ອັດຕະໂນມັດອາໃສຟີເຈີລະບົບທີ່ Android 12 ແລະລຸ້ນໃໝ່ກວ່າຈຳກັດ. ມັນອາດຈະບໍ່ເຮັດວຽກໃນອຸປະກອນຂອງທ່ານ.</string>
     <string name="settings_autoconnect_condition_label">ເງື່ອນໄຂການເຊື່ອມຕໍ່ອັດຕະໂນມັດ</string>
     <string name="settings_autoconnect_condition_description">ພວກເຮົາຄວນພະຍາຍາມເຊື່ອມຕໍ່ກັບອຸປະກອນຂອງທ່ານເມື່ອໃດ?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">ຕົວເລືອກຄວາມເຂົ້າກັນໄດ້</string>
     <string name="settings_category_compatibility_options_description">ຢ່າແຕະຕ້ອງຖ້າທຸກຢ່າງເຮັດວຽກ ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">ປິດການກັ່ນຕອງຮາດແວ</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">ຢ່າໂອນການກັ່ນຕອງຂໍ້ມູນໄປໃຫ້ລະບົບ, ແທນທີ່ຈະຮັບຂໍ້ມູນທັງໝົດ ແລະ ກັ່ນຕອງພາຍໃນແອັບ.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">ລອງໃຊ້ອັນນີ້ຖ້າ AirPods ຂອງທ່ານບໍ່ຖືກກວດພົບເລີຍ. ແອັບຈະຄົ້ນຫາຜ່ານສັນຍານ Bluetooth ທີ່ຢູ່ໃກ້ຄຽງທັງໝົດດ້ວຍຕົນເອງ ແທນທີ່ຈະໃຫ້ໂທລະສັບຂອງທ່ານເລືອກລ່ວງໜ້າ.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">ປິດການຈັດກຸ່ມຮາດແວ</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">ຢ່າໃຫ້ລະບົບຈັດກຸ່ມຂໍ້ມູນ BLE ທີ່ເກັບກຳໄດ້ກ່ອນທີ່ຈະສົ່ງຕໍ່ໃຫ້ພວກເຮົາ.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">ລອງໃຊ້ອັນນີ້ຖ້າລະດັບແບັດເຕີຣີອັບເດດຊ້າ ຫຼື ອັບເດດເປັນຊຸດ. ໂທລະສັບຂອງທ່ານຈະສົ່ງຕໍ່ສັນຍານ Bluetooth ແຕ່ລະສັນຍານທັນທີ ແທນທີ່ຈະລວບລວມກ່ອນ.</string>
     <string name="settings_onepod_mode_label">ໂໝດផតດຽວ</string>
     <string name="settings_onepod_mode_description">ຫຼິ້ນ/ຢຸດ ແລະ ເຊື່ອມຕໍ່ອັດຕະໂນມັດຕອບສະໜອງຕໍ່ pod ດຽວ ແທນທີ່ຈະຕ້ອງໃຊ້ທັງສອງ.</string>
     <string name="settings_popup_caseopen_label">ສະແດງປັອບອັບເຄສ</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">ສະຖານະອຸປະກອນ</string>
     <string name="notification_channel_device_status_connected_label">ອຸປະກອນເຊື່ອມຕໍ່ແລ້ວ</string>
     <string name="monitor_notification_extra_enabled_hint">ທ່ານສາມາດປິດການແຈ້ງເຕືອນນີ້ໄດ້ໃນການຕັ້ງຄ່າລະບົບ.</string>
+    <string name="monitor_notification_starting">ກຳລັງເລີ່ມຕົ້ນ…</string>
     <string name="support_debuglog_label">ບັນທຶກດີບັກ</string>
     <string name="support_debuglog_desc">ບັນທຶກທຸກຢ່າງທີ່ແອັບກຳລັງເຮັດໃສ່ໃນໄຟລ໌ຂໍ້ຄວາມທີ່ທ່ານສາມາດແບ່ງປັນໄດ້.</string>
     <string name="debug_debuglog_size_label">ຂະໜາດ</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">ສີຂຽວ</string>
     <string name="widget_config_preset_red">ສີແດງ</string>
     <string name="settings_compat_indirectcallback_title">ການສົ່ງຂໍ້ມູນທາງອ້ອມ</string>
-    <string name="settings_compat_indirectcallback_summary">ໃຊ້ວິທີທາງເລືອກເພື່ອຮັບຂໍ້ມູນ BLE ຈາກລະບົບ (ກະຈາຍສຽງແທນການໂທກັບ).</string>
+    <string name="settings_compat_indirectcallback_summary">ລອງໃຊ້ອັນນີ້ຖ້າຕົວເລືອກຄວາມເຂົ້າກັນໄດ້ອື່ນໆບໍ່ໄດ້ຊ່ວຍ. Android ຈະສົ່ງສັນຍານ Bluetooth ໃຫ້ແອັບໃນພື້ນຫຼັງ ແທນທີ່ແອັບຈະຟັງສັນຍານເອງໂດຍກົງ.</string>
     <string name="troubleshooter_title">ຕົວແກ້ໄຂບັນຫາ</string>
     <string name="troubleshooter_summary">ກວດຫາ ແລະ ແກ້ໄຂບັນຫາການເຊື່ອມຕໍ່ Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">ການອອກອາກາດ Bluetooth Low Energy</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">ທ່ານສາມາດອັບເກຣດເປັນ CAPod Pro ເພື່ອຮັບຄຸນສົມບັດເພີ່ມເຕີມ ແລະ ສະໜັບສະໜູນການພັດທະນາ.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">ຜິດພາດ</string>
     <string name="general_grant_permission_action">ອະນຸຍາດ</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth ຖືກປິດ, ເປີດມັນ ;)</string>
     <string name="overview_monitoring_active_label">ກຳລັງຕິດຕາມອຸປະກອນ</string>
     <string name="overview_monitoring_active_description">ໃຫ້ແນ່ໃຈວ່າອຸປະກອນຂອງທ່ານຢູ່ໃກ້ ແລະ ເຮັດວຽກຢູ່.</string>
+    <string name="overview_monitoring_off_label">ການຕິດຕາມພື້ນຫຼັງປິດ</string>
+    <string name="overview_monitoring_off_description">ບໍ່ມີໂປຣຟາຍໃດທີ່ມີອຸປະກອນ Bluetooth ທີ່ຈັບຄູ່, ດັ່ງນັ້ນ CAPod ຈຶ່ງອັບເດດໃນເວລາທີ່ແອັບພລິເຄຊັນເປີດເທົ່ານັ້ນ. ເລືອກອັນໜຶ່ງເພື່ອເປີດໃຊ້ການຕິດຕາມພື້ນຫຼັງ, ການແຈ້ງເຕືອນຢ່າງຕໍ່ເນື່ອງ ແລະປະຕິກິລິຍາ.</string>
+    <string name="overview_monitoring_off_action">ເລືອກອຸປະກອນທີ່ຈັບຄູ່ແລ້ວ</string>
     <string name="overview_troubleshoot_suggestion_label">ເຊື່ອມຕໍ່ແລ້ວ, ຜູ້ໃດ້ຂໍ້ມູນ</string>
     <string name="overview_troubleshoot_suggestion_description">ອຸປະກອນຂອງທ່ານເຊື່ອມຕໍ່ແລ້ວ, ຜູ້ໃດ້ CAPod ບໍ່ໄດ້ຮັບຂໍ້ມູນລິວໃດ້ຈາກມັນ. ໂທລະສັບຂອງທ່ານອາດຕ້ອງການຕົວເລືອກຄວາມເຂົ້າກັນໄດ້ — ຕົວແກ້ໄຂບັນຫາສາມາດພະຍາຍາມຫາຕົວເລືອກທີ່ເຫມາະສະຫມໂດຍອັດຕະໂນມັດ.</string>
     <string name="overview_troubleshoot_suggestion_action">ແລ່ນຕົວແກ້ໄຂບັນຫາ</string>
@@ -475,8 +482,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">ກດສອງຄັ້ງເພື່ອວາງສາຍການເຈຮາ</string>
     <string name="device_settings_open_cd">ເປີດການຕັ້ງຄ່າອຸປະກອນ</string>
     <string name="overview_card_missing_paired_device">ໂປຣໄຟລ໌ນີ້ບໍ່ມີອຸປະກອນ Bluetooth ທີ່ຈັບຄູ່ໄວ້.</string>
+    <string name="overview_card_missing_paired_device_consequence">ໂດຍບໍ່ມີນັ້ນ, ການຕັ້ງຄ່າອຸປະກອນ ແລະການເຊື່ອມຕໍ່ອັດຕະໂນມັດບໍ່ມີ.</string>
     <string name="overview_reactions_hint_title">ການຕອບສະໜອງແມ່ນຕໍ່ອຸປະກອນ</string>
     <string name="overview_reactions_hint_body">ການຫຼິ້ນອັດຕະໂນມັດ, ການຢຸດອັດຕະໂນມັດ ແລະປ໊ອບອັບໄດ້ຖືກຕັ້ງຄ່າຕໍ່ອຸປະກອນແລ້ວ. ແຕະໄອຄອນການຕັ້ງຄ່າໃນບັດຂະນະທີ່ຫູຟັງຂອງທ່ານເຊື່ອມຕໍ່ຢູ່.</string>
+    <string name="review_app_review_action">ຣີວິວ</string>
+    <string name="review_app_dismiss_action">ບາງທີພາຍຫຼັງ</string>
+    <string name="review_app_body">ທ່ານຢາກໃຫ້ CAPod ຣີວິວບໍ? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">ທົ່ວໄປ</string>
     <string name="device_settings_microphone_mode_label">ໄມໂຄຣໂຟນ</string>
@@ -515,6 +526,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">ການຕັ້ງຄ່າ Bluetooth</string>
     <string name="device_settings_send_failed">ບໍ່ສາມາດໃຊ້ການຕັ້ງຄ່າ: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">ໂໝດປິດບໍ່ໄດ້ເຮັດວຽກໃນອຸປະກອນນີ້. ເຮັດວຽກ \"ອະນຸຍາດໂໝດປິດ\" ເທິງໃຕ້ ການຄວບຄຸມສຽງລົບກວນ.</string>
+    <string name="anc_mode_not_confirmed_message">AirPods ບໍ່ໄດ້ຢືນຢັນການປ່ຽນໂໝດການຟັງ.</string>
     <string name="device_settings_category_battery_label">ແບດເຕີລີ</string>
     <string name="device_settings_charge_cap_label">ຈຳກັດການສາກທີ່ປັບປຸງແລ້ວ</string>
     <string name="device_settings_charge_cap_description">ຮຽນຮູ້ການເຮັດວຽກປົກກະຕິຂອງທ່ານ ແລະ ຢຸດການສາກໄຟລອບ 80%% ເພື່ອຍືດອາຍຸການໃຊ້ງານແບດເຕີລີ, ໂດຍເຕີມຈົນເຕັມກ່ອນທີ່ທ່ານຈະໃຊ້ງານ.</string>
@@ -554,4 +566,6 @@
     <string name="press_controls_reset_label">ຕັ້ງຄ່າໃໝ່ເປັນຄ່າເລີ່ມຕົ້ນ</string>
     <string name="press_controls_reset_confirm_message">ຕັ້ງຄ່າການກົດທັງໝົດໃໝ່ເປັນຄ່າເລີ່ມຕົ້ນ?</string>
     <string name="device_settings_noise_control_open_press_controls_action">ເປີດການຄວບຄຸມການກົດ</string>
+    <string name="general_navigate_up_action">ຍ້າຍຂຶ້ນໄປ</string>
+    <string name="general_progress_loading">ກຳລັງໂຫຼດ</string>
 </resources>

@@ -98,6 +98,9 @@ class MonitorService : Service() {
     @Volatile private var monitorGeneration = 0
     private var foregroundStartFailed = false
     private var injectionComplete = false
+    @Volatile private var destroyed = false
+
+    @Volatile private var lastNotification: Notification? = null
 
     @Volatile
     private var latestNotificationSettings: NotificationSettings =
@@ -130,6 +133,19 @@ class MonitorService : Service() {
         }
     }
 
+    /**
+     * Posts the primary monitor notification and remembers it, so a later [onStartCommand] can
+     * re-satisfy the foreground obligation with the notification the user is currently seeing.
+     */
+    internal fun postPrimaryNotification(notification: Notification) {
+        if (destroyed) {
+            log(TAG, VERBOSE) { "Skipping notification post, service is being destroyed." }
+            return
+        }
+        lastNotification = notification
+        notificationManager.notify(MonitorNotifications.NOTIFICATION_ID, notification)
+    }
+
     override fun onCreate() {
         // Promote to foreground BEFORE Hilt DI (triggered by super.onCreate()) to avoid
         // ForegroundServiceDidNotStartInTimeException when DI is slow on backgrounded cold starts.
@@ -160,10 +176,30 @@ class MonitorService : Service() {
 
         // Replace early notification with the full one from injected MonitorNotifications.
         // Failure here is non-fatal — the service is already foreground from the early call.
-        promoteToForeground(notifications.getStartupNotification())
+        val startupNotification = notifications.getStartupNotification()
+        lastNotification = startupNotification
+        promoteToForeground(startupNotification)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // Every startForegroundService() re-arms the startForeground() obligation,
+        // so every onStartCommand has to satisfy it again, no matter how it exits.
+        //
+        // Only reuse the cached notification while a monitor session is actually live. It is a fully
+        // built object whose `when` is frozen at build time, so re-promoting it to open a NEW session
+        // would re-post the previous session's last content under its original timestamp — which is
+        // how a stale "unknown device" frame survives a teardown/restart cycle. Rebuilding is not an
+        // option here: this has to stay cheap enough to satisfy the obligation before DI is ready.
+        //
+        // Deliberately does NOT clear the cache here: a collector on Dispatchers.Default can post
+        // between the read below and any write, so clearing would discard a frame that is actually
+        // current. Invalidation happens where a new session is launched instead.
+        val reusable = lastNotification?.takeIf { monitoringJob?.isActive == true }
+        if (!promoteToForeground(reusable ?: MonitorNotifications.createEarlyNotification(this))) {
+            stopSelf(startId)
+            return START_NOT_STICKY
+        }
+
         log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
 
         if (foregroundStartFailed) {
@@ -181,6 +217,10 @@ class MonitorService : Service() {
 
         val generation = ++monitorGeneration
         monitorScope.coroutineContext.cancelChildren()
+        // A new session starts here, so the previous session's last frame must not be re-promoted
+        // into it. Safe at this point: the old collectors are cancelled and the new ones haven't run,
+        // so there is no current notification to discard.
+        lastNotification = null
 
         monitoringJob = monitorScope.launch {
             try {
@@ -250,13 +290,12 @@ class MonitorService : Service() {
             .onEach { (currentDevice, settings, estimate) ->
                 latestNotificationSettings = settings
 
-                notificationManager.notify(
-                    MonitorNotifications.NOTIFICATION_ID,
+                postPrimaryNotification(
                     notifications.getNotification(
                         currentDevice,
                         estimate = estimate,
                         showHint = settings.useExtraNotification,
-                    ),
+                    )
                 )
 
                 when (val action = decideExtraNotificationAction(currentDevice, settings)) {
@@ -393,6 +432,10 @@ class MonitorService : Service() {
 
     override fun onDestroy() {
         log(TAG, VERBOSE) { "onDestroy()" }
+        // Set before cancelling: cancellation doesn't await the collectors, so one already past its
+        // suspension point can still reach postPrimaryNotification() and re-post what we just took
+        // down. The flag makes that post a no-op instead.
+        destroyed = true
         monitorScope.cancel("Service destroyed")
 
         if (injectionComplete) {
@@ -408,6 +451,17 @@ class MonitorService : Service() {
                 } catch (e: Exception) {
                     log(TAG, WARN) { "Failed to cancel connected notification: ${e.message}" }
                 }
+            }
+            // Defence in depth: AOSP reaps the FGS notification on destroy by itself (verified on
+            // API 36), but reports of a stuck ongoing notification on Samsung suggest that is not
+            // universal. Retract it explicitly. cancel() alone is not the foreground-service
+            // lifecycle operation and can be ignored while the notification is still bound, so
+            // detach first. Both calls are idempotent.
+            try {
+                stopForeground(Service.STOP_FOREGROUND_REMOVE)
+                notificationManager.cancel(MonitorNotifications.NOTIFICATION_ID)
+            } catch (e: Exception) {
+                log(TAG, WARN) { "Failed to cancel monitor notification: ${e.message}" }
             }
         } else {
             log(TAG, WARN) { "onDestroy: Skipping notification cleanup, injection was incomplete." }

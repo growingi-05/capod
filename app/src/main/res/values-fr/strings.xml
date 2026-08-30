@@ -6,11 +6,13 @@
     <string name="general_copy_action">Copier</string>
     <string name="general_thank_you_label">Merci</string>
     <string name="general_upgrade_action">Passer Pro</string>
+    <string name="general_retry_action">Réessayer</string>
     <string name="common_feature_requires_pro_msg">Passez à la version Pro pour débloquer l’option.</string>
     <string name="common_upgrade_required_label">Nécessite une mise à niveau</string>
     <string name="general_donate_action">Faire un don</string>
     <string name="general_check_action">Vérifier</string>
     <string name="general_close_action">Fermer</string>
+    <string name="general_dismiss_action">Fermer</string>
     <string name="general_edit_action">Modifier</string>
     <string name="general_save_action">Enregistrer</string>
     <string name="general_guide_action">Guide</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Soutenir le développeur</string>
     <string name="upgrade_benefit_disclaimer">La disponibilité des fonctionnalités dépend de votre casque et de votre appareil.</string>
     <string name="settings_monitor_connected_notification_label">Notification supplémentaire</string>
-    <string name="settings_monitor_connected_notification_description">Affiche une notification supplémentaire si un appareil est connecté. Cela vous permet de masquer la notification permanente « Aucun appareil » en désactivant le canal « État de l’appareil ».</string>
+    <string name="settings_monitor_connected_notification_description">Affiche une seconde notification qui n\'apparaît que si un appareil est connecté. Avec ceci activé, tu peux masquer la notification permanente « Pas d\'appareil » : désactive la catégorie « État de l\'appareil » dans les paramètres de notifications Android pour CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Garder la notification après déconnexion</string>
     <string name="settings_keep_notification_after_disconnect_description">Afficher les derniers niveaux de batterie connus même après déconnexion de vos AirPods</string>
     <string name="settings_autopause_label">Pause automatique</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Qualité minimale du signal</string>
     <string name="settings_signal_minimum_description">Qualité minimale du signal qu’un appareil doit émettre pour être considéré le vôtre.</string>
     <string name="settings_autoconnect_label">Connexion automatique</string>
-    <string name="settings_autoconnect_description">Si Android ne se connecte pas automatiquement, nous pouvons lui demander de le faire. Le paramètre du mode surveillance sera « Toujours ».</string>
+    <string name="settings_autoconnect_description">Si Android ne se connecte pas automatiquement, on peut le lui demander aussi. Cela garde CAPod en surveillance d\'arrière-plan en permanence.</string>
     <string name="settings_autoconnect_info_android12">La connexion automatique repose sur une fonctionnalité système restreinte par Android 12 et les versions ultérieures. Elle peut ne pas fonctionner sur votre appareil.</string>
     <string name="settings_autoconnect_condition_label">Condition de connexion automatique</string>
     <string name="settings_autoconnect_condition_description">Quand devrions-nous tenter de nous connecter à votre appareil ?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Options de compatibilité</string>
     <string name="settings_category_compatibility_options_description">Ne rien changer rien si tout fonctionne ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Désactiver le filtrage matériel</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Ne pas déléguer pas le filtrage des données au système, gardez plutôt toutes les données et filtres dans l\'appli.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Essaie ceci si tes AirPods ne sont jamais détectés. L\'appli cherchera tous les signaux Bluetooth à proximité elle-même, au lieu de laisser ton téléphone les présélectionner.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Désactiver le groupage du matériel</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Avant de nous les transmettre, ne pas laisser le système regrouper les données BÉB recueillies.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Essaie ceci si les niveaux de batterie ne se mettent à jour que tard ou par rafales. Ton téléphone transmettra chaque signal Bluetooth immédiatement, au lieu de les collecter d\'abord.</string>
     <string name="settings_onepod_mode_label">Mode à un seul AirPod</string>
     <string name="settings_onepod_mode_description">La lecture/pause automatique et la connexion automatique réagissent à un seul écouteur au lieu de nécessiter les deux.</string>
     <string name="settings_popup_caseopen_label">Afficher une fenêtre pour l’étui</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">État de l’appareil</string>
     <string name="notification_channel_device_status_connected_label">L’appareil est connecté</string>
     <string name="monitor_notification_extra_enabled_hint">Vous pouvez désactiver cette notification dans les paramètres système.</string>
+    <string name="monitor_notification_starting">Démarrage en cours…</string>
     <string name="support_debuglog_label">Journal de débogage</string>
     <string name="support_debuglog_desc">Enregistrez les actions de l\'appli dans un fichier texte que vous pouvez partager.</string>
     <string name="debug_debuglog_size_label">Taille</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Vert</string>
     <string name="widget_config_preset_red">Rouge</string>
     <string name="settings_compat_indirectcallback_title">Transmission indirecte des données</string>
-    <string name="settings_compat_indirectcallback_summary">Utiliser une méthode de remplacement pour recevoir les données BÉB du système (diffusion au lieu de rappel).</string>
+    <string name="settings_compat_indirectcallback_summary">Essaie ceci si les autres options de compatibilité n\'ont pas aidé. Android transmettra les signaux Bluetooth à l\'appli en arrière-plan, au lieu que l\'appli les écoute directement.</string>
     <string name="troubleshooter_title">Dépannage</string>
     <string name="troubleshooter_summary">Diagnostiquer et corriger les problèmes de connectivité Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">Diffusions à bas niveau d\'énergie de Bluetooth</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Vous pouvez passer à CAPod Pro pour obtenir des fonctions supplémentaires et soutenir le développement.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod version libre</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N.D.</string>
     <string name="general_error_label">Erreur</string>
     <string name="general_grant_permission_action">Accorder l’autorisation</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth est désactivé, activez-le ;)</string>
     <string name="overview_monitoring_active_label">Surveillance des appareils</string>
     <string name="overview_monitoring_active_description">Assurez-vous que votre appareil est proche et actif.</string>
+    <string name="overview_monitoring_off_label">La surveillance en arrière-plan est désactivée</string>
+    <string name="overview_monitoring_off_description">Aucun profil n\'a d\'appareil Bluetooth appairé, donc CAPod ne se met à jour que lorsque l\'appli est ouverte. Sélectionnez-en un pour activer la surveillance en arrière-plan, la notification persistante et les réactions.</string>
+    <string name="overview_monitoring_off_action">Sélectionner un appareil appairé</string>
     <string name="overview_troubleshoot_suggestion_label">Connecté, mais aucune donnée</string>
     <string name="overview_troubleshoot_suggestion_description">Votre appareil est connecté, mais CAPod ne reçoit aucune donnée en direct de sa part. Votre téléphone a peut-être besoin d’une option de compatibilité — le dépannage peut essayer d’en trouver une automatiquement.</string>
     <string name="overview_troubleshoot_suggestion_action">Lancer le dépannage</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Double appui pour terminer l’appel</string>
     <string name="device_settings_open_cd">Ouvrir les paramètres de l’appareil</string>
     <string name="overview_card_missing_paired_device">Ce profil n\'a aucun appareil Bluetooth associé.</string>
+    <string name="overview_card_missing_paired_device_consequence">Sans cela, les paramètres de l\'appareil et la connexion automatique ne sont pas disponibles.</string>
     <string name="overview_reactions_hint_title">Les réactions sont par appareil</string>
     <string name="overview_reactions_hint_body">La lecture automatique, la pause automatique et les fenêtres contextuelles sont désormais configurées par appareil. Appuyez sur l’icône des paramètres d’une carte lorsque vos écouteurs sont connectés.</string>
+    <string name="review_app_review_action">Évaluation</string>
+    <string name="review_app_dismiss_action">Plus tard, peut-être</string>
+    <string name="review_app_body">Veux-tu évaluer CAPod ? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Général</string>
     <string name="device_settings_microphone_mode_label">Microphone</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Paramètres Bluetooth</string>
     <string name="device_settings_send_failed">Impossible d\'appliquer le paramètre : %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Le mode Désactivé n’est pas activé sur cet appareil. Activez « Autoriser le mode Désactivé » sous Contrôle du bruit.</string>
+    <string name="anc_mode_not_confirmed_message">Les AirPods n\'ont pas confirmé le changement de mode d\'écoute.</string>
     <string name="device_settings_category_battery_label">Batterie</string>
     <string name="device_settings_charge_cap_label">Limite de charge optimisée</string>
     <string name="device_settings_charge_cap_description">Apprend votre routine et met la charge en pause autour de 80 %% pour prolonger la durée de vie de la batterie, en rechargeant les écouteurs avant que vous soyez susceptible de les utiliser.</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">Rétablir les valeurs par défaut</string>
     <string name="press_controls_reset_confirm_message">Réinitialiser toutes les associations de pressions par défaut ?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Ouvrir les commandes de pression</string>
+    <string name="general_navigate_up_action">Retour</string>
+    <string name="general_progress_loading">Chargement</string>
 </resources>

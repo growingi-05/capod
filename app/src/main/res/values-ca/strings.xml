@@ -6,11 +6,13 @@
     <string name="general_copy_action">Copia</string>
     <string name="general_thank_you_label">Gràcies</string>
     <string name="general_upgrade_action">Actualitza</string>
+    <string name="general_retry_action">Reintenta</string>
     <string name="common_feature_requires_pro_msg">Milloreu per a desbloquejar.</string>
     <string name="common_upgrade_required_label">Es necessita millorar</string>
     <string name="general_donate_action">Dona</string>
     <string name="general_check_action">Comprova</string>
     <string name="general_close_action">Tanca</string>
+    <string name="general_dismiss_action">Ignora</string>
     <string name="general_edit_action">Edita</string>
     <string name="general_save_action">Desa</string>
     <string name="general_guide_action">Guia</string>
@@ -25,11 +27,12 @@
     <string name="upgrade_benefit_popups">Finestra emergent en obrir la funda i en connectar</string>
     <string name="upgrade_benefit_widgets">Ginys de la pantalla d\'inici</string>
     <string name="upgrade_benefit_device_settings">Configuració avançada del dispositiu</string>
-    <string name="upgrade_benefit_device_controls">Controls del dispositiu: soroll, pliques i més</string>
+    <string name="upgrade_benefit_device_controls">Controls del dispositiu: soroll, pliques i més
+</string>
     <string name="upgrade_benefit_support">Doneu suport al desenvolupador</string>
     <string name="upgrade_benefit_disclaimer">La disponibilitat de les funcions depèn dels auriculars i del dispositiu.</string>
     <string name="settings_monitor_connected_notification_label">Notificació addicional</string>
-    <string name="settings_monitor_connected_notification_description">Mostra una notificació addicional quan hi ha un dispositiu connectat. Això permet ocultar la notificació permanent «Sense dispositius» desactivant el canal «Estat del dispositiu».</string>
+    <string name="settings_monitor_connected_notification_description">Mostra una segona notificació que només apareix mentre un dispositiu està connectat. Amb això activat, pots amagar la notificació permanent de \"Cap dispositiu\": desactiva la categoria \"Estat del dispositiu\" a la configuració de notificacions d\'Android per a CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Mantén les notificacions després de la desconnexió</string>
     <string name="settings_keep_notification_after_disconnect_description">Continua mostrant els últims nivells de bateria coneguts fins i tot després que els AirPods es desconnectin</string>
     <string name="settings_autopause_label">Pausa automàtica</string>
@@ -43,7 +46,7 @@
     <string name="settings_signal_minimum_label">Qualitat de senyal mínima</string>
     <string name="settings_signal_minimum_description">La qualitat de senyal mínima que ha de tenir un dispositiu per considerar-se vostre.</string>
     <string name="settings_autoconnect_label">Connexió automàtica</string>
-    <string name="settings_autoconnect_description">Si l\'Android no es connecta automàticament, també ho podem demanar. Això establirà la configuració del mode de monitor a «Sempre».</string>
+    <string name="settings_autoconnect_description">Si l\'Android no es connecta automàticament, podem demanar-li que ho faci. Això manté el monitoratge de CAPod actiu en segon pla en tot moment.</string>
     <string name="settings_autoconnect_info_android12">La connexió automàtica depèn d\'una funció del sistema que l\'Android 12 i versions posteriors restringeixen. És possible que no funcioni al vostre dispositiu.</string>
     <string name="settings_autoconnect_condition_label">Condició de connexió automàtica</string>
     <string name="settings_autoconnect_condition_description">Quan hem d\'intentar connectar-nos al vostre dispositiu?</string>
@@ -54,9 +57,9 @@
     <string name="settings_category_compatibility_options_title">Opcions de compatibilitat</string>
     <string name="settings_category_compatibility_options_description">No ho toqueu si tot funciona ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Desactiva el filtratge de maquinari</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">No delegueu el filtratge de dades al sistema, obtingueu totes les dades i filtreu-les dins de l\'aplicació.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Prova-ho si els teus AirPods no es detecten mai. L\'aplicació buscarà per si mateixa entre tots els senyals Bluetooth propers, en lloc de deixar que el telèfon els preseleccioni.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Desactiva el processament per lots de maquinari</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">No deixeu que el grup del sistema reculli dades BLE abans de reenviar-nos-les.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Prova-ho si els nivells de bateria només s\'actualitzen tard o en ràfegues. El telèfon transmetrà cada senyal Bluetooth immediatament, en lloc de recollir-los primer.</string>
     <string name="settings_onepod_mode_label">Mode d\'un auricular</string>
     <string name="settings_onepod_mode_description">La reproducció/pausa automàtica i la connexió automàtica reaccionen a un sol auricular en lloc de requerir tots dos.</string>
     <string name="settings_popup_caseopen_label">Mostra la finestra emergent de la funda</string>
@@ -77,6 +80,7 @@
     <string name="notification_channel_device_status_label">Estat del dispositiu</string>
     <string name="notification_channel_device_status_connected_label">Dispositiu connectat</string>
     <string name="monitor_notification_extra_enabled_hint">Podeu desactivar aquesta notificació a la configuració del sistema.</string>
+    <string name="monitor_notification_starting">S\'està iniciant…</string>
     <string name="support_debuglog_label">Registre de depuració</string>
     <string name="support_debuglog_desc">Enregistra tot el que fa l\'aplicació en un fitxer de text que podeu compartir.</string>
     <string name="debug_debuglog_size_label">Mida</string>
@@ -159,7 +163,7 @@
     <string name="widget_config_preset_green">Verd</string>
     <string name="widget_config_preset_red">Vermell</string>
     <string name="settings_compat_indirectcallback_title">Lliurament indirecte de dades</string>
-    <string name="settings_compat_indirectcallback_summary">Utilitza un mètode alternatiu per rebre dades BLE del sistema (emissió en lloc de devolució de trucada).</string>
+    <string name="settings_compat_indirectcallback_summary">Prova-ho si les altres opcions de compatibilitat no han funcionat. L\'Android passarà els senyals Bluetooth a l\'aplicació en segon pla, en lloc que l\'aplicació els escolti directament.</string>
     <string name="troubleshooter_title">Solucionador de problemes</string>
     <string name="troubleshooter_summary">Diagnostica i soluciona problemes de connectivitat Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">Emissions Bluetooth de baixa energia</string>
@@ -181,8 +185,9 @@
     <string name="onboarding_body4">Podeu actualitzar a CAPod Pro per obtenir funcions addicionals i donar suport al desenvolupament.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/D</string>
     <string name="general_error_label">Error</string>
     <string name="general_grant_permission_action">Concedeix el permís</string>
@@ -196,6 +201,9 @@
     <string name="overview_bluetooth_disabled_description">El Bluetooth està desactivat, activeu-lo ;)</string>
     <string name="overview_monitoring_active_label">Monitorització de dispositius</string>
     <string name="overview_monitoring_active_description">Assegureu-vos que el dispositiu estigui a prop i actiu.</string>
+    <string name="overview_monitoring_off_label">Monitoratge de fons desactivat</string>
+    <string name="overview_monitoring_off_description">Cap perfil té un dispositiu Bluetooth emparellat, de manera que el CAPod només s\'actualitza mentre l\'aplicació està oberta. Seleccioneu-ne un per activar el monitoratge en segon pla, les notificacions contínues i les reaccions.</string>
+    <string name="overview_monitoring_off_action">Seleccioneu un dispositiu emparellat</string>
     <string name="overview_troubleshoot_suggestion_label">Connectat, però sense dades</string>
     <string name="overview_troubleshoot_suggestion_description">El dispositiu està connectat, però el CAPod no rep dades en directe. El telèfon pot necessitar una opció de compatibilitat: el solucionador de problemes pot intentar trobar-ne una automàticament.</string>
     <string name="overview_troubleshoot_suggestion_action">Executa el solucionador de problemes</string>
@@ -205,8 +213,8 @@
         <item quantity="other">%d dispositius sense perfil coincident</item>
     </plurals>
     <plurals name="overview_unmatched_devices_description">
-        <item quantity="one">S\'ha detectat %d dispositiu proper sense un perfil coincident. Mostra\'l per veure els detalls disponibles. Si és teu, afegeix un perfil des de Dispositius per reconèixer-lo.</item>
-        <item quantity="other">S\'han detectat %d dispositius propers sense perfils coincidents. Mostra\'ls per veure els detalls disponibles. Si algun és teu, afegeix un perfil des de Dispositius per reconèixer-lo.</item>
+        <item quantity="one">S\'ha detectat %d dispositiu proper sense un perfil coincident. Mostreu-lo per veure els detalls disponibles. Si és vostre, afegiu un perfil des de Dispositius per reconèixer-lo.</item>
+        <item quantity="other">S\'han detectat %d dispositius propers sense perfils coincidents. Mostreu-los per veure els detalls disponibles. Si algun és vostre, afegiu un perfil des de Dispositius per reconèixer-lo.</item>
     </plurals>
     <plurals name="overview_more_devices_upgrade">
         <item quantity="one">%d dispositiu més</item>
@@ -481,8 +489,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Doble toc per acabar la trucada</string>
     <string name="device_settings_open_cd">Obre la configuració del dispositiu</string>
     <string name="overview_card_missing_paired_device">Aquest perfil no té cap dispositiu Bluetooth emparellat.</string>
+    <string name="overview_card_missing_paired_device_consequence">Sense un, la configuració del dispositiu i la connexió automàtica no estan disponibles.</string>
     <string name="overview_reactions_hint_title">Les reaccions són per dispositiu</string>
     <string name="overview_reactions_hint_body">La reproducció automàtica, la pausa automàtica i les finestres emergents ara es configuren per dispositiu. Toqueu la icona de configuració d\'una targeta mentre els vostres auriculars estan connectats.</string>
+    <string name="review_app_review_action">Revisió</string>
+    <string name="review_app_dismiss_action">Potser més tard</string>
+    <string name="review_app_body">Vols deixar una ressenya del CAPod? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">General</string>
     <string name="device_settings_microphone_mode_label">Micròfon</string>
@@ -521,6 +533,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Configuració del Bluetooth</string>
     <string name="device_settings_send_failed">No s\'ha pogut aplicar la configuració: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">El mode Desactivat no esta habilitat en aquest dispositiu. Activeu l\'opció «Permet el mode desactivat» al Control de soroll.</string>
+    <string name="anc_mode_not_confirmed_message">Els AirPods no han confirmat el canvi de mode d\'escolta.</string>
     <string name="device_settings_category_battery_label">Bateria</string>
     <string name="device_settings_charge_cap_label">Límit de càrrega optimitzat</string>
     <string name="device_settings_charge_cap_description">Aprèn la vostra rutina i pausa la càrrega al voltant del 80%% per allargar la vida de la bateria i completa la càrrega dels auriculars abans que els necessiteu.</string>
@@ -560,4 +573,6 @@
     <string name="press_controls_reset_label">Restaura els valors per defecte</string>
     <string name="press_controls_reset_confirm_message">Voleu restablir totes les assignacions de pulsació als valors per defecte?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Obre els controls de pulsació</string>
+    <string name="general_navigate_up_action">Navega amunt</string>
+    <string name="general_progress_loading">S\'està carregant</string>
 </resources>

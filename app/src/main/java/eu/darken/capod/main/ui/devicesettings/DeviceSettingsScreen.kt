@@ -45,7 +45,9 @@ import eu.darken.capod.common.settings.SettingsSection
 import eu.darken.capod.main.ui.devicesettings.cards.AapUnavailableCard
 import eu.darken.capod.main.ui.devicesettings.cards.BatteryCard
 import eu.darken.capod.main.ui.devicesettings.cards.BatteryHealthTexts
+import eu.darken.capod.main.ui.devicesettings.cards.BatteryRuntimeWarningBanner
 import eu.darken.capod.main.ui.devicesettings.cards.ControlsCard
+import eu.darken.capod.main.ui.devicesettings.cards.DeviceInfoBottomSheet
 import eu.darken.capod.main.ui.devicesettings.cards.DeviceInfoCard
 import eu.darken.capod.main.ui.devicesettings.cards.NoiseControlCard
 import eu.darken.capod.main.ui.devicesettings.cards.NotConnectedCard
@@ -90,6 +92,7 @@ fun DeviceSettingsScreenHost(
     var showListeningModeCycleDialog by rememberSaveable { mutableStateOf(false) }
     val state by vm.state.collectAsStateWithLifecycle(initialValue = null)
     val offRejectedMessage = stringResource(R.string.device_settings_anc_off_rejected_message)
+    val ancNotConfirmedMessage = stringResource(R.string.anc_mode_not_confirmed_message)
     val chargeCapRejectedMessage = stringResource(R.string.device_settings_charge_cap_rejected_message)
     val pendingInfoMessage = stringResource(R.string.device_settings_pending_info)
 
@@ -123,6 +126,10 @@ fun DeviceSettingsScreenHost(
 
                 DeviceSettingsViewModel.Event.OffModeRejectedByDevice -> {
                     snackbarHostState.showSnackbar(offRejectedMessage)
+                }
+
+                DeviceSettingsViewModel.Event.AncModeNotConfirmedByDevice -> {
+                    snackbarHostState.showSnackbar(ancNotConfirmedMessage)
                 }
 
                 DeviceSettingsViewModel.Event.DynamicEndOfChargeRejectedByDevice -> {
@@ -235,6 +242,65 @@ fun DeviceSettingsScreen(
     val features = device?.model?.features
     val enabled = device?.isAapReady == true
     val isPro = state.isPro
+    // Hoisted out of DeviceInfoCard: the runtime warning banner opens the same detail sheet as the
+    // card's info icon, and both entry points can be scrolled out of composition independently.
+    var showDeviceDetails by rememberSaveable { mutableStateOf(false) }
+
+    val context = LocalContext.current
+    val stateDetection = device?.ble as? HasStateDetection
+    val seenFirst = device?.seenFirstAt
+    val seenLast = device?.seenLastAt
+    val firstSeen = if (device != null && seenFirst != null && seenLast != null &&
+        Duration.between(seenFirst, seenLast).toMinutes() >= 1
+    ) {
+        device.firstSeenFormatted(state.now)
+    } else null
+    val locale = LocalConfiguration.current.locales[0]
+    val zoneId = ZoneId.systemDefault()
+    val dateFormatter = remember(locale, zoneId) {
+        DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+            .withLocale(locale)
+            .withZone(zoneId)
+    }
+    val detailLabels = rememberDeviceInfoDetailLabels()
+    val batteryHealthTexts = when {
+        state.batteryHealth != null -> BatteryHealthTexts(
+            left = state.batteryHealth.left?.let {
+                stringResource(R.string.device_settings_info_battery_health_value, it.percent)
+            },
+            right = state.batteryHealth.right?.let {
+                stringResource(R.string.device_settings_info_battery_health_value, it.percent)
+            },
+            headset = state.batteryHealth.headset?.let {
+                stringResource(R.string.device_settings_info_battery_health_value, it.percent)
+            },
+        )
+        state.batteryHealthPending -> BatteryHealthTexts(
+            pending = stringResource(R.string.device_settings_info_battery_health_pending),
+        )
+        else -> null
+    }
+    val detailItems = if (device != null) {
+        buildDeviceInfoDetailItems(
+            info = device.deviceInfo,
+            labels = detailLabels,
+            formatDate = { instant -> dateFormatter.format(instant) },
+            batteryHealth = batteryHealthTexts,
+        )
+    } else {
+        emptyList()
+    }
+
+    LaunchedEffect(detailItems) {
+        if (detailItems.isEmpty()) showDeviceDetails = false
+    }
+
+    if (showDeviceDetails && detailItems.isNotEmpty()) {
+        DeviceInfoBottomSheet(
+            items = detailItems,
+            onDismiss = { showDeviceDetails = false },
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -277,45 +343,6 @@ fun DeviceSettingsScreen(
             // Device Info
             if (device != null) {
                 item("device_info") {
-                    val context = LocalContext.current
-                    val stateDetection = device.ble as? HasStateDetection
-                    val seenFirst = device.seenFirstAt
-                    val seenLast = device.seenLastAt
-                    val firstSeen = if (seenFirst != null && seenLast != null && Duration.between(seenFirst, seenLast)
-                            .toMinutes() >= 1
-                    ) {
-                        device.firstSeenFormatted(state.now)
-                    } else null
-                    val info = device.deviceInfo
-                    val locale = LocalConfiguration.current.locales[0]
-                    val zoneId = ZoneId.systemDefault()
-                    val dateFormatter = remember(locale, zoneId) {
-                        DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
-                            .withLocale(locale)
-                            .withZone(zoneId)
-                    }
-                    val detailItems = buildDeviceInfoDetailItems(
-                        info = info,
-                        labels = rememberDeviceInfoDetailLabels(),
-                        formatDate = { instant -> dateFormatter.format(instant) },
-                        batteryHealth = when {
-                            state.batteryHealth != null -> BatteryHealthTexts(
-                                left = state.batteryHealth.left?.let {
-                                    stringResource(R.string.device_settings_info_battery_health_value, it)
-                                },
-                                right = state.batteryHealth.right?.let {
-                                    stringResource(R.string.device_settings_info_battery_health_value, it)
-                                },
-                                headset = state.batteryHealth.headset?.let {
-                                    stringResource(R.string.device_settings_info_battery_health_value, it)
-                                },
-                            )
-                            state.batteryHealthPending -> BatteryHealthTexts(
-                                pending = stringResource(R.string.device_settings_info_battery_health_pending),
-                            )
-                            else -> null
-                        },
-                    )
                     DeviceInfoCard(
                         deviceInfo = device.deviceInfo,
                         modelLabel = buildModelLabel(device),
@@ -326,6 +353,7 @@ fun DeviceSettingsScreen(
                         detailItems = detailItems,
                         canRename = device.isAapReady,
                         onRename = onDeviceNameChange,
+                        onShowDetails = { showDeviceDetails = true },
                     )
                 }
             }
@@ -335,6 +363,19 @@ fun DeviceSettingsScreen(
                 item("missing_paired_device") {
                     MissingPairedDeviceBanner(
                         onClick = onEditProfile,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    )
+                }
+            }
+
+            // Listening time has dropped far below the model's rating — details live in the sheet
+            val runtimeWarning = state.batteryRuntimeWarning
+            if (device != null && device.hasSelectedPairedDevice && runtimeWarning != null) {
+                item("battery_runtime_warning") {
+                    BatteryRuntimeWarningBanner(
+                        slot = runtimeWarning.slot,
+                        percent = runtimeWarning.reading.percent,
+                        onClick = { showDeviceDetails = true },
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                     )
                 }

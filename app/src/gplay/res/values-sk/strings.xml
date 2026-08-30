@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">Google Play hlási, že tento upgrade už vlastníte, no nepodarilo sa ho obnoviť. Uistite sa, že používate rovnaký účet Google, s ktorým ste nákup uskutočnili. Synchronizácia Play Store môže chvíľu trvať — skúste reštartovať zariadenie, vymazať vyrovnávaciu pamäť Google Play alebo jednoducho počkať.</string>
     <string name="upgrade_restore_action">Obnoviť nákup</string>
     <string name="upgrade_badge_label">Pro</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">Získať %1$s</string>
     <string name="upgrade_preamble">CAPod vyvíja jedna osoba. Upgradom odomknete ďalšie funkcie a pomôžete udržať aplikáciu nažive.</string>
     <string name="upgrade_screen_options_description">Rovnaké funkcie, odlišná cena. Predplatné zahŕňa bezplatnú skúšobnú verziu a možno ho kedykoľvek zrušiť.</string>
     <string name="upgrade_screen_options_description_no_trial">Rovnaké funkcie, odlišná cena. Predplatné možno kedykoľvek zrušiť.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">Toto je samostatný nákup — nezruší ani nevráti platbu za vaše predplatné. Použite rovnaký účet Google.</string>
     <string name="upgrade_screen_sub_still_renewing_title">Predplatné je stále aktívne</string>
     <string name="upgrade_screen_sub_still_renewing_message">Vaše predplatné je stále nastavené na obnovenie. Najprv ho zrušte v Google Play a potom prejdite na jednorazový nákup. Práve ste ho zrušili? Dajte Google Play chvíľu čas a skúste to znova.</string>
-    <string name="upgrade_screen_sub_check_failed_title">Kontrola predplatného zlyhala</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nepodarilo sa skontrolovať stav vášho predplatného v Google Play. Aby ste predišli dvojitému nákupu, skúste to o chvíľu znova.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nepodarilo sa skontrolovať tvoje nákupy v Obchode Play. Aby sa zabránilo dvojitému nákupu, skús to znova o chvíľu.</string>
+    <string name="upgrade_screen_pending_card_title">Čakajúca platba</string>
+    <string name="upgrade_screen_pending_card_body">Obchod Play stále spracúva tvoju platbu. Pro sa odomkne automaticky, keď platba prejde. Niektoré spôsoby platby môžu trvať dlhšie. Nemusíš robiť nič ďalšie.</string>
+    <string name="upgrade_screen_pending_dialog_message">Obchod Play našiel nákup s čakajúcou platbou a stále ho spracúva. Pro sa odomkne automaticky, keď platba prejde.</string>
     <string name="upgrade_screen_grace_title">Potvrdzujeme váš nákup</string>
     <string name="upgrade_screen_grace_body_short">Google Play zatiaľ nepotvrdil váš nákup. Pro je stále aktívne — nie je potrebná žiadna akcia.</string>
     <string name="upgrade_screen_grace_body">Google Play už dlhšie nepotvrdil váš nákup. Pro je stále aktívne. Uistite sa, že ste online a prihlásení s účtom Google, ktorý ste použili pri nákupe, a potom skúste nákup obnoviť.</string>
-    <string name="settings_upgrade_status_label">CAPod Pro</string>
-    <string name="settings_upgrade_status_description">Stav vášho upgradu a nákupu.</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">Možnosti upgradu</string>
+    <string name="upgrade_screen_offers_or">alebo</string>
+    <string name="upgrade_screen_offers_body">Rovnaké funkcie, iba iné cenové modely.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Ceny sú nedostupné</string>
+    <string name="upgrade_screen_offers_unavailable_message">Google Play teraz nevrátilo ceny. Skontrolujte svoje pripojenie a skúste to znova o chvíľu.</string>
+    <string name="upgrade_screen_subscription_offer_title">Ročné predplatné</string>
+    <string name="upgrade_screen_subscription_offer_body">Obnovuje sa ročne po bezplatnom období. Môžete zrušiť kedykoľvek v Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Obnovuje sa ročne. Môžete zrušiť kedykoľvek v Google Play.</string>
+    <string name="upgrade_screen_iap_offer_body">Jedna platba bez obnovení.</string>
+    <string name="upgrade_screen_benefits_title">Výhody upgradu</string>
+    <string name="upgrade_screen_restore_body">Obnovenie požiada Google Play, aby znova skontrolovala nákupy tejto aplikácie pre aktuálny účet. Nespúšťa nový nákup.</string>
+    <string name="upgrade_screen_restore_checked_message">CAPod práve skontrolovala Google Play, ale nákup verzie Pro sa nepodarilo potvrdiť pre účet, ktorý Google Play používa pre túto aplikáciu.</string>
+    <string name="upgrade_screen_restore_contact_hint">Stále máte problém? Kontaktujte podporu z e-mailu, ktorého ste použili na nákup, a uveďte číslo objednávky Google Play.</string>
+    <string name="upgrade_screen_contact_support_action">Kontaktovať podporu</string>
+    <string name="settings_upgrade_status_description">Váš stav upgradu a nákupu.</string>
+    <string name="upgrades_gplay_unavailable_error_description">CAPod sa nemôže pripojiť k službe Google Play. Je Google Play nainštalovaný a aktuálny? Je váš účet Google prihlásený? Skúste vymazať vyrovnávaciu pamäť aplikácie Google Play a reštartujte zariadenie.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Nepodarilo sa otvoriť Google Play. Môže byť chýbajúci, zakázaný alebo obmedzený na tomto zariadení.</string>
+    <string name="upgrades_gplay_internal_error_title">Chyba Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Vyskytla sa interná chyba Google Play. Skúste nasledovné:\n\n• Reštartujte zariadenie\n• Vymažte vyrovnávaciu pamäť Google Play Store\n• Skúste neskôr</string>
+    <string name="upgrades_gplay_network_error_title">Chyba pripojenia</string>
+    <string name="upgrades_gplay_network_error_description">Nie je možné pripojiť sa k službe Google Play. Skontrolujte internetové pripojenie a skúste znova.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ponuka nie je dostupná</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Služba Google Play v súčasnosti neposkytuje túto možnosť upgradu. Skúste neskôr alebo skontrolujte Google Play Store.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Kontrola so službou Google Play sa nestihla dokončiť v čase, takže váš stav nákupu je stále neznámy. Na vašom účte sa nič nezmenilo.</string>
 </resources>

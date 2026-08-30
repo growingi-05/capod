@@ -1,5 +1,6 @@
 package eu.darken.capod.main.ui.overview
 
+import android.app.Activity
 import android.content.Intent
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -34,9 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -53,6 +51,9 @@ import eu.darken.capod.common.error.ErrorEventHandler
 import eu.darken.capod.common.navigation.NavigationEventHandler
 import eu.darken.capod.common.permissions.Permission
 import eu.darken.capod.common.upgrade.UpgradeRepo
+import eu.darken.capod.common.upgrade.ui.brandTitle
+import eu.darken.capod.main.core.MonitorMode
+import eu.darken.capod.main.ui.overview.cards.BackgroundMonitoringOffCard
 import eu.darken.capod.main.ui.overview.cards.BluetoothDisabledCard
 import eu.darken.capod.main.ui.overview.cards.DeviceLimitUpgradeCard
 import eu.darken.capod.main.ui.overview.cards.DualPodsCard
@@ -60,6 +61,7 @@ import eu.darken.capod.main.ui.overview.cards.MonitoringActiveCard
 import eu.darken.capod.main.ui.overview.cards.NoProfilesCard
 import eu.darken.capod.main.ui.overview.cards.PermissionCard
 import eu.darken.capod.main.ui.overview.cards.ReactionsMovedHintCard
+import eu.darken.capod.main.ui.overview.cards.ReviewCard
 import eu.darken.capod.main.ui.overview.cards.SinglePodsCard
 import eu.darken.capod.main.ui.overview.cards.TroubleshootSuggestionCard
 import eu.darken.capod.main.ui.overview.cards.UnknownPodDeviceCard
@@ -94,6 +96,7 @@ fun OverviewScreenHost(vm: OverviewViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
     val offRejectedMessage = stringResource(R.string.device_settings_anc_off_rejected_message)
+    val ancNotConfirmedMessage = stringResource(R.string.anc_mode_not_confirmed_message)
 
     // Collect workerAutolaunch passively to keep it active
     LaunchedEffect(Unit) {
@@ -105,6 +108,10 @@ fun OverviewScreenHost(vm: OverviewViewModel = hiltViewModel()) {
             when (event) {
                 OverviewViewModel.Event.OffModeRejectedByDevice -> {
                     snackbarHostState.showSnackbar(offRejectedMessage)
+                }
+
+                OverviewViewModel.Event.AncModeNotConfirmedByDevice -> {
+                    snackbarHostState.showSnackbar(ancNotConfirmedMessage)
                 }
             }
         }
@@ -161,6 +168,10 @@ fun OverviewScreenHost(vm: OverviewViewModel = hiltViewModel()) {
     val state by vm.state.collectAsStateWithLifecycle(initialValue = null)
     val currentState = state ?: return
 
+    // Play's in-app review flow needs a hosting Activity. Without one the card still renders, but
+    // with its review action disabled instead of silently doing nothing.
+    val activity = context as? Activity
+
     OverviewScreen(
         state = currentState,
         snackbarHostState = snackbarHostState,
@@ -186,6 +197,11 @@ fun OverviewScreenHost(vm: OverviewViewModel = hiltViewModel()) {
         onToggleDeviceExpansion = { device ->
             device.profileId?.let { vm.toggleDeviceExpansion(it) }
         },
+        onSetupPairedDevice = {
+            currentState.soleProfileId?.let { vm.goToEditProfile(it) } ?: vm.goToDeviceManager()
+        },
+        onReviewNow = activity?.let { host -> { vm.reviewNow(host) } },
+        onReviewDismiss = { vm.reviewDismiss() },
     )
 }
 
@@ -204,6 +220,9 @@ fun OverviewScreen(
     onDeviceSettings: (PodDevice) -> Unit = {},
     onEditProfile: (PodDevice) -> Unit = {},
     onToggleDeviceExpansion: (PodDevice) -> Unit = {},
+    onSetupPairedDevice: () -> Unit = {},
+    onReviewNow: (() -> Unit)? = null,
+    onReviewDismiss: () -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -306,8 +325,24 @@ fun OverviewScreen(
                 }
             }
 
+            // 3b. Review prompt, only shown while no higher priority card is on screen
+            if (state.showReviewCard) {
+                item(key = "review") {
+                    ReviewCard(
+                        onReview = onReviewNow,
+                        onDismiss = onReviewDismiss,
+                    )
+                }
+            }
+
             // 4. Profiled device cards (limited to 1 for free users)
             if (!state.isScanBlocked && state.isBluetoothEnabled) {
+                if (state.monitoringStatus == OverviewViewModel.MonitoringStatus.BACKGROUND_OFF) {
+                    item(key = "monitoring_off") {
+                        BackgroundMonitoringOffCard(onSetupPairedDevice = onSetupPairedDevice)
+                    }
+                }
+
                 if (state.showReactionsHint && state.visibleProfiledDevices.isNotEmpty()) {
                     item(key = "reactions_hint") {
                         ReactionsMovedHintCard()
@@ -362,7 +397,7 @@ fun OverviewScreen(
                 }
 
                 // 5. Monitoring active card
-                if (state.profiles.isNotEmpty() && state.profiledDevices.isEmpty() && !state.shouldShowUnmatchedSection) {
+                if (state.monitoringStatus == OverviewViewModel.MonitoringStatus.SEARCHING) {
                     item(key = "monitoring_active") {
                         MonitoringActiveCard()
                     }
@@ -453,6 +488,7 @@ private fun OverviewScreenWithDevicesPreview() = PreviewWrapper {
             ),
             isDebug = false,
             isBluetoothEnabled = true,
+            effectiveMode = MonitorMode.AUTOMATIC,
             profiles = listOf(
                 MockPodDataProvider.profile("My AirPods Pro", PodModel.AIRPODS_PRO2),
                 MockPodDataProvider.profile("AirPods Max", PodModel.AIRPODS_MAX),
@@ -490,6 +526,7 @@ private fun OverviewScreenEmptyPreview() = PreviewWrapper {
             devices = emptyList(),
             isDebug = false,
             isBluetoothEnabled = true,
+            effectiveMode = MonitorMode.AUTOMATIC,
             profiles = listOf(MockPodDataProvider.profile("My AirPods", PodModel.AIRPODS_PRO2)),
             upgradeInfo = MockPodDataProvider.fossInfo(),
             showUnmatchedDevices = false,
@@ -513,6 +550,7 @@ private fun OverviewScreenNoProfilesPreview() = PreviewWrapper {
             devices = emptyList(),
             isDebug = false,
             isBluetoothEnabled = true,
+            effectiveMode = MonitorMode.MANUAL,
             profiles = emptyList(),
             upgradeInfo = MockPodDataProvider.gplayInfo(),
             showUnmatchedDevices = false,
@@ -536,6 +574,7 @@ private fun OverviewScreenBluetoothOffPreview() = PreviewWrapper {
             devices = emptyList(),
             isDebug = false,
             isBluetoothEnabled = false,
+            effectiveMode = MonitorMode.AUTOMATIC,
             profiles = listOf(MockPodDataProvider.profile("My AirPods", PodModel.AIRPODS_PRO2)),
             upgradeInfo = MockPodDataProvider.fossInfo(isPro = true),
             showUnmatchedDevices = false,
@@ -549,37 +588,46 @@ private fun OverviewScreenBluetoothOffPreview() = PreviewWrapper {
     )
 }
 
+@Preview2
+@Composable
+private fun OverviewScreenMonitoringOffPreview() = PreviewWrapper {
+    OverviewScreen(
+        state = OverviewViewModel.State(
+            now = SystemTimeSource.now(),
+            permissions = emptySet(),
+            devices = emptyList(),
+            isDebug = false,
+            isBluetoothEnabled = true,
+            effectiveMode = MonitorMode.MANUAL,
+            profiles = listOf(
+                MockPodDataProvider.profile("My AirPods", PodModel.AIRPODS_PRO2, address = null),
+            ),
+            upgradeInfo = MockPodDataProvider.fossInfo(),
+            showUnmatchedDevices = false,
+        ),
+        onRequestPermission = {},
+        onBluetoothSettings = {},
+        onManageDevices = {},
+        onSettings = {},
+        onUpgrade = {},
+        onToggleUnmatched = {},
+    )
+}
+
 @Composable
 private fun ToolbarTitle(upgradeInfo: UpgradeRepo.Info) {
-    val appName = stringResource(R.string.app_name)
-    val proName = stringResource(R.string.app_name_pro)
-    val fossName = stringResource(R.string.app_name_foss)
-
-    val titleParts = when (upgradeInfo.type) {
-        UpgradeRepo.Type.GPLAY -> {
-            if (upgradeInfo.isPro) proName else appName
-        }
-
-        UpgradeRepo.Type.FOSS -> {
-            if (upgradeInfo.isPro) fossName else appName
-        }
-    }.split(" ").filter { it.isNotEmpty() }
-
-    if (titleParts.size == 2) {
-        val suffixColor = when (upgradeInfo.type) {
-            UpgradeRepo.Type.FOSS -> colorResource(R.color.brand_secondary)
-            else -> colorResource(R.color.brand_tertiary)
-        }
-
-        Text(
-            text = buildAnnotatedString {
-                append("${titleParts[0]} ")
-                withStyle(SpanStyle(color = suffixColor)) {
-                    append(titleParts[1])
-                }
-            },
-        )
-    } else {
-        Text(text = appName)
+    // The tier word and its wording come from the flavor's own resources, so the title no longer
+    // needs a per-type string lookup — only the tint still differs between the two.
+    val highlight = when (upgradeInfo.type) {
+        UpgradeRepo.Type.FOSS -> colorResource(R.color.brand_secondary)
+        UpgradeRepo.Type.GPLAY -> colorResource(R.color.brand_tertiary)
     }
+
+    Text(
+        text = brandTitle(
+            includeQualifier = upgradeInfo.isPro,
+            highlightQualifier = upgradeInfo.isPro,
+            highlightColor = highlight,
+        ),
+    )
 }

@@ -6,11 +6,13 @@
     <string name="general_copy_action">நகலெடு</string>
     <string name="general_thank_you_label">நன்றி</string>
     <string name="general_upgrade_action">மேம்படுத்து</string>
+    <string name="general_retry_action">மீண்டும் முயல்</string>
     <string name="common_feature_requires_pro_msg">திறக்க மேம்படுத்தவும்.</string>
     <string name="common_upgrade_required_label">மேம்படுத்தல் தேவை</string>
     <string name="general_donate_action">நன்கொடை</string>
     <string name="general_check_action">சரிபார்</string>
     <string name="general_close_action">மூடு</string>
+    <string name="general_dismiss_action">நிராகரி</string>
     <string name="general_edit_action">திருத்து</string>
     <string name="general_save_action">சேமி</string>
     <string name="general_guide_action">வழிகாட்டி</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">டெவலப்பரை ஆதரிக்கவும்</string>
     <string name="upgrade_benefit_disclaimer">அம்சங்களின் கிடைக்கும் தன்மை உங்கள் ஹெட்ஃபோன்கள் மற்றும் சாதனத்தை சார்ந்துள்ளது.</string>
     <string name="settings_monitor_connected_notification_label">கூடுதல் அறிவிப்பு</string>
-    <string name="settings_monitor_connected_notification_description">ஒரு சாதனம் இணைக்கப்படும்போது கூடுதல் அறிவிப்பைக் காட்டுகிறது. \"சாதன நிலை\" சேனலை முடக்குவதன் மூலம் நிரந்தர \"சாதனங்கள் இல்லை\" அறிவிப்பை மறைக்க இது உங்களை அனுமதிக்கிறது.</string>
+    <string name="settings_monitor_connected_notification_description">சாதனம் இணைக்கப்பட்டுள்ள போது மட்டுமே தோன்றும் இரண்டாவது அறிவிப்பைக் காட்டுகிறது. இதை இயக்கும் போது, \'சாதனங்கள் இல்லை\' என்ற நிரந்தரமான அறிவிப்பை மறைக்கலாம்: CAPod க்கான Android இன் அறிவிப்பு அமைப்புகளில் \'சாதன நிலை\' வகையை முடக்கவும்.</string>
     <string name="settings_keep_notification_after_disconnect_label">துண்டிக்கப்பட்ட பிறகு அறிவிப்பை வைத்திரு</string>
     <string name="settings_keep_notification_after_disconnect_description">உங்கள் AirPods துண்டிக்கப்பட்ட பிறகும் கடைசியாக அறியப்பட்ட பேட்டரி நிலைகளைக் காட்டவும்</string>
     <string name="settings_autopause_label">தானியங்கு இடைநிறுத்தம்</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">குறைந்தபட்ச சிக்னல் தரம்</string>
     <string name="settings_signal_minimum_description">ஒரு சாதனம் உங்களுடையதாகக் கருதப்படுவதற்குத் தேவையான குறைந்தபட்ச சிக்னல் தரம்.</string>
     <string name="settings_autoconnect_label">தானியங்கு இணைப்பு</string>
-    <string name="settings_autoconnect_description">ஆண்ட்ராய்டு தானாக இணைக்கவில்லை என்றால், நாமும் அதைக் கேட்கலாம். இது கண்காணிப்பு முறை அமைப்பை \'எப்போதும்\' என அமைக்கும்.</string>
+    <string name="settings_autoconnect_description">Android தானாக இணைக்கவில்லை என்றால், நாம் அதை கேட்கலாம். இது CAPod கண்காணிப்பை எப்போதும் பின்னணியில் வைக்கிறது.</string>
     <string name="settings_autoconnect_info_android12">ஆட்டோ கனெக்ட் Android 12 மற்றும் புதிய பதிப்புகளில் கட்டுப்படுத்தப்பட்ட ஒரு கணினி அம்சத்தை நம்பியுள்ளது. இது உங்கள் சாதனத்தில் வேலை செய்யாமல் போகலாம்.</string>
     <string name="settings_autoconnect_condition_label">தானியங்கு இணைப்பு நிபந்தனை</string>
     <string name="settings_autoconnect_condition_description">உங்கள் சாதனத்துடன் எப்போது இணைக்க முயற்சிக்க வேண்டும்?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">இணக்கத்தன்மை விருப்பங்கள்</string>
     <string name="settings_category_compatibility_options_description">எல்லாம் வேலை செய்தால் தொடாதே ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">வன்பொருள் வடிகட்டலை முடக்கு</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">கணினிக்கு தரவு வடிகட்டலை ஒப்படைக்காதீர், பதிலாக எல்லா தரவையும் பெற்று ஆப்ஸிலேயே வடிகட்டு.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">உங்கள் AirPods ஒருபோதும் கண்டறியப்படவில்லை என்றால் இதை முயற்சி செய்யவும். பயன்பாடு அருகிலுள்ள அனைத்து Bluetooth சிக்னல்களையும் நேரடியாகத் தேடும், உங்கள் ஃபோனுக்கு அவற்றை முன்கூட்டியே வடிகட்ட விடாமல்.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">வன்பொருள் தொகுதிப்படுத்தலை முடக்கு</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">சேகரிக்கப்பட்ட BLE தரவை எங்களுக்கு அனுப்புவதற்கு முன்பு கணினி குழுவாக்க அனுமதிக்காதீர்கள்.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">பேட்டரி நிலைகள் தாமதமாக அல்லது கூட்டாக மட்டுமே புதுப்பிக்கப்பட்டால் இதை முயற்சி செய்யவும். உங்கள் ஃபோன் ஒவ்வொரு Bluetooth சிக்னலையும் உடனடியாக அனுப்பும், அவற்றை முதலில் சேகரிக்க விடாமல்.</string>
     <string name="settings_onepod_mode_label">ஒரு பாட் முறை</string>
     <string name="settings_onepod_mode_description">ஆட்டோ பிளே/இடைநிறுத்தம் மற்றும் ஆட்டோ-கனெக்ட் இரண்டும் தேவைப்படாமல் ஒரே ஒரு பாட்டுக்கு எதிர்வினை ஆற்றுகின்றன.</string>
     <string name="settings_popup_caseopen_label">கேஸ் பாப்அப்பைக் காட்டு</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">சாதன நிலை</string>
     <string name="notification_channel_device_status_connected_label">இணைக்கப்பட்ட சாதனம்</string>
     <string name="monitor_notification_extra_enabled_hint">கணினி அமைப்புகளில் இந்த அறிவிப்பை முடக்கலாம்.</string>
+    <string name="monitor_notification_starting">தொடங்குகிறது…</string>
     <string name="support_debuglog_label">பிழைத்திருத்த பதிவு</string>
     <string name="support_debuglog_desc">ஆப்ஸ் செய்யும் அனைத்தையும் நீங்கள் பகிரக்கூடிய ஒரு உரைக் கோப்பில் பதிவுசெய்க.</string>
     <string name="debug_debuglog_size_label">அளவு</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">பச்சை</string>
     <string name="widget_config_preset_red">சிவப்பு</string>
     <string name="settings_compat_indirectcallback_title">மறைமுக தரவு விநியோகம்</string>
-    <string name="settings_compat_indirectcallback_summary">கணினியிலிருந்து BLE தரவைப் பெற மாற்று முறையைப் பயன்படுத்தவும் (அழைப்புக்குப் பதிலாக ஒளிபரப்பு).</string>
+    <string name="settings_compat_indirectcallback_summary">மற்ற பொருந்தகை விருப்பங்கள் உதவியளிக்கவில்லை என்றால் இதை முயற்சி செய்யவும். பயன்பாடு நேரடியாக Bluetooth சிக்னல்களைக் கேட்பதற்கு பதிலாக, Android அவற்றை பின்னணியில் பயன்பாட்டிற்கு அனுப்பும்.</string>
     <string name="troubleshooter_title">சிக்கல் தீர்ப்பான்</string>
     <string name="troubleshooter_summary">புளூடூத் இணைப்புச் சிக்கல்களைக் கண்டறிந்து சரிசெய்யவும்.</string>
     <string name="troubleshooter_ble_intro_title">புளூடூத் குறைந்த ஆற்றல் ஒளிபரப்புகள்</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">கூடுதல் அம்சங்களைப் பெறவும் மேம்பாட்டை ஆதரிக்கவும் நீங்கள் CAPod Pro க்கு மேம்படுத்தலாம்.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">கிடைக்கவில்லை</string>
     <string name="general_error_label">பிழை</string>
     <string name="general_grant_permission_action">அனுமதி வழங்கு</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">புளூடூத் முடக்கப்பட்டுள்ளது, இயக்கவும் ;)</string>
     <string name="overview_monitoring_active_label">சாதனங்களைக் கண்காணிக்கிறது</string>
     <string name="overview_monitoring_active_description">உங்கள் சாதனம் அருகில் மற்றும் செயலில் இருப்பதை உறுதிசெய்யவும்.</string>
+    <string name="overview_monitoring_off_label">பின்னணி கண்காணிப்பு அணைக்கப்பட்டுள்ளது</string>
+    <string name="overview_monitoring_off_description">எந்தவொரு சுயவிவரமும் இணைக்கப்பட்ட ப்லூடூத் சாதனத்தைக் கொண்டிருக்கவில்லை, எனவே CAPod ஆப்பு திறந்திருக்கும் போது மட்டுமே புதுப்பிக்கிறது. பின்னணி கண்காணிப்பு, நடந்துகொண்டிருக்கும் அறிவிப்பு மற்றும் எதிர்வினைகளை இயக்க ஒன்றைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="overview_monitoring_off_action">இணைக்கப்பட்ட சாதனத்தைத் தேர்ந்தெடுக்கவும்</string>
     <string name="overview_troubleshoot_suggestion_label">இணைக்கப்பட்டது, ஆனால் தரவு இல்லை</string>
     <string name="overview_troubleshoot_suggestion_description">உங்கள் சாதனம் இணைக்கப்பட்டுள்ளது, ஆனால் CAPod அதிலிருந்து நேரடி தரவு எதுவும் பெறவில்லை. உங்கள் தொலைபேசிக்கு இணக்கத்தன்மை விருப்பம் தேவைப்படலாம் — சிக்கல் தீர்ப்பான் தானாக ஒன்றை கண்டுபிடிக்க முயற்சிக்கும்.</string>
     <string name="overview_troubleshoot_suggestion_action">சிக்கல் தீர்ப்பானை இயக்கு</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">அழைப்பை முடிக்க இரண்டு முறை அழுத்தவும்</string>
     <string name="device_settings_open_cd">சாதன அமைப்புகளைத் திறக்கவும்</string>
     <string name="overview_card_missing_paired_device">இந்த சுயவிவரத்தில் இணைக்கப்பட்ட Bluetooth சாதனம் இல்லை.</string>
+    <string name="overview_card_missing_paired_device_consequence">அது இல்லாமல், சாதன அமைப்புகள் மற்றும் தானியங்கி இணைப்பு கிடைக்கவில்லை.</string>
     <string name="overview_reactions_hint_title">எதிர்வினைகள் சாதனத்திற்கு தனித்தனியாக உள்ளன</string>
     <string name="overview_reactions_hint_body">தானியங்கி இயக்கம், தானியங்கி இடைநிறுத்தம் மற்றும் பாப்-அப்கள் இப்போது சாதனத்திற்கு தனித்தனியாக அமைக்கப்படுகின்றன. உங்கள் ஹெட்ஃபோன்கள் இணைக்கப்பட்டிருக்கும்போது ஒரு கார்டில் உள்ள அமைப்புகள் ஐகானை தட்டவும்.</string>
+    <string name="review_app_review_action">மதிப்பாய்வு</string>
+    <string name="review_app_dismiss_action">பிறகு வேளையில்</string>
+    <string name="review_app_body">நீங்கள் CAPod க்கு மதிப்புரை வழங்க விரும்புகிறீர்களா? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">பொது</string>
     <string name="device_settings_microphone_mode_label">மைக்ரோஃபோன்</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth அமைப்புகள்</string>
     <string name="device_settings_send_failed">அமைப்பை பயன்படுத்த முடியவில்லை: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">இந்த சாதனத்தில் ஆஃஃப் முறை இயக்கப்படவில்லை. சத்தக் கட்டுப்பாட்டின் கீழ் \"ஆஃஃப் முறையை அனுமதி\" என்பதை இயக்கவும்.</string>
+    <string name="anc_mode_not_confirmed_message">AirPods கேட்கும் முறை மாற்றத்தை உறுதிப்படுத்தவில்லை.</string>
     <string name="device_settings_category_battery_label">பேட்டரி</string>
     <string name="device_settings_charge_cap_label">உகந்த சார்ஜ் வரம்பு</string>
     <string name="device_settings_charge_cap_description">உங்கள் அன்றாட வழக்கத்தை கற்று 80%% அளவில் சார்ஜிங்கை இடைநிறுத்தி பேட்டரி ஆயுளை நீட்டிக்கும், நீங்கள் பயன்படுத்தும் முன் pods-ஐ முழுவதும் சார்ஜ் செய்யும்.</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">இயல்புகளுக்கு மீட்டமை</string>
     <string name="press_controls_reset_confirm_message">அனைத்து அழுத்த வரைபடங்களையும் இயல்புகளுக்கு மீட்டமைக்கவா?</string>
     <string name="device_settings_noise_control_open_press_controls_action">அழுத்த கட்டுப்பாடுகளை திறக்கவும்</string>
+    <string name="general_navigate_up_action">மேல்நோக்கி செல்க</string>
+    <string name="general_progress_loading">ஏற்றுகிறது</string>
 </resources>

@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">לפי Google Play, כבר רכשת את השדרוג הזה, אך לא ניתן היה לשחזר אותו. ודא שאתה משתמש בחשבון Google שאיתו ביצעת את הרכישה. סנכרון Play Store עשוי לקחת זמן — נסה להפעיל מחדש את המכשיר, לנקות את מטמון Google Play או פשוט להמתין.</string>
     <string name="upgrade_restore_action">שחזור רכישה</string>
     <string name="upgrade_badge_label">פרו</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">קבל %1$s</string>
     <string name="upgrade_preamble">CAPod מפותחת על ידי אדם אחד בלבד. שדרוג פותח תכונות נוספות ועוזר לשמור על האפליקציה בחיים.</string>
     <string name="upgrade_screen_options_description">אותן תכונות, תמחור שונה. המינוי כולל ניסיון חינם וניתן לבטל אותו בכל עת.</string>
     <string name="upgrade_screen_options_description_no_trial">אותן תכונות, תמחור שונה. ניתן לבטל את המינוי בכל עת.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">זוהי רכישה נפרדת — היא אינה מבטלת או מזכה את המינוי שלך. השתמש באותו חשבון Google.</string>
     <string name="upgrade_screen_sub_still_renewing_title">המינוי עדיין פעיל</string>
     <string name="upgrade_screen_sub_still_renewing_message">המינוי שלך עדיין מוגדר להתחדש. בטל אותו קודם ב-Google Play, ולאחר מכן עבור לרכישה החד-פעמית. בטלת הרגע? תן ל-Google Play רגע ונסה שוב.</string>
-    <string name="upgrade_screen_sub_check_failed_title">בדיקת המינוי נכשלה</string>
-    <string name="upgrade_screen_sub_check_failed_message">לא ניתן היה לבדוק את סטטוס המינוי שלך מול Google Play. כדי להימנע מרכישה כפולה, נסה שוב בעוד רגע.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">לא ניתן היה לבדוק את הרכישות שלך מול Google Play. כדי למנוע רכישה כפולה, נסה שוב בעוד רגע.</string>
+    <string name="upgrade_screen_pending_card_title">התשלום ממתין</string>
+    <string name="upgrade_screen_pending_card_body">Google Play עדיין מעבד את התשלום שלך. גרסת Pro תיפתח אוטומטית ברגע שהתשלום יאושר. חלק מאמצעי התשלום עשויים לקחת זמן. אין צורך לעשות דבר נוסף.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play מצא רכישה עם תשלום ממתין ועדיין מעבד אותה. גרסת Pro תיפתח אוטומטית ברגע שהתשלום יאושר.</string>
     <string name="upgrade_screen_grace_title">מאשר את הרכישה שלך</string>
     <string name="upgrade_screen_grace_body_short">Google Play עדיין לא אישר את הרכישה שלך. Pro עדיין פעיל — אין צורך בפעולה.</string>
     <string name="upgrade_screen_grace_body">Google Play לא אישר את הרכישה שלך כבר זמן מה. Pro עדיין פעיל. ודא שאתה מחובר לאינטרנט ומחובר עם חשבון ה-Google שבו בוצעה הרכישה, ולאחר מכן נסה לשחזר.</string>
-    <string name="settings_upgrade_status_label">CAPod פרו</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">אפשרויות שדרוג</string>
+    <string name="upgrade_screen_offers_or">או</string>
+    <string name="upgrade_screen_offers_body">אותן תכונות, רק מודלי תמחור שונים.</string>
+    <string name="upgrade_screen_offers_unavailable_title">מחירים אינם זמינים</string>
+    <string name="upgrade_screen_offers_unavailable_message">Google Play לא החזיר מחירים כעת. בדוק את החיבור שלך ונסה שוב עוד רגע.</string>
+    <string name="upgrade_screen_subscription_offer_title">מנוי שנתי</string>
+    <string name="upgrade_screen_subscription_offer_body">מתחדש מדי שנה לאחר הניסיון החינם. בטל בכל עת ב-Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">מתחדש מדי שנה. בטל בכל עת ב-Google Play.</string>
+    <string name="upgrade_screen_iap_offer_body">תשלום אחד, ללא חידושים.</string>
+    <string name="upgrade_screen_benefits_title">יתרונות השדרוג</string>
+    <string name="upgrade_screen_restore_body">שחזור מבקש מ-Google Play לבדוק שוב את הרכישות של האפליקציה הזו עבור החשבון הנוכחי. זה לא מתחיל רכישה חדשה.</string>
+    <string name="upgrade_screen_restore_checked_message">CAPod בדיוק בדק את Google Play, אך לא ניתן היה לאשר קנייה של Pro עבור החשבון שבו משתמש Google Play לאפליקציה זו.</string>
+    <string name="upgrade_screen_restore_contact_hint">עדיין תקוע? צור קשר עם התמיכה מהדוא\"ל שביצע את הרכישה וכלול את מספר ההזמנה של Google Play שלך.</string>
+    <string name="upgrade_screen_contact_support_action">צור קשר עם התמיכה</string>
     <string name="settings_upgrade_status_description">סטטוס השדרוג והרכישה שלך.</string>
+    <string name="upgrades_gplay_unavailable_error_description">CAPod לא יכול להתחבר ל-Google Play. האם Google Play מותקן ומעודכן? האם חשבון Google שלך מחובר? נסה לנקות את המטמון של אפליקציית Google Play ולאתחל את המכשיר שלך.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">לא היה אפשר לפתוח את Google Play. ייתכן שהוא חסר, מבוטל או מוגבל בהתקן זה.</string>
+    <string name="upgrades_gplay_internal_error_title">שגיאת Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">אירעה שגיאה פנימית ב-Google Play. אנא נסה את הפעולות הבאות:\n\n• הפעל מחדש את המכשיר שלך\n• נקה את המטמון של Google Play Store\n• נסה שוב מאוחר יותר</string>
+    <string name="upgrades_gplay_network_error_title">שגיאת חיבור</string>
+    <string name="upgrades_gplay_network_error_description">לא ניתן להתחבר ל-Google Play. אנא בדוק את החיבור לאינטרנט שלך ונסה שוב.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ההצעה אינה זמינה</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play כרגע לא מציע אפשרות שדרוג זו. אנא נסה שוב מאוחר יותר או בדוק את Google Play Store.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">הבדיקה עם Google Play לא הסתיימה בזמן, כך שמצב הרכישה שלך עדיין לא ידוע. שום דבר לא השתנה בחשבון שלך.</string>
 </resources>

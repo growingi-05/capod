@@ -17,7 +17,7 @@ import eu.darken.capod.common.flow.SingleEventFlow
 import eu.darken.capod.common.navigation.Nav
 import eu.darken.capod.common.uix.ViewModel4
 import eu.darken.capod.common.upgrade.UpgradeRepo
-import eu.darken.capod.common.upgrade.isPro
+import eu.darken.capod.common.upgrade.isProForUi
 import eu.darken.capod.main.core.MonitorMode
 import eu.darken.capod.monitor.core.DeviceMonitor
 import eu.darken.capod.monitor.core.MonitorModeResolver
@@ -90,6 +90,7 @@ class DeviceSettingsViewModel @Inject constructor(
         data class SendFailed(val command: AapCommand, val message: String?) : Event
         data object SystemRenameUnavailable : Event
         data object OffModeRejectedByDevice : Event
+        data object AncModeNotConfirmedByDevice : Event
         data object DynamicEndOfChargeRejectedByDevice : Event
     }
 
@@ -109,7 +110,11 @@ class DeviceSettingsViewModel @Inject constructor(
                 when (command) {
                     is AapCommand.SetDynamicEndOfCharge ->
                         events.tryEmit(Event.DynamicEndOfChargeRejectedByDevice)
-                    else -> Unit // Other rejected commands handled elsewhere (e.g. ANC OFF)
+                    // OFF has its own, more specific message via offRejectedEvents.
+                    is AapCommand.SetAncMode -> if (command.mode != AapSetting.AncMode.Value.OFF) {
+                        events.tryEmit(Event.AncModeNotConfirmedByDevice)
+                    }
+                    else -> Unit
                 }
             }
         }
@@ -155,9 +160,15 @@ class DeviceSettingsViewModel @Inject constructor(
                     null
                 }
             }
+            val now = timeSource.now()
+            // The runtime figure rides on the same learned data as the estimate — the per-device
+            // toggle governs both.
+            val batteryHealth = device
+                ?.takeIf { appleProfile?.batteryEstimateEnabled ?: true }
+                ?.let { BatteryHealth.estimate(drainProfiles[profileId], it.model, now) }
             State(
                 device = device,
-                now = timeSource.now(),
+                now = now,
                 isPro = upgrade.isPro,
                 isNudgeAvailable = nudgeAvailability != NudgeAvailability.BROKEN,
                 isForceConnecting = forcing,
@@ -169,12 +180,10 @@ class DeviceSettingsViewModel @Inject constructor(
                         (it.rightLong !is StemAction.None && it.rightLong !is StemAction.CycleAnc)
                 } == true,
                 batteryEstimateEnabled = appleProfile?.batteryEstimateEnabled ?: true,
-                // Health rides on the same learned data as the estimate — the per-device toggle
-                // governs both.
-                batteryHealth = device
-                    ?.takeIf { appleProfile?.batteryEstimateEnabled ?: true }
-                    ?.let { BatteryHealth.estimate(drainProfiles[profileId], it.model) },
-                // A model with a rating WILL eventually produce a health figure — surface the
+                batteryHealth = batteryHealth,
+                batteryRuntimeWarning = batteryHealth?.lowestPromotable
+                    ?.takeIf { it.reading.percent <= BatteryHealth.LOW_RUNTIME_PERCENT },
+                // A model with a rating WILL eventually produce a runtime figure — surface the
                 // feature as "still determining" until the listening sessions accumulate. Without
                 // a paired device the listening gate can never open, so no promise is made.
                 batteryHealthPending = device != null &&
@@ -207,10 +216,14 @@ class DeviceSettingsViewModel @Inject constructor(
         val systemBluetoothName: String? = null,
         val hasCustomLongPressStemAction: Boolean = false,
         val batteryEstimateEnabled: Boolean = true,
-        /** Derived per-pod battery health (1..100 each), or null when there isn't enough learned data. */
+        /** Derived per-pod share of the rated listening time (1..100 each), or null when there
+         * isn't enough learned data. */
         val batteryHealth: BatteryHealth.PerPod? = null,
-        /** True when health CAN be derived for this device (rated model, feature on) — shows the
-         * "still determining" placeholder while [batteryHealth] is null. */
+        /** The worst pod whose runtime has dropped to [BatteryHealth.LOW_RUNTIME_PERCENT] or below
+         * on enough recent evidence to warn about — drives the warning banner. */
+        val batteryRuntimeWarning: BatteryHealth.SlotReading? = null,
+        /** True when a runtime figure CAN be derived for this device (rated model, feature on) —
+         * shows the "still determining" placeholder while [batteryHealth] is null. */
         val batteryHealthPending: Boolean = false,
     ) {
         val reactions: ReactionConfig get() = device?.reactions ?: ReactionConfig()
@@ -280,7 +293,7 @@ class DeviceSettingsViewModel @Inject constructor(
     }
 
     private fun sendProGated(command: AapCommand) = launch {
-        if (upgradeRepo.isPro()) {
+        if (upgradeRepo.isProForUi()) {
             sendInternal(command)
         } else {
             navTo(Nav.Main.Upgrade())
@@ -310,7 +323,7 @@ class DeviceSettingsViewModel @Inject constructor(
     fun setListeningModeCycle(modeMask: Int) = sendProGated(AapCommand.SetListeningModeCycle(modeMask))
 
     fun setAllowOffOption(enabled: Boolean) = launch {
-        if (!upgradeRepo.isPro()) {
+        if (!upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -333,7 +346,7 @@ class DeviceSettingsViewModel @Inject constructor(
 
     fun setSleepDetection(enabled: Boolean) = launch {
         log(TAG, INFO) { "setSleepDetection($enabled)" }
-        if (enabled && !upgradeRepo.isPro()) {
+        if (enabled && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -385,7 +398,7 @@ class DeviceSettingsViewModel @Inject constructor(
         transform: (AppleDeviceProfile) -> AppleDeviceProfile,
     ) = launch {
         // Disabling never requires pro; enabling does.
-        if (enabled && !upgradeRepo.isPro()) {
+        if (enabled && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -401,7 +414,7 @@ class DeviceSettingsViewModel @Inject constructor(
 
     fun setAutoPlay(enabled: Boolean) = launch {
         log(TAG, INFO) { "setAutoPlay($enabled)" }
-        if (enabled && !upgradeRepo.isPro()) {
+        if (enabled && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -411,7 +424,7 @@ class DeviceSettingsViewModel @Inject constructor(
 
     fun setAutoPause(enabled: Boolean) = launch {
         log(TAG, INFO) { "setAutoPause($enabled)" }
-        if (enabled && !upgradeRepo.isPro()) {
+        if (enabled && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -421,7 +434,7 @@ class DeviceSettingsViewModel @Inject constructor(
 
     fun setStartMusicOnWear(enabled: Boolean) = launch {
         log(TAG, INFO) { "setStartMusicOnWear($enabled)" }
-        if (enabled && !upgradeRepo.isPro()) {
+        if (enabled && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }
@@ -490,7 +503,7 @@ class DeviceSettingsViewModel @Inject constructor(
         log(TAG, INFO) { "setConversationAction($action)" }
         // The action picker is only shown while Conversation Awareness is already enabled (the pod
         // emits no speaking frames otherwise), so no need to auto-enable it here.
-        if (action != ConversationAction.NOTHING && !upgradeRepo.isPro()) {
+        if (action != ConversationAction.NOTHING && !upgradeRepo.isProForUi()) {
             navTo(Nav.Main.Upgrade())
             return@launch
         }

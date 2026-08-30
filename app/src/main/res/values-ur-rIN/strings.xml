@@ -6,11 +6,13 @@
     <string name="general_copy_action">کاپی کریں</string>
     <string name="general_thank_you_label">شکریہ</string>
     <string name="general_upgrade_action">اپ گریڈ کریں</string>
+    <string name="general_retry_action">دوبارہ کوشش کریں</string>
     <string name="common_feature_requires_pro_msg">انلاک کرنے کے لیے اپگریڈ کریں۔</string>
     <string name="common_upgrade_required_label">اپ گریڈ کی ضرورت ہے</string>
     <string name="general_donate_action">عطیہ کریں</string>
     <string name="general_check_action">چیک کریں</string>
     <string name="general_close_action">بند کریں</string>
+    <string name="general_dismiss_action">مسترد کریں</string>
     <string name="general_edit_action">تبدیلی کریں</string>
     <string name="general_save_action">محفوظ کریں</string>
     <string name="general_guide_action">رہنما</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">ڈویلپر کی مدد کریں</string>
     <string name="upgrade_benefit_disclaimer">فیچر کی دستیابی آپ کے ہیڈفونز اور ڈیوائس پر منحصر ہے۔</string>
     <string name="settings_monitor_connected_notification_label">اضافی اطلاع</string>
-    <string name="settings_monitor_connected_notification_description">جب کوئی آلہ منسلک ہوتا ہے تو ایک اضافی اطلاع دکھاتا ہے۔ اس سے آپ \"آلہ کی حیثیت\" چینل کو غیر فعال کر کے مستقل \"کوئی آلہ نہیں\" اطلاع کو چھپا سکتے ہیں۔</string>
+    <string name="settings_monitor_connected_notification_description">ایک دوسرا نوٹیفکیشن دکھاتا ہے جو صرف اس وقت نظر آتا ہے جب کوئی ڈیوائس منسلک ہو۔ اسے آن کرنے سے آپ مستقل \"کوئی ڈیوائس نہیں\" والا نوٹیفکیشن چھپا سکتے ہیں: CAPod کے لیے اینڈرائیڈ کی نوٹیفکیشن سیٹنگز میں \"ڈیوائس اسٹیٹس\" کیٹیگری کو بند کر دیں۔</string>
     <string name="settings_keep_notification_after_disconnect_label">منقطع ہونے کے بعد اطلاع رکھیں</string>
     <string name="settings_keep_notification_after_disconnect_description">آپ کے AirPods منقطع ہونے کے بعد بھی آخری معلوم بیٹری کی سطح دکھاتے رہیں</string>
     <string name="settings_autopause_label">خودکار توقف</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">کم از کم سگنل کا معیار</string>
     <string name="settings_signal_minimum_description">کم از کم سگنل کا معیار جو کسی آلہ کو آپ کا سمجھا جانے کے لئے درکار ہے۔</string>
     <string name="settings_autoconnect_label">خودکار کنیکٹ</string>
-    <string name="settings_autoconnect_description">اگر اینڈرائیڈ خود بخود منسلک نہیں ہوتا ہے، تو ہم بھی اس سے پوچھ سکتے ہیں۔ یہ مانیٹر موڈ سیٹنگ کو \'ہمیشہ\' پر سیٹ کر دے گا۔</string>
+    <string name="settings_autoconnect_description">اگر اینڈرائیڈ خود بخود منسلک نہیں ہوتا، تو ہم اسے ایسا کرنے کے لیے کہہ سکتے ہیں۔ اس سے CAPod ہر وقت بیک گراؤنڈ میں مانیٹرنگ جاری رکھتا ہے۔</string>
     <string name="settings_autoconnect_info_android12">آٹو کنیکٹ ایک ایسے سسٹم فیچر پر انحصار کرتا ہے جسے Android 12 اور اس سے جدید ورژن محدود کرتا ہے۔ یہ آپ کے ڈیوائس پر کام نہیں کر سکتا۔</string>
     <string name="settings_autoconnect_condition_label">خودکار کنیکٹ کی شرط</string>
     <string name="settings_autoconnect_condition_description">ہمیں آپ کے آلہ سے کب منسلک ہونے کی کوشش کرنی چاہئے؟</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">مطابقت کے اختیارات</string>
     <string name="settings_category_compatibility_options_description">اگر سب کچھ کام کر رہا ہو تو ہاتھ نہ لگائیں ؛)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">ہارڈ ویئر فلٹرنگ کو غیر فعال کریں</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">ڈیٹا فلٹرنگ کو سسٹم کے حوالے نہ کریں، اس کے بجائے تمام ڈیٹا حاصل کریں اور ایپ کے اندر فلٹر کریں۔</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">اگر آپ کے AirPods کبھی نہیں ملتے تو یہ آزمائیں۔ ایپ خود قریبی تمام بلوٹوتھ سگنلز کو چیک کرے گی، بجائے اس کے کہ آپ کا فون انہیں پہلے سے منتخب کرے۔</string>
     <string name="settings_compat_offloaded_batching_disabled_title">ہارڈ ویئر بیچنگ کو غیر فعال کریں</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">سسٹم کو جمع کردہ BLE ڈیٹا کو ہمیں بھیجنے سے پہلے گروپ کرنے نہ دیں۔</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">اگر بیٹری لیول دیر سے یا جھٹکوں میں اپڈیٹ ہوتی ہے تو یہ آزمائیں۔ آپ کا فون ہر بلوٹوتھ سگنل کو فوراً آگے بھیجے گا، بجائے اس کے کہ پہلے انہیں جمع کرے۔</string>
     <string name="settings_onepod_mode_label">ایک پوڈ موڈ</string>
     <string name="settings_onepod_mode_description">آٹو پلے/پاز اور آٹو-کنیکٹ دونوں کی ضرورت کے بجائے ایک پوڈ پر ردعمل کرتے ہیں۔</string>
     <string name="settings_popup_caseopen_label">کیس پاپ اپ دکھائیں</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">آلہ کی حیثیت</string>
     <string name="notification_channel_device_status_connected_label">منسلک آلہ</string>
     <string name="monitor_notification_extra_enabled_hint">آپ اس اطلاع کو سسٹم سیٹنگز میں غیر فعال کر سکتے ہیں۔</string>
+    <string name="monitor_notification_starting">شروع ہو رہا ہے…</string>
     <string name="support_debuglog_label">ڈیبگ لاگ</string>
     <string name="support_debuglog_desc">ایپ جو کچھ بھی کر رہی ہے اسے ایک ٹیکسٹ فائل میں ریکارڈ کریں جسے آپ شیئر کر سکتے ہیں۔</string>
     <string name="debug_debuglog_size_label">سائز</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">سبز</string>
     <string name="widget_config_preset_red">سرخ</string>
     <string name="settings_compat_indirectcallback_title">بالواسطہ ڈیٹا کی فراہمی</string>
-    <string name="settings_compat_indirectcallback_summary">سسٹم سے BLE ڈیٹا وصول کرنے کے لئے ایک متبادل طریقہ استعمال کریں (کال بیک کے بجائے براڈکاسٹ)۔</string>
+    <string name="settings_compat_indirectcallback_summary">اگر دوسرے مطابقت کے اختیارات سے مدد نہ ملی ہو تو یہ آزمائیں۔ اینڈرائیڈ بلوٹوتھ سگنلز کو بیک گراؤنڈ میں ایپ کے حوالے کرے گا، بجائے اس کے کہ ایپ خود انہیں براہ راست سنے۔</string>
     <string name="troubleshooter_title">مسئلہ حل کرنے والا</string>
     <string name="troubleshooter_summary">بلوٹوتھ کنیکٹیویٹی کے مسائل کی تشخیص اور حل کریں۔</string>
     <string name="troubleshooter_ble_intro_title">بلوٹوتھ لو انرجی براڈکاسٹ</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">آپ اضافی خصوصیات حاصل کرنے اور ترقی کی حمایت کرنے کے لئے CAPod Pro میں اپ گریڈ کر سکتے ہیں۔</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">دستیاب نہیں</string>
     <string name="general_error_label">خرابی</string>
     <string name="general_grant_permission_action">اجازت دیں</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">بلوٹوتھ غیر فعال ہے، اسے فعال کریں ؛)</string>
     <string name="overview_monitoring_active_label">آلات کی نگرانی ہو رہی ہے</string>
     <string name="overview_monitoring_active_description">یقینی بنائیں کہ آپ کا آلہ قریب اور فعال ہے۔</string>
+    <string name="overview_monitoring_off_label">پس منظر کی نگرانی بند ہے</string>
+    <string name="overview_monitoring_off_description">کوئی بھی پروفائل جوڑے ہوئے Bluetooth ڈیوائس کے ساتھ نہیں ہے، اس لیے CAPod صرف اس وقت اپ ڈیٹ ہوتا ہے جب ایپ کھلی ہو۔ پس منظر کی نگرانی، مسلسل اطلاع اور رد عمل کو فعال کرنے کے لیے ایک کو منتخب کریں۔</string>
+    <string name="overview_monitoring_off_action">جوڑا ہوا ڈیوائس منتخب کریں</string>
     <string name="overview_troubleshoot_suggestion_label">متصل، لیکن کوئی ڈیٹا نہیں</string>
     <string name="overview_troubleshoot_suggestion_description">آپ کا آلہ متصل ہے، لیکن CAPod اس سے کوئی براہ راست ڈیٹا وصول نہیں کر رہا۔ آپ کے فون کو ایک مطابقت کے آپشن کی ضرورت ہو سکتی ہے — مسئلہ حل کرنے والا خود بخود ایک تلاش کرنے کی کوشش کر سکتا ہے۔</string>
     <string name="overview_troubleshoot_suggestion_action">مسئلہ حل کرنے والا چلائیں</string>
@@ -481,8 +488,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">کال ختم کرنے کے لیے دو بار دبائیں</string>
     <string name="device_settings_open_cd">ڈیوائس کی ترتیبات کھولیں</string>
     <string name="overview_card_missing_paired_device">اس پروفائل میں کوئی جوڑا بلوٹوتھ ڈیوائس نہیں ہے۔</string>
+    <string name="overview_card_missing_paired_device_consequence">اس کے بغیر، ڈیوائس کی ترتیبات اور خود کار رابطہ دستیاب نہیں ہیں۔</string>
     <string name="overview_reactions_hint_title">ردعمل فی آلہ ہیں</string>
     <string name="overview_reactions_hint_body">آٹو پلے، آٹو پاز اور پاپ اپس کو اب ہر آلے کے لیے الگ سے ترتیب دیا گیا ہے۔ اپنے ہیڈفون کو منسلک رکھتے ہوئے کسی کارڈ پر سیٹنگز کا آئیکن تھپتھپائیں۔</string>
+    <string name="review_app_review_action">ریویو</string>
+    <string name="review_app_dismiss_action">شاید بعد میں</string>
+    <string name="review_app_body">کیا آپ CAPod کے لیے ریویو چھوڑنا چاہیں گے؟ ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">عمومی</string>
     <string name="device_settings_microphone_mode_label">مائیکروفون</string>
@@ -521,6 +532,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">بلوٹوتھ ترتیبات</string>
     <string name="device_settings_send_failed">ترتیب لاگو نہیں ہو سکی: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">آف موڈ اس ڈیوائس پر فعال نہیں ہے۔ شور کنٹرول کے تحت \"آف موڈ کی اجازت دیں\" فعال کریں۔</string>
+    <string name="anc_mode_not_confirmed_message">AirPods نے سننے کے موڈ کی تبدیلی کی تصدیق نہیں کی۔</string>
     <string name="device_settings_category_battery_label">بیٹری</string>
     <string name="device_settings_charge_cap_label">بہتر بنایا گیا چارج لمٹ</string>
     <string name="device_settings_charge_cap_description">اپنا معمول سیکھیں اور بیٹری کی زندگی بڑھانے کے لیے 80%% کے آس پاس چارجنگ روکیں، پوڈز کو اس سے پہلے مکمل چارج کریں جب آپ انہیں استعمال کرنے کا امکان ہو۔</string>
@@ -560,4 +572,6 @@
     <string name="press_controls_reset_label">ڈیفالٹس پر ریسیٹ کریں</string>
     <string name="press_controls_reset_confirm_message">تمام پریس میپنگز ڈیفالٹس پر ریسیٹ کریں؟</string>
     <string name="device_settings_noise_control_open_press_controls_action">پریس کنٹرولز کھولیں</string>
+    <string name="general_navigate_up_action">اوپر جائیں</string>
+    <string name="general_progress_loading">لوڈ کر رہا ہے</string>
 </resources>

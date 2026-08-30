@@ -6,11 +6,13 @@
     <string name="general_copy_action">ចម្លង</string>
     <string name="general_thank_you_label">សូមអរគុណ</string>
     <string name="general_upgrade_action">ដំឡើងកំណែ</string>
+    <string name="general_retry_action">សាកល្បងម្តងទៀត</string>
     <string name="common_feature_requires_pro_msg">តម្លើងកំណែថ្មីដើម្បីដោះសោ។</string>
     <string name="common_upgrade_required_label">តម្រូវការការធ្វើឱ្យប្រសើរ</string>
     <string name="general_donate_action">បរិច្ចាគ</string>
     <string name="general_check_action">ពិនិត្យ</string>
     <string name="general_close_action">បិទ</string>
+    <string name="general_dismiss_action">បដិសេធ</string>
     <string name="general_edit_action">កែសម្រួល</string>
     <string name="general_save_action">រក្សាទុក</string>
     <string name="general_guide_action">មគ្គុទ្ទេសក៍</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">គាំទ្រអ្នកអភិវឌ្ឍន៍</string>
     <string name="upgrade_benefit_disclaimer">ភាពអាចប្រើបានអាស្រ័យលើកាស និងឧបករណ៍របស់អ្នក។</string>
     <string name="settings_monitor_connected_notification_label">ការជូនដំណឹងបន្ថែម</string>
-    <string name="settings_monitor_connected_notification_description">បង្ហាញការជូនដំណឹងបន្ថែមនៅពេលឧបករណ៍ត្រូវបានភ្ជាប់។ វាអនុញ្ញាតឱ្យអ្នកលាក់ការជូនដំណឹងអចិន្ត្រៃយ៍ \"គ្មានឧបករណ៍\" ដោយបិទឆានែល \"ស្ថានភាពឧបករណ៍\"។</string>
+    <string name="settings_monitor_connected_notification_description">បង្ហាញការជូនដំណឹងទីពីរដែលបង្ហាញតែពេលឧបករណ៍មួយកំពុងតភ្ជាប់ប៉ុណ្ណោះ។ ដោយបើកវា អ្នកអាចលាក់ការជូនដំណឹងអចិន្ត្រៃយ៍ \"គ្មានឧបករណ៍\" បាន: បិទប្រភេទ \"ស្ថានភាពឧបករណ៍\" នៅក្នុងការកំណត់ការជូនដំណឹងរបស់ Android សម្រាប់ CAPod។</string>
     <string name="settings_keep_notification_after_disconnect_label">រក្សាការជូនដំណឹងបន្ទាប់ពីផ្តាច់</string>
     <string name="settings_keep_notification_after_disconnect_description">បន្តបង្ហាញកម្រិតថ្មចុងក្រោយដែលស្គាល់ សូម្បីបន្ទាប់ពី AirPods របស់អ្នកផ្តាច់ក៏ដោយ</string>
     <string name="settings_autopause_label">ផ្អាកដោយស្វ័យប្រវត្តិ</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">គុណភាពសញ្ញាអប្បបរមា</string>
     <string name="settings_signal_minimum_description">គុណភាពសញ្ញាអប្បបរមាដែលឧបករណ៍ត្រូវតែមានដើម្បីចាត់ទុកថាជារបស់អ្នក។</string>
     <string name="settings_autoconnect_label">ភ្ជាប់ដោយស្វ័យប្រវត្តិ</string>
-    <string name="settings_autoconnect_description">ប្រសិនបើ Android មិនភ្ជាប់ដោយស្វ័យប្រវត្តិទេ យើងក៏អាចស្នើសុំវាបានដែរ។ វានឹងកំណត់ការកំណត់របៀបຕິດຕាមទៅ \"ជានិច្ច\" ។</string>
+    <string name="settings_autoconnect_description">ប្រសិនបើ Android មិនតភ្ជាប់ដោយស្វ័យប្រវត្តិទេ យើងអាចស្នើសុំវាបាន។ វារក្សាឱ្យ CAPod ត្រួតពិនិត្យនៅផ្ទៃខាងក្រោយជានិច្ច។</string>
     <string name="settings_autoconnect_info_android12">ការភ្ជាប់ស្វ័យប្រវត្តិពឹងផ្អែកលើមុខងារប្រព័ន្ធដែល Android 12 និងថ្មីជាងនេះដាក់កម្រិត។ វាប្រហែលជាមិនដំណើរការនៅលើឧបករណ៍របស់អ្នកទេ។</string>
     <string name="settings_autoconnect_condition_label">លក្ខខណ្ឌភ្ជាប់ដោយស្វ័យប្រវត្តិ</string>
     <string name="settings_autoconnect_condition_description">តើយើងគួរព្យាយាមភ្ជាប់ទៅឧបករណ៍របស់អ្នកនៅពេលណា?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">ជម្រើសភាពឆបគ្នា</string>
     <string name="settings_category_compatibility_options_description">កុំប៉ះប្រសិនបើអ្វីៗដំណើរការបានល្អ ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">បិទការត្រងផ្នែករឹង</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">កុំផ្ទេរការត្រងទិន្នន័យទៅប្រព័ន្ធ ផ្ទុយទៅវិញទទួលបានទិន្នន័យទាំងអស់ ហើយត្រងនៅក្នុងកម្មវិធី។</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">សាកល្បងវិធីនេះប្រសិនបើ AirPods របស់អ្នកមិនត្រូវបានរកឃើញសោះ។ កម្មវិធីនឹងស្វែងរកសញ្ញា Bluetooth នៅជិតៗទាំងអស់ដោយខ្លួនឯង ជំនួសឱ្យការឱ្យទូរស័ព្ទរបស់អ្នកជ្រើសរើសមុន។</string>
     <string name="settings_compat_offloaded_batching_disabled_title">បិទការដាក់ជាក្រុមផ្នែករឹង</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">កុំឱ្យប្រព័ន្ធដាក់ជាក្រុមទិន្នន័យ BLE ដែលប្រមូលបានមុនពេលបញ្ជូនវាទៅយើង។</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">សាកល្បងវិធីនេះប្រសិនបើកម្រិតថ្មបច្ចុប្បន្នភាពយឺត ឬមកជាបំណុះៗ។ ទូរស័ព្ទរបស់អ្នកនឹងបញ្ជូនសញ្ញា Bluetooth នីមួយៗភ្លាមៗ ជំនួសឱ្យការប្រមូលវាជាមុនសិន។</string>
     <string name="settings_onepod_mode_label">របៀបផតមួយ</string>
     <string name="settings_onepod_mode_description">ការចាក់/ផ្អាកស្វ័យប្រវត្តិ និងការភ្ជាប់ស្វ័យប្រវត្តិឆ្លើយតបទៅ pod មួយ ជំនួសឱ្យការទាមទារទាំងពីរ។</string>
     <string name="settings_popup_caseopen_label">បង្ហាញផ្ទាំងលោតប្រអប់</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">ស្ថានភាពឧបករណ៍</string>
     <string name="notification_channel_device_status_connected_label">ឧបករណ៍បានភ្ជាប់</string>
     <string name="monitor_notification_extra_enabled_hint">អ្នកអាចបិតការជូនដំណឹងនេហនៅក្នុងការកំណតប្រព័ន្ធ។</string>
+    <string name="monitor_notification_starting">កំពុងចាប់ផ្តើម…</string>
     <string name="support_debuglog_label">កំណត់ហេតុកែកំហុស</string>
     <string name="support_debuglog_desc">កត់ត្រាអ្វីគ្រប់យ៉ាងដែលកម្មវិធីកំពុងធ្វើទៅក្នុងឯកសារអត្ថបទដែលអ្នកអាចចែករំលែកបាន។</string>
     <string name="debug_debuglog_size_label">ទំហំ</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">ពណ៌បៃតង</string>
     <string name="widget_config_preset_red">ពណ៌ក្រហម</string>
     <string name="settings_compat_indirectcallback_title">ការបញ្ជូនទិន្នន័យដោយប្រយោល</string>
-    <string name="settings_compat_indirectcallback_summary">ប្រើវិធីសាស្ត្រជំនួសដើម្បីទទួលទិន្នន័យ BLE ពីប្រព័ន្ធ (ផ្សាយជំនួសឱ្យការហៅត្រឡប់)។</string>
+    <string name="settings_compat_indirectcallback_summary">សាកល្បងវិធីនេះប្រសិនបើជម្រើសភាពឆបគ្នាផ្សេងទៀតមិនបានជួយ។ Android នឹងបញ្ជូនសញ្ញា Bluetooth ទៅកម្មវិធីនៅផ្ទៃខាងក្រោយ ជំនួសឱ្យការឱ្យកម្មវិធីស្តាប់សញ្ញាទាំងនោះដោយផ្ទាល់។</string>
     <string name="troubleshooter_title">កម្មវិធីដោះស្រាយបញ្ហា</string>
     <string name="troubleshooter_summary">ធ្វើរោគវិនិច្ឆ័យ និងដោះស្រាយបញ្ហាការតភ្ជាប់ Bluetooth។</string>
     <string name="troubleshooter_ble_intro_title">ការផ្សាយ Bluetooth Low Energy</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">អ្នកអាចដំឡើងកំណែទៅ CAPod Pro ដើម្បីទទួលបានមុខងារបន្ថែម និងគាំទ្រការអភិវឌ្ឍន៍។</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">មិនមាន</string>
     <string name="general_error_label">កំហុស</string>
     <string name="general_grant_permission_action">ផ្តល់ការអនុញ្ញាត</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth ត្រូវបានបិទ សូមបើកវា ;)</string>
     <string name="overview_monitoring_active_label">កំពុងតាមដានឧបករណ៍</string>
     <string name="overview_monitoring_active_description">សូមប្រាកដថាឧបករណ៍របស់អ្នកនៅជិត និងសកម្ម។</string>
+    <string name="overview_monitoring_off_label">ការត្រួតពិនិត្យក្រោយផ្ទៃបានបិទ</string>
+    <string name="overview_monitoring_off_description">គ្មានប្រវត្តិកម្មណាមួយមានឧបករណ៍ Bluetooth ដែលផ្គូផ្គងទេ ដូច្នេះ CAPod ធ្វើបច្ចុប្បន្នភាពតែនៅពេលដែលកម្មវិធីបើក។ ជ្រើសរើសមួយដើម្បីបើក ការត្រួតពិនិត្យក្រោយផ្ទៃ ការជូនដំណឹងរយៈពេលវែង និងប្រតិកម្ម។</string>
+    <string name="overview_monitoring_off_action">ជ្រើសរើសឧបករណ៍ផ្គូផ្គង</string>
     <string name="overview_troubleshoot_suggestion_label">ភ្ជាប់ហើយ តែគ្មានទិន្នន័យ</string>
     <string name="overview_troubleshoot_suggestion_description">ឧបករណ៍របស់អ្នកបានភ្ជាប់ ប៉ុន្តែ CAPod មិនទទួលបានទិន្នន័យផ្ទាល់ណាមួយពីវាទេ។ ទូរស័ព្ទរបស់អ្នកប្រហែលជាត្រូវការជម្រើសសម្រាប់ភាពឆបគ្នា — កម្មវិធីដោះស្រាយបញ្ហាអាចព្យាយាមស្វែងរកមួយដោយស្វ័យប្រវត្តិ។</string>
     <string name="overview_troubleshoot_suggestion_action">ដំណើរការកម្មវិធីដោះស្រាយបញ្ហា</string>
@@ -475,8 +482,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">ចុចពីរដងដើម្បិបញ្ចប់ការហឹល</string>
     <string name="device_settings_open_cd">បើកការកំណត់ឧបករណ៍</string>
     <string name="overview_card_missing_paired_device">គម្រោងនេះមិនមានឧបករណ៍ Bluetooth ដែលបានផ្គូផ្គងទេ។</string>
+    <string name="overview_card_missing_paired_device_consequence">ដោយគ្មាននោះ ការកំណត់ឧបករណ៍ និងការភ្ជាប់ដោយស្វ័យប្រវត្តិមិនលេច។</string>
     <string name="overview_reactions_hint_title">ប្រតិកម្មគឺខុសគ្នាតាមឧបករណ៍</string>
     <string name="overview_reactions_hint_body">ការចាក់ស្វ័យប្រវត្តិ ការផ្អាកស្វ័យប្រវត្តិ និងបង្អួចលេចឡើង ឥឡូវនេះត្រូវបានកំណត់រៀងរាល់ឧបករណ៍។ ចុចលើរូបតំណាងការកំណត់នៅលើកាតខណៈពេលដែលកាស​귀​យន្ត​ស្ដាប់​របស់​អ្នក​ភ្ជាប់​។</string>
+    <string name="review_app_review_action">ពិនិត្យឡើងវិញ</string>
+    <string name="review_app_dismiss_action">ប្រហែលពេលក្រោយ</string>
+    <string name="review_app_body">តើអ្នកចង់ដាក់ពិនិត្យលើ CAPod ដែរឬទេ? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">ជាទូទៅ</string>
     <string name="device_settings_microphone_mode_label">មីក្រូហ្វូន</string>
@@ -515,6 +526,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">ការកំណត់ Bluetooth</string>
     <string name="device_settings_send_failed">មិនអាចអនុវត្តការកំណត់: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">របឰប Off មិនបានបើកនៅលើឧបករណ៍នេះ។ បើក \"អនុញ្ញាតរបឰប Off\" ក្របម Noise Control។</string>
+    <string name="anc_mode_not_confirmed_message">AirPods មិនបានបញ្ជាក់ការផ្លាស់ប្តូរម៉ូតស្តាប់ទេ។</string>
     <string name="device_settings_category_battery_label">ថ្មី</string>
     <string name="device_settings_charge_cap_label">កំណត់ការសាកថ្មប្រសិទ្ធភាព</string>
     <string name="device_settings_charge_cap_description">រៀនទម្លាប់របស់អ្នក ហើយផ្អាកការសាកប្រហែល 80%% ដើម្បីពន្យារអាយុថ្ម ដោយបំពេញ pods មុនពេលអ្នកទំនងនឹងប្រើពួកវា។</string>
@@ -554,4 +566,6 @@
     <string name="press_controls_reset_label">កំណត់ឡើងវិញទៅជាលំនាំដើម</string>
     <string name="press_controls_reset_confirm_message">កំណត់ការផ្គូផ្គងការចុចទាំងអស់ឡើងវិញទៅជាលំនាំដើម?</string>
     <string name="device_settings_noise_control_open_press_controls_action">បើកការគ្រប់គ្រងការចុច</string>
+    <string name="general_navigate_up_action">ឡើងលើ</string>
+    <string name="general_progress_loading">កំពុងផ្ទុក</string>
 </resources>

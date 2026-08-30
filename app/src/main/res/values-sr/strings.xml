@@ -6,11 +6,13 @@
     <string name="general_copy_action">Копирај</string>
     <string name="general_thank_you_label">Хвала</string>
     <string name="general_upgrade_action">Надогради</string>
+    <string name="general_retry_action">Покушај</string>
     <string name="common_feature_requires_pro_msg">Надоградите да бисте откључали.</string>
     <string name="common_upgrade_required_label">Потребна надоградња</string>
     <string name="general_donate_action">Донирај</string>
     <string name="general_check_action">Провери</string>
     <string name="general_close_action">Затвори</string>
+    <string name="general_dismiss_action">Одбаци</string>
     <string name="general_edit_action">Уреди</string>
     <string name="general_save_action">Сачувај</string>
     <string name="general_guide_action">Водич</string>
@@ -29,7 +31,7 @@
     <string name="upgrade_benefit_support">Подржите програмера</string>
     <string name="upgrade_benefit_disclaimer">Доступност функција зависи од ваших слушалица и уређаја.</string>
     <string name="settings_monitor_connected_notification_label">Додатно обавештење</string>
-    <string name="settings_monitor_connected_notification_description">Приказује додатно обавештење када је уређај повезан. Ово вам омогућава да сакријете трајно обавештење „Нема уређаја” онемогућавањем канала „Статус уређаја”.</string>
+    <string name="settings_monitor_connected_notification_description">Приказује другу обавијест која се појављује само док је уређај повезан. Када је ово укључено, можеш сакрити трајну обавијест „Нема уређаја“: искључи категорију „Статус уређаја“ у поставкама обавијести за CAPod у Android-у.</string>
     <string name="settings_keep_notification_after_disconnect_label">Задржи обавештење након прекида везе</string>
     <string name="settings_keep_notification_after_disconnect_description">Настави да приказује последње познате нивое батерије чак и након што се AirPods искључе</string>
     <string name="settings_autopause_label">Аутоматска пауза</string>
@@ -43,7 +45,7 @@
     <string name="settings_signal_minimum_label">Минимални квалитет сигнала</string>
     <string name="settings_signal_minimum_description">Минимални квалитет сигнала који уређај мора да има да би се сматрао вашим.</string>
     <string name="settings_autoconnect_label">Аутоматско повезивање</string>
-    <string name="settings_autoconnect_description">Ако се Android не повеже аутоматски, можемо и ми то да затражимо. Ово ће поставити режим надгледања на „Увек”.</string>
+    <string name="settings_autoconnect_description">Ако Android не повезује аутоматски, можемо и ми да га замолимо. То одржава CAPod мониторинг активним у позадини све време.</string>
     <string name="settings_autoconnect_info_android12">Аутоматско повезивање ослања се на системску функцију коју Android 12 и новије верзије ограничавају. Можда неће радити на вашем уређају.</string>
     <string name="settings_autoconnect_condition_label">Услов за аутоматско повезивање</string>
     <string name="settings_autoconnect_condition_description">Када би требало да покушамо да се повежемо са вашим уређајем?</string>
@@ -54,9 +56,9 @@
     <string name="settings_category_compatibility_options_title">Опције компатибилности</string>
     <string name="settings_category_compatibility_options_description">Не дирајте ако све ради ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Онемогући хардверско филтрирање</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Немојте делегирати филтрирање података систему, већ преузмите све податке и филтрирајте унутар апликације.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Покушај ово ако твоји AirPods никад нису откривени. Апликација ће сама претраживати све близу Bluetooth сигнале, уместо да телефон унапред одабира.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Онемогући хардверско груписање</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Не дозволите систему да групише прикупљене BLE податке пре него што нам их проследи.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Покушај ово ако се нивои батерије ажурирају касно или наваљу. Твој телефон ће прослеђивати сваки Bluetooth сигнал одмах, уместо да их прво прикупи.</string>
     <string name="settings_onepod_mode_label">Режим једне слушалице</string>
     <string name="settings_onepod_mode_description">Аутоматско репродуковање/пауза и аутоматско повезивање реагују на један слушалица уместо да захтевају обе.</string>
     <string name="settings_popup_caseopen_label">Прикажи искачући прозор футроле</string>
@@ -77,6 +79,7 @@
     <string name="notification_channel_device_status_label">Статус уређаја</string>
     <string name="notification_channel_device_status_connected_label">Повезани уређај</string>
     <string name="monitor_notification_extra_enabled_hint">Можете онемогућити ово обавештење у системским подешавањима.</string>
+    <string name="monitor_notification_starting">Покретање…</string>
     <string name="support_debuglog_label">Дневник отклањања грешака</string>
     <string name="support_debuglog_desc">Снимите све што апликација ради у текстуалну датотеку коју можете да делите.</string>
     <string name="debug_debuglog_size_label">Величина</string>
@@ -159,7 +162,7 @@
     <string name="widget_config_preset_green">Зелено</string>
     <string name="widget_config_preset_red">Црвено</string>
     <string name="settings_compat_indirectcallback_title">Индиректна достава података</string>
-    <string name="settings_compat_indirectcallback_summary">Користите алтернативни метод за пријем BLE података из система (емитовање уместо повратног позива).</string>
+    <string name="settings_compat_indirectcallback_summary">Покушај ово ако остале опције компатибилности нису помогле. Android ће прослеђивати Bluetooth сигнале апликацији у позадини, уместо да апликација директно слуша њих.</string>
     <string name="troubleshooter_title">Решавање проблема</string>
     <string name="troubleshooter_summary">Дијагностикујте и поправите проблеме са Bluetooth повезивањем.</string>
     <string name="troubleshooter_ble_intro_title">Bluetooth Low Energy емитовања</string>
@@ -181,8 +184,9 @@
     <string name="onboarding_body4">Можете надоградити на CAPod Pro да бисте добили додатне функције и подржали развој.</string>
     <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <string name="app_name_pro">CAPod Pro</string>
-    <string name="app_name_foss">CAPod FOSS</string>
+    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
+         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">Н/Д</string>
     <string name="general_error_label">Грешка</string>
     <string name="general_grant_permission_action">Дај дозволу</string>
@@ -196,6 +200,9 @@
     <string name="overview_bluetooth_disabled_description">Bluetooth је онемогућен, омогућите га ;)</string>
     <string name="overview_monitoring_active_label">Надгледање уређаја</string>
     <string name="overview_monitoring_active_description">Уверите се да је ваш уређај у близини и активан.</string>
+    <string name="overview_monitoring_off_label">Позадинско праћење је искључено</string>
+    <string name="overview_monitoring_off_description">Ниједан профил нема упарен Bluetooth уређај, зато CAPod ажурира само док је апликација отворена. Изаберите један да омогућите позадинско праћење, трајну обавест и реакције.</string>
+    <string name="overview_monitoring_off_action">Изаберите упарени уређај</string>
     <string name="overview_troubleshoot_suggestion_label">Повезан, али нема података</string>
     <string name="overview_troubleshoot_suggestion_description">Твој уређај је повезан, али CAPod не прима живе податке с њега. Можда ти треба опција компатибилности — решавање проблема може покушати да је пронађе аутоматски.</string>
     <string name="overview_troubleshoot_suggestion_action">Покрени решавање проблема</string>
@@ -487,8 +494,12 @@
     <string name="device_settings_end_call_mute_mic_option_b_subtitle">Двоструко притисак за завршавање позива</string>
     <string name="device_settings_open_cd">Отворите подешавања уређаја</string>
     <string name="overview_card_missing_paired_device">Овај профил нема упарен Bluetooth уређај.</string>
+    <string name="overview_card_missing_paired_device_consequence">Без њега, подешавања уређаја и аутоматска повезивања нису доступна.</string>
     <string name="overview_reactions_hint_title">Реакције су по уређају</string>
     <string name="overview_reactions_hint_body">Аутоматско пуштање, аутоматска пауза и искачући прозори сада се подешавају по уређају. Додирните икону подешавања на картици док су ваше слушалице повезане.</string>
+    <string name="review_app_review_action">Оцени</string>
+    <string name="review_app_dismiss_action">Можда касније</string>
+    <string name="review_app_body">Желиш ли оставити рецензију за CAPod? ❤️</string>
     <!-- New device settings -->
     <string name="device_settings_category_general_label">Oпште</string>
     <string name="device_settings_microphone_mode_label">Микрофон</string>
@@ -527,6 +538,7 @@
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Bluetooth подешавања</string>
     <string name="device_settings_send_failed">Подешавање није могло да буде примењено: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Режим Искључено није омогућен на овом уређају. Омогућите „Дозволи режим Искључено“ под Контролом буке.</string>
+    <string name="anc_mode_not_confirmed_message">AirPods нису потврдили промену режима слушања.</string>
     <string name="device_settings_category_battery_label">Батерија</string>
     <string name="device_settings_charge_cap_label">Оптимизовано ограничење пуњења</string>
     <string name="device_settings_charge_cap_description">Научите вашу рутину и паузирајте пуњење oko 80%% ради продужења трајања батерије, допуњујући слушалице пре него што их будете највероватније користили.</string>
@@ -566,4 +578,6 @@
     <string name="press_controls_reset_label">Врати на подразумевано</string>
     <string name="press_controls_reset_confirm_message">Вратити сва мапирања притисака на подразумевано?</string>
     <string name="device_settings_noise_control_open_press_controls_action">Отвори контроле притиска</string>
+    <string name="general_navigate_up_action">Назад</string>
+    <string name="general_progress_loading">Учитавање</string>
 </resources>

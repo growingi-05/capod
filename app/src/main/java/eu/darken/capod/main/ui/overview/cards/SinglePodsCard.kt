@@ -52,19 +52,23 @@ import eu.darken.capod.main.ui.overview.cards.components.DeviceConnectionBadge
 import eu.darken.capod.main.ui.overview.cards.components.MissingPairedDeviceBanner
 import eu.darken.capod.main.ui.overview.cards.components.SignalIndicator
 import eu.darken.capod.main.ui.overview.cards.components.StatusChip
+import eu.darken.capod.main.ui.overview.cards.components.batteryTierState
 import eu.darken.capod.common.SystemTimeSource
 import eu.darken.capod.common.compose.Preview2
 import eu.darken.capod.common.compose.PreviewWrapper
 import eu.darken.capod.common.compose.preview.MockPodDataProvider
+import eu.darken.capod.common.theming.fillColor
+import eu.darken.capod.common.theming.textColorOrNull
 import eu.darken.capod.monitor.core.PodDevice
 import eu.darken.capod.monitor.core.battery.BatteryEstimate
+import eu.darken.capod.monitor.core.battery.BatteryTier
+import eu.darken.capod.monitor.core.battery.batteryTier
 import eu.darken.capod.monitor.core.cachedBatteryFormatted
 import eu.darken.capod.pods.core.apple.aap.AapPodState
 import eu.darken.capod.pods.core.apple.aap.protocol.AapSetting
 import eu.darken.capod.pods.core.apple.ble.batteryProgress
 import eu.darken.capod.pods.core.apple.ble.formatBatteryDurationShort
 import eu.darken.capod.pods.core.apple.ble.formatBatteryPercent
-import eu.darken.capod.pods.core.apple.ble.isKnownBattery
 import java.time.Instant
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -200,19 +204,15 @@ private fun ColumnScope.SinglePodsCardExpanded(
     val context = LocalContext.current
 
     val percent = device.batteryHeadset
-    val isKnown = isKnownBattery(percent)
+    val tier = batteryTier(percent)
+    val isKnown = tier != BatteryTier.UNKNOWN
     val animatedProgress by animateFloatAsState(
         targetValue = batteryProgress(percent),
         animationSpec = tween(600, easing = FastOutSlowInEasing),
         label = "gaugeProgress",
     )
 
-    val ringColor = when {
-        !isKnown -> MaterialTheme.colorScheme.surfaceVariant
-        percent > 0.30f -> MaterialTheme.colorScheme.primary
-        percent >= 0.15f -> MaterialTheme.colorScheme.tertiary
-        else -> MaterialTheme.colorScheme.error
-    }
+    val ringColor = tier.fillColor()
 
     Spacer(modifier = Modifier.height(12.dp))
 
@@ -232,7 +232,9 @@ private fun ColumnScope.SinglePodsCardExpanded(
         ) {
             Box(
                 contentAlignment = Alignment.Center,
-                modifier = Modifier.size(88.dp),
+                modifier = Modifier
+                    .size(88.dp)
+                    .batteryTierState(tier),
             ) {
                 // Track ring
                 CircularProgressIndicator(
@@ -261,7 +263,7 @@ private fun ColumnScope.SinglePodsCardExpanded(
                     Text(
                         text = formatBatteryPercent(context, percent),
                         style = MaterialTheme.typography.headlineSmall,
-                        color = if (isKnown) {
+                        color = tier.textColorOrNull() ?: if (isKnown) {
                             MaterialTheme.colorScheme.onSurface
                         } else {
                             MaterialTheme.colorScheme.onSurfaceVariant
@@ -335,7 +337,7 @@ private fun ColumnScope.SinglePodsCardExpanded(
         Spacer(modifier = Modifier.height(12.dp))
         AncModeSelector(
             currentMode = ancMode.current,
-                    supportedModes = device.visibleAncModes,
+            supportedModes = device.visibleAncModes,
             onModeSelected = { onAncModeChange?.invoke(it) },
             pendingMode = device.pendingAncMode,
         )
@@ -370,6 +372,26 @@ private fun SinglePodsCardEstimatePreview() = PreviewWrapper {
             headset = BatteryEstimate.Pod(minutesRemaining = 320, fractionPerHour = 0.09f, source = BatteryEstimate.Source.LEARNED),
         ),
         onDeviceSettings = {},
+    )
+}
+
+@Preview2
+@Composable
+private fun SinglePodsCardWarnPreview() = PreviewWrapper {
+    SinglePodsCard(
+        device = MockPodDataProvider.singlePodBattery(percent = 0.20f),
+        showDebug = false,
+        now = SystemTimeSource.now(),
+    )
+}
+
+@Preview2
+@Composable
+private fun SinglePodsCardCriticalPreview() = PreviewWrapper {
+    SinglePodsCard(
+        device = MockPodDataProvider.singlePodBattery(percent = 0.08f),
+        showDebug = false,
+        now = SystemTimeSource.now(),
     )
 }
 

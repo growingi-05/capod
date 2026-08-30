@@ -10,6 +10,8 @@
     <string name="upgrades_gplay_already_owned_description">Google Play повідомляє, що ви вже маєте це оновлення, але його не вдалося відновити. Переконайтеся, що ви використовуєте обліковий запис Google, з яким здійснили покупку. Синхронізація Play Store може тривати деякий час — спробуйте перезавантажити пристрій, очистити кеш Google Play або просто зачекати.</string>
     <string name="upgrade_restore_action">Відновити покупку</string>
     <string name="upgrade_badge_label">Pro</string>
+    <!-- %1$s is the full localized brand ("CAPod Pro", composed from the app name + postfix) — translate the sentence around it, keep the placeholder. -->
+    <string name="upgrade_screen_title_template">Отримати %1$s</string>
     <string name="upgrade_preamble">CAPod розробляє одна людина. Оновлення розблоковує додаткові функції та допомагає підтримувати розвиток застосунку.</string>
     <string name="upgrade_screen_options_description">Ті самі функції, різні варіанти оплати. Підписка включає безкоштовний пробний період і може бути скасована в будь-який час.</string>
     <string name="upgrade_screen_options_description_no_trial">Ті самі функції, різні варіанти оплати. Підписку можна скасувати в будь-який час.</string>
@@ -44,11 +46,37 @@
     <string name="upgrade_screen_owned_iap_purchase_note">Це окрема покупка — вона не скасовує підписку та не повертає за неї кошти. Використовуйте той самий обліковий запис Google.</string>
     <string name="upgrade_screen_sub_still_renewing_title">Підписка досі активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ваша підписка досі налаштована на автоматичне продовження. Спочатку скасуйте її в Google Play, а потім перейдіть на одноразову покупку. Щойно скасували? Дайте Google Play трохи часу та спробуйте ще раз.</string>
-    <string name="upgrade_screen_sub_check_failed_title">Не вдалося перевірити підписку</string>
-    <string name="upgrade_screen_sub_check_failed_message">Не вдалося перевірити статус вашої підписки в Google Play. Щоб уникнути подвійної покупки, спробуйте ще раз за мить.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Не вдалося перевірити твої покупки в Google Play. Щоб уникнути подвійної покупки, спробуй ще раз через деякий час.</string>
+    <string name="upgrade_screen_pending_card_title">Платіж в обробці</string>
+    <string name="upgrade_screen_pending_card_body">Google Play все ще обробляє твій платіж. Pro розблокується автоматично, як тільки платіж буде завершений. Деякі способи оплати можуть займати довгий час. Більше нічого робити не потрібно.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play знайшов покупку з платежем в обробці і все ще її обробляє. Pro розблокується автоматично, як тільки платіж буде завершений.</string>
     <string name="upgrade_screen_grace_title">Підтвердження вашої покупки</string>
     <string name="upgrade_screen_grace_body_short">Google Play ще не підтвердив вашу покупку. Pro все ще активний — жодних дій не потрібно.</string>
     <string name="upgrade_screen_grace_body">Google Play вже деякий час не підтверджує вашу покупку. Pro все ще активний. Переконайтеся, що ви в мережі та ввійшли в обліковий запис Google, який використовували для покупки, а потім спробуйте відновити.</string>
-    <string name="settings_upgrade_status_label">CAPod Pro</string>
-    <string name="settings_upgrade_status_description">Статус вашого оновлення та покупки.</string>
+    <!-- Offercard layout -->
+    <string name="upgrade_screen_offers_title">Варіанти оновлення</string>
+    <string name="upgrade_screen_offers_or">або</string>
+    <string name="upgrade_screen_offers_body">Однакові функції, просто різні моделі ціноутворення.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Ціни недоступні</string>
+    <string name="upgrade_screen_offers_unavailable_message">Google Play не повернув ціни прямо зараз. Перевірте своє з\'єднання та спробуйте ще раз за хвилину.</string>
+    <string name="upgrade_screen_subscription_offer_title">Щорічна передплата</string>
+    <string name="upgrade_screen_subscription_offer_body">Поновлюється щорічно після безплатного періоду. Скасувати можна будь-коли в Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Поновлюється щорічно. Скасувати можна будь-коли в Google Play.</string>
+    <string name="upgrade_screen_iap_offer_body">Один платіж, без поновлень.</string>
+    <string name="upgrade_screen_benefits_title">Переваги оновлення</string>
+    <string name="upgrade_screen_restore_body">Відновлення просить Google Play повторно перевірити покупки цього додатка для поточного облікового запису. Це не розпочинає нову покупку.</string>
+    <string name="upgrade_screen_restore_checked_message">CAPod щойно перевірив Google Play, але не вдалося підтвердити покупку Pro для облікового запису, який Google Play використовує для цього додатка.</string>
+    <string name="upgrade_screen_restore_contact_hint">Досі не вдається? Зв\'яжіться з підтримкою з електронної пошти, якою було здійснено покупку, і вкажіть номер замовлення Google Play.</string>
+    <string name="upgrade_screen_contact_support_action">Зв\'язок з підтримкою</string>
+    <string name="settings_upgrade_status_description">Ваш статус оновлення та покупки.</string>
+    <string name="upgrades_gplay_unavailable_error_description">CAPod не може підключитися до Google Play. Чи встановлено та оновлено Google Play? Ви ввійшли до свого облікового запису Google? Спробуйте очистити кеш застосунку Google Play і перезавантажити пристрій.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Не вдалося відкрити Google Play. Можливо, він відсутній, вимкнений або обмежений на цьому пристрої.</string>
+    <string name="upgrades_gplay_internal_error_title">Помилка Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Сталася внутрішня помилка Google Play. Спробуйте виконати наступні дії:\n\n• Перезапустіть пристрій\n• Очистіть кеш Google Play Store\n• Спробуйте пізніше</string>
+    <string name="upgrades_gplay_network_error_title">Помилка підключення</string>
+    <string name="upgrades_gplay_network_error_description">Неможливо підключитися до Google Play. Перевірте підключення до Інтернету та спробуйте ще раз.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Пропозиція недоступна</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play наразі не пропонує цей варіант оновлення. Спробуйте пізніше або перевірте Google Play Store.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Перевірка з Google Play не завершилась вчасно, тому статус вашої покупки залишається невідомим. На вашому обліковому записі нічого не змінилось.</string>
 </resources>
