@@ -11,6 +11,8 @@ import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen2
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen3
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen4
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen4Anc
+import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen5
+import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsGen5Wireless
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsMax
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsMax2
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsMaxUsbc
@@ -18,6 +20,7 @@ import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsPro
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsPro2
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsPro2Usbc
 import eu.darken.capod.pods.core.apple.ble.devices.airpods.AirPodsPro3
+import eu.darken.capod.pods.core.apple.ble.devices.beats.Beats360
 import eu.darken.capod.pods.core.apple.ble.devices.beats.BeatsFitPro
 import eu.darken.capod.pods.core.apple.ble.devices.beats.BeatsFlex
 import eu.darken.capod.pods.core.apple.ble.devices.beats.BeatsSolo3
@@ -48,6 +51,8 @@ abstract class AppleFactoryModule {
     @Binds @IntoSet abstract fun airPodsGen3(factory: AirPodsGen3.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun airPodsGen4(factory: AirPodsGen4.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun airPodsGen4Anc(factory: AirPodsGen4Anc.Factory): ApplePodsFactory
+    @Binds @IntoSet abstract fun airPodsGen5(factory: AirPodsGen5.Factory): ApplePodsFactory
+    @Binds @IntoSet abstract fun airPodsGen5Wireless(factory: AirPodsGen5Wireless.Factory): ApplePodsFactory
 
     @Binds @IntoSet abstract fun airPodsPro(factory: AirPodsPro.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun airPodsPro2(factory: AirPodsPro2.Factory): ApplePodsFactory
@@ -72,6 +77,7 @@ abstract class AppleFactoryModule {
     @Binds @IntoSet abstract fun beatsStudioBuds(factory: BeatsStudioBuds.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun beatsStudioBudsPlus(factory: BeatsStudioBudsPlus.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun beatsStudioPro(factory: BeatsStudioPro.Factory): ApplePodsFactory
+    @Binds @IntoSet abstract fun beats360(factory: Beats360.Factory): ApplePodsFactory
 
     @Binds @IntoSet abstract fun fakeAirPodsGen1(factory: FakeAirPodsGen1.Factory): ApplePodsFactory
     @Binds @IntoSet abstract fun fakeAirPodsGen2(factory: FakeAirPodsGen2.Factory): ApplePodsFactory

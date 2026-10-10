@@ -46,6 +46,8 @@ import eu.darken.capod.reaction.core.autoconnect.AutoConnect
 import eu.darken.capod.reaction.core.playpause.PlayPause
 import eu.darken.capod.reaction.core.popup.PopUpReaction
 import eu.darken.capod.reaction.core.conversation.ConversationReaction
+import eu.darken.capod.reaction.core.caselow.CaseLowReminderNotifications
+import eu.darken.capod.reaction.core.caselow.CaseLowReminderReaction
 import eu.darken.capod.reaction.core.charged.ChargedReaction
 import eu.darken.capod.reaction.core.charged.ChargedReactionNotifications
 import eu.darken.capod.reaction.core.sleep.SleepReaction
@@ -55,6 +57,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -86,6 +91,8 @@ class MonitorService : Service() {
     @Inject lateinit var sleepReaction: SleepReaction
     @Inject lateinit var chargedReaction: ChargedReaction
     @Inject lateinit var chargedReactionNotifications: ChargedReactionNotifications
+    @Inject lateinit var caseLowReminderReaction: CaseLowReminderReaction
+    @Inject lateinit var caseLowReminderNotifications: CaseLowReminderNotifications
     @Inject lateinit var conversationReaction: ConversationReaction
     @Inject lateinit var popUpWindow: PopUpWindow
     @Inject lateinit var profilesRepo: DeviceProfilesRepo
@@ -95,6 +102,7 @@ class MonitorService : Service() {
 
     private val monitorScope = MonitorCoroutineScope()
     private var monitoringJob: Job? = null
+    private val startSignal = MutableStateFlow(0L)
     @Volatile private var monitorGeneration = 0
     private var foregroundStartFailed = false
     private var injectionComplete = false
@@ -212,6 +220,8 @@ class MonitorService : Service() {
 
         if (monitoringJob?.isActive == true && !forceStart) {
             log(TAG) { "Already monitoring and forceStart=false, keeping current session." }
+            // Fresh evidence of activity: re-arm any pending teardown countdown.
+            startSignal.value++
             return START_STICKY
         }
 
@@ -247,6 +257,7 @@ class MonitorService : Service() {
         latestNotificationSettings = NotificationSettings(
             useExtraNotification = generalSettings.useExtraMonitorNotification.flow.first(),
             keepAfterDisconnect = generalSettings.keepConnectedNotificationAfterDisconnect.flow.first(),
+            showBatteryInStatusBar = generalSettings.showBatteryInStatusBar.flow.first(),
         )
 
         val permissionsMissingOnStart = permissionTool.missingScanPermissions.first()
@@ -263,8 +274,13 @@ class MonitorService : Service() {
         val notificationSettingsFlow = combine(
             generalSettings.useExtraMonitorNotification.flow,
             generalSettings.keepConnectedNotificationAfterDisconnect.flow,
-        ) { useExtra, keepAfter ->
-            NotificationSettings(useExtraNotification = useExtra, keepAfterDisconnect = keepAfter)
+            generalSettings.showBatteryInStatusBar.flow,
+        ) { useExtra, keepAfter, batteryIcon ->
+            NotificationSettings(
+                useExtraNotification = useExtra,
+                keepAfterDisconnect = keepAfter,
+                showBatteryInStatusBar = batteryIcon,
+            )
         }
 
         val monitorJob = combine(
@@ -295,13 +311,18 @@ class MonitorService : Service() {
                         currentDevice,
                         estimate = estimate,
                         showHint = settings.useExtraNotification,
+                        showBatteryInStatusBar = settings.showBatteryInStatusBar,
                     )
                 )
 
                 when (val action = decideExtraNotificationAction(currentDevice, settings)) {
                     is ExtraNotificationAction.Post -> notificationManager.notify(
                         MonitorNotifications.NOTIFICATION_ID_CONNECTED,
-                        notifications.getNotificationConnected(action.device, estimate),
+                        notifications.getNotificationConnected(
+                            action.device,
+                            estimate,
+                            showBatteryInStatusBar = settings.showBatteryInStatusBar,
+                        ),
                     )
                     ExtraNotificationAction.Cancel -> notificationManager.cancel(
                         MonitorNotifications.NOTIFICATION_ID_CONNECTED
@@ -314,7 +335,7 @@ class MonitorService : Service() {
             }
             .launchIn(monitorScope)
 
-        permissionTool.missingScanPermissions
+        val modeStates = permissionTool.missingScanPermissions
             .flatMapLatest { missingPermsFlow ->
                 if (missingPermsFlow.isNotEmpty()) {
                     log(TAG, WARN) { "Aborting, scan permissions are missing: $missingPermsFlow" }
@@ -333,38 +354,13 @@ class MonitorService : Service() {
             }
             .distinctUntilChanged()
             .setupCommonEventHandlers(TAG) { "MonitorMode" }
-            .flatMapLatest { state ->
-                log(TAG) { "Monitor mode: ${state.mode}" }
-                log(TAG) { "connectedAddresses: ${state.connectedAddresses}" }
-                log(TAG) { "knownAddresses: ${state.knownAddresses}" }
 
-                when (state.mode) {
-                    MonitorMode.MANUAL -> flow<Unit> {
-                        monitorScope.coroutineContext.cancelChildren()
-                    }
-
-                    MonitorMode.ALWAYS -> emptyFlow()
-                    MonitorMode.AUTOMATIC -> flow {
-                        when {
-                            !state.hasProfiles && state.connectedAddresses.isNotEmpty() -> {
-                                log(TAG, WARN) { "Main device address not set, staying alive while any is connected" }
-                            }
-
-                            state.knownAddresses.any { it in state.connectedAddresses } || state.hasAapSession -> {
-                                log(TAG) { "A device is connected, aborting any timeout." }
-                            }
-
-                            else -> {
-                                log(TAG) { "No known Pods are connected, stopping service soon." }
-                                delay(15 * 1000)
-                                log(TAG) { "Stopping service now, still no Pods connected." }
-
-                                monitorScope.coroutineContext.cancelChildren()
-                            }
-                        }
-                    }
-                }
-            }
+        monitorModeFlow(
+            tag = TAG,
+            modeStates = modeStates,
+            startSignal = startSignal,
+            onTeardown = { monitorScope.coroutineContext.cancelChildren() },
+        )
             .catch {
                 log(TAG, WARN) { "MonitorMode Flow failed:\n${it.asLog()}" }
             }
@@ -413,6 +409,26 @@ class MonitorService : Service() {
             }
             .setupCommonEventHandlers(TAG) { "chargedReaction" }
             .catch { log(TAG, WARN) { "chargedReaction failed:\n${it.asLog()}" } }
+            .launchIn(monitorScope)
+
+        caseLowReminderReaction.monitor()
+            .onEach { event ->
+                when (event) {
+                    is CaseLowReminderReaction.Event.ShowNotification -> caseLowReminderNotifications.show(
+                        profileId = event.profileId,
+                        deviceLabel = event.deviceLabel,
+                        casePercent = event.casePercent,
+                    )
+
+                    is CaseLowReminderReaction.Event.CancelNotification ->
+                        caseLowReminderNotifications.cancel(event.profileId)
+
+                    is CaseLowReminderReaction.Event.Reconcile ->
+                        caseLowReminderNotifications.cancelAllExcept(event.enabledProfileIds)
+                }
+            }
+            .setupCommonEventHandlers(TAG) { "caseLowReminder" }
+            .catch { log(TAG, WARN) { "caseLowReminder failed:\n${it.asLog()}" } }
             .launchIn(monitorScope)
 
         conversationReaction.monitor()
@@ -492,6 +508,60 @@ internal data class MonitorModeState(
     val hasAapSession: Boolean,
 )
 
+/**
+ * Decides whether a monitor session may keep running. In [MonitorMode.AUTOMATIC] with nothing
+ * connected the teardown runs [timeoutMillis] after the state was seen.
+ *
+ * [startSignal] is bumped by a start request that found a live session and short-circuited. The
+ * bump restarts this flow, arming a fresh window, and the pre-teardown re-check covers the case
+ * where the bump lands while the expired countdown is already unwinding.
+ */
+internal fun monitorModeFlow(
+    tag: String,
+    modeStates: Flow<MonitorModeState>,
+    startSignal: StateFlow<Long>,
+    timeoutMillis: Long = 15 * 1000,
+    onTeardown: () -> Unit,
+): Flow<Unit> = combine(modeStates, startSignal) { state, signal ->
+    state to signal
+}.flatMapLatest { (state, armedSignal) ->
+    log(tag) { "Monitor mode: ${state.mode}" }
+    log(tag) { "connectedAddresses: ${state.connectedAddresses}" }
+    log(tag) { "knownAddresses: ${state.knownAddresses}" }
+
+    when (state.mode) {
+        MonitorMode.MANUAL -> flow<Unit> {
+            onTeardown()
+        }
+
+        MonitorMode.ALWAYS -> emptyFlow()
+        MonitorMode.AUTOMATIC -> flow {
+            when {
+                !state.hasProfiles && state.connectedAddresses.isNotEmpty() -> {
+                    log(tag, WARN) { "Main device address not set, staying alive while any is connected" }
+                }
+
+                state.knownAddresses.any { it in state.connectedAddresses } || state.hasAapSession -> {
+                    log(tag) { "A device is connected, aborting any timeout." }
+                }
+
+                else -> {
+                    log(tag) { "No known Pods are connected, stopping service soon." }
+                    delay(timeoutMillis)
+
+                    if (startSignal.value != armedSignal) {
+                        log(tag) { "A start request arrived during the timeout, staying alive." }
+                        return@flow
+                    }
+                    log(tag) { "Stopping service now, still no Pods connected." }
+
+                    onTeardown()
+                }
+            }
+        }
+    }
+}
+
 internal fun buildMonitorModeState(
     mode: MonitorMode,
     profiles: List<DeviceProfile>,
@@ -566,6 +636,7 @@ private fun PodDevice.toNotificationKey(): NotificationDeviceKey = NotificationD
 internal data class NotificationSettings(
     val useExtraNotification: Boolean,
     val keepAfterDisconnect: Boolean,
+    val showBatteryInStatusBar: Boolean = false,
 )
 
 internal sealed interface ExtraNotificationAction {

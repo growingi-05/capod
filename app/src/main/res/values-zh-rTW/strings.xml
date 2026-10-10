@@ -3,7 +3,6 @@
     <string name="general_share_action">分享</string>
     <string name="general_done_action">完成</string>
     <string name="general_cancel_action">取消</string>
-    <string name="general_copy_action">複製</string>
     <string name="general_thank_you_label">感謝你們</string>
     <string name="general_upgrade_action">升級</string>
     <string name="general_retry_action">重試</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">檢查</string>
     <string name="general_close_action">關閉</string>
     <string name="general_dismiss_action">關閉</string>
-    <string name="general_edit_action">編輯</string>
     <string name="general_save_action">儲存</string>
     <string name="general_guide_action">指南</string>
     <string name="general_continue_action">繼續</string>
@@ -31,7 +29,7 @@
     <string name="upgrade_benefit_support">支持開發者</string>
     <string name="upgrade_benefit_disclaimer">功能可用性取決於您的耳機和裝置。</string>
     <string name="settings_monitor_connected_notification_label">額外通知</string>
-    <string name="settings_monitor_connected_notification_description">顯示第二個通知，僅在連接設備時出現。啟用後，你可以隱藏永久的「無設備」通知：在 Android 的 CAPod 通知設定中關閉「設備狀態」類別。</string>
+    <string name="settings_monitor_connected_notification_description">顯示第二個通知，僅在連接裝置時出現。啟用後，你可以隱藏永久的「無裝置」通知：在 Android 的 CAPod 通知設定中關閉「裝置狀態」類別。</string>
     <string name="settings_keep_notification_after_disconnect_label">斷線後保留通知</string>
     <string name="settings_keep_notification_after_disconnect_description">即使 AirPods 斷線後仍顯示上次的電量</string>
     <string name="settings_autopause_label">自動暫停</string>
@@ -40,19 +38,14 @@
     <string name="settings_autoplay_description">當您再次佩戴耳機時恢復音樂播放，但僅限於「自動暫停」停止播放的情況。您自行觸發的暫停（透過手機、AirPods 耳機桿、睡眠）將保持暫停狀態。</string>
     <string name="settings_start_music_on_wear_label">佩戴時開始播放音樂</string>
     <string name="settings_start_music_on_wear_description">每當您佩戴耳機時，系統會嘗試播放音樂，即使是手動暫停後也會如此。</string>
-    <string name="settings_eardetection_info_label">耳朵偵測提示</string>
     <string name="settings_eardetection_info_description">若耳朵偵測僅對其中一隻耳機有效，這是 Apple 的限制。只有「主要耳機」（用作麥克風的那一隻）會被偵測。可在 Apple 裝置中設定：設定 → 藍牙 → AirPods → 麥克風。</string>
-    <string name="settings_signal_minimum_label">最低訊號品質</string>
-    <string name="settings_signal_minimum_description">可以被認為是您的裝置的最低訊號品質。</string>
     <string name="settings_autoconnect_label">自動連線</string>
     <string name="settings_autoconnect_description">如果 Android 沒有自動連線，我們也可以嘗試連線。這樣 CAPod 就能始終在背景進行監控。</string>
     <string name="settings_autoconnect_info_android12">自動連線依賴 Android 12 及更新版本限制的系統功能，在您的裝置上可能無法正常運作。</string>
     <string name="settings_autoconnect_condition_label">自動連線條件</string>
-    <string name="settings_autoconnect_condition_description">何時連線到您的裝置？</string>
     <string name="settings_devices_label">裝置</string>
     <string name="settings_devices_description">管理你的裝置。</string>
     <string name="settings_reaction_label">反應</string>
-    <string name="settings_category_yourdevice_label">您的裝置</string>
     <string name="settings_category_compatibility_options_title">相容性選項</string>
     <string name="settings_category_compatibility_options_description">若一切如常，就不要觸碰 ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">停用硬體過濾</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">啟動中…</string>
     <string name="support_debuglog_label">偵錯記錄</string>
     <string name="support_debuglog_desc">將應用程式執行的所有動作記錄到您可以分享的文字檔案中。</string>
-    <string name="debug_debuglog_size_label">大小</string>
-    <string name="debug_debuglog_size_compressed_label">壓縮後大小</string>
-    <string name="debug_notification_channel_label">偵錯通知</string>
-    <string name="debug_debuglog_file_label">已錄製的記錄檔案</string>
-    <string name="debug_debuglog_recording_progress">正在錄製偵錯記錄</string>
     <string name="debug_debuglog_record_action">錄製偵錯記錄</string>
     <string name="debug_debuglog_stop_action">停止錄製</string>
     <string name="debug_debuglog_sensitive_information_message">產生的檔案包含敏感資訊 (例如藍牙裝置詳細資料)。僅與受信任方分享。</string>
     <string name="settings_debuglog_explanation">此功能會將應用程式執行的所有動作記錄到可分享的檔案中。產生的檔案包含敏感資訊 (例如藍牙裝置詳細資料)。僅與受信任方 (例如正在解決問題的開發人員) 分享。</string>
-    <string name="settings_support_installid_label">安裝 ID</string>
-    <string name="settings_support_installid_desc">自動傳送的錯誤報告是匿名的。如果開發人員需要找出您的錯誤報告將分享你的安裝 ID。</string>
     <string name="settings_support_label">支援</string>
     <string name="settings_support_description">如果您需要協助。</string>
     <string name="settings_wiki_label">Wiki</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">隱藏未配對的裝置</string>
     <string name="settings_overview_hide_unmatched_description">在總覽中不顯示附近不符合任何設定檔的裝置，例如其他人的 AirPods。</string>
     <string name="device_battery_estimate_toggle_label">電池估計</string>
-    <string name="device_battery_estimate_card_desc">了解此裝置的充放電方式，以估算剩餘時間、充滿時間和電池健康狀態。</string>
+    <string name="device_battery_estimate_card_desc">瞭解此裝置的充電和耗電方式，以估算剩餘時間、充滿電時間，以及它還能達到額定聆聽時間的百分比。</string>
     <string name="device_battery_estimate_reset_action">重置學習資料</string>
     <string name="device_battery_estimate_reset_desc">從額定電池續航時間重新開始。</string>
     <string name="device_battery_estimate_reset_confirm_title">重置學習資料？</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod 將忘記此裝置的實測耗電量、充電速度和電池健康狀態，並從額定電池續航時間重新開始。</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod 將忘記此裝置的實測耗電量、充電速度和聆聽時間，並從額定電池續航時間重新開始。</string>
     <string name="settings_acknowledgements_label">致謝</string>
-    <string name="settings_debug_autoreports_label">自動回報錯誤</string>
-    <string name="settings_debug_autoreports_description">自動報告問題，例如應用程式當機細節，我也可以指出如何修復。</string>
-    <string name="settings_compatibility_mode_label">相容性模式</string>
-    <string name="settings_compatibility_mode_description">停用電池效能最佳化以提高相容性，請在未看到任何資料時開啟。</string>
     <string name="help_translate_label">翻譯</string>
     <string name="help_translate_description">協助翻譯為您的最愛語言。</string>
     <string name="translators_thanks_title">翻譯人員</string>
@@ -173,19 +155,13 @@
     <string name="troubleshooter_ble_result_success_title">成功</string>
     <string name="troubleshooter_ble_result_success_body">CAPod 正在接收低功耗藍牙廣告廣播。</string>
     <string name="troubleshooter_ble_result_failure_title">未成功</string>
-    <string name="troubleshooter_ble_result_failure_body">疑難排解失敗，相容性選項的組合都無濟於事。</string>
     <string name="troubleshooter_ble_result_failure_phone_body">您的手機未收到任何低功耗藍牙資料。您可以在人多的地方重試這個測試，看看是否能收到資料來源 (除了您的耳機)。若未收到任何資料，則說明您的手機作業系統存在問題。</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">您的手機收到了低功耗藍牙資料，但此資料並非來自任何支援的裝置。您的耳機是否已開機？CAPod 是否支援您的耳機？</string>
-    <string name="troubleshooter_ble_result_failure_action">再試一次</string>
-    <string name="troubleshoot_action">疑難排解</string>
     <string name="onboarding_body1">此應用程式為 Android 新增了對 AirPod 特定功能的支援。</string>
     <string name="onboarding_body2">並非所有 Android 裝置都完全支援額外的 AirPod 功能。您的作業系統需要一個正常運作的藍牙低功耗實作。</string>
     <string name="onboarding_body3">CAPod 沒有廣告，也不會收集您的資料。</string>
     <string name="onboarding_body4">您可以升級到 CAPod Pro 以獲得額外功能並支援開發。</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">不適用</string>
     <string name="general_error_label">錯誤</string>
@@ -207,9 +183,6 @@
     <string name="overview_troubleshoot_suggestion_description">您的裝置已連線，但 CAPod 未收到任何即時資料。您的手機可能需要相容性選項——疑難排解員可嘗試自動找到合適的選項。</string>
     <string name="overview_troubleshoot_suggestion_action">執行疑難排解員</string>
     <string name="overview_unmatched_devices_label">未配對的裝置</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="other">%d 個裝置沒有相符的設定檔</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="other">偵測到 %d 個附近裝置沒有對應的設定檔。顯示以查看可用詳細資訊。如果其中一個是您的裝置，請從「裝置」新增設定檔以識別它。</item>
     </plurals>
@@ -228,7 +201,6 @@
     <string name="permission_background_location_description">CAPods 在應用程式關閉時使用「背景位置存取」來啟用諸如「顯示彈出式視窗」和「自動連線」等功能。背景位置存取允許這個應用程式在背景接收低功耗藍牙資料。這個應用程式不會使用藍牙資料來確定您的位置。</string>
     <string name="permission_ignore_battery_optimizations_label">停用電池效能最佳化</string>
     <string name="permission_ignore_battery_optimizations_description">電池效能最佳化使這個應用程式在背景時無法可靠地接收藍牙資料。</string>
-    <string name="permission_required_title">可能要求下列權限：</string>
     <string name="permission_system_alert_window_label">系統警報視窗</string>
     <string name="permission_system_alert_window_description">允許 CAPod 在其他應用程式上繪圖，使「顯示彈出式視窗」功能成為可能。</string>
     <string name="settings_reaction_autoconnect_whenseen_label">看到時</string>
@@ -236,10 +208,21 @@
     <string name="settings_reaction_autoconnect_inear_label">在耳中</string>
     <string name="pods_dual_left_label">左耳</string>
     <string name="pods_dual_right_label">右耳</string>
-    <string name="pods_dual_left_short_label">左</string>
-    <string name="pods_dual_right_short_label">右</string>
-    <string name="pods_case_label">充電盒</string>
     <string name="battery_unavailable_label">電池無法取得</string>
+    <string name="battery_state_low_cd">電池電量低</string>
+    <string name="battery_state_critical_cd">電池電量嚴重不足</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="other">約可再為兩個耳塞充電 %d 次</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="other">至少可再為兩個耳塞充電 %d 次</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">無法再為兩個耳塞充滿電一次</string>
+    <string name="battery_case_charges_empty">充電盒已空，無法再為您的耳塞充電</string>
+    <string name="battery_case_charges_uncertain">不確定還能為兩個耳塞充電多少次</string>
+    <string name="battery_case_charges_state_enough_cd">足以充滿一次電</string>
+    <string name="battery_case_charges_state_not_enough_cd">電量不足以充滿一次電</string>
+    <string name="battery_case_charges_state_uncertain_cd">可能電量不足以充滿一次電</string>
     <string name="pods_case_status_open_label">已開啟</string>
     <string name="pods_case_status_closed_label">已關閉</string>
     <string name="pods_connection_state_disconnected_label">未連線到裝置</string>
@@ -273,19 +256,15 @@
     <string name="signal_badge_aap_cd">直接連線中</string>
     <string name="signal_indicator_bars_cd">訊號強度：%1$d / 4 格</string>
     <string name="signal_indicator_disconnected_cd">訊號：已中斷連線</string>
-    <string name="pods_yours">您的</string>
     <string name="headset_being_worn_label">正被配戴</string>
     <string name="headset_not_being_worn_label">未配戴</string>
     <string name="pods_case_unknown_state">未知狀態</string>
-    <string name="last_seen_x">最後連線：%s</string>
-    <string name="first_seen_x">首次連線：%s</string>
     <string name="battery_cached_label">上次已知 · %s</string>
     <string name="battery_time_remaining_format_hm">%1$d小時%2$d分</string>
     <string name="battery_time_remaining_format_h">%1$d小時</string>
     <string name="battery_time_remaining_format_m">%1$d分鐘</string>
     <string name="permission_post_notifications_label">顯示通知</string>
     <string name="permission_post_notifications_description">"允許 CAPod 顯示關於您 AirPods 的通知，例如在連線時顯示它們的目前狀態。"</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">尚未設定任何裝置設定檔</string>
     <string name="profiles_empty_description">建立裝置設定檔，以自訂設定與優先順序來管理多個裝置。</string>
     <string name="profiles_add_action">新增設定檔</string>
@@ -308,10 +287,8 @@
     <string name="profiles_signal_quality_title">最低訊號品質</string>
     <string name="profiles_signal_quality_description">僅偵測訊號強度高於此閾值的裝置。數值越低可增加偵測範圍，但可能導致誤判。請勿將此值設得太高——藍牙接收通常較弱，且會受距離與障礙物影響。</string>
     <string name="profiles_identitykey_label">身份金鑰</string>
-    <string name="profilessettings_maindevice_identitykey_description">您裝置的身份解析金鑰 (IRK)，協助 CAPod 在附近的裝置中識別它。</string>
     <string name="profiles_maindevice_identitykey_explanation">為保護隱私，AirPods 會經常更改其藍牙位址。IRK 可協助 CAPod 識別您的裝置。您需要一次性存取 MacBook。</string>
     <string name="profiles_maindevice_encryptionkey_label">加密金鑰</string>
-    <string name="profiles_maindevice_encryptionkey_description">您裝置的加密金鑰，允許 CAPod 檢索詳細的狀態資訊。</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods 會傳送狀態訊息，其中一部分已加密。加密金鑰允許 CAPod 解密完整的訊息。您需要一次性存取 MacBook。</string>
     <string name="profiles_key_invalid_format">無效的金鑰格式</string>
     <string name="profiles_key_expected_format">預期格式：%1$s</string>
@@ -320,37 +297,29 @@
     <string name="profiles_signal_quality_min_label">關閉</string>
     <string name="profiles_signal_quality_max_label">嚴格</string>
     <string name="profiles_priority_hint">設定檔的順序決定優先權。拖曳設定檔以重新排序——當多個裝置符合時，列表中較上方的設定檔將具有較高優先權。</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">主題模式</string>
     <string name="ui_theme_mode_system_label">系統</string>
     <string name="ui_theme_mode_dark_label">深色</string>
     <string name="ui_theme_mode_light_label">淺色</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">主題樣式</string>
     <string name="ui_theme_style_default_label">預設</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">中度對比</string>
     <string name="ui_theme_style_high_contrast_label">高對比</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">主題色彩</string>
     <string name="ui_theme_color_blue_label">藍色</string>
     <string name="ui_theme_color_green_label">綠色</string>
     <string name="ui_theme_color_amber_label">琥珀色</string>
     <string name="ui_theme_color_disabled_materialyou">使用已設壁紙色彩</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">外觀</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">修改未儲存</string>
     <string name="general_unsaved_changes_message">您有未儲存的變更。您想如何處理？</string>
     <string name="general_save_and_exit_action">儲存並退出</string>
     <string name="general_discard_action">捨棄</string>
-    <string name="general_keep_editing_action">繼續編輯</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">録製時間太短</string>
     <string name="debug_debuglog_short_recording_message">除錯日誌需要在問題發生時擷取。請繼續録製，復現問題，再停止録製。</string>
     <string name="debug_debuglog_short_recording_continue">繼續録製</string>
     <string name="debug_debuglog_short_recording_stop">仍然停止</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">偵錯記錄</string>
     <string name="debug_debuglog_screen_subtitle">匯出偵錯資訊以進行疑難排解</string>
     <string name="debug_debuglog_screen_sensitive_title">敏感資訊</string>
@@ -361,7 +330,6 @@
     </plurals>
     <string name="debug_debuglog_screen_discard_action">刪除</string>
     <string name="debug_debuglog_screen_keep_action">保留</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="other">%1$d 次除錯日誌（%2$s）</item>
     </plurals>
@@ -378,7 +346,6 @@
     <string name="support_debuglog_failed_missing_log">失敗：日誌檔不存在</string>
     <string name="support_debuglog_failed_corrupt_zip">失敗：zip 檔已損毀</string>
     <string name="support_debuglog_failed_zip_failed">失敗：壓縮失敗</string>
-    <!-- Contact form -->
     <string name="support_contact_label">聯絡開發者</string>
     <string name="support_contact_desc">填寫表單向開發者發送電子郵件。</string>
     <string name="support_contact_welcome">我會親自閱讀每封訊息並盡力回覆，但由於我是獨自開發，可能需要一點時間。感謝您的耐心。</string>
@@ -404,15 +371,12 @@
     <string name="support_contact_no_email_app">此裝置上找不到電子郵件應用程式。</string>
     <string name="support_contact_debuglog_delete_title">刪除除錯日誌？</string>
     <string name="support_contact_debuglog_delete_message">此除錯日誌將被永久刪除。</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">日誌已傳送？</string>
     <string name="support_debuglog_sent_message">偵錯日誌是否已成功傳送？日誌將被刪除。</string>
     <string name="support_contact_sent_title">電子郵件已傳送？</string>
     <string name="support_contact_sent_message">電子郵件是否已成功傳送？附加的偵錯日誌將被刪除。</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">裝置設定</string>
     <string name="device_settings_subtitle_profile_prefix">設定檔：%s</string>
-    <string name="device_settings_info_name_label">名稱</string>
     <string name="device_settings_info_bt_name_label">藍牙裝置標籤</string>
     <string name="device_settings_info_model_label">型號</string>
     <string name="device_settings_info_manufacturer_label">製造商</string>
@@ -425,11 +389,14 @@
     <string name="device_settings_info_right_serial_label">右耳機序號</string>
     <string name="device_settings_info_left_bonded_label">左耳已配對</string>
     <string name="device_settings_info_right_bonded_label">右耳已配對</string>
-    <string name="device_settings_info_battery_health_label">電池健康狀態（估計值）</string>
-    <string name="device_settings_info_battery_health_left_label">左電池健康狀態（估計）</string>
-    <string name="device_settings_info_battery_health_right_label">右電池健康狀態（估計）</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">預估聆聽時間</string>
+    <string name="device_settings_info_battery_health_left_label">左耳塞聆聽時間</string>
+    <string name="device_settings_info_battery_health_right_label">右耳塞聆聽時間</string>
+    <string name="device_settings_info_battery_health_value">額定值的約 %1$d%%</string>
     <string name="device_settings_info_battery_health_pending">正在評估中，請稍後查看</string>
+    <string name="device_settings_battery_runtime_warning_title">聆聽時間遠短於額定值</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s：額定聆聽時間的約 %2$d%%。點擊以了解詳情。</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">這副耳機</string>
     <string name="device_settings_info_details_label">裝置詳情</string>
     <string name="device_settings_info_details_action">顯示裝置詳情</string>
     <string name="device_settings_info_status_label">狀態</string>
@@ -488,8 +455,6 @@
     <string name="review_app_review_action">評論</string>
     <string name="review_app_dismiss_action">稍後再說</string>
     <string name="review_app_body">您想為 CAPod 留下評論嗎？❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">一般</string>
     <string name="device_settings_microphone_mode_label">麥克風</string>
     <string name="device_settings_microphone_mode_description">用作麥克風的耳塞</string>
     <string name="device_settings_microphone_mode_auto">自動</string>
@@ -538,7 +503,6 @@
     <string name="device_settings_connected_device_media">播放媒體</string>
     <string name="device_settings_noise_control_label">噪音控制</string>
     <string name="device_settings_eq_label">均衡器</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">按偵控制</string>
     <string name="press_controls_nav_description">調整按偵行為並將按偵映射到動作</string>
     <string name="press_controls_description">調整按偵偵測方式、選擇通話按鈕行為，並將按偵映射到動作。映射的動作僅適用於此裝置，且讓應用程式拼捨按偵而非由 AirPods 原生處理。</string>

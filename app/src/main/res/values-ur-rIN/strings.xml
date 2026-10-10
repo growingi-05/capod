@@ -3,7 +3,6 @@
     <string name="general_share_action">شیئر کریں</string>
     <string name="general_done_action">ہو گیا</string>
     <string name="general_cancel_action">منسوخ کریں</string>
-    <string name="general_copy_action">کاپی کریں</string>
     <string name="general_thank_you_label">شکریہ</string>
     <string name="general_upgrade_action">اپ گریڈ کریں</string>
     <string name="general_retry_action">دوبارہ کوشش کریں</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">چیک کریں</string>
     <string name="general_close_action">بند کریں</string>
     <string name="general_dismiss_action">مسترد کریں</string>
-    <string name="general_edit_action">تبدیلی کریں</string>
     <string name="general_save_action">محفوظ کریں</string>
     <string name="general_guide_action">رہنما</string>
     <string name="general_continue_action">جاری رکھیں</string>
@@ -40,19 +38,14 @@
     <string name="settings_autoplay_description">جب آپ دوبارہ پوڈز پہنیں تو موسیقی دوبارہ شروع کریں، لیکن صرف اس صورت میں جب آٹو پاز نے اسے روکا ہو۔ آپ کے اپنے ہاتھ سے لگائے گئے پاز (فون، AirPods اسٹیم، نیند) وقفے میں رہتے ہیں۔</string>
     <string name="settings_start_music_on_wear_label">پہننے پر موسیقی شروع کریں</string>
     <string name="settings_start_music_on_wear_description">جب آپ پوڈز پہنیں تو ہمیشہ موسیقی چلانے کی کوشش کرتا ہے، چاہے آپ نے خود وقفہ کیا ہو۔</string>
-    <string name="settings_eardetection_info_label">کان کی شناخت کا نوٹ</string>
     <string name="settings_eardetection_info_description">اگر کان کی شناخت صرف ایک پوڈ کے لئے کام کرتی ہے تو یہ Apple کی حد ہے۔ صرف \"بنیادی پوڈ\" (مائیکروفون کے لئے استعمال ہونے والا) کا پتہ چلتا ہے۔ Apple آلات پر ترتیب دیں: سیٹنگز → بلوٹوتھ → AirPods → مائیکروفون۔</string>
-    <string name="settings_signal_minimum_label">کم از کم سگنل کا معیار</string>
-    <string name="settings_signal_minimum_description">کم از کم سگنل کا معیار جو کسی آلہ کو آپ کا سمجھا جانے کے لئے درکار ہے۔</string>
     <string name="settings_autoconnect_label">خودکار کنیکٹ</string>
     <string name="settings_autoconnect_description">اگر اینڈرائیڈ خود بخود منسلک نہیں ہوتا، تو ہم اسے ایسا کرنے کے لیے کہہ سکتے ہیں۔ اس سے CAPod ہر وقت بیک گراؤنڈ میں مانیٹرنگ جاری رکھتا ہے۔</string>
     <string name="settings_autoconnect_info_android12">آٹو کنیکٹ ایک ایسے سسٹم فیچر پر انحصار کرتا ہے جسے Android 12 اور اس سے جدید ورژن محدود کرتا ہے۔ یہ آپ کے ڈیوائس پر کام نہیں کر سکتا۔</string>
     <string name="settings_autoconnect_condition_label">خودکار کنیکٹ کی شرط</string>
-    <string name="settings_autoconnect_condition_description">ہمیں آپ کے آلہ سے کب منسلک ہونے کی کوشش کرنی چاہئے؟</string>
     <string name="settings_devices_label">آلات</string>
     <string name="settings_devices_description">اپنے آلات کا نظم کریں۔</string>
     <string name="settings_reaction_label">رد عمل</string>
-    <string name="settings_category_yourdevice_label">آپ کا آلہ</string>
     <string name="settings_category_compatibility_options_title">مطابقت کے اختیارات</string>
     <string name="settings_category_compatibility_options_description">اگر سب کچھ کام کر رہا ہو تو ہاتھ نہ لگائیں ؛)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">ہارڈ ویئر فلٹرنگ کو غیر فعال کریں</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">شروع ہو رہا ہے…</string>
     <string name="support_debuglog_label">ڈیبگ لاگ</string>
     <string name="support_debuglog_desc">ایپ جو کچھ بھی کر رہی ہے اسے ایک ٹیکسٹ فائل میں ریکارڈ کریں جسے آپ شیئر کر سکتے ہیں۔</string>
-    <string name="debug_debuglog_size_label">سائز</string>
-    <string name="debug_debuglog_size_compressed_label">کمپریسڈ سائز</string>
-    <string name="debug_notification_channel_label">ڈیبگ اطلاعات</string>
-    <string name="debug_debuglog_file_label">ریکارڈ شدہ لاگ فائل</string>
-    <string name="debug_debuglog_recording_progress">ڈیبگ لاگ ریکارڈ ہو رہا ہے</string>
     <string name="debug_debuglog_record_action">ڈیبگ لاگ ریکارڈ کریں</string>
     <string name="debug_debuglog_stop_action">ریکارڈنگ روکیں</string>
     <string name="debug_debuglog_sensitive_information_message">تیار کردہ فائل میں حساس معلومات ہیں (مثلاً بلوٹوتھ آلہ کی تفصیلات)۔ اسے صرف قابل اعتماد فریقوں کے ساتھ شیئر کریں۔</string>
     <string name="settings_debuglog_explanation">یہ خصوصیت ایپ جو کچھ بھی کر رہی ہے اسے ایک قابل اشتراک فائل میں ریکارڈ کرتی ہے۔ تیار کردہ فائل میں حساس معلومات ہیں (مثلاً بلوٹوتھ آلہ کی تفصیلات)۔ اسے صرف قابل اعتماد فریقوں (مثلاً کسی مسئلے کو حل کرنے والے ڈیولپر) کے ساتھ شیئر کریں۔</string>
-    <string name="settings_support_installid_label">انسٹال ID</string>
-    <string name="settings_support_installid_desc">خودکار غلطی کی رپورٹس گمنام ہیں۔ اگر ڈیولپر کو آپ کی غلطی کی رپورٹس تلاش کرنے کی ضرورت ہو تو اپنا انسٹال ID شیئر کریں۔</string>
     <string name="settings_support_label">مدد</string>
     <string name="settings_support_description">اگر آپ کو کچھ مدد کی ضرورت ہو۔</string>
     <string name="settings_wiki_label">ویکی</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">بے میل آلات چھپائیں</string>
     <string name="settings_overview_hide_unmatched_description">قریبی آلات جو آپ کے کسی بھی پروفائل سے میل نہیں کھاتے انہیں جائزہ میں نہ دکھائیں، مثلاً دوسرے لوگوں کے AirPods۔</string>
     <string name="device_battery_estimate_toggle_label">بیٹری کی تخمینیں</string>
-    <string name="device_battery_estimate_card_desc">یہ سیکھیں کہ یہ ڈیوائس کیسے چارج اور خالی ہوتا ہے تاکہ باقی وقت، چارج ختم ہونے تک کا وقت، اور بیٹری کی حالت کا اندازہ لگایا جا سکے۔</string>
+    <string name="device_battery_estimate_card_desc">اس ڈیوائس کے چارجنگ اور ڈسچارج کے طریقے کو سمجھیں تاکہ باقی وقت، چارج ہونے تک کا وقت، اور اس کی درجہ بندی کے سننے کے وقت میں سے کتنا ابھی باقی ہے اس کا اندازہ لگا سکیں۔</string>
     <string name="device_battery_estimate_reset_action">سیکھے ہوئے ڈیٹا کو ری سیٹ کریں</string>
     <string name="device_battery_estimate_reset_desc">درجہ بندی کی گئی بیٹری کی زندگی سے دوبارہ شروع کریں۔</string>
     <string name="device_battery_estimate_reset_confirm_title">سیکھے ہوئے ڈیٹا کو ری سیٹ کریں؟</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod اس ڈیوائس کی ناپی ہوئی بیٹری کی کمی، چارجنگ کی رفتار، اور بیٹری کی حالت کو بھول جائے گا، اور درجہ بندی کی گئی بیٹری کی زندگی سے دوبارہ شروع ہوگا۔</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod اس ڈیوائس کی ناپی ہوئی بیٹری کی کمی، چارجنگ کی رفتار، اور سننے کے وقت کو بھول جائے گا، اور درجہ بندی کی گئی بیٹری کی زندگی سے دوبارہ شروع ہوگا۔</string>
     <string name="settings_acknowledgements_label">اعترافات</string>
-    <string name="settings_debug_autoreports_label">خودکار بگ رپورٹس</string>
-    <string name="settings_debug_autoreports_description">مسائل کی خود بخود اطلاع دیتا ہے، مثلاً ایپ کریش کی تفصیلات تاکہ میں اسے ٹھیک کرنے کا طریقہ معلوم کر سکوں۔</string>
-    <string name="settings_compatibility_mode_label">مطابقت موڈ</string>
-    <string name="settings_compatibility_mode_description">مطابقت کو بہتر بنانے کے لئے اصلاحات کو غیر فعال کریں۔ اگر آپ کو کوئی ڈیٹا نظر نہیں آرہا ہے تو اسے آزمائیں۔</string>
     <string name="help_translate_label">ترجمہ</string>
     <string name="help_translate_description">اس ایپ کو اپنی پسندیدہ زبان میں ترجمہ کرنے میں مدد کریں۔</string>
     <string name="translators_thanks_title">مترجمین</string>
@@ -173,19 +155,13 @@
     <string name="troubleshooter_ble_result_success_title">کامیابی</string>
     <string name="troubleshooter_ble_result_success_body">BLE اشتہارات کی نشریات CAPod کے ذریعے موصول ہو رہی ہیں۔</string>
     <string name="troubleshooter_ble_result_failure_title">ناکام</string>
-    <string name="troubleshooter_ble_result_failure_body">مسئلہ حل کرنے میں ناکامی ہوئی۔ مطابقت کے اختیارات کا کوئی مجموعہ مددگار ثابت نہیں ہوا۔</string>
     <string name="troubleshooter_ble_result_failure_phone_body">آپ کے فون نے بالکل بھی کوئی BLE ڈیٹا موصول نہیں کیا۔ آپ اس ٹیسٹ کو کسی بھیڑ والی جگہ پر دوبارہ آزما سکتے ہیں تاکہ یہ دیکھا جا سکے کہ آیا ڈیٹا کے ذرائع (آپ کے ہیڈ فون کے علاوہ) موصول ہو سکتے ہیں۔ کوئی ڈیٹا موصول نہ ہونا آپ کے فون کے آپریٹنگ سسٹم میں کسی مسئلے کی نشاندہی کرتا ہے۔</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">آپ کے فون نے BLE ڈیٹا موصول کیا، لیکن ڈیٹا کسی بھی معاونت یافتہ آلہ سے نہیں آرہا ہے۔ کیا آپ کے ہیڈ فون آن ہیں؟ کیا CAPod آپ کے ہیڈ فون کو سپورٹ کرتا ہے؟</string>
-    <string name="troubleshooter_ble_result_failure_action">دوبارہ کوشش کریں</string>
-    <string name="troubleshoot_action">مسئلہ حل کریں</string>
     <string name="onboarding_body1">یہ ایپ اینڈرائیڈ میں ایئر پوڈ کی مخصوص خصوصیات کے لئے معاونت شامل کرتی ہے۔</string>
     <string name="onboarding_body2">تمام اینڈرائیڈ آلات ایئر پوڈ کی اضافی خصوصیات کو مکمل طور پر سپورٹ نہیں کرتے ہیں۔ آپ کے آپریٹنگ سسٹم کو صحیح طریقے سے کام کرنے والے بلوٹوتھ-لو-انرجی نفاذ کی ضرورت ہے۔</string>
     <string name="onboarding_body3">CAPod میں کوئی اشتہار نہیں ہے اور یہ آپ کا ڈیٹا جمع نہیں کرتا ہے۔</string>
     <string name="onboarding_body4">آپ اضافی خصوصیات حاصل کرنے اور ترقی کی حمایت کرنے کے لئے CAPod Pro میں اپ گریڈ کر سکتے ہیں۔</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">دستیاب نہیں</string>
     <string name="general_error_label">خرابی</string>
@@ -207,10 +183,6 @@
     <string name="overview_troubleshoot_suggestion_description">آپ کا آلہ متصل ہے، لیکن CAPod اس سے کوئی براہ راست ڈیٹا وصول نہیں کر رہا۔ آپ کے فون کو ایک مطابقت کے آپشن کی ضرورت ہو سکتی ہے — مسئلہ حل کرنے والا خود بخود ایک تلاش کرنے کی کوشش کر سکتا ہے۔</string>
     <string name="overview_troubleshoot_suggestion_action">مسئلہ حل کرنے والا چلائیں</string>
     <string name="overview_unmatched_devices_label">غیر مماثل آلات</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="one">مماثل پروفائل کے بغیر %d آلہ</item>
-        <item quantity="other">مماثل پروفائل کے بغیر %d آلات</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="one">%d قریبی آلہ بغیر کسی مماثل پروفائل کے پایا گیا۔ دستیاب تفصیلات کے لیے اسے دکھائیں۔ اگر یہ آپ کا ہے تو اسے پہچاننے کے لیے ڈیوائسز سے ایک پروفائل شامل کریں۔</item>
         <item quantity="other">%d قریبی آلات بغیر کسی مماثل پروفائل کے پائے گئے۔ دستیاب تفصیلات کے لیے انہیں دکھائیں۔ اگر ان میں سے کوئی آپ کا ہے تو اسے پہچاننے کے لیے ڈیوائسز سے ایک پروفائل شامل کریں۔</item>
@@ -231,7 +203,6 @@
     <string name="permission_background_location_description">CAPod ایپ بند ہونے پر \"پاپ اپ دکھائیں\" اور \"خودکار کنیکٹ\" جیسی خصوصیات فعال کرنے کے لئے \"پس منظر مقام تک رسائی\" استعمال کرتا ہے۔ پس منظر مقام تک رسائی ایپ کو پس منظر میں رہتے ہوئے بلوٹوتھ لو انرجی ڈیٹا وصول کرنے کی اجازت دیتی ہے۔ یہ ایپ آپ کا مقام معلوم کرنے کے لئے بلوٹوتھ ڈیٹا استعمال نہیں کرے گی۔</string>
     <string name="permission_ignore_battery_optimizations_label">بیٹری کی اصلاحات غیر فعال کریں</string>
     <string name="permission_ignore_battery_optimizations_description">بیٹری کی اصلاحات اس ایپ کو پس منظر میں رہتے ہوئے بلوٹوتھ ڈیٹا قابل اعتماد طریقے سے وصول کرنے سے روکتی ہیں۔</string>
-    <string name="permission_required_title">درج ذیل اجازت درکار ہے:</string>
     <string name="permission_system_alert_window_label">سسٹم الرٹ ونڈو</string>
     <string name="permission_system_alert_window_description">\"پاپ اپ دکھائیں\" خصوصیت ممکن بنانے کے لئے CAPod کو دوسری ایپس کے اوپر ڈرا کرنے کی اجازت دیں۔</string>
     <string name="settings_reaction_autoconnect_whenseen_label">نظر آنے پر</string>
@@ -239,10 +210,23 @@
     <string name="settings_reaction_autoconnect_inear_label">کان میں</string>
     <string name="pods_dual_left_label">بایاں پوڈ</string>
     <string name="pods_dual_right_label">دایاں پوڈ</string>
-    <string name="pods_dual_left_short_label">ب</string>
-    <string name="pods_dual_right_short_label">د</string>
-    <string name="pods_case_label">کیس</string>
     <string name="battery_unavailable_label">بیٹری دستیاب نہیں</string>
+    <string name="battery_state_low_cd">بیٹری کم ہے</string>
+    <string name="battery_state_critical_cd">بیٹری انتہائی کم ہے</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="one">دونوں ایئربڈز کے لیے ~%d مزید مکمل چارج</item>
+        <item quantity="other">دونوں ایئربڈز کے لیے ~%d مزید مکمل چارجز</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="one">دونوں ایئربڈز کے لیے کم از کم %d مزید مکمل چارج</item>
+        <item quantity="other">دونوں ایئربڈز کے لیے کم از کم %d مزید مکمل چارجز</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">دونوں ایئربڈز کے لیے ایک سے کم مکمل چارج</string>
+    <string name="battery_case_charges_empty">کیس خالی ہے، آپ کی ایئربڈز کے لیے کوئی چارج باقی نہیں ہے</string>
+    <string name="battery_case_charges_uncertain">یقین نہیں کہ دونوں ایئربڈز کے لیے کتنے مکمل چارجز باقی ہیں</string>
+    <string name="battery_case_charges_state_enough_cd">ایک مکمل چارج کے لیے کافی ہے</string>
+    <string name="battery_case_charges_state_not_enough_cd">ایک مکمل چارج کے لیے کافی نہیں ہے</string>
+    <string name="battery_case_charges_state_uncertain_cd">شاید ایک مکمل چارج کے لیے کافی نہیں ہو</string>
     <string name="pods_case_status_open_label">کھلا</string>
     <string name="pods_case_status_closed_label">بند</string>
     <string name="pods_connection_state_disconnected_label">آلہ سے منسلک نہیں</string>
@@ -276,19 +260,15 @@
     <string name="signal_badge_aap_cd">براہ راست کنکشن فعال</string>
     <string name="signal_indicator_bars_cd">سگنل کی طاقت: 4 میں سے %1$d بار</string>
     <string name="signal_indicator_disconnected_cd">سگنل: منقطع</string>
-    <string name="pods_yours">آپ کا</string>
     <string name="headset_being_worn_label">پہنا ہوا</string>
     <string name="headset_not_being_worn_label">نہیں پہنا ہوا</string>
     <string name="pods_case_unknown_state">نامعلوم حالت</string>
-    <string name="last_seen_x">آخری بار دیکھا گیا: %s</string>
-    <string name="first_seen_x">پہلی بار دیکھا گیا: %s</string>
     <string name="battery_cached_label">آخری معلوم · %s</string>
     <string name="battery_time_remaining_format_hm">%1$dگھنٹہ %2$dمنٹ</string>
     <string name="battery_time_remaining_format_h">%1$dگھنٹہ</string>
     <string name="battery_time_remaining_format_m">%1$dمنٹ</string>
     <string name="permission_post_notifications_label">اطلاعات دکھائیں</string>
     <string name="permission_post_notifications_description">"CAPod کو آپ کے AirPods کے بارے میں اطلاعات دکھانے کی اجازت دیں، مثلاً منسلک ہونے پر ان کی موجودہ حیثیت۔"</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">کوئی آلہ پروفائل ترتیب نہیں دیا گیا</string>
     <string name="profiles_empty_description">حسب ضرورت سیٹنگز اور ترجیحات کے ساتھ متعدد آلات کا نظم کرنے کے لئے آلہ پروفائل بنائیں۔</string>
     <string name="profiles_add_action">پروفائل شامل کریں</string>
@@ -311,10 +291,8 @@
     <string name="profiles_signal_quality_title">کم از کم سگنل کا معیار</string>
     <string name="profiles_signal_quality_description">صرف اس حد سے اوپر سگنل کی طاقت والے آلات کا پتہ لگائیں۔ کم قدریں شناخت کی حد بڑھاتی ہیں لیکن غلط نتائج دے سکتی ہیں۔ اسے بہت زیادہ مقرر نہ کریں - بلوٹوتھ ریسیپشن عموماً کمزور ہے اور فاصلے اور رکاوٹوں کے ساتھ بدلتا ہے۔</string>
     <string name="profiles_identitykey_label">شناختی کلید</string>
-    <string name="profilessettings_maindevice_identitykey_description">آپ کے آلہ کی Identity Resolving Key (IRK)، جو CAPod کو قریبی آلات میں اسے پہچاننے میں مدد کرتی ہے۔</string>
     <string name="profiles_maindevice_identitykey_explanation">AirPods رازداری کے لئے اپنا بلوٹوتھ پتہ بار بار تبدیل کرتے ہیں۔ IRK CAPod کو آپ کے آلہ کو پہچاننے میں مدد کرتا ہے۔ آپ کو MacBook تک ایک بار رسائی کی ضرورت ہے۔</string>
     <string name="profiles_maindevice_encryptionkey_label">خفیہ کاری کی کلید</string>
-    <string name="profiles_maindevice_encryptionkey_description">آپ کے آلہ کی خفیہ کاری کی کلید، جو CAPod کو تفصیلی حیثیت کی معلومات حاصل کرنے کی اجازت دیتی ہے۔</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods ایک حیثیت کا پیغام بھیجتے ہیں، جس کا ایک حصہ خفیہ ہوتا ہے۔ خفیہ کاری کی کلید CAPod کو مکمل پیغام کی خفیہ کشائی کرنے کی اجازت دیتی ہے۔ آپ کو MacBook تک ایک بار رسائی کی ضرورت ہے۔</string>
     <string name="profiles_key_invalid_format">غلط کلید کی شکل</string>
     <string name="profiles_key_expected_format">متوقع شکل: %1$s</string>
@@ -323,37 +301,29 @@
     <string name="profiles_signal_quality_min_label">بند</string>
     <string name="profiles_signal_quality_max_label">سخت</string>
     <string name="profiles_priority_hint">پروفائل کی ترتیب ترجیح کا تعین کرتی ہے۔ پروفائلز کو دوبارہ ترتیب دینے کے لئے گھسیٹیں - فہرست میں اوپر والے پروفائلز کو ترجیح ملتی ہے جب متعدد آلات مماثل ہوں۔</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">تھیم موڈ</string>
     <string name="ui_theme_mode_system_label">سسٹم</string>
     <string name="ui_theme_mode_dark_label">ڈارک</string>
     <string name="ui_theme_mode_light_label">لائٹ</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">تھیم اسٹائل</string>
     <string name="ui_theme_style_default_label">ڈیفالٹ</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">درمیانہ تضاد</string>
     <string name="ui_theme_style_high_contrast_label">زیادہ تضاد</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">تھیم رنگ</string>
     <string name="ui_theme_color_blue_label">نیلا</string>
     <string name="ui_theme_color_green_label">ہرا</string>
     <string name="ui_theme_color_amber_label">زرد</string>
     <string name="ui_theme_color_disabled_materialyou">وال پیپر کے رنگ استعمال کرتا ہے</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">ظاہری شکل</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">غیر محفوظ تبدیلیاں</string>
     <string name="general_unsaved_changes_message">آپ کے پاس غیر محفوظ تبدیلیاں ہیں۔ آپ کیا کرنا چاہیں گے؟</string>
     <string name="general_save_and_exit_action">محفوظ کریں اور باہر نکلیں</string>
     <string name="general_discard_action">رد کریں</string>
-    <string name="general_keep_editing_action">ترمیم جاری رکھیں</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">ریکارڈنگ بہت مختصر</string>
     <string name="debug_debuglog_short_recording_message">ڈیبگ لاگ کو مسئلے کے وقوع کے دوران ریکارڈ کرنا ہوتا ہے۔ ریکارڈنگ جاری رکھیں، مسئلہ دوبارہ پیدا کریں، پھر ریکارڈنگ بند کریں۔</string>
     <string name="debug_debuglog_short_recording_continue">ریکارڈنگ جاری رکھیں</string>
     <string name="debug_debuglog_short_recording_stop">بہرحال رکیں</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">ڈیبگ لاگ</string>
     <string name="debug_debuglog_screen_subtitle">ٹربل شوٹنگ کے لیے ڈیبگ معلومات برآمد کریں</string>
     <string name="debug_debuglog_screen_sensitive_title">حساس معلومات</string>
@@ -365,7 +335,6 @@
     </plurals>
     <string name="debug_debuglog_screen_discard_action">حذف کریں</string>
     <string name="debug_debuglog_screen_keep_action">رکھیں</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="one">%1$d ڈیبگ لاگ (%2$s)</item>
         <item quantity="other">%1$d ڈیبگ لاگز (%2$s)</item>
@@ -383,7 +352,6 @@
     <string name="support_debuglog_failed_missing_log">ناکام: لاگ فائل موجود نہیں</string>
     <string name="support_debuglog_failed_corrupt_zip">ناکام: زیپ فائل خراب ہے</string>
     <string name="support_debuglog_failed_zip_failed">ناکام: کمپریشن ناکام ہوئی</string>
-    <!-- Contact form -->
     <string name="support_contact_label">ڈویلپر سے رابطہ کریں</string>
     <string name="support_contact_desc">ڈویلپر کو ایمیل بھیجنے کے لیے ایک فارم بھریں۔</string>
     <string name="support_contact_welcome">میں ہر پیغام خود پۚتا ہوں اور جواب دینے کی پوری کوشش کرتا ہوں، لیکن چوںکہ میں یہ کام اکیلے کرتا ہوں، تھوڑا وقت لگ سکتا ہے۔ اپنے صبر کا شکریہ۔</string>
@@ -410,15 +378,12 @@
     <string name="support_contact_no_email_app">اس ڑیوائس پر کوئی ایمیل ایپ نہیں ملی۔</string>
     <string name="support_contact_debuglog_delete_title">ڈیبگ لاگ حذف کریں؟</string>
     <string name="support_contact_debuglog_delete_message">یہ ڈیبگ لاگ ہمیشہ کے لیے حذف ہو جائے گی۔</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">لاگ بھیجا گیا؟</string>
     <string name="support_debuglog_sent_message">کیا ڈیبگ لاگ کامیابی سے بھیجا گیا؟ لاگ حذف کر دیا جائے گا۔</string>
     <string name="support_contact_sent_title">ای میل بھیجی گئی؟</string>
     <string name="support_contact_sent_message">کیا ای میل کامیابی سے بھیجی گئی؟ منسلک ڈیبگ لاگ حذف کر دیا جائے گا۔</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">ڈیوائس کی ترتیبات</string>
     <string name="device_settings_subtitle_profile_prefix">پروفائل: %s</string>
-    <string name="device_settings_info_name_label">نام</string>
     <string name="device_settings_info_bt_name_label">بلوٹوتھ ڈیوائس لیبل</string>
     <string name="device_settings_info_model_label">ماڈل</string>
     <string name="device_settings_info_manufacturer_label">مینوفیکچرر</string>
@@ -431,11 +396,14 @@
     <string name="device_settings_info_right_serial_label">دائیں پوڈ سیریل</string>
     <string name="device_settings_info_left_bonded_label">بائیں بونڈڈ</string>
     <string name="device_settings_info_right_bonded_label">دائیں بونڈڈ</string>
-    <string name="device_settings_info_battery_health_label">بیٹری کی صحت (تخمینی)</string>
-    <string name="device_settings_info_battery_health_left_label">بائیں بیٹری کی صحت (تخمینی)</string>
-    <string name="device_settings_info_battery_health_right_label">دائیں بیٹری کی صحت (تخمینی)</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">متوقع سننے کا وقت</string>
+    <string name="device_settings_info_battery_health_left_label">بائیں پاڈ کا سننے کا وقت</string>
+    <string name="device_settings_info_battery_health_right_label">دائیں پاڈ کا سننے کا وقت</string>
+    <string name="device_settings_info_battery_health_value">درجہ بندی کا ~%1$d%%</string>
     <string name="device_settings_info_battery_health_pending">ابھی معلوم ہو رہا ہے، براہ کرم بعد میں دوبارہ دیکھیں</string>
+    <string name="device_settings_battery_runtime_warning_title">سننے کا وقت درجہ بندی سے بہت کم ہے</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: درجہ بندی کے سننے کے وقت کا تقریباً %2$d%%۔ تفصیلات کے لیے ٹیپ کریں۔</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">یہ ہیڈفونز</string>
     <string name="device_settings_info_details_label">ڈیوائس کی تفصیلات</string>
     <string name="device_settings_info_details_action">ڈیوائس کی تفصیلات دیکھائیں</string>
     <string name="device_settings_info_status_label">حیثیت</string>
@@ -494,8 +462,6 @@
     <string name="review_app_review_action">ریویو</string>
     <string name="review_app_dismiss_action">شاید بعد میں</string>
     <string name="review_app_body">کیا آپ CAPod کے لیے ریویو چھوڑنا چاہیں گے؟ ❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">عمومی</string>
     <string name="device_settings_microphone_mode_label">مائیکروفون</string>
     <string name="device_settings_microphone_mode_description">کون سا ایئربڈ مائیکروفون کے طور پر استعمال ہوتا ہے</string>
     <string name="device_settings_microphone_mode_auto">خودکار</string>
@@ -544,7 +510,6 @@
     <string name="device_settings_connected_device_media">میڈیا چل رہا ہے</string>
     <string name="device_settings_noise_control_label">شور کنٹرول</string>
     <string name="device_settings_eq_label">ایکولائزر</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">پریس کنٹرولز</string>
     <string name="press_controls_nav_description">پریس کے طرز عمل درست کریں اور پریسز کو ایکشنز سے میپ کریں</string>
     <string name="press_controls_description">طے کریں کہ پریسز کیسے شناخت ہوتی ہیں، کال بٹن کا طرز عمل منتخب کریں، اور پریسز کو ایکشنز سے میپ کریں۔ میپڈ ایکشنز صرف اس ڈیوائس پر لاگو ہوتی ہیں اور ایپ کو AirPods کی بجائے پریس انٹرسیپٹ کرنے دیتی ہیں۔</string>

@@ -3,7 +3,6 @@
     <string name="general_share_action">Ulashish</string>
     <string name="general_done_action">Bajarildi</string>
     <string name="general_cancel_action">Bekor qilish</string>
-    <string name="general_copy_action">Nusxalash</string>
     <string name="general_thank_you_label">Rahmat</string>
     <string name="general_upgrade_action">Yangilash</string>
     <string name="general_retry_action">Qayta urinib ko\'ring</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">Tekshirish</string>
     <string name="general_close_action">Yopish</string>
     <string name="general_dismiss_action">Yopish</string>
-    <string name="general_edit_action">Tahrirlash</string>
     <string name="general_save_action">Saqlash</string>
     <string name="general_guide_action">Qo\'llanma</string>
     <string name="general_continue_action">Davom etish</string>
@@ -40,19 +38,14 @@
     <string name="settings_autoplay_description">Pods-ni qayta kiyganda musiqani davom ettiradi, lekin faqat Auto toʼxtatish tomonidan toʼxtatilgan boʼlsa. Oʼzingiz toʼxtatgan (telefon, AirPods tyagi, uxlash) pausalar toʼxtatilgan holda qoladi.</string>
     <string name="settings_start_music_on_wear_label">Kiyganda musiqani boshlash</string>
     <string name="settings_start_music_on_wear_description">Pods-ni kiyganda musiqani oʼynashga har doim harakat qiladi, hatto qoʼlda toʼxtatilgandan keyin ham.</string>
-    <string name="settings_eardetection_info_label">Quloq aniqlash eslatmasi</string>
     <string name="settings_eardetection_info_description">Agar quloq aniqlash faqat bitta pod uchun ishlasa, bu Apple cheklovi. Faqat \"asosiy pod\" (mikrofon uchun ishlatiladigan) aniqlanadi. Apple qurilmalarida sozlang: Sozlamalar → Bluetooth → AirPods → Mikrofon.</string>
-    <string name="settings_signal_minimum_label">Minimal signal sifati</string>
-    <string name="settings_signal_minimum_description">Qurilma sizniki deb hisoblanishi uchun kerak bo\'lgan minimal signal sifati.</string>
     <string name="settings_autoconnect_label">Avtomatik ulanish</string>
     <string name="settings_autoconnect_description">Agar Android avtomatik ulanmasa, biz undan so\'rashimiz mumkin. Bu CAPod monitoringini doim fonda ishlab turishini ta\'minlaydi.</string>
     <string name="settings_autoconnect_info_android12">Avtomatik ulanish Android 12 va undan yangi versiyalarda cheklangan tizim xususiyatiga tayanadi. Bu qurilmangizda ishlamasligi mumkin.</string>
     <string name="settings_autoconnect_condition_label">Avtomatik ulanish sharti</string>
-    <string name="settings_autoconnect_condition_description">Qurilmangizga qachon ulanishga harakat qilishimiz kerak?</string>
     <string name="settings_devices_label">Qurilmalar</string>
     <string name="settings_devices_description">Qurilmalaringizni boshqaring.</string>
     <string name="settings_reaction_label">Reaksiyalar</string>
-    <string name="settings_category_yourdevice_label">Sizning qurilmangiz</string>
     <string name="settings_category_compatibility_options_title">Moslik parametrlari</string>
     <string name="settings_category_compatibility_options_description">Agar hamma narsa ishlayotgan bo\'lsa, tegmang ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Uskuna filtrlashni o\'chirish</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">Boshlanilyapti…</string>
     <string name="support_debuglog_label">Nosozliklarni tuzatish jurnali</string>
     <string name="support_debuglog_desc">Ilova bajarayotgan hamma narsani ulashishingiz mumkin bo\'lgan matn fayliga yozib oling.</string>
-    <string name="debug_debuglog_size_label">Hajmi</string>
-    <string name="debug_debuglog_size_compressed_label">Siqilgan hajmi</string>
-    <string name="debug_notification_channel_label">Nosozliklarni tuzatish bildirishnomalari</string>
-    <string name="debug_debuglog_file_label">Yozib olingan jurnal fayli</string>
-    <string name="debug_debuglog_recording_progress">Nosozliklarni tuzatish jurnali yozilmoqda</string>
     <string name="debug_debuglog_record_action">Nosozliklarni tuzatish jurnalini yozib olish</string>
     <string name="debug_debuglog_stop_action">Yozib olishni to\'xtatish</string>
     <string name="debug_debuglog_sensitive_information_message">Yaratilgan faylda maxfiy ma\'lumotlar mavjud (masalan, Bluetooth qurilmasi tafsilotlari). Uni faqat ishonchli tomonlar bilan baham ko\'ring.</string>
     <string name="settings_debuglog_explanation">Ushbu xususiyat ilova bajarayotgan hamma narsani ulashiladigan faylga yozib oladi. Yaratilgan faylda maxfiy ma\'lumotlar mavjud (masalan, Bluetooth qurilmasi tafsilotlari). Uni faqat ishonchli tomonlar bilan baham ko\'ring (masalan, muammoni bartaraf etayotgan ishlab chiquvchi).</string>
-    <string name="settings_support_installid_label">O\'rnatish IDsi</string>
-    <string name="settings_support_installid_desc">Avtomatik xato hisobotlari anonimdir. Agar ishlab chiquvchiga xato hisobotlaringizni topish kerak bo\'lsa, o\'rnatish IDsingizni baham ko\'ring.</string>
     <string name="settings_support_label">Qo\'llab-quvvatlash</string>
     <string name="settings_support_description">Agar sizga yordam kerak bo\'lsa.</string>
     <string name="settings_wiki_label">Wiki</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">Mos kelmaydigan qurilmalarni yashirish</string>
     <string name="settings_overview_hide_unmatched_description">Umumiy ko\'rinishda profillaringizdan biriga mos kelmaydigan yaqin qurilmalarni ko\'rsatmaslik, masalan, boshqa odamlarning AirPods qurilmalari.</string>
     <string name="device_battery_estimate_toggle_label">Batareya taxminlari</string>
-    <string name="device_battery_estimate_card_desc">Bu qurilmaning zaryadlanishi va batareya sarfashini o\'rganib, qolgan vaqtni, to\'liq zaryadlanish vaqtini va batareya sog\'lig\'ini taxmin qiling.</string>
+    <string name="device_battery_estimate_card_desc">Bu qurilmaning zaryadlanishi va zaryad sarf qaniqligini o\'rganib, qolgan vaqtni, to\'liq zaryadlanish vaqtini va reyting qilingan tinglash vaqtining qolgan qismini baholang.</string>
     <string name="device_battery_estimate_reset_action">O\'rganilgan ma\'lumotlarni qayta o\'rnatish</string>
     <string name="device_battery_estimate_reset_desc">Reyting qilingan batareya hayotidan qayta boshlang.</string>
     <string name="device_battery_estimate_reset_confirm_title">O\'rganilgan ma\'lumotlarni qayta o\'rnatish?</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod bu qurilmaning o\'lchangan zaryad sarfi, zaryadlanish tezligi va batareya sog\'lig\'ini unutib, reyting qilingan batareya hayotidan qayta boshlaydi.</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod bu qurilmaning o\'lchangan zaryad sarfi, zaryadlanish tezligi va tinglash vaqtini unutib, reyting qilingan batareya hayotidan qayta boshlaydi.</string>
     <string name="settings_acknowledgements_label">Minnatdorchiliklar</string>
-    <string name="settings_debug_autoreports_label">Avtomatik xato hisobotlari</string>
-    <string name="settings_debug_autoreports_description">Muammolarni avtomatik ravishda xabar qiladi, masalan, ilova ishdan chiqishi haqidagi tafsilotlar, shunda men uni qanday tuzatishni aniqlay olaman.</string>
-    <string name="settings_compatibility_mode_label">Moslik rejimi</string>
-    <string name="settings_compatibility_mode_description">Moslikni yaxshilash uchun optimallashtirishlarni o\'chirib qo\'ying. Agar hech qanday ma\'lumot ko\'rmayotgan bo\'lsangiz, buni sinab ko\'ring.</string>
     <string name="help_translate_label">Tarjima</string>
     <string name="help_translate_description">Ushbu ilovani sevimli tilingizga tarjima qilishga yordam bering.</string>
     <string name="translators_thanks_title">Tarjimonlar</string>
@@ -173,19 +155,13 @@
     <string name="troubleshooter_ble_result_success_title">Muvaffaqiyatli</string>
     <string name="troubleshooter_ble_result_success_body">BLE reklama translyatsiyalari CAPod tomonidan qabul qilinmoqda.</string>
     <string name="troubleshooter_ble_result_failure_title">Muvaffaqiyatsiz</string>
-    <string name="troubleshooter_ble_result_failure_body">Nosozliklarni bartaraf etish muvaffaqiyatsiz tugadi. Hech qanday moslik parametrlari kombinatsiyasi yordam bermadi.</string>
     <string name="troubleshooter_ble_result_failure_phone_body">Telefoningiz umuman BLE ma\'lumotlarini olmadi. Ma\'lumot manbalarini (naushniklaringizdan tashqari) qabul qilish mumkinligini ko\'rish uchun ushbu testni odamlar ko\'p bo\'lgan joyda qayta urinib ko\'rishingiz mumkin. Hech qanday ma\'lumot olinmasligi telefoningiz operatsion tizimidagi muammoga ishora qiladi.</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">Telefoningiz BLE ma\'lumotlarini oldi, ammo ma\'lumotlar qo\'llab-quvvatlanadigan hech qanday qurilmadan kelmayapti. Naushniklaringiz yoqilganmi? CAPod naushniklaringizni qo\'llab-quvvatlaydimi?</string>
-    <string name="troubleshooter_ble_result_failure_action">Qayta urinib ko\'ring</string>
-    <string name="troubleshoot_action">Nosozliklarni bartaraf etish</string>
     <string name="onboarding_body1">Ushbu ilova Android uchun AirPod maxsus xususiyatlarini qo\'llab-quvvatlashni qo\'shadi.</string>
     <string name="onboarding_body2">Barcha Android qurilmalari AirPod qo\'shimcha xususiyatlarini to\'liq qo\'llab-quvvatlamaydi. Operatsion tizimingiz to\'g\'ri ishlaydigan Bluetooth-Low-Energy amalga oshirishni talab qiladi.</string>
     <string name="onboarding_body3">CAPod\'da reklamalar yo\'q va u sizning ma\'lumotlaringizni yig\'maydi.</string>
     <string name="onboarding_body4">Qo\'shimcha xususiyatlarni olish va rivojlanishni qo\'llab-quvvatlash uchun CAPod Pro\'ga yangilashingiz mumkin.</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">Xato</string>
@@ -207,10 +183,6 @@
     <string name="overview_troubleshoot_suggestion_description">Qurilmangiz ulangan, ammo CAPod undan jonli ma\'lumot olmayapti. Telefoningizga moslik opsiyasi kerak bo\'lishi mumkin — nosozliklarni bartaraf etish vositasi uni avtomatik topishga urinib ko\'radi.</string>
     <string name="overview_troubleshoot_suggestion_action">Nosozliklarni bartaraf etish vositasini ishga tushirish</string>
     <string name="overview_unmatched_devices_label">Mos kelmaydigan qurilmalar</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="one">Mos profili yo\'q %d ta qurilma</item>
-        <item quantity="other">Mos profili yo\'q %d ta qurilma</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="one">%d ta yaqin atrofdagi qurilma mos profilsiz aniqlandi. Tafsilotlar uchun uni ko\'rsating. Agar u sizniki bo\'lsa, uni aniqlash uchun Qurilmalar bo\'limidan profil qo\'shing.</item>
         <item quantity="other">%d ta yaqin atrofdagi qurilma mos profilsiz aniqlandi. Tafsilotlar uchun ularni ko\'rsating. Agar ulardan biri sizniki bo\'lsa, uni aniqlash uchun Qurilmalar bo\'limidan profil qo\'shing.</item>
@@ -231,7 +203,6 @@
     <string name="permission_background_location_description">CAPod ilova yopilganda \"Qalqib chiquvchi oynani ko\'rsatish\" va \"Avtomatik ulanish\" kabi funktsiyalarni yoqish uchun \"fon joylashuviga kirish\" dan foydalanadi. Fon joylashuviga kirish ilovaga fonda ishlayotganda Bluetooth Low Energy ma\'lumotlarini qabul qilish imkonini beradi. Ushbu ilova joylashuvingizni aniqlash uchun Bluetooth ma\'lumotlaridan FOYDALANMAYDI.</string>
     <string name="permission_ignore_battery_optimizations_label">Batareya optimallashtirishlarini o\'chirish</string>
     <string name="permission_ignore_battery_optimizations_description">Batareya optimallashtirishlari ilova fonda ishlayotganda Bluetooth ma\'lumotlarini ishonchli qabul qilishiga to\'sqinlik qiladi.</string>
-    <string name="permission_required_title">Quyidagi ruxsat talab qilinadi:</string>
     <string name="permission_system_alert_window_label">Tizim ogohlantirish oynasi</string>
     <string name="permission_system_alert_window_description">\"Qalqib chiquvchi oynani ko\'rsatish\" funksiyasini mumkin qilish uchun CAPod\'ga boshqa ilovalar ustida chizish ruxsatini bering.</string>
     <string name="settings_reaction_autoconnect_whenseen_label">Ko\'rilganda</string>
@@ -239,10 +210,19 @@
     <string name="settings_reaction_autoconnect_inear_label">Quloqda</string>
     <string name="pods_dual_left_label">Chap pod</string>
     <string name="pods_dual_right_label">O\'ng pod</string>
-    <string name="pods_dual_left_short_label">C</string>
-    <string name="pods_dual_right_short_label">O</string>
-    <string name="pods_case_label">Keys</string>
     <string name="battery_unavailable_label">Batareya mavjud emas</string>
+    <string name="battery_state_low_cd">Batareya past</string>
+    <string name="battery_state_critical_cd">Batareya juda past</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="one">Ikkala quloqtasiga uchun yana ~%d to\'liq zaryad</item>
+        <item quantity="other">Ikkala quloqtasiga uchun yana ~%d to\'liq zaryad</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">Ikkala quloqtasiga uchun bitta to\'liq zaryadlanishdan kam</string>
+    <string name="battery_case_charges_empty">Quti bo\'sh, quloqtasiga uchun zaryad qolmadi</string>
+    <string name="battery_case_charges_uncertain">Ikkala quloqtasiga uchun qancha to\'liq zaryadlanish qolganini noma\'lum</string>
+    <string name="battery_case_charges_state_enough_cd">To\'liq zaryadlanish uchun etarli</string>
+    <string name="battery_case_charges_state_not_enough_cd">To\'liq zaryadlanish uchun etarli emas</string>
+    <string name="battery_case_charges_state_uncertain_cd">To\'liq zaryadlanish uchun etarli bo\'lmasligi mumkin</string>
     <string name="pods_case_status_open_label">Ochiq</string>
     <string name="pods_case_status_closed_label">Yopiq</string>
     <string name="pods_connection_state_disconnected_label">Qurilmaga ulanmagan</string>
@@ -276,19 +256,15 @@
     <string name="signal_badge_aap_cd">To\'g\'ridan-to\'g\'ri ulanish faol</string>
     <string name="signal_indicator_bars_cd">Signal kuchi: 4 ta chiziqdan %1$d tasi</string>
     <string name="signal_indicator_disconnected_cd">Signal: uzilgan</string>
-    <string name="pods_yours">Sizniki</string>
     <string name="headset_being_worn_label">Taqilgan</string>
     <string name="headset_not_being_worn_label">Taqilmagan</string>
     <string name="pods_case_unknown_state">Noma\'lum holat</string>
-    <string name="last_seen_x">Oxirgi ko\'rilgan: %s</string>
-    <string name="first_seen_x">Birinchi ko\'rilgan: %s</string>
     <string name="battery_cached_label">Oxirgi ma\'lum · %s</string>
     <string name="battery_time_remaining_format_hm">%1$dsoat %2$dminut</string>
     <string name="battery_time_remaining_format_h">%1$dsoat</string>
     <string name="battery_time_remaining_format_m">%1$dminut</string>
     <string name="permission_post_notifications_label">Bildirishnomalarni ko\'rsatish</string>
     <string name="permission_post_notifications_description">"CAPod'ga AirPods haqida bildirishnomalarni ko'rsatish ruxsatini bering, masalan, ulangan paytdagi joriy holati."</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">Qurilma profillari sozlanmagan</string>
     <string name="profiles_empty_description">Maxsus sozlamalar va ustuvorliklar bilan bir nechta qurilmani boshqarish uchun qurilma profillari yarating.</string>
     <string name="profiles_add_action">Profil qo\'shish</string>
@@ -311,10 +287,8 @@
     <string name="profiles_signal_quality_title">Minimal signal sifati</string>
     <string name="profiles_signal_quality_description">Faqat signal kuchi ushbu chegaradan yuqori bo\'lgan qurilmalarni aniqlang. Pastroq qiymatlar aniqlash masofasini oshiradi, lekin noto\'g\'ri natijalarga olib kelishi mumkin. Buni juda yuqori qo\'ymang - Bluetooth qabul qilish odatda zaif va masofa hamda to\'siqlar bilan o\'zgaradi.</string>
     <string name="profiles_identitykey_label">Identifikatsiya kaliti</string>
-    <string name="profilessettings_maindevice_identitykey_description">Qurilmangizning Identity Resolving Key (IRK) si CAPod\'ga uni yaqin atrofdagi qurilmalar orasida aniqlashga yordam beradi.</string>
     <string name="profiles_maindevice_identitykey_explanation">AirPods maxfiylik uchun Bluetooth manzilini tez-tez o\'zgartiradi. IRK CAPod\'ga qurilmangizni tanishga yordam beradi. MacBook\'ga bir martalik kirish kerak.</string>
     <string name="profiles_maindevice_encryptionkey_label">Shifrlash kaliti</string>
-    <string name="profiles_maindevice_encryptionkey_description">Qurilmangizning shifrlash kaliti CAPod\'ga batafsil holat ma\'lumotlarini olish imkonini beradi.</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods holat xabarini yuboradi, uning bir qismi shifrlangan. Shifrlash kaliti CAPod\'ga to\'liq xabarni shifrini yechish imkonini beradi. MacBook\'ga bir martalik kirish kerak.</string>
     <string name="profiles_key_invalid_format">Noto\'g\'ri kalit formati</string>
     <string name="profiles_key_expected_format">Kutilgan format: %1$s</string>
@@ -323,37 +297,29 @@
     <string name="profiles_signal_quality_min_label">O\'chiq</string>
     <string name="profiles_signal_quality_max_label">Qat\'iy</string>
     <string name="profiles_priority_hint">Profillar tartibi ustuvorlikni belgilaydi. Profillarni qayta tartiblash uchun torting - ro\'yxatda yuqoriroq joylashgan profillar bir nechta qurilma mos kelganda ustunlik qiladi.</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">Mavzu rejimi</string>
     <string name="ui_theme_mode_system_label">Tizim</string>
     <string name="ui_theme_mode_dark_label">Qorong\'i</string>
     <string name="ui_theme_mode_light_label">Yorug\'</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">Mavzu uslubi</string>
     <string name="ui_theme_style_default_label">Standart</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">O\'rtacha kontrast</string>
     <string name="ui_theme_style_high_contrast_label">Yuqori kontrast</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">Mavzu rangi</string>
     <string name="ui_theme_color_blue_label">Ko\'k</string>
     <string name="ui_theme_color_green_label">Yashil</string>
     <string name="ui_theme_color_amber_label">Sariq-to\'q</string>
     <string name="ui_theme_color_disabled_materialyou">Fon rasmi ranglarini ishlatadi</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">Ko\'rinish</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">Saqlanmagan o\'zgarishlar</string>
     <string name="general_unsaved_changes_message">Sizda saqlanmagan o\'zgarishlar bor. Nima qilmoqchisiz?</string>
     <string name="general_save_and_exit_action">Saqlash va chiqish</string>
     <string name="general_discard_action">Bekor qilish</string>
-    <string name="general_keep_editing_action">Tahrirlashni davom ettirish</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">Yozuv juda qisqa</string>
     <string name="debug_debuglog_short_recording_message">Debug jurnali muammo yuz berganda uni qayd etishi kerak. Yozishni davom eting, muammoni qayta yarating, so\'ngra yozishni to\'xtating.</string>
     <string name="debug_debuglog_short_recording_continue">Yozishni davom ettirish</string>
     <string name="debug_debuglog_short_recording_stop">Baribir to\'xtatish</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">Debug jurnali</string>
     <string name="debug_debuglog_screen_subtitle">Nosozliklarni bartaraf etish uchun debug ma\'lumotlarini eksport qilish</string>
     <string name="debug_debuglog_screen_sensitive_title">Maxfiy ma\'lumotlar</string>
@@ -365,7 +331,6 @@
     </plurals>
     <string name="debug_debuglog_screen_discard_action">O\'chirish</string>
     <string name="debug_debuglog_screen_keep_action">Saqlash</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="one">%1$d debug jurnali (%2$s)</item>
         <item quantity="other">%1$d debug jurnali (%2$s)</item>
@@ -383,7 +348,6 @@
     <string name="support_debuglog_failed_missing_log">Muvaffaqiyatsiz: jurnal fayli topilmadi</string>
     <string name="support_debuglog_failed_corrupt_zip">Muvaffaqiyatsiz: zip fayli buzilgan</string>
     <string name="support_debuglog_failed_zip_failed">Muvaffaqiyatsiz: siqish muvaffaqiyatsiz tugadi</string>
-    <!-- Contact form -->
     <string name="support_contact_label">Dasturchi bilan bog\'lanish</string>
     <string name="support_contact_desc">Dasturchiga elektron pochta yuborish uchun formani to\'ldiring.</string>
     <string name="support_contact_welcome">Men har bir xabarni o\'zim o\'qiyman va javob berishga harakat qilaman, lekin yolg\'iz ishlaganimda bu bir oz vaqt olishi mumkin. Sabr-toqatingiz uchun rahmat.</string>
@@ -410,15 +374,12 @@
     <string name="support_contact_no_email_app">Bu qurilmada elektron pochta ilovasi topilmadi.</string>
     <string name="support_contact_debuglog_delete_title">Debug jurnalini o\'chirish?</string>
     <string name="support_contact_debuglog_delete_message">Bu debug jurnali doimiy ravishda o\'chiriladi.</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">Jurnal yuborildi?</string>
     <string name="support_debuglog_sent_message">Debug jurnali muvaffaqiyatli yuborildi? Jurnal o\'chiriladi.</string>
     <string name="support_contact_sent_title">Elektron pochta yuborildi?</string>
     <string name="support_contact_sent_message">Elektron pochta muvaffaqiyatli yuborildi? Ilova qilingan debug jurnali o\'chiriladi.</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">Qurilma sozlamalari</string>
     <string name="device_settings_subtitle_profile_prefix">Profil: %s</string>
-    <string name="device_settings_info_name_label">Nomi</string>
     <string name="device_settings_info_bt_name_label">Bluetooth qurilma yorlig\'i</string>
     <string name="device_settings_info_model_label">Model</string>
     <string name="device_settings_info_manufacturer_label">Ishlab chiqaruvchi</string>
@@ -431,11 +392,14 @@
     <string name="device_settings_info_right_serial_label">O\'ng naushnik seriya raqami</string>
     <string name="device_settings_info_left_bonded_label">Chap Bog\'langan</string>
     <string name="device_settings_info_right_bonded_label">O\'ng Bog\'langan</string>
-    <string name="device_settings_info_battery_health_label">Batareya sog\'lig\'i (taxmin)</string>
-    <string name="device_settings_info_battery_health_left_label">Chap batareya sog\'lig\'i (tax.)</string>
-    <string name="device_settings_info_battery_health_right_label">O\'ng batareya sog\'lig\'i (tax.)</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">Taxminiy tinglash vaqti</string>
+    <string name="device_settings_info_battery_health_left_label">Chap quloqtasi tinglash vaqti</string>
+    <string name="device_settings_info_battery_health_right_label">O\'ng quloqtasi tinglash vaqti</string>
+    <string name="device_settings_info_battery_health_value">Reyting qilinganining ~%1$d%%</string>
     <string name="device_settings_info_battery_health_pending">Hali aniqlanmoqda, keyinroq tekshiring</string>
+    <string name="device_settings_battery_runtime_warning_title">Tinglash vaqti reyting qilinganidan ancha qisqa</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: reyting qilingan tinglash vaqtining taxminan %2$d%%. Batafsil uchun bosing.</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">Bu quloqtasiga</string>
     <string name="device_settings_info_details_label">Qurilma tafsilotlari</string>
     <string name="device_settings_info_details_action">Qurilma tafsilotlarini ko\'rsatish</string>
     <string name="device_settings_info_status_label">Holat</string>
@@ -494,8 +458,6 @@
     <string name="review_app_review_action">Ko\'rib chiqish</string>
     <string name="review_app_dismiss_action">Balki keyinroq</string>
     <string name="review_app_body">CAPod ga sharh qoldirishni xohlaysizmi? ❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">Umumiy</string>
     <string name="device_settings_microphone_mode_label">Mikrofon</string>
     <string name="device_settings_microphone_mode_description">Qaysi quloqlik mikrofon sifatida ishlatiladi</string>
     <string name="device_settings_microphone_mode_auto">Avtomatik</string>
@@ -544,7 +506,6 @@
     <string name="device_settings_connected_device_media">Media ijro etilmoqda</string>
     <string name="device_settings_noise_control_label">Shovqin nazorati</string>
     <string name="device_settings_eq_label">Ekvalayzер</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">Bosish boshqaruvi</string>
     <string name="press_controls_nav_description">Bosish xatti-harakatini sozlang va bosishlarga amallar belgilang</string>
     <string name="press_controls_description">Bosishlar qanday aniqlanishini sozlang, qo\'ng\'iroq tugmasi xatti-harakatini tanlang va bosishlarga amallar belgilang. Belgilangan amallar faqat ushbu qurilmaga tegishli bo\'lib, ilovaga bosishni AirPods o\'zi boshqarish o\'rniga ushlab olish imkonini beradi.</string>

@@ -3,7 +3,6 @@
     <string name="general_share_action">ແບ່ງປັນ</string>
     <string name="general_done_action">ແລ້ວໆ</string>
     <string name="general_cancel_action">ຍົກເລີກ</string>
-    <string name="general_copy_action">ສຳເນົາ</string>
     <string name="general_thank_you_label">ຂອບໃຈ</string>
     <string name="general_upgrade_action">ອັບເກຣດ</string>
     <string name="general_retry_action">ລອງໃໝ່</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">ກວດສອບ</string>
     <string name="general_close_action">ປິດ</string>
     <string name="general_dismiss_action">ປະຕິເສດ</string>
-    <string name="general_edit_action">ແກ້ໄຂ</string>
     <string name="general_save_action">ບັນທຶກ</string>
     <string name="general_guide_action">ຄູ່ມື</string>
     <string name="general_continue_action">ສືບຕໍ່</string>
@@ -40,19 +38,14 @@
     <string name="settings_autoplay_description">ຫຼິ້ນດົນຕີຕໍ່ເມື່ອໃສ່ pods ອີກຄັ້ງ, ແຕ່ເທົ່ານັ້ນຖ້າ Auto pause ຢຸດມັນ. ການຢຸດທີ່ທ່ານເຮັດດ້ວຍຕົວເອງ (ໂທລະສັບ, ກ້ານ AirPods, ນອນ) ຍັງຄົງຢຸດຢູ່.</string>
     <string name="settings_start_music_on_wear_label">ເລີ່ມດົນຕີເມື່ອໃສ່</string>
     <string name="settings_start_music_on_wear_description">ພະຍາຍາມຫຼິ້ນດົນຕີທຸກຄັ້ງທີ່ທ່ານໃສ່ pods, ແມ່ນແຕ່ຫຼັງຈາກຢຸດດ້ວຍຕົນເອງ.</string>
-    <string name="settings_eardetection_info_label">ໝາຍເຫດການກວດຈັບຫູ</string>
     <string name="settings_eardetection_info_description">ຖ້າການກວດຈັບຫູເຮັດວຽກສຳລັບພອດດຽວເທົ່ານັ້ນ, ນີ້ແມ່ນຂໍ້ຈຳກັດຂອງ Apple. ສະເພາະ \"ພອດຫຼັກ\" (ໃຊ້ສຳລັບໄມໂຄຣໂຟນ) ເທົ່ານັ້ນທີ່ຖືກກວດຈັບ. ຕັ້ງຄ່າໃນອຸປະກອນ Apple: ການຕັ້ງຄ່າ → Bluetooth → AirPods → ໄມໂຄຣໂຟນ.</string>
-    <string name="settings_signal_minimum_label">ຄຸນນະພາບສັນຍານຂັ້ນຕໍ່າ</string>
-    <string name="settings_signal_minimum_description">ຄຸນນະພາບສັນຍານຂັ້ນຕໍ່າທີ່ອຸປະກອນຕ້ອງມີເພື່ອຖືວ່າເປັນຂອງທ່ານ.</string>
     <string name="settings_autoconnect_label">ເຊື່ອມຕໍ່ອັດຕະໂນມັດ</string>
     <string name="settings_autoconnect_description">ຖ້າ Android ບໍ່ເຊື່ອມຕໍ່ໂດຍອັດຕະໂນມັດ, ພວກເຮົາສາມາດຂໍໃຫ້ມັນເຮັດໄດ້. ອັນນີ້ຈະຮັກສາການຕິດຕາມຂອງ CAPod ໃຫ້ເຮັດວຽກຢູ່ພື້ນຫຼັງຕະຫຼອດເວລາ.</string>
     <string name="settings_autoconnect_info_android12">ການເຊື່ອມຕໍ່ອັດຕະໂນມັດອາໃສຟີເຈີລະບົບທີ່ Android 12 ແລະລຸ້ນໃໝ່ກວ່າຈຳກັດ. ມັນອາດຈະບໍ່ເຮັດວຽກໃນອຸປະກອນຂອງທ່ານ.</string>
     <string name="settings_autoconnect_condition_label">ເງື່ອນໄຂການເຊື່ອມຕໍ່ອັດຕະໂນມັດ</string>
-    <string name="settings_autoconnect_condition_description">ພວກເຮົາຄວນພະຍາຍາມເຊື່ອມຕໍ່ກັບອຸປະກອນຂອງທ່ານເມື່ອໃດ?</string>
     <string name="settings_devices_label">ອຸປະກອນ</string>
     <string name="settings_devices_description">ຈັດການອຸປະກອນຂອງທ່ານ.</string>
     <string name="settings_reaction_label">ປະຕິກິລິຍາ</string>
-    <string name="settings_category_yourdevice_label">ອຸປະກອນຂອງທ່ານ</string>
     <string name="settings_category_compatibility_options_title">ຕົວເລືອກຄວາມເຂົ້າກັນໄດ້</string>
     <string name="settings_category_compatibility_options_description">ຢ່າແຕະຕ້ອງຖ້າທຸກຢ່າງເຮັດວຽກ ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">ປິດການກັ່ນຕອງຮາດແວ</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">ກຳລັງເລີ່ມຕົ້ນ…</string>
     <string name="support_debuglog_label">ບັນທຶກດີບັກ</string>
     <string name="support_debuglog_desc">ບັນທຶກທຸກຢ່າງທີ່ແອັບກຳລັງເຮັດໃສ່ໃນໄຟລ໌ຂໍ້ຄວາມທີ່ທ່ານສາມາດແບ່ງປັນໄດ້.</string>
-    <string name="debug_debuglog_size_label">ຂະໜາດ</string>
-    <string name="debug_debuglog_size_compressed_label">ຂະໜາດທີ່ບີບອັດ</string>
-    <string name="debug_notification_channel_label">ການແຈ້ງເຕືອນດີບັກ</string>
-    <string name="debug_debuglog_file_label">ໄຟລ໌ບັນທຶກທີ່ບັນທຶກໄວ້</string>
-    <string name="debug_debuglog_recording_progress">ກໍາລັງບັນທຶກບັນທຶກດີບັກ</string>
     <string name="debug_debuglog_record_action">ບັນທຶກບັນທຶກດີບັກ</string>
     <string name="debug_debuglog_stop_action">ຢຸດການບັນທຶກ</string>
     <string name="debug_debuglog_sensitive_information_message">ໄຟລ໌ທີ່ສ້າງຂຶ້ນມີຂໍ້ມູນທີ່ລະອຽດອ່ອນ (ເຊັ່ນ: ລາຍລະອຽດອຸປະກອນ Bluetooth). ແບ່ງປັນໃຫ້ສະເພາະຜູ້ທີ່ໄວ້ໃຈໄດ້ເທົ່ານັ້ນ.</string>
     <string name="settings_debuglog_explanation">ຟີເຈີນີ້ບັນທຶກທຸກສິ່ງທີ່ແອັບກໍາລັງເຮັດໃສ່ໃນໄຟລ໌ທີ່ແບ່ງປັນໄດ້. ໄຟລ໌ທີ່ສ້າງຂຶ້ນມີຂໍ້ມູນທີ່ລະອຽດອ່ອນ (ເຊັ່ນ: ລາຍລະອຽດອຸປະກອນ Bluetooth). ແບ່ງປັນໃຫ້ສະເພາະຜູ້ທີ່ໄວ້ໃຈໄດ້ (ເຊັ່ນ: ນັກພັດທະນາທີ່ກໍາລັງແກ້ໄຂບັນຫາ) ເທົ່ານັ້ນ.</string>
-    <string name="settings_support_installid_label">ID ການຕິດຕັ້ງ</string>
-    <string name="settings_support_installid_desc">ບົດລາຍງານຂໍ້ຜິດພາດອັດຕະໂນມັດແມ່ນບໍ່ເປີດເຜີຍຊື່. ແບ່ງປັນ ID ຕິດຕັ້ງຂອງທ່ານຖ້າຜູ້ພັດທະນາຕ້ອງການຊອກຫາບົດລາຍງານຂໍ້ຜິດພາດຂອງທ່ານ.</string>
     <string name="settings_support_label">ການຊ່ວຍເຫຼືອ</string>
     <string name="settings_support_description">ຖ້າທ່ານຕ້ອງການການຊ່ວຍເຫຼືອ.</string>
     <string name="settings_wiki_label">Wiki</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">຋່ອນອຸປະກອນທີ່ໄມ່ຕໍງກັນ</string>
     <string name="settings_overview_hide_unmatched_description">ບໍ່ສະແດງອຸປະກອນໃກ້ທີ່ໄມ່ຕໍງກັບໂປຣໄຟລ໌ຂອງທ່ານໃນບັນທຶກປະກອບການ, ເຊັ່ນ: AirPods ຂອງຄນອື່ນ.</string>
     <string name="device_battery_estimate_toggle_label">ການປະເມີນແບັດເຕີຣີ</string>
-    <string name="device_battery_estimate_card_desc">ຮຽນຮູ້ວິທີການສາກແລະລະບາຍຂອງອຸປະກອນນີ້ ເພື່ອຄາດຄະເນເວລາທີ່ຍັງເຫຼືອ, ເວລາໃນການສາກສົມບູນ, ແລະ ສະຖານະພາບແບັດເຕີຣີ</string>
+    <string name="device_battery_estimate_card_desc">ຮຽນຮູ້ວ່າອຸປະກອນນີ້ສາກແລະລະບາຍແບັດເຕີຣີ ເພື່ອຄາດຄະເນເວລາທີ່ເຫລືອ, ເວລາຈົນກວ່າສາກເຕັມ, ແລະວ່າວລີຟັງມາດຕະຖານທີ່ຍັງເຫລືອເທົ່າໃດ</string>
     <string name="device_battery_estimate_reset_action">ຕັ້ງໃໝ່ຂໍ້ມູນທີ່ຮຽນຮູ້</string>
     <string name="device_battery_estimate_reset_desc">ເລີ່ມຕົ້ນໃໝ່ຈາກອາຍຸແບັດເຕີຣີມາດຕະຖານ</string>
     <string name="device_battery_estimate_reset_confirm_title">ຕັ້ງໃໝ່ຂໍ້ມູນທີ່ຮຽນຮູ້ບໍ?</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod ຈະລືມຂໍ້ມູນການລະບາຍ, ຄວາມໄວໃນການສາກ ແລະ ສະຖານະພາບແບັດເຕີຣີຂອງອຸປະກອນນີ້, ແລະ ເລີ່ມຕົ້ນໃໝ່ຈາກອາຍຸແບັດເຕີຣີມາດຕະຖານ</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod ຈະລືມຂໍ້ມູນການລະບາຍ, ຄວາມໄວໃນການສາກ ແລະ ວລີຟັງຂອງອຸປະກອນນີ້, ແລະ ເລີ່ມຕົ້ນໃໝ່ຈາກອາຍຸແບັດເຕີຣີມາດຕະຖານ</string>
     <string name="settings_acknowledgements_label">ການຮັບຮູ້</string>
-    <string name="settings_debug_autoreports_label">ລາຍງານຂໍ້ບົກພ່ອງອັດຕະໂນມັດ</string>
-    <string name="settings_debug_autoreports_description">ລາຍງານບັນຫາໂດຍອັດຕະໂນມັດ, ຕົວຢ່າງ: ລາຍລະອຽດກ່ຽວກັບການຂັດຂ້ອງຂອງແອັບ ເພື່ອໃຫ້ຂ້ອຍສາມາດຫາວິທີແກ້ໄຂໄດ້.</string>
-    <string name="settings_compatibility_mode_label">ໂໝດຄວາມເຂົ້າກັນໄດ້</string>
-    <string name="settings_compatibility_mode_description">ປິດການປັບແຕ່ງໃຫ້ເໝາະສົມເພື່ອປັບປຸງຄວາມເຂົ້າກັນໄດ້. ລອງໃຊ້ອັນນີ້ຖ້າທ່ານບໍ່ເຫັນຂໍ້ມູນໃດໆ.</string>
     <string name="help_translate_label">ການແປພາສາ</string>
     <string name="help_translate_description">ຊ່ວຍແປແອັບນີ້ເປັນພາສາທີ່ທ່ານມັກ.</string>
     <string name="translators_thanks_title">ຜູ້ແປ</string>
@@ -173,19 +155,13 @@
     <string name="troubleshooter_ble_result_success_title">ສຳເລັດ</string>
     <string name="troubleshooter_ble_result_success_body">ການອອກອາກາດໂຄສະນາ BLE ກຳລັງຖືກຮັບໂດຍ CAPod.</string>
     <string name="troubleshooter_ble_result_failure_title">ບໍ່ສຳເລັດ</string>
-    <string name="troubleshooter_ble_result_failure_body">ການແກ້ໄຂບັນຫາບໍ່ສຳເລັດ. ບໍ່ມີການປະສົມປະສານຕົວເລືອກຄວາມເຂົ້າກັນໄດ້ໃດໆທີ່ຊ່ວຍໄດ້.</string>
     <string name="troubleshooter_ble_result_failure_phone_body">ໂທລະສັບຂອງທ່ານບໍ່ໄດ້ຮັບຂໍ້ມູນ BLE ເລີຍ. ທ່ານສາມາດລອງທົດສອບນີ້ອີກຄັ້ງໃນພື້ນທີ່ແອອັດເພື່ອເບິ່ງວ່າສາມາດຮັບແຫຼ່ງຂໍ້ມູນ (ນອກເໜືອຈາກຫູຟັງຂອງທ່ານ) ໄດ້ຫຼືບໍ່. ການບໍ່ໄດ້ຮັບຂໍ້ມູນໃດໆຊີ້ບອກເຖິງບັນຫາກับລະບົບປະຕິບັດການຂອງໂທລະສັບຂອງທ່ານ.</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">ໂທລະສັບຂອງທ່ານໄດ້ຮັບຂໍ້ມູນ BLE, ແຕ່ຂໍ້ມູນບໍ່ໄດ້ມາຈາກອຸປະກອນທີ່ຮອງຮັບໃດໆ. ຫູຟັງຂອງທ່ານເປີດຢູ່ບໍ? CAPod ຮອງຮັບຫູຟັງຂອງທ່ານບໍ?</string>
-    <string name="troubleshooter_ble_result_failure_action">ລອງອີກຄັ້ງ</string>
-    <string name="troubleshoot_action">ແກ້ໄຂບັນຫາ</string>
     <string name="onboarding_body1">ແອັບນີ້ເພີ່ມການຮອງຮັບຄຸນສົມບັດສະເພາະຂອງ AirPod ໃຫ້ກັບ Android.</string>
     <string name="onboarding_body2">ບໍ່ແມ່ນອຸປະກອນ Android ທັງໝົດທີ່ຮອງຮັບຄຸນສົມບັດເພີ່ມເຕີມຂອງ AirPod ຢ່າງເຕັມທີ່. ລະບົບປະຕິບັດການຂອງທ່ານຕ້ອງການການປະຕິບັດ Bluetooth-Low-Energy ທີ່ເຮັດວຽກຢ່າງຖືກຕ້ອງ.</string>
     <string name="onboarding_body3">CAPod ບໍ່ມີໂຄສະນາ ແລະ ບໍ່ເກັບກຳຂໍ້ມູນຂອງທ່ານ.</string>
     <string name="onboarding_body4">ທ່ານສາມາດອັບເກຣດເປັນ CAPod Pro ເພື່ອຮັບຄຸນສົມບັດເພີ່ມເຕີມ ແລະ ສະໜັບສະໜູນການພັດທະນາ.</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">ຜິດພາດ</string>
@@ -207,9 +183,6 @@
     <string name="overview_troubleshoot_suggestion_description">ອຸປະກອນຂອງທ່ານເຊື່ອມຕໍ່ແລ້ວ, ຜູ້ໃດ້ CAPod ບໍ່ໄດ້ຮັບຂໍ້ມູນລິວໃດ້ຈາກມັນ. ໂທລະສັບຂອງທ່ານອາດຕ້ອງການຕົວເລືອກຄວາມເຂົ້າກັນໄດ້ — ຕົວແກ້ໄຂບັນຫາສາມາດພະຍາຍາມຫາຕົວເລືອກທີ່ເຫມາະສະຫມໂດຍອັດຕະໂນມັດ.</string>
     <string name="overview_troubleshoot_suggestion_action">ແລ່ນຕົວແກ້ໄຂບັນຫາ</string>
     <string name="overview_unmatched_devices_label">ອຸປະກອນທີ່ບໍ່ກົງກັນ</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="other">%d ອຸປະກອນທີ່ບໍ່ມີໂປຣໄຟລ໌ກົງກັນ</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="other">ກວດພົບອຸປະກອນໃກ້ຄຽງ %d ໜ່ວຍ ໂດຍບໍ່ມີໂປຣໄຟລ໌ທີ່ກົງກັນ. ສະແດງເພື່ອເບິ່ງລາຍລະອຽດທີ່ມີ. ຖ້າມັນເປັນຂອງທ່ານ, ໃຫ້ເພີ່ມໂປຣໄຟລ໌ຈາກອຸປະກອນເພື່ອຈົດຈຳມັນ.</item>
     </plurals>
@@ -228,7 +201,6 @@
     <string name="permission_background_location_description">CAPod ໃຊ້ \"ເຂົ້າເຖິງທີ່ຕັ້ງໃນພື້ນຫຼັງ\" ເພື່ອເປີດໃຊ້ຄຸນສົມບັດເຊັ່ນ \"ສະແດງປັອບອັບ\" ແລະ \"ເຊື່ອມຕໍ່ອັດຕະໂນມັດ\" ໃນຂະນະທີ່ແອັບປິດຢູ່. ການເຂົ້າເຖິງທີ່ຕັ້ງໃນພື້ນຫຼັງອະນຸຍາດໃຫ້ແອັບຮັບຂໍ້ມູນ Bluetooth Low Energy ໃນພື້ນຫຼັງ. ແອັບນີ້ຈະບໍ່ໃຊ້ຂໍ້ມູນ Bluetooth ເພື່ອກຳນົດທີ່ຕັ້ງຂອງທ່ານ.</string>
     <string name="permission_ignore_battery_optimizations_label">ປິດການປັບແຕ່ງແບັດເຕີລີ້</string>
     <string name="permission_ignore_battery_optimizations_description">ການປັບແຕ່ງແບັດເຕີລີ້ປ້ອງກັນບໍ່ໃຫ້ແອັບນີ້ຮັບຂໍ້ມູນ Bluetooth ຢ່າງໜ້າເຊື່ອຖືໃນຂະນະທີ່ແອັບຢູ່ໃນພື້ນຫຼັງ.</string>
-    <string name="permission_required_title">ຕ້ອງການການອະນຸຍາດຕໍ່ໄປນີ້:</string>
     <string name="permission_system_alert_window_label">ໜ້າຕ່າງການແຈ້ງເຕືອນລະບົບ</string>
     <string name="permission_system_alert_window_description">ອະນຸຍາດໃຫ້ CAPod ແຕ້ມທັບແອັບອື່ນເພື່ອໃຫ້ຄຸນສົມບັດ \"ສະແດງປັອບອັບ\" ເປັນໄປໄດ້.</string>
     <string name="settings_reaction_autoconnect_whenseen_label">ເມື່ອເຫັນ</string>
@@ -236,10 +208,21 @@
     <string name="settings_reaction_autoconnect_inear_label">ໃນຫູ</string>
     <string name="pods_dual_left_label">ພອດຊ້າຍ</string>
     <string name="pods_dual_right_label">ພອດຂວາ</string>
-    <string name="pods_dual_left_short_label">ຊ້</string>
-    <string name="pods_dual_right_short_label">ຂວາ</string>
-    <string name="pods_case_label">ເຄສ</string>
     <string name="battery_unavailable_label">ບາດເຕີຣີບໍ່ສາມາດໃຊ້ງານໄດ້</string>
+    <string name="battery_state_low_cd">ແບັດເຕີຣີຕໍ່າ</string>
+    <string name="battery_state_critical_cd">ແບັດເຕີຣີໃກ້ຈະໝົດ</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="other">~%d ຄັ້ງສາກເຕັມອີກສໍາລັບຫູໄຟຟ້າທັງສອງ</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="other">ຢ່າງໜ້ອຍ %d ຄັ້ງສາກເຕັມອີກສໍາລັບຫູໄຟຟ້າທັງສອງ</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">ນ້ອຍກວ່າໜຶ່ງຄັ້ງສາກເຕັມສໍາລັບຫູໄຟຟ້າທັງສອງ</string>
+    <string name="battery_case_charges_empty">ກໍ່ວາງເປົ່າ, ບໍ່ມີຄັ້ງສາກເຕັມເຫລືອສໍາລັບຫູໄຟຟ້າຂອງທ່ານ</string>
+    <string name="battery_case_charges_uncertain">ບໍ່ແນ່ໃຈວ່າມີຄັ້ງສາກເຕັມເຫລືອເທົ່າໃດສໍາລັບຫູໄຟຟ້າທັງສອງ</string>
+    <string name="battery_case_charges_state_enough_cd">ພຽງພໍສໍາລັບສາກເຕັມ</string>
+    <string name="battery_case_charges_state_not_enough_cd">ບໍ່ພຽງພໍສຳລັບສາກເຕັມ</string>
+    <string name="battery_case_charges_state_uncertain_cd">ອາດຈະບໍ່ພຽງພໍສຳລັບສາກເຕັມ</string>
     <string name="pods_case_status_open_label">ເປີດ</string>
     <string name="pods_case_status_closed_label">ປິດ</string>
     <string name="pods_connection_state_disconnected_label">ບໍ່ໄດ້ເຊື່ອມຕໍ່ກັບອຸປະກອນ</string>
@@ -273,19 +256,15 @@
     <string name="signal_badge_aap_cd">ການເຊື່ອມຕໍ່ໂດຍກົງທີ່ເຄື່ອນໄຫວ</string>
     <string name="signal_indicator_bars_cd">ຄວາມແຮງສັນຍານ: %1$d ຈາກ 4 ຂີດ</string>
     <string name="signal_indicator_disconnected_cd">ສັນຍານ: ຕັດການເຊື່ອມຕໍ່</string>
-    <string name="pods_yours">ຂອງທ່ານ</string>
     <string name="headset_being_worn_label">ກຳລັງໃສ່</string>
     <string name="headset_not_being_worn_label">ບໍ່ໄດ້ໃສ່</string>
     <string name="pods_case_unknown_state">ສະຖານະທີ່ບໍ່ຮູ້ຈັກ</string>
-    <string name="last_seen_x">ເຫັນຫຼ້າສຸດ: %s</string>
-    <string name="first_seen_x">ເຫັນຄັ້ງທຳອິດ: %s</string>
     <string name="battery_cached_label">ຮູ້ຈັກລ່າສຸດ · %s</string>
     <string name="battery_time_remaining_format_hm">%1$dh %2$dm</string>
     <string name="battery_time_remaining_format_h">%1$dh</string>
     <string name="battery_time_remaining_format_m">%1$dm</string>
     <string name="permission_post_notifications_label">ສະແດງການແຈ້ງເຕືອນ</string>
     <string name="permission_post_notifications_description">"ອະນຸຍາດໃຫ້ CAPod ສະແດງການແຈ້ງເຕືອນກ່ຽວກັບ AirPods ຂອງທ່ານ, ຕົວຢ່າງ: ສະຖານະປັດຈຸບັນໃນຂະນະເຊື່ອມຕໍ່."</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">ບໍ່ມີໂປຣໄຟລ໌ອຸປະກອນທີ່ຕັ້ງຄ່າ</string>
     <string name="profiles_empty_description">ສ້າງໂປຣໄຟລ໌ອຸປະກອນເພື່ອຈັດການຫຼາຍອຸປະກອນດ້ວຍການຕັ້ງຄ່າ ແລະ ລຳດັບຄວາມສຳຄັນແບບກຳນົດເອງ.</string>
     <string name="profiles_add_action">ເພີ່ມໂປຣໄຟລ໌</string>
@@ -308,10 +287,8 @@
     <string name="profiles_signal_quality_title">ຄຸນນະພາບສັນຍານຂັ້ນຕໍ່າ</string>
     <string name="profiles_signal_quality_description">ກວດຈັບສະເພາະອຸປະກອນທີ່ມີຄວາມແຮງສັນຍານເກີນເກນນີ້. ຄ່າຕໍ່າກວ່າເພີ່ມຂອບເຂດການກວດຈັບແຕ່ອາດເຮັດໃຫ້ເກີດການກວດຈັບຜິດ. ຢ່າຕັ້ງສູງເກີນໄປ - ການຮັບ Bluetooth ໂດຍທົ່ວໄປແມ່ນບໍ່ດີ ແລະ ແຕກຕ່າງກັນຕາມໄລຍະ ແລະ ສິ່ງກີດຂວາງ.</string>
     <string name="profiles_identitykey_label">ລະຫັດຕົວຕົນ</string>
-    <string name="profilessettings_maindevice_identitykey_description">Identity Resolving Key (IRK) ຂອງອຸປະກອນທ່ານ, ຊຶ່ງຊ່ວຍ CAPod ລະບຸມັນໃນບັນດາອຸປະກອນໃກ້ຄຽງ.</string>
     <string name="profiles_maindevice_identitykey_explanation">AirPods ປ່ຽນທີ່ຢູ່ Bluetooth ເລື້ອຍໆເພື່ອຄວາມເປັນສ່ວນຕົວ. IRK ຊ່ວຍ CAPod ຮັບຮູ້ອຸປະກອນຂອງທ່ານ. ທ່ານຕ້ອງການການເຂົ້າເຖິງ MacBook ຄັ້ງດຽວ.</string>
     <string name="profiles_maindevice_encryptionkey_label">ລະຫັດການເຂົ້າລະຫັດ</string>
-    <string name="profiles_maindevice_encryptionkey_description">ກະແຈເຂົ້າລະຫັດຂອງອຸປະກອນທ່ານ, ຊຶ່ງອະນຸຍາດໃຫ້ CAPod ດຶງຂໍ້ມູນສະຖານະລະອຽດ.</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods ສົ່ງຂໍ້ຄວາມສະຖານະ, ບາງສ່ວນຂອງມັນຖືກເຂົ້າລະຫັດ. ກະແຈເຂົ້າລະຫັດອະນຸຍາດໃຫ້ CAPod ຖອດລະຫັດຂໍ້ຄວາມທັງໝົດ. ທ່ານຕ້ອງການການເຂົ້າເຖິງ MacBook ຄັ້ງດຽວ.</string>
     <string name="profiles_key_invalid_format">ຮູບແບບກະແຈບໍ່ຖືກຕ້ອງ</string>
     <string name="profiles_key_expected_format">ຮູບແບບທີ່ຄາດໄວ້: %1$s</string>
@@ -320,37 +297,29 @@
     <string name="profiles_signal_quality_min_label">ປິດ</string>
     <string name="profiles_signal_quality_max_label">ເຂັ້ມງວດ</string>
     <string name="profiles_priority_hint">ລຳດັບໂປຣໄຟລ໌ກຳນົດຄວາມສຳຄັນ. ລາກໂປຣໄຟລ໌ເພື່ອຈັດລຳດັບໃໝ່ - ໂປຣໄຟລ໌ທີ່ຢູ່ສູງກວ່າໃນລາຍການມີຄວາມສຳຄັນກວ່າເມື່ອມີຫຼາຍອຸປະກອນກົງກັນ.</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">ໂຫມດຫົວຂໍ້</string>
     <string name="ui_theme_mode_system_label">ລະບົບ</string>
     <string name="ui_theme_mode_dark_label">ມືດ</string>
     <string name="ui_theme_mode_light_label">ສະຫວ່າງ</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">ແບບຫົວຂໍ້</string>
     <string name="ui_theme_style_default_label">ເລີ່ມຕົ້ນ</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">ຄວາມໄປ່ຕ່ຽງລະດັບກາງ</string>
     <string name="ui_theme_style_high_contrast_label">ຄວາມໄປ່ຕ່ຽງສູງ</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">ສີຮູບແບບ</string>
     <string name="ui_theme_color_blue_label">ສີຟ້າ</string>
     <string name="ui_theme_color_green_label">ສີຂຽວ</string>
     <string name="ui_theme_color_amber_label">ສີເຫຼືອງອຳ</string>
     <string name="ui_theme_color_disabled_materialyou">ໃຊ້ສີຮູບພາບພື້ນຫຼັງ</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">ຮູບລັກສະນະ</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">ການປ່ຽນແປງທີ່ບໍ່ໄດ້ບັນທຶກ</string>
     <string name="general_unsaved_changes_message">ທ່ານມີການປ່ຽນແປງທີ່ບໍ່ໄດ້ບັນທຶກ. ທ່ານຕ້ອງການເຮັດຫຍັງ?</string>
     <string name="general_save_and_exit_action">ບັນທຶກ &amp; ອອກ</string>
     <string name="general_discard_action">ຍົກເລີກ</string>
-    <string name="general_keep_editing_action">ສືບຕໍ່ແກ້ໄຂ</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">ການບັນທຶກສັ້ນເກີນໄປ</string>
     <string name="debug_debuglog_short_recording_message">ບັນທຶກດີບັກຕ້ອງບັນທຶກບັນຫາໃນຂະນະທີ່ມັນເກີດຂຶ້ນ. ສືບຕໍ່ການບັນທຶກ, ຈາລອງບັນຫາ, ຈາກນັ້ນຊຸດການບັນທຶກ.</string>
     <string name="debug_debuglog_short_recording_continue">ສືບຕໍ່ການບັນທຶກ</string>
     <string name="debug_debuglog_short_recording_stop">ຊຸດຍ່າງໃດກໍຕາມ</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">ບັນທຶກດີບັກ</string>
     <string name="debug_debuglog_screen_subtitle">ສົ່ງອອກຂໍ້ມູນດີບັກສຳລັບການແກ້ໄຂບັນຫາ</string>
     <string name="debug_debuglog_screen_sensitive_title">ຂໍ້ມູນລະອຽດອ່ອນ</string>
@@ -361,7 +330,6 @@
     </plurals>
     <string name="debug_debuglog_screen_discard_action">ລຶບ</string>
     <string name="debug_debuglog_screen_keep_action">ເກັບໄວ້</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="other">%1$d ບັນທຶກດີບັກ (%2$s)</item>
     </plurals>
@@ -378,7 +346,6 @@
     <string name="support_debuglog_failed_missing_log">ລົ້ມເຫຼວ: ໄຟລ່ log ຫາຍໄປ</string>
     <string name="support_debuglog_failed_corrupt_zip">ລົ້ມເຫຼວ: ໄຟລ່ zip ເສີຍຫາຍ</string>
     <string name="support_debuglog_failed_zip_failed">ລົ້ມເຫຼວ: ການບີບອັດລົ້ມເຫຼວ</string>
-    <!-- Contact form -->
     <string name="support_contact_label">ຕິດຕໍ່ຜູ້ພັດທະນາ</string>
     <string name="support_contact_desc">ຕື່ມແບບຟອມເພື່ອສົ່ງອີເມລໃຫ້ຜູ້ພັດທະນາ.</string>
     <string name="support_contact_welcome">ຂ້ອຍອ່ານທຸກຂໍ້ຄວາມດ້ວຍຕົນເອງ ແລະ ພະຍາຍາມຕອບໃຫ້ດີທີ່ສຸດ, ແຕ່ເນື່ອງຈາກຂ້ອຍເຮັດວຽກຄົນດຽວ, ອາດໃຊ້ເວລາໜ້ອຍໜຶ່ງ. ຂໍຂອບໃຈສຳລັບຄວາມອດທົນຂອງທ່ານ.</string>
@@ -404,15 +371,12 @@
     <string name="support_contact_no_email_app">ບໍ່ພົບແອັບອີເມລໃນອຸປະກອນນີ້.</string>
     <string name="support_contact_debuglog_delete_title">ລຶບບັນທຶກດີບັກ?</string>
     <string name="support_contact_debuglog_delete_message">ບັນທຶກດີບັກນີ້ຈະຖືກລຶບຖາວອນ.</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">ສົ່ງລ໋ອກແລ້ວບໍ?</string>
     <string name="support_debuglog_sent_message">ລ໋ອກດີບັກຖືກສົ່ງສຳເລັດບໍ? ລ໋ອກຈະຖືກລຶບອອກ.</string>
     <string name="support_contact_sent_title">ສົ່ງອີເມວແລ້ວບໍ?</string>
     <string name="support_contact_sent_message">ອີເມວຖືກສົ່ງສຳເລັດບໍ? ລ໋ອກດີບັກທີ່ຕິດຄັດໄວ້ຈະຖືກລຶບອອກ.</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">ການຕັ້ງຄ່າອຸປະກອນ</string>
     <string name="device_settings_subtitle_profile_prefix">ໂປຣໄຟລ໌: %s</string>
-    <string name="device_settings_info_name_label">ຊື່</string>
     <string name="device_settings_info_bt_name_label">ຊື່ອຸປະກອນ Bluetooth</string>
     <string name="device_settings_info_model_label">ລຸ້ນ</string>
     <string name="device_settings_info_manufacturer_label">ຜູ້ຜະລິດ</string>
@@ -425,11 +389,14 @@
     <string name="device_settings_info_right_serial_label">ໝາຍເລກ Pod ຂວາ</string>
     <string name="device_settings_info_left_bonded_label">ຊ້າຍໄດ້ຜູກມັດ</string>
     <string name="device_settings_info_right_bonded_label">ຂວາໄດ້ຜູກມັດ</string>
-    <string name="device_settings_info_battery_health_label">ສະຖານະພາບແບັດເຕີຣີ (ປະເມີນ)</string>
+    <string name="device_settings_info_battery_health_label">ວລີຟັງທີ່ຄາດຄະເນໄວ້</string>
     <string name="device_settings_info_battery_health_left_label">ສະຖານະພາບແບັດເຕີຣີຊ້າຍ (ປະເມີນ)</string>
-    <string name="device_settings_info_battery_health_right_label">ສະຖານະພາບແບັດເຕີຣີຂວາ (ປະເມີນ)</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_right_label">ວລີຟັງຫູຂ້າງຂວາ</string>
+    <string name="device_settings_info_battery_health_value">~%1$d%% ຂອງມາດຕະຖານ</string>
     <string name="device_settings_info_battery_health_pending">ຍັງກຳລັງກຳນົດ, ກະລຸນາກັບມາບໍ່ດົນ</string>
+    <string name="device_settings_battery_runtime_warning_title">ວລີຟັງສັ້ນກວ່າມາດຕະຖານຫລາຍ</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: ປະມານ %2$d%% ຂອງວລີຟັງມາດຕະຖານ. ແຕະເພື່ອເບິ່ງລາຍລະອີດ</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">ຫູໄຟຟ້າເໜ່ານີ້</string>
     <string name="device_settings_info_details_label">ຂໍ້ມູນອຸປະກອນ</string>
     <string name="device_settings_info_details_action">ສະແດງຂໍ້ມູນອຸປະກອນ</string>
     <string name="device_settings_info_status_label">ສົຖະນະ</string>
@@ -488,8 +455,6 @@
     <string name="review_app_review_action">ຣີວິວ</string>
     <string name="review_app_dismiss_action">ບາງທີພາຍຫຼັງ</string>
     <string name="review_app_body">ທ່ານຢາກໃຫ້ CAPod ຣີວິວບໍ? ❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">ທົ່ວໄປ</string>
     <string name="device_settings_microphone_mode_label">ໄມໂຄຣໂຟນ</string>
     <string name="device_settings_microphone_mode_description">ຫູຟັງຂ້າງໃດທີ່ໃຊ້ເປັນໄມໂຄໂຟນ</string>
     <string name="device_settings_microphone_mode_auto">ອັດຕະໂນມັດ</string>
@@ -538,7 +503,6 @@
     <string name="device_settings_connected_device_media">ກຳລັງເລ່ນສື່ໂກສນ</string>
     <string name="device_settings_noise_control_label">ການຄວບຄຸມເສີງຣົບກວນ</string>
     <string name="device_settings_eq_label">ໂງວິດປິປ</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">ການຄວບຄຸມການກົດ</string>
     <string name="press_controls_nav_description">ປັບປຸງການທຳງານກົດແລະແບ່ງກົດເປັນການກະທຳ</string>
     <string name="press_controls_description">ປັບປຸງການຕົກຈັບການກົດ, ເລືອກການທຳງານປຸ່ມໂທ, ແລະແບ່ງກົດເປັນການກະທຳ. ການກະທຳທີ່ແບ່ງໃຊ້ກັບອຸປະກອນນີ້ເທົ່ານັ້ນ ແລະໃຫ້ແອັບດັກຈັບການກົດແທນ AirPods.</string>

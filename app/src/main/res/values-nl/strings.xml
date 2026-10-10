@@ -3,7 +3,6 @@
     <string name="general_share_action">Delen</string>
     <string name="general_done_action">Klaar</string>
     <string name="general_cancel_action">Annuleren</string>
-    <string name="general_copy_action">Kopiëren</string>
     <string name="general_thank_you_label">Bedankt</string>
     <string name="general_upgrade_action">Upgraden</string>
     <string name="general_retry_action">Opnieuw proberen</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">Controleren</string>
     <string name="general_close_action">Sluiten</string>
     <string name="general_dismiss_action">Afwijzen</string>
-    <string name="general_edit_action">Bewerken</string>
     <string name="general_save_action">Opslaan</string>
     <string name="general_guide_action">Handleiding</string>
     <string name="general_continue_action">Doorgaan</string>
@@ -40,19 +38,14 @@
     <string name="settings_autoplay_description">Hervat muziek wanneer je je pods weer opdoet, maar alleen als Automatisch pauzeren dit heeft gestopt. Pauzes die je zelf hebt geactiveerd (telefoon, AirPods-steel, slaap) blijven gepauzeerd.</string>
     <string name="settings_start_music_on_wear_label">Muziek starten bij dragen</string>
     <string name="settings_start_music_on_wear_description">Probeert altijd muziek af te spelen wanneer je je pods opdoet, zelfs na een handmatige pauze.</string>
-    <string name="settings_eardetection_info_label">Oordetectienotitie</string>
     <string name="settings_eardetection_info_description">Als oordetectie slechts voor één pod werkt, is dit een beperking van Apple. Alleen de \"primaire pod\" (gebruikt voor de microfoon) wordt gedetecteerd. Configureer op Apple-apparaten: Instellingen → Bluetooth → AirPods → Microfoon.</string>
-    <string name="settings_signal_minimum_label">Minimale signaalkwaliteit</string>
-    <string name="settings_signal_minimum_description">De minimale signaalkwaliteit die een apparaat nodig heeft om als je apparaat te worden beschouwd.</string>
     <string name="settings_autoconnect_label">Automatisch verbinden</string>
     <string name="settings_autoconnect_description">Als Android niet automatisch verbinding maakt, kunnen we het ook vragen. Hierdoor blijft CAPod voortdurend op de achtergrond controleren.</string>
     <string name="settings_autoconnect_info_android12">Automatisch verbinden is afhankelijk van een systeemfunctie die beperkt wordt door Android 12 en nieuwer. Het werkt mogelijk niet op je apparaat.</string>
     <string name="settings_autoconnect_condition_label">Auto verbindingsvoorwaarde</string>
-    <string name="settings_autoconnect_condition_description">Wanneer moeten we proberen verbinding te maken met je apparaat?</string>
     <string name="settings_devices_label">Apparaten</string>
     <string name="settings_devices_description">Beheer je apparaten.</string>
     <string name="settings_reaction_label">Reacties</string>
-    <string name="settings_category_yourdevice_label">Je apparaat</string>
     <string name="settings_category_compatibility_options_title">Compatibiliteitsopties</string>
     <string name="settings_category_compatibility_options_description">Niet aanraken als alles werkt ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Hardware filtering uitzetten</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">Aan de slag…</string>
     <string name="support_debuglog_label">Foutopsporingslogboek</string>
     <string name="support_debuglog_desc">Registreer alles wat de app doet in een tekstbestand dat je kunt delen.</string>
-    <string name="debug_debuglog_size_label">Grootte</string>
-    <string name="debug_debuglog_size_compressed_label">Gecomprimeerde grootte</string>
-    <string name="debug_notification_channel_label">Foutopsporingsmeldingen</string>
-    <string name="debug_debuglog_file_label">Opgenomen logbestand</string>
-    <string name="debug_debuglog_recording_progress">Opnemen van foutopsporingslogboek</string>
     <string name="debug_debuglog_record_action">Foutopsporingslogboek opnemen</string>
     <string name="debug_debuglog_stop_action">Stop met opnemen</string>
     <string name="debug_debuglog_sensitive_information_message">Het gegenereerde bestand bevat gevoelige informatie (bijv. Bluetooth-apparaatdetails). Deel het alleen met vertrouwde partijen.</string>
     <string name="settings_debuglog_explanation">Deze functie slaat alles op wat de app doet in een deelbaar bestand. Het gegenereerde bestand bevat gevoelige informatie (bijvoorbeeld. Bluetooth apparaat details). Deel het alleen met vertrouwde partijen (bijv. een ontwikkelaar die problemen oplost).</string>
-    <string name="settings_support_installid_label">Installatie-ID</string>
-    <string name="settings_support_installid_desc">Automatische foutmeldingen zijn anoniem. Deel je installatie-ID als de ontwikkelaar kje foutmeldingen moet kunnen inzien.</string>
     <string name="settings_support_label">Ondersteuning</string>
     <string name="settings_support_description">Als je hulp nodig hebt.</string>
     <string name="settings_wiki_label">Wiki</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">Niet-overeenkomende apparaten verbergen</string>
     <string name="settings_overview_hide_unmatched_description">Verberg apparaten in het overzicht die niet overeenkomen met je profielen, bijv. AirPods van anderen.</string>
     <string name="device_battery_estimate_toggle_label">Batterijschattingen</string>
-    <string name="device_battery_estimate_card_desc">Leer hoe dit apparaat oplaadt en ontlaadt om de resterende tijd, oplaadtijd en batterijgezondheid in te schatten.</string>
+    <string name="device_battery_estimate_card_desc">Leer hoe dit apparaat oplaadt en ontlaadt om de resterende gebruiksduur, de tijd tot volledige oplading en het resterende deel van de nominale luistertijd te schatten.</string>
     <string name="device_battery_estimate_reset_action">Leergegevens wissen</string>
     <string name="device_battery_estimate_reset_desc">Opnieuw beginnen met de nominale batterijduur.</string>
     <string name="device_battery_estimate_reset_confirm_title">Leergegevens wissen?</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod zal het verbruik, de oplaadsnelheid en batterijgezondheid van dit apparaat vergeten en opnieuw met de nominale batterijduur beginnen.</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod vergeet dat dit apparaat het stroomverbruik, de laadsnelheid en de luistertijd heeft gemeten en begint opnieuw vanaf de opgegeven batterijduur.</string>
     <string name="settings_acknowledgements_label">Dankbetuigingen</string>
-    <string name="settings_debug_autoreports_label">Automatische bugrapporten</string>
-    <string name="settings_debug_autoreports_description">Rapporteert automatisch problemen, b.v. details over een app-crash, zodat ik kan uitzoeken hoe ik dit kan oplossen.</string>
-    <string name="settings_compatibility_mode_label">Compatibiliteitsmodus</string>
-    <string name="settings_compatibility_mode_description">Schakel optimalisaties uit om de compatibiliteit te verbeteren. Probeer dit als je geen gegevens ziet.</string>
     <string name="help_translate_label">Vertaling</string>
     <string name="help_translate_description">Help deze app te vertalen in je favoriete taal.</string>
     <string name="translators_thanks_title">Vertalers</string>
@@ -173,19 +155,13 @@
     <string name="troubleshooter_ble_result_success_title">Gelukt</string>
     <string name="troubleshooter_ble_result_success_body">BLE-advertentie-uitzendingen worden door CAPod ontvangen.</string>
     <string name="troubleshooter_ble_result_failure_title">Mislukt</string>
-    <string name="troubleshooter_ble_result_failure_body">Problemen oplossen mislukt. Geen enkele combinatie van compatibiliteitsopties heeft geholpen.</string>
     <string name="troubleshooter_ble_result_failure_phone_body">Je telefoon heeft helemaal geen BLE-gegevens ontvangen. Je kunt deze test herhalen in een drukke omgeving om te zien of er wel gegevensbronnen (anders dan je koptelefoon) worden ontvangen. Als er geen gegevens worden ontvangen, wijst dit op een probleem met het besturingssysteem van je telefoon.</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">Je telefoon heeft BLE-gegevens ontvangen, maar de gegevens zijn niet afkomstig van een ondersteund apparaat. Staat je koptelefoon aan? Ondersteunt CAPod je koptelefoon?</string>
-    <string name="troubleshooter_ble_result_failure_action">Probeer opnieuw</string>
-    <string name="troubleshoot_action">Problemen oplossen</string>
     <string name="onboarding_body1">Deze app voegt ondersteuning voor AirPod-specifieke functies toe aan Android.</string>
     <string name="onboarding_body2">Niet alle Android-apparaten ondersteunen de extra AirPod-functies volledig. Je besturingssysteem vereist een correct werkende Bluetooth-Low-Energy implementatie.</string>
     <string name="onboarding_body3">CAPod heeft geen advertenties en verzamelt je gegevens niet.</string>
     <string name="onboarding_body4">Je kunt upgraden naar CAPod Pro om extra functies te krijgen en de ontwikkeling te ondersteunen.</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/A</string>
     <string name="general_error_label">Fout</string>
@@ -207,10 +183,6 @@
     <string name="overview_troubleshoot_suggestion_description">Je apparaat is verbonden, maar CAPod ontvangt geen live gegevens. Je telefoon heeft mogelijk een compatibiliteitsoptie nodig — de probleemoplosser kan er automatisch een zoeken.</string>
     <string name="overview_troubleshoot_suggestion_action">Probleemoplosser starten</string>
     <string name="overview_unmatched_devices_label">Niet overeenkomende apparaten</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="one">%d apparaat zonder overeenkomend profiel</item>
-        <item quantity="other">%d apparaten zonder overeenkomend profiel</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="one">Er is %d apparaat in de buurt gedetecteerd zonder bijbehorend profiel. Bekijk het voor beschikbare details. Als het van jou is, voeg dan een profiel toe via Apparaten om het te herkennen.</item>
         <item quantity="other">Er zijn %d apparaten in de buurt gedetecteerd zonder bijbehorende profielen. Bekijk ze voor beschikbare details. Als een ervan van jou is, voeg dan een profiel toe via Apparaten om het te herkennen.</item>
@@ -231,7 +203,6 @@
     <string name="permission_background_location_description">CAPod gebruikt \'locatietoegang op de achtergrond\' om functies zoals \'Pop-up weergeven\' en \'Automatisch verbinden\' in te schakelen terwijl de app gesloten is. Met locatietoegang op de achtergrond kan de app Bluetooth Low Energy-gegevens ontvangen terwijl deze op de achtergrond actief is. Deze app gebruikt GEEN Bluetooth-gegevens om je locatie te bepalen.</string>
     <string name="permission_ignore_battery_optimizations_label">Batterij-optimalisaties uitschakelen</string>
     <string name="permission_ignore_battery_optimizations_description">Door batterijoptimalisatie kan deze app geen betrouwbare Bluetooth-gegevens ontvangen zolang de app op de achtergrond draait.</string>
-    <string name="permission_required_title">De volgende toestemming is vereist:</string>
     <string name="permission_system_alert_window_label">Systeemwaarschuwingsvenster</string>
     <string name="permission_system_alert_window_description">Geef CAPod de mogelijkheid om over andere apps heen te tekenen, zodat de functie \"Pop-up weergeven\" mogelijk is.</string>
     <string name="settings_reaction_autoconnect_whenseen_label">Wanneer gezien</string>
@@ -239,10 +210,25 @@
     <string name="settings_reaction_autoconnect_inear_label">In oor</string>
     <string name="pods_dual_left_label">Linker pod</string>
     <string name="pods_dual_right_label">Rechter pod</string>
-    <string name="pods_dual_left_short_label">L</string>
-    <string name="pods_dual_right_short_label">R</string>
-    <string name="pods_case_label">Geval</string>
     <string name="battery_unavailable_label">Batterij niet beschikbaar</string>
+    <string name="battery_state_low_cd">Batterij laag</string>
+    <string name="battery_state_critical_cd">Batterij bijna leeg</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="one">~%d meer volledige lading voor beide oordopjes</item>
+        <item quantity="other">~%d meer volledige ladingen voor beide oordopjes</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="one">Minstens %d meer volledige lading voor beide oordopjes</item>
+        <item quantity="other">Minstens %d meer volledige ladingen voor beide oordopjes</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">Nog minder dan één volledige oplaadbeurt voor beide oordopjes</string>
+    <string name="battery_case_charges_empty">Etui is leeg, de oordopjes zijn niet meer opgeladen</string>
+    <string name="battery_case_charges_uncertain">Ik weet niet precies hoeveel volledige oplaadbeurten beide oordopjes nog hebben</string>
+    <string name="battery_case_charges_state_enough_cd">Voldoende voor een volledige lading</string>
+    <string name="battery_case_charges_state_not_enough_cd">Niet genoeg voor één volledige lading</string>
+    <string name="battery_case_charges_state_uncertain_cd">Mogelijk niet genoeg voor één volledige lading</string>
+    <string name="battery_case_charges_short">%1$s opladen</string>
+    <string name="battery_case_charges_short_at_least">%1$s+ opladen</string>
     <string name="pods_case_status_open_label">Open</string>
     <string name="pods_case_status_closed_label">Gesloten</string>
     <string name="pods_connection_state_disconnected_label">Niet verbonden met een apparaat</string>
@@ -276,19 +262,15 @@
     <string name="signal_badge_aap_cd">Directe verbinding actief</string>
     <string name="signal_indicator_bars_cd">Signaalsterkte: %1$d van 4 balken</string>
     <string name="signal_indicator_disconnected_cd">Signaal: verbroken verbinding</string>
-    <string name="pods_yours">Jouw</string>
     <string name="headset_being_worn_label">Wordt gedragen</string>
     <string name="headset_not_being_worn_label">Wordt niet gedragen</string>
     <string name="pods_case_unknown_state">Onbekende status</string>
-    <string name="last_seen_x">Laatst gezien: %s</string>
-    <string name="first_seen_x">Voor het eerst gezien: %s</string>
     <string name="battery_cached_label">Laatst bekend \u00B7 %s</string>
     <string name="battery_time_remaining_format_hm">%1$du %2$dm</string>
     <string name="battery_time_remaining_format_h">%1$du</string>
     <string name="battery_time_remaining_format_m">%1$dm</string>
     <string name="permission_post_notifications_label">Toon notificaties</string>
     <string name="permission_post_notifications_description">"Sta CAPod toe om meldingen over je AirPods weer te geven, bijv. over hun huidige status wanneer ze verbonden zijn."</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">Geen apparaatprofielen geconfigureerd</string>
     <string name="profiles_empty_description">Maak apparaatprofielen aan om meerdere apparaten te beheren met aangepaste instellingen en prioriteiten.</string>
     <string name="profiles_add_action">Profiel toevoegen</string>
@@ -311,10 +293,8 @@
     <string name="profiles_signal_quality_title">Minimale Signaalkwaliteit</string>
     <string name="profiles_signal_quality_description">Detecteer alleen apparaten met een signaalsterkte boven deze drempelwaarde. Lagere waarden vergroten het detectiebereik, maar kunnen valse positieven veroorzaken. Stel deze waarde niet te hoog in - Bluetooth-ontvangst is over het algemeen slecht en varieert met de afstand en obstakels.</string>
     <string name="profiles_identitykey_label">Identiteitssleutel</string>
-    <string name="profilessettings_maindevice_identitykey_description">De Identity Resolving Key (IRK) van je apparaat, waarmee CAPod je apparaat kan identificeren tussen apparaten in de buurt.</string>
     <string name="profiles_maindevice_identitykey_explanation">AirPods veranderen regelmatig hun Bluetooth-adres om privacyredenen. De IRK helpt CAPod je apparaat te herkennen. Je hebt eenmalig toegang tot een MacBook nodig.</string>
     <string name="profiles_maindevice_encryptionkey_label">Encryptiesleutel</string>
-    <string name="profiles_maindevice_encryptionkey_description">De encryptiesleutel van je apparaat, waarmee CAPod gedetailleerde statusinformatie kan ophalen.</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods sturen een statusbericht, waarvan een deel versleuteld is. De encryptiesleutel stelt CAPod in staat het volledige bericht te ontsleutelen. Je hebt hiervoor eenmalige toegang tot een MacBook nodig.</string>
     <string name="profiles_key_invalid_format">Ongeldig sleutelformaat</string>
     <string name="profiles_key_expected_format">Verwacht formaat: %1$s</string>
@@ -323,37 +303,29 @@
     <string name="profiles_signal_quality_min_label">Uit</string>
     <string name="profiles_signal_quality_max_label">Strikt</string>
     <string name="profiles_priority_hint">De volgorde van de profielen bepaalt de prioriteit. Versleep profielen om de volgorde te wijzigen. Profielen hoger in de lijst krijgen voorrang wanneer meerdere apparaten overeenkomen.</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">Thema-modus</string>
     <string name="ui_theme_mode_system_label">Systeem</string>
     <string name="ui_theme_mode_dark_label">Donker</string>
     <string name="ui_theme_mode_light_label">Licht</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">Thema stijl</string>
     <string name="ui_theme_style_default_label">Standaard</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">Gemiddeld contrast</string>
     <string name="ui_theme_style_high_contrast_label">Hoog contrast</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">Themakleur</string>
     <string name="ui_theme_color_blue_label">Blauw</string>
     <string name="ui_theme_color_green_label">Groen</string>
     <string name="ui_theme_color_amber_label">Amber</string>
     <string name="ui_theme_color_disabled_materialyou">Gebruikt achtergrondkleuren</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">Uiterlijk</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">Niet-opgeslagen Wijzigingen</string>
     <string name="general_unsaved_changes_message">Je hebt niet-opgeslagen wijzigingen. Wat wil je ermee doen?</string>
     <string name="general_save_and_exit_action">Opslaan &amp; afsluiten</string>
     <string name="general_discard_action">Weggooien</string>
-    <string name="general_keep_editing_action">Blijf Bewerken</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">Opname te kort</string>
     <string name="debug_debuglog_short_recording_message">Een debuglogboek moet het probleem vastleggen terwijl het zich voordoet. Blijf opnemen, reproduceer het probleem en stop dan de opname.</string>
     <string name="debug_debuglog_short_recording_continue">Doorgaan met opnemen</string>
     <string name="debug_debuglog_short_recording_stop">Toch stoppen</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">Debug-logboek</string>
     <string name="debug_debuglog_screen_subtitle">Exporteer debuginformatie voor probleemoplossing</string>
     <string name="debug_debuglog_screen_sensitive_title">Gevoelige informatie</string>
@@ -365,7 +337,6 @@
     </plurals>
     <string name="debug_debuglog_screen_discard_action">Verwijderen</string>
     <string name="debug_debuglog_screen_keep_action">Bewaren</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="one">%1$d debuglogboek (%2$s)</item>
         <item quantity="other">%1$d debuglogboeken (%2$s)</item>
@@ -383,7 +354,6 @@
     <string name="support_debuglog_failed_missing_log">Mislukt: logbestand ontbreekt</string>
     <string name="support_debuglog_failed_corrupt_zip">Mislukt: zip-bestand is beschadigd</string>
     <string name="support_debuglog_failed_zip_failed">Mislukt: compressie mislukt</string>
-    <!-- Contact form -->
     <string name="support_contact_label">Ontwikkelaar contacteren</string>
     <string name="support_contact_desc">Vul een formulier in om de ontwikkelaar een e-mail te sturen.</string>
     <string name="support_contact_welcome">Ik lees elk bericht zelf en doe mijn best om te antwoorden, maar omdat ik hier alleen aan werk, kan het even duren. Bedankt voor je geduld.</string>
@@ -410,15 +380,12 @@
     <string name="support_contact_no_email_app">Geen e-mailapp gevonden op dit apparaat.</string>
     <string name="support_contact_debuglog_delete_title">Debuglogboek verwijderen?</string>
     <string name="support_contact_debuglog_delete_message">Dit debuglogboek wordt permanent verwijderd.</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">Log verzonden?</string>
     <string name="support_debuglog_sent_message">Is het foutopsporingslogboek succesvol verzonden? Het logboek wordt verwijderd.</string>
     <string name="support_contact_sent_title">E-mail verzonden?</string>
     <string name="support_contact_sent_message">Is de e-mail succesvol verzonden? Het bijgevoegde foutopsporingslogboek wordt verwijderd.</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">Apparaatinstellingen</string>
     <string name="device_settings_subtitle_profile_prefix">Profiel: %s</string>
-    <string name="device_settings_info_name_label">Naam</string>
     <string name="device_settings_info_bt_name_label">Bluetooth-apparaatlabel</string>
     <string name="device_settings_info_model_label">Model</string>
     <string name="device_settings_info_manufacturer_label">Fabrikant</string>
@@ -431,11 +398,14 @@
     <string name="device_settings_info_right_serial_label">Rechter Pod Serienummer</string>
     <string name="device_settings_info_left_bonded_label">Links Gekoppeld</string>
     <string name="device_settings_info_right_bonded_label">Rechts Gekoppeld</string>
-    <string name="device_settings_info_battery_health_label">Batterijgezondheid (geschat)</string>
-    <string name="device_settings_info_battery_health_left_label">Linker batterijgezondheid (gesch.)</string>
-    <string name="device_settings_info_battery_health_right_label">Rechter batterijgezondheid (gesch.)</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">Geschatte luisterduur</string>
+    <string name="device_settings_info_battery_health_left_label">Luisterduur linker oordopje</string>
+    <string name="device_settings_info_battery_health_right_label">Luisterduur rechter oordopje</string>
+    <string name="device_settings_info_battery_health_value">~%1$d%% van nominaal</string>
     <string name="device_settings_info_battery_health_pending">Nog steeds in onderzoek,  kom later terug</string>
+    <string name="device_settings_battery_runtime_warning_title">Luisterduur is veel korter dan nominaal</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: ongeveer %2$d%% van de nominale luisterduur. Tik voor details.</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">Deze koptelefoon</string>
     <string name="device_settings_info_details_label">Apparaatdetails</string>
     <string name="device_settings_info_details_action">Apparaatdetails weergeven</string>
     <string name="device_settings_info_status_label">Status</string>
@@ -494,8 +464,6 @@
     <string name="review_app_review_action">Beoordeling</string>
     <string name="review_app_dismiss_action">Misschien later</string>
     <string name="review_app_body">Wil je CAPod een beoordeling achterlaten? ❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">Algemeen</string>
     <string name="device_settings_microphone_mode_label">Microfoon</string>
     <string name="device_settings_microphone_mode_description">Welk oordopje wordt gebruikt als microfoon</string>
     <string name="device_settings_microphone_mode_auto">Auto</string>
@@ -544,7 +512,6 @@
     <string name="device_settings_connected_device_media">Media afspelen</string>
     <string name="device_settings_noise_control_label">Ruisbeheer</string>
     <string name="device_settings_eq_label">Equalizer</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">Drukbediening</string>
     <string name="press_controls_nav_description">Drukgedrag instellen en drukken koppelen aan acties</string>
     <string name="press_controls_description">Stel in hoe drukken worden gedetecteerd, kies het gedrag van de belknop en koppel drukken aan acties. Gekoppelde acties gelden alleen voor dit apparaat en laten de app de druk onderscheppen in plaats van dat de AirPods dit native verwerken.</string>

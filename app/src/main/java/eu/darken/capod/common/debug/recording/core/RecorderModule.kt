@@ -11,7 +11,6 @@ import eu.darken.capod.common.SystemTimeSource
 import eu.darken.capod.common.TimeSource
 import eu.darken.capod.common.coroutine.AppScope
 import eu.darken.capod.common.coroutine.DispatcherProvider
-import eu.darken.capod.common.debug.Bugs
 import eu.darken.capod.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.capod.common.debug.logging.Logging.Priority.INFO
 import eu.darken.capod.common.debug.logging.Logging.Priority.WARN
@@ -205,10 +204,6 @@ class RecorderModule @Inject constructor(
                     }
                 }
             }
-            .launchIn(appScope)
-
-        internalState.flow
-            .onEach { Bugs.isDebug.value = it.isRecording }
             .launchIn(appScope)
     }
 

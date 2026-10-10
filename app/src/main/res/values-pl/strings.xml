@@ -3,7 +3,6 @@
     <string name="general_share_action">Udostępnij</string>
     <string name="general_done_action">Gotowe</string>
     <string name="general_cancel_action">Anuluj</string>
-    <string name="general_copy_action">Kopiuj</string>
     <string name="general_thank_you_label">Dziękuję ci</string>
     <string name="general_upgrade_action">Uaktualnij</string>
     <string name="general_retry_action">Ponów</string>
@@ -13,7 +12,6 @@
     <string name="general_check_action">Sprawdź</string>
     <string name="general_close_action">Zamknij</string>
     <string name="general_dismiss_action">Zamknij</string>
-    <string name="general_edit_action">Edytuj</string>
     <string name="general_save_action">Zapisz</string>
     <string name="general_guide_action">Poradnik</string>
     <string name="general_continue_action">Kontynuuj</string>
@@ -31,7 +29,7 @@
     <string name="upgrade_benefit_support">Wesprzyj programistę</string>
     <string name="upgrade_benefit_disclaimer">Dostępność funkcji zależy od słuchawek i urządzenia.</string>
     <string name="settings_monitor_connected_notification_label">Dodatkowe powiadomienie</string>
-    <string name="settings_monitor_connected_notification_description">Pokazuje drugą notyfikację, która pojawia się tylko wtedy, gdy urządzenie jest połączone. Jeśli to włączysz, możesz ukryć stałą notyfikację „Brak urządzeń”: wyłącz kategorię „Stan urządzenia” w ustawieniach powiadomień Androida dla CAPod.</string>
+    <string name="settings_monitor_connected_notification_description">Wyświetla drugie powiadomienie, które pojawia się tylko wtedy, gdy urządzenie jest podłączone. Po włączeniu tej opcji możesz ukryć stałe powiadomienie Brak urządzeń: wyłącz kategorię Stan urządzenia w ustawieniach powiadomień Androida dla CAPod.</string>
     <string name="settings_keep_notification_after_disconnect_label">Zachowaj powiadomienie po rozłączeniu</string>
     <string name="settings_keep_notification_after_disconnect_description">Kontynuuj wyświetlanie ostatniego znanego poziomu baterii nawet po rozłączeniu AirPods</string>
     <string name="settings_autopause_label">Automatyczne wstrzymywanie</string>
@@ -40,25 +38,20 @@
     <string name="settings_autoplay_description">Wznów odtwarzanie muzyki po ponownym założeniu słuchawek, ale tylko wtedy, gdy funkcja automatycznej pauzy ją wyłączyła. Pauzy, które sam uruchomiłeś (telefon, słuchawka AirPods, sen), pozostają wstrzymane.</string>
     <string name="settings_start_music_on_wear_label">Włącz muzykę po założeniu</string>
     <string name="settings_start_music_on_wear_description">Zawsze próbuj odtwarzać muzykę po włożeniu słuchawek, nawet po ręcznym wstrzymaniu.</string>
-    <string name="settings_eardetection_info_label">Informacja o wykryciu ucha</string>
     <string name="settings_eardetection_info_description">Jeśli wykrywanie w uchu działa tylko dla jednej słuchawki, jest to ograniczenie Apple. Wykrywana jest tylko „główna słuchawka” (używana do mikrofonu). Skonfiguruj na urządzeniach Apple: Ustawienia → Bluetooth → AirPods → Mikrofon.</string>
-    <string name="settings_signal_minimum_label">Minimalna jakość sygnału</string>
-    <string name="settings_signal_minimum_description">Minimalna jakość sygnału, wymagana od urządzenia, aby zostało uznanym za twoje.</string>
     <string name="settings_autoconnect_label">Automatyczne połączenie</string>
-    <string name="settings_autoconnect_description">Jeśli Android nie łączy się automatycznie, możemy go też poprosić. To utrzymuje monitorowanie CAPod w tle przez cały czas.</string>
+    <string name="settings_autoconnect_description">Jeśli Android nie połączy się automatycznie, możemy również o to poprosić. Dzięki temu CAPod będzie stale monitorował system w tle.</string>
     <string name="settings_autoconnect_info_android12">Automatyczne łączenie opiera się na funkcji systemowej, którą ograniczają systemy Android 12 i nowsze. Funkcja ta może nie działać na twoim urządzeniu.</string>
     <string name="settings_autoconnect_condition_label">Warunek automatycznego połączenia</string>
-    <string name="settings_autoconnect_condition_description">Kiedy należy połączyć się z twoim urządzeniem?</string>
     <string name="settings_devices_label">Urządzenia</string>
     <string name="settings_devices_description">Zarządzaj swoimi urządzeniami.</string>
     <string name="settings_reaction_label">Reakcje</string>
-    <string name="settings_category_yourdevice_label">Twoje urządzenie</string>
     <string name="settings_category_compatibility_options_title">Opcje kompatybilności</string>
     <string name="settings_category_compatibility_options_description">Nie dotykaj, jeżeli wszystko działa ;)</string>
     <string name="settings_compat_offloaded_filtering_disabled_title">Wyłącz sprzętowe filtrowanie</string>
-    <string name="settings_compat_offloaded_filtering_disabled_summary">Spróbuj tego, jeśli twoje AirPods nigdy nie są wykrywane. Aplikacja będzie sama przeszukiwać wszystkie pobliskie sygnały Bluetooth, zamiast pozwolić telefonowi je wstępnie filtrować.</string>
+    <string name="settings_compat_offloaded_filtering_disabled_summary">Wypróbuj tę opcję, jeśli twoje AirPodsy nigdy nie są wykrywane. Aplikacja sama przeszuka wszystkie pobliskie sygnały Bluetooth, zamiast pozwolić telefonowi na ich wstępne wybranie.</string>
     <string name="settings_compat_offloaded_batching_disabled_title">Wyłącz sprzętowe przetwarzanie</string>
-    <string name="settings_compat_offloaded_batching_disabled_summary">Spróbuj tego, jeśli poziomy baterii aktualizują się z opóźnieniem lub porywami. Twój telefon będzie przekazywać każdy sygnał Bluetooth od razu, zamiast je najpierw zbierać.</string>
+    <string name="settings_compat_offloaded_batching_disabled_summary">Wypróbuj to, jeśli poziom naładowania baterii aktualizuje się tylko z opóźnieniem lub w krótkich odstępach czasu. Twój telefon będzie przesyłał każdy sygnał Bluetooth od razu, zamiast zbierać go najpierw.</string>
     <string name="settings_onepod_mode_label">Tryb jednej słuchawki</string>
     <string name="settings_onepod_mode_description">Automatyczne odtwarzanie/wstrzymywanie i automatyczne łączenie reagują na pojedynczą słuchawkę, zamiast wymagać obu.</string>
     <string name="settings_popup_caseopen_label">Wyświetl okienko etui</string>
@@ -82,17 +75,10 @@
     <string name="monitor_notification_starting">Uruchamianie…</string>
     <string name="support_debuglog_label">Dziennik debugowania</string>
     <string name="support_debuglog_desc">Rejestruj wszystko, co robi aplikacja do pliku tekstowego, który możesz udostępnić.</string>
-    <string name="debug_debuglog_size_label">Rozmiar</string>
-    <string name="debug_debuglog_size_compressed_label">Rozmiar skompresowany</string>
-    <string name="debug_notification_channel_label">Powiadomienia debugowania</string>
-    <string name="debug_debuglog_file_label">Zapisany plik dziennika</string>
-    <string name="debug_debuglog_recording_progress">Rejestrowanie dziennika debugowania</string>
     <string name="debug_debuglog_record_action">Rejestruj dziennik debugowania</string>
     <string name="debug_debuglog_stop_action">Zatrzymaj rejestrowanie</string>
     <string name="debug_debuglog_sensitive_information_message">Wygenerowany plik zawiera poufne informacje (np. dane urządzenia Bluetooth). Udostępniaj go tylko zaufanym podmiotom.</string>
     <string name="settings_debuglog_explanation">Ta funkcja rejestruje wszystkie działania aplikacji w pliku, który można udostępniać. Wygenerowany plik zawiera poufne informacje (np. dane urządzenia Bluetooth). Udostępniaj go tylko zaufanym podmiotom (np. programistom rozwiązującym problem).</string>
-    <string name="settings_support_installid_label">ID instalacji</string>
-    <string name="settings_support_installid_desc">Automatyczne raporty błędów są anonimowe. Udostępni swoje ID instalacji, aby autor mógł znaleźć twój raport błędu.</string>
     <string name="settings_support_label">Wsparcie</string>
     <string name="settings_support_description">Jeśli potrzebujesz pomocy.</string>
     <string name="settings_wiki_label">Wiki</string>
@@ -114,16 +100,12 @@
     <string name="settings_overview_hide_unmatched_label">Ukryj niedopasowane urządzenia</string>
     <string name="settings_overview_hide_unmatched_description">Nie pokazuj w przeglądzie pobliskich urządzeń, które nie pasują do żadnego z twoich profili, np. AirPods innych osób.</string>
     <string name="device_battery_estimate_toggle_label">Szacunkowy czas pracy baterii</string>
-    <string name="device_battery_estimate_card_desc">Dowiedz się, jak urządzenie się ładuje i rozładowuje, aby oszacować pozostały czas, czas do pełnego naładowania i stan baterii.</string>
+    <string name="device_battery_estimate_card_desc">Dowiedz się, jak to urządzenie się ładuje i rozładowuje, aby oszacować pozostały czas pracy, czas do pełnego naładowania i ile z nominalnego czasu pracy jeszcze pozostaje.</string>
     <string name="device_battery_estimate_reset_action">Zresetuj zapamiętane dane</string>
     <string name="device_battery_estimate_reset_desc">Zacznij od nowa od podanego czasu pracy baterii.</string>
     <string name="device_battery_estimate_reset_confirm_title">Zresetować zapamiętane dane?</string>
-    <string name="device_battery_estimate_reset_confirm_message">CAPod zapomni o zmierzonej szybkości rozładowania, szybkości ładowania i stanie baterii tego urządzenia i zacznie od nowa od podanego czasu pracy baterii.</string>
+    <string name="device_battery_estimate_reset_confirm_message">CAPod zapomni o zmierzonej szybkości rozładowania, szybkości ładowania i czasie pracy tego urządzenia i zacznie od nowa od podanego czasu pracy baterii.</string>
     <string name="settings_acknowledgements_label">Podziękowania</string>
-    <string name="settings_debug_autoreports_label">Automatyczne raportowanie błędów</string>
-    <string name="settings_debug_autoreports_description">Automatyczne raportowanie problemów, na przykład w przypadku awarii aplikacji, tak aby można było łatwo ją naprawić.</string>
-    <string name="settings_compatibility_mode_label">Tryb kompatybilności</string>
-    <string name="settings_compatibility_mode_description">Wyłącza optymalizacje, aby poprawić kompatybilność. Wypróbuj, jeśli nie widzisz żadnych danych.</string>
     <string name="help_translate_label">Tłumaczenie</string>
     <string name="help_translate_description">Pomóż przetłumaczyć aplikację na twój ulubiony język.</string>
     <string name="translators_thanks_title">Tłumacze</string>
@@ -164,7 +146,7 @@ K4r0lSz;</string>
     <string name="widget_config_preset_green">Zielony</string>
     <string name="widget_config_preset_red">Czerwony</string>
     <string name="settings_compat_indirectcallback_title">Pośrednie dostarczanie danych</string>
-    <string name="settings_compat_indirectcallback_summary">Spróbuj tego, jeśli inne opcje kompatybilności nie pomogły. Android będzie przekazywać sygnały Bluetooth aplikacji w tle, zamiast tego żeby aplikacja słuchała ich bezpośrednio.</string>
+    <string name="settings_compat_indirectcallback_summary">Wypróbuj to, jeśli inne opcje zgodności nie pomogły. Android będzie przekazywał sygnały Bluetooth do aplikacji w tle, zamiast aby aplikacja nasłuchiwała ich bezpośrednio.</string>
     <string name="troubleshooter_title">Rozwiązywanie problemów</string>
     <string name="troubleshooter_summary">Diagnoza i naprawianie problemów z łącznością Bluetooth.</string>
     <string name="troubleshooter_ble_intro_title">Transmisja Bluetooth Low Energy</string>
@@ -175,19 +157,13 @@ K4r0lSz;</string>
     <string name="troubleshooter_ble_result_success_title">Sukces</string>
     <string name="troubleshooter_ble_result_success_body">Audycje reklamowe BLE są odbierane przez CAPod.</string>
     <string name="troubleshooter_ble_result_failure_title">Niepowodzenie</string>
-    <string name="troubleshooter_ble_result_failure_body">Rozwiązywanie problemów się nie powiodło. Nie pomogła żadna kombinacja opcji kompatybilności.</string>
     <string name="troubleshooter_ble_result_failure_phone_body">Twój telefon w ogóle nie odebrał danych BLE. Możesz powtórzyć test w zatłoczonym miejscu, aby sprawdzić, czy można odebrać dane ze źródeł innych niż słuchawki. Brak odbioru danych wskazuje na problem z systemem operacyjnym telefonu.</string>
     <string name="troubleshooter_ble_result_failure_phone_headphones">Twój telefon odebrał dane BLE, jednak nie pochodzą one z obsługiwanego urządzenia. Czy twoje słuchawki są włączone? Czy CAPod obsługuje twoje słuchawki?</string>
-    <string name="troubleshooter_ble_result_failure_action">Spróbuj ponownie</string>
-    <string name="troubleshoot_action">Rozwiązywanie problemów</string>
     <string name="onboarding_body1">Ta aplikacja dodaje wsparcie dla funkcji AirPods na Androidzie.</string>
     <string name="onboarding_body2">Nie wszystkie urządzenia z Androidem w pełni wspierają dodatkowe funkcje AirPods. Twój system operacyjny wymaga dobrze działającej implementacji Bluetooth Low Energy.</string>
     <string name="onboarding_body3">CAPod nie wyświetla reklam i nie zbiera twoich danych.</string>
     <string name="onboarding_body4">Możesz uaktualni do CAPod Pro, by uzyskać dodatkowe funkcje i wesprzeć rozwój.</string>
-    <!-- Strings from app-common -->
     <string name="app_name">CAPod</string>
-    <!-- Upgraded app title. %1$s is the app name, %2$s the tier qualifier ("Pro" / "FOSS").
-         Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
     <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="general_value_not_available_label">N/D</string>
     <string name="general_error_label">Błąd</string>
@@ -209,12 +185,6 @@ K4r0lSz;</string>
     <string name="overview_troubleshoot_suggestion_description">Twoje urządzenie jest połączone, ale CAPod nie odbiera żadnych danych na żywo. Twój telefon może potrzebować opcji zgodności — narzędzie do rozwiązywania problemów może spróbować znaleźć ją automatycznie.</string>
     <string name="overview_troubleshoot_suggestion_action">Uruchom narzędzie do rozwiązywania problemów</string>
     <string name="overview_unmatched_devices_label">Niedopasowane urządzenia</string>
-    <plurals name="overview_unmatched_devices_count">
-        <item quantity="one">%d urządzenie bez pasującego profilu</item>
-        <item quantity="few">%d urządzenia bez pasującego profilu</item>
-        <item quantity="many">%d urządzeń bez pasującego profilu</item>
-        <item quantity="other">%d urządzeń bez pasującego profilu</item>
-    </plurals>
     <plurals name="overview_unmatched_devices_description">
         <item quantity="one">Wykryto %d pobliskie urządzenie bez pasującego profilu. Pokaż je, aby zobaczyć dostępne szczegóły. Jeśli jest twoje, dodaj profil w Urządzeniach, aby je rozpoznać.</item>
         <item quantity="few">Wykryto %d pobliskie urządzenia bez pasujących profili. Pokaż je, aby zobaczyć dostępne szczegóły. Jeśli jedno z nich jest twoje, dodaj profil w Urządzeniach, aby je rozpoznać.</item>
@@ -239,7 +209,6 @@ K4r0lSz;</string>
     <string name="permission_background_location_description">CAPdo używa dostępu do lokalizacji w tle, aby skorzystać z funkcjonalności takich jak \"Wyświetl okienko\" lub \"Automatycznie połącz\", gdy aplikacja jest zamknięta. Dostęp do lokalizacji w tle pozwala aplikacji na odbieranie danych Bluetooth Low Energy, gdy aplikacja działa w tle. Aplikacja nie będzie korzystać z danych Bluetooth do ustalenia twojego położenia.</string>
     <string name="permission_ignore_battery_optimizations_label">Wyłącz optymalizację baterii</string>
     <string name="permission_ignore_battery_optimizations_description">Optymalizacja baterii zapobiega przed niezawodnym odbieraniem danych Bluetooth, gdy aplikacja działa w tle.</string>
-    <string name="permission_required_title">Następujące uprawnienie jest wymagane:</string>
     <string name="permission_system_alert_window_label">Okna alertów systemowych</string>
     <string name="permission_system_alert_window_description">Zezwól na wyświetlanie CAPod nad innymi aplikacjami, aby aktywować funkcję \"Wyświetlanie informacji\".</string>
     <string name="settings_reaction_autoconnect_whenseen_label">Kiedy widoczne</string>
@@ -247,10 +216,29 @@ K4r0lSz;</string>
     <string name="settings_reaction_autoconnect_inear_label">W uszach</string>
     <string name="pods_dual_left_label">Lewa słuchawka</string>
     <string name="pods_dual_right_label">Prawa słuchawka</string>
-    <string name="pods_dual_left_short_label">L</string>
-    <string name="pods_dual_right_short_label">P</string>
-    <string name="pods_case_label">Etui</string>
     <string name="battery_unavailable_label">Bateria niedostępna</string>
+    <string name="battery_state_low_cd">Słaba bateria</string>
+    <string name="battery_state_critical_cd">Bateria krytycznie słaba</string>
+    <plurals name="battery_case_charges_approx">
+        <item quantity="one">~%d pełne ładowanie dla obu słuchawek</item>
+        <item quantity="few">~%d pełne ładowania dla obu słuchawek</item>
+        <item quantity="many">~%d pełnych ładowań dla obu słuchawek</item>
+        <item quantity="other">~%d pełnych ładowań dla obu słuchawek</item>
+    </plurals>
+    <plurals name="battery_case_charges_at_least">
+        <item quantity="one">Co najmniej %d pełne ładowanie dla obu słuchawek</item>
+        <item quantity="few">Co najmniej %d pełne ładowania dla obu słuchawek</item>
+        <item quantity="many">Co najmniej %d pełnych ładowań dla obu słuchawek</item>
+        <item quantity="other">Co najmniej %d pełnych ładowań dla obu słuchawek</item>
+    </plurals>
+    <string name="battery_case_charges_less_than_one">Mniej niż jedno pełne ładowanie dla obu słuchawek</string>
+    <string name="battery_case_charges_empty">Etui jest puste, nie pozostało żadnych ładowań dla słuchawek</string>
+    <string name="battery_case_charges_uncertain">Nie wiadomo, ile pełnych ładowań pozostało dla obu słuchawek</string>
+    <string name="battery_case_charges_state_enough_cd">Wystarczy do pełnego ładowania</string>
+    <string name="battery_case_charges_state_not_enough_cd">Za mało do pełnego ładowania</string>
+    <string name="battery_case_charges_state_uncertain_cd">Może być za mało do pełnego ładowania</string>
+    <string name="battery_case_charges_short">%1$s ładowania</string>
+    <string name="battery_case_charges_short_at_least">%1$s+ ładowania</string>
     <string name="pods_case_status_open_label">Otwarte</string>
     <string name="pods_case_status_closed_label">Zamknięte</string>
     <string name="pods_connection_state_disconnected_label">Nie połączono z urządzeniem</string>
@@ -284,19 +272,15 @@ K4r0lSz;</string>
     <string name="signal_badge_aap_cd">Połączenie bezpośrednie aktywne</string>
     <string name="signal_indicator_bars_cd">Siła sygnału: %1$d z 4 kresek</string>
     <string name="signal_indicator_disconnected_cd">Sygnał: rozłączony</string>
-    <string name="pods_yours">Twoje</string>
     <string name="headset_being_worn_label">Założone</string>
     <string name="headset_not_being_worn_label">Nie założone</string>
     <string name="pods_case_unknown_state">Nieznany stan</string>
-    <string name="last_seen_x">Ostatnio widziane: %s</string>
-    <string name="first_seen_x">Widziane pierwszy raz: %s</string>
     <string name="battery_cached_label">Ostatnio znane · %s</string>
     <string name="battery_time_remaining_format_hm">%1$dg %2$dm</string>
     <string name="battery_time_remaining_format_h">%1$dg</string>
     <string name="battery_time_remaining_format_m">%1$dm</string>
     <string name="permission_post_notifications_label">Wyświetl powiadomienia</string>
     <string name="permission_post_notifications_description">"Zezwól CAPod na wyświetlanie powiadomień o słuchawkach AirPods, np. ich aktualnym statusie podczas połączenia."</string>
-    <!-- Device profiles -->
     <string name="profiles_empty_title">Brak skonfigurowanych profili urządzenia</string>
     <string name="profiles_empty_description">Utwórz profile urządzenia, aby zarządzać wieloma urządzeniami z niestandardowymi ustawieniami i priorytetami.</string>
     <string name="profiles_add_action">Dodaj profil</string>
@@ -319,10 +303,8 @@ K4r0lSz;</string>
     <string name="profiles_signal_quality_title">Minimalna jakość sygnału</string>
     <string name="profiles_signal_quality_description">Wykrywa tylko urządzenia o sile sygnału powyżej tego progu. Niższe wartości zwiększają zasięg wykrywania, ale mogą powodować fałszywe alarmy. Nie ustawiaj zbyt wysokiego poziomu – odbiór Bluetooth jest zazwyczaj słaby i zmienia się w zależności od odległości i przeszkód.</string>
     <string name="profiles_identitykey_label">Klucz identyfikacyjny</string>
-    <string name="profilessettings_maindevice_identitykey_description">Klucz identyfikacyjny (IRK) twojego urządzenia, który pomaga CAPod zidentyfikować je wśród pobliskich urządzeń.</string>
     <string name="profiles_maindevice_identitykey_explanation">AirPods często zmienia swój adres Bluetooth dla prywatności. IRK pomaga CAPod rozpoznawać twoje urządzenie. Potrzebujesz jednorazowego dostępu do MacBook.</string>
     <string name="profiles_maindevice_encryptionkey_label">Klucz szyfrowania</string>
-    <string name="profiles_maindevice_encryptionkey_description">Klucz szyfrowania twojego urządzenia, który umożliwia CAPod pobieranie szczegółowych informacji o statusie.</string>
     <string name="profiles_maindevice_encryptionkey_explanation">AirPods wysyła wiadomość o statusie, której część jest zaszyfrowana. Klucz szyfrowania pozwala CAPod odszyfrować całą wiadomość. Potrzebujesz jednorazowego dostępu do MacBook.</string>
     <string name="profiles_key_invalid_format">Nieprawidłowy format klucza</string>
     <string name="profiles_key_expected_format">Oczekiwany format: %1$s</string>
@@ -331,37 +313,29 @@ K4r0lSz;</string>
     <string name="profiles_signal_quality_min_label">Wyłączony</string>
     <string name="profiles_signal_quality_max_label">Rygorystyczny</string>
     <string name="profiles_priority_hint">Kolejność profili decyduje o priorytecie. Przeciągnij profile, aby zmienić ich kolejność – profile znajdujące się wyżej na liście mają pierwszeństwo, gdy pasuje kilka urządzeń.</string>
-    <!-- Theme Mode -->
     <string name="ui_theme_mode_label">Tryb motywu</string>
     <string name="ui_theme_mode_system_label">Systemowy</string>
     <string name="ui_theme_mode_dark_label">Ciemny</string>
     <string name="ui_theme_mode_light_label">Jasny</string>
-    <!-- Theme Style -->
     <string name="ui_theme_style_label">Styl motywu</string>
     <string name="ui_theme_style_default_label">Domyślny</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_style_medium_contrast_label">Średnio wysoki kontrast</string>
     <string name="ui_theme_style_high_contrast_label">Wysoki kontrast</string>
-    <!-- Theme Color -->
     <string name="ui_theme_color_label">Kolor motywu</string>
     <string name="ui_theme_color_blue_label">Niebieski</string>
     <string name="ui_theme_color_green_label">Zielony</string>
     <string name="ui_theme_color_amber_label">Bursztynowy</string>
     <string name="ui_theme_color_disabled_materialyou">Używaj kolorów tapety</string>
-    <!-- Settings categories -->
     <string name="settings_category_appearance_label">Wygląd</string>
-    <!-- Unsaved changes dialog -->
     <string name="general_unsaved_changes_title">Niezapisane zmiany</string>
     <string name="general_unsaved_changes_message">Masz niezapisane zmiany. Co chcesz zrobić?</string>
     <string name="general_save_and_exit_action">Zapisz i wyjdź</string>
     <string name="general_discard_action">Odrzuć</string>
-    <string name="general_keep_editing_action">Kontynuuj edytowanie</string>
-    <!-- Short recording warning -->
     <string name="debug_debuglog_short_recording_title">Nagranie zbyt krótkie</string>
     <string name="debug_debuglog_short_recording_message">Dziennik debugowania musi przechwycić problem w momencie jego wystąpienia. Kontynuuj nagrywanie, odtwórz problem, a następnie zatrzymaj nagrywanie.</string>
     <string name="debug_debuglog_short_recording_continue">Kontynuuj nagrywanie</string>
     <string name="debug_debuglog_short_recording_stop">Zatrzymaj mimo to</string>
-    <!-- Recorder screen -->
     <string name="debug_debuglog_screen_title">Dziennik debugowania</string>
     <string name="debug_debuglog_screen_subtitle">Eksportuj informacje diagnostyczne do rozwiązywania problemów</string>
     <string name="debug_debuglog_screen_sensitive_title">Dane wrażliwe</string>
@@ -375,7 +349,6 @@ K4r0lSz;</string>
     </plurals>
     <string name="debug_debuglog_screen_discard_action">Usuń</string>
     <string name="debug_debuglog_screen_keep_action">Zachowaj</string>
-    <!-- Log management -->
     <plurals name="support_debuglog_folder_summary">
         <item quantity="one">%1$d dziennik debugowania (%2$s)</item>
         <item quantity="few">%1$d dzienniki debugowania (%2$s)</item>
@@ -395,7 +368,6 @@ K4r0lSz;</string>
     <string name="support_debuglog_failed_missing_log">Błąd: brak pliku dziennika</string>
     <string name="support_debuglog_failed_corrupt_zip">Błąd: plik zip jest uszkodzony</string>
     <string name="support_debuglog_failed_zip_failed">Błąd: kompresja nie powiodła się</string>
-    <!-- Contact form -->
     <string name="support_contact_label">Kontakt z programistą</string>
     <string name="support_contact_desc">Wypełnij formularz, aby wysłać wiadomość e-mail do programisty.</string>
     <string name="support_contact_welcome">Osobiście czytam każdą wiadomość i staram się odpowiadać. Ponieważ sam zajmuję się rozwojem, naprawianiem błędów i wsparciem, może to chwilę potrwać. Dziękuję za cierpliwość.</string>
@@ -424,15 +396,12 @@ K4r0lSz;</string>
     <string name="support_contact_no_email_app">Nie znaleziono aplikacji do obsługi e-maili na tym urządzeniu.</string>
     <string name="support_contact_debuglog_delete_title">Usunąć dziennik debugowania?</string>
     <string name="support_contact_debuglog_delete_message">Ten dziennik debugowania zostanie trwale usunięty.</string>
-    <!-- Post-share confirmation -->
     <string name="support_debuglog_sent_title">Dziennik wysłany?</string>
     <string name="support_debuglog_sent_message">Czy dziennik debugowania został wysłany pomyślnie? Dziennik zostanie usunięty.</string>
     <string name="support_contact_sent_title">E-mail wysłany?</string>
     <string name="support_contact_sent_message">Czy e-mail został wysłany pomyślnie? Załączony dziennik debugowania zostanie usunięty.</string>
-    <!-- Device Settings -->
     <string name="device_settings_title">Ustawienia urządzenia</string>
     <string name="device_settings_subtitle_profile_prefix">Profil: %s</string>
-    <string name="device_settings_info_name_label">Nazwa</string>
     <string name="device_settings_info_bt_name_label">Etykieta urządzenia Bluetooth</string>
     <string name="device_settings_info_model_label">Model</string>
     <string name="device_settings_info_manufacturer_label">Producent</string>
@@ -445,11 +414,14 @@ K4r0lSz;</string>
     <string name="device_settings_info_right_serial_label">Numer seryjny prawej słuchawki</string>
     <string name="device_settings_info_left_bonded_label">Lewy sparowany</string>
     <string name="device_settings_info_right_bonded_label">Prawy sparowany</string>
-    <string name="device_settings_info_battery_health_label">Kondycja baterii (szacunkowa)</string>
-    <string name="device_settings_info_battery_health_left_label">Szacowany stan lewej baterii</string>
-    <string name="device_settings_info_battery_health_right_label">Szacowany stan prawej baterii</string>
-    <string name="device_settings_info_battery_health_value">~%1$d%%</string>
+    <string name="device_settings_info_battery_health_label">Szacunkowy czas pracy</string>
+    <string name="device_settings_info_battery_health_left_label">Czas pracy lewej słuchawki</string>
+    <string name="device_settings_info_battery_health_right_label">Czas pracy prawej słuchawki</string>
+    <string name="device_settings_info_battery_health_value">~%1$d%% nominalnego</string>
     <string name="device_settings_info_battery_health_pending">Nadal się ustala, sprawdź później</string>
+    <string name="device_settings_battery_runtime_warning_title">Czas pracy jest znacznie krótszy niż nominalny</string>
+    <string name="device_settings_battery_runtime_warning_description">%1$s: około %2$d%% nominalnego czasu pracy. Naciśnij, aby uzyskać szczegóły.</string>
+    <string name="device_settings_battery_runtime_warning_headset_label">Te słuchawki</string>
     <string name="device_settings_info_details_label">Szczegóły urządzenia</string>
     <string name="device_settings_info_details_action">Pokaż szczegóły urządzenia</string>
     <string name="device_settings_info_status_label">Stan</string>
@@ -508,8 +480,6 @@ K4r0lSz;</string>
     <string name="review_app_review_action">Oceń</string>
     <string name="review_app_dismiss_action">Może później</string>
     <string name="review_app_body">Wystawisz opinię dla CAPod? ❤️</string>
-    <!-- New device settings -->
-    <string name="device_settings_category_general_label">Ogólne</string>
     <string name="device_settings_microphone_mode_label">Mikrofon</string>
     <string name="device_settings_microphone_mode_description">Która słuchawka jest używana jako mikrofon</string>
     <string name="device_settings_microphone_mode_auto">Auto</string>
@@ -546,7 +516,7 @@ K4r0lSz;</string>
     <string name="device_settings_rename_system_unavailable_bt_settings_action">Ustawienia Bluetooth</string>
     <string name="device_settings_send_failed">Nie można zastosować ustawienia: %1$s</string>
     <string name="device_settings_anc_off_rejected_message">Tryb wyłączony nie jest włączony na tym urządzeniu. Włącz „Zezwól na tryb wyłączony” w sekcji Kontrola hałasu.</string>
-    <string name="anc_mode_not_confirmed_message">AirPods nie potwierdziły zmiany trybu słuchania.</string>
+    <string name="anc_mode_not_confirmed_message">AirPodsy nie potwierdziły zmiany trybu słuchania.</string>
     <string name="device_settings_category_battery_label">Bateria</string>
     <string name="device_settings_charge_cap_label">Zoptymalizowany limit ładowania</string>
     <string name="device_settings_charge_cap_description">Uczy się twojego harmonogramu i wstrzymuje ładowanie około 80%%, aby wydłużyć żywotność baterii, doładowując słuchawki przed prawdopodobnym ich użyciem.</string>
@@ -558,7 +528,6 @@ K4r0lSz;</string>
     <string name="device_settings_connected_device_media">Odtwarzanie multimediów</string>
     <string name="device_settings_noise_control_label">Sterowanie hałasem</string>
     <string name="device_settings_eq_label">Korektor</string>
-    <!-- Press Controls -->
     <string name="press_controls_title">Sterowanie przyciskami</string>
     <string name="press_controls_nav_description">Dostosuj zachowanie przycisków i mapuj naciśnięcia na akcje</string>
     <string name="press_controls_description">Dostosuj sposób wykrywania naciśnięć, wybierz zachowanie przycisków połączeń i przypisz naciśnięcia do akcji. Zmapowane akcje dotyczą tylko tego urządzenia i pozwalają aplikacji przechwytywać naciśnięcia, zamiast aby AirPods obsługiwały je natywnie.</string>

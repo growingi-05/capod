@@ -237,6 +237,26 @@ class BluetoothManager2 @Inject constructor(
     private val seenDevicesLock = Mutex()
     private val seenDevicesCache = mutableMapOf<String, Instant>()
 
+    /**
+     * Stamps the connect time from the ACL broadcast, which reaches a manifest-registered receiver
+     * whether or not [connectedDevices] is being collected. An existing stamp wins: the earlier one
+     * is the real connect time.
+     */
+    fun markDeviceConnected(address: BluetoothAddress) {
+        appScope.launch {
+            seenDevicesLock.withLock {
+                if (seenDevicesCache.containsKey(address)) return@withLock
+                seenDevicesCache[address] = timeSource.now()
+            }
+        }
+    }
+
+    fun markDeviceDisconnected(address: BluetoothAddress) {
+        appScope.launch {
+            seenDevicesLock.withLock { seenDevicesCache.remove(address) }
+        }
+    }
+
     val connectedDevices: Flow<List<BluetoothDevice2>> = isBluetoothEnabled
         .flatMapLatest { enabled ->
             if (enabled) monitorProfile(BluetoothProfile.HEADSET)
@@ -311,12 +331,10 @@ class BluetoothManager2 @Inject constructor(
                 address = device.address,
                 name = device.name,
                 internal = device,
+                // Read-only: a bonded device is not necessarily connected, and writing here would
+                // re-stamp entries that [connectedDevices] just pruned.
                 seenFirstAt = seenDevicesLock.withLock {
-                    seenDevicesCache[device.address] ?: run {
-                        val now = timeSource.now()
-                        seenDevicesCache[device.address] = now
-                        now
-                    }
+                    seenDevicesCache[device.address] ?: timeSource.now()
                 }
             )
 
