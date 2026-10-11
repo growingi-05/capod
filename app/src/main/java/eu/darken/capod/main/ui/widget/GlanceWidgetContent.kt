@@ -1,5 +1,6 @@
 package eu.darken.capod.main.ui.widget
 
+import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -12,9 +13,11 @@ import androidx.glance.Image
 import androidx.glance.ImageProvider
 import androidx.glance.action.clickable
 import androidx.glance.appwidget.action.actionStartActivity
+import androidx.glance.appwidget.cornerRadius
 import androidx.glance.background
 import androidx.glance.unit.ColorProvider
 import androidx.glance.layout.Alignment
+import androidx.glance.layout.Box
 import androidx.glance.layout.Column
 import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxSize
@@ -30,10 +33,20 @@ import eu.darken.capod.main.ui.MainActivity
 import eu.darken.capod.pods.core.apple.ble.isKnownBattery
 import kotlin.math.roundToInt
 
+// ---- Ring layout tuning knobs -------------------------------------------------------------
+private const val WIDE_RING_DP = 56
+private const val NARROW_RING_DP = 52
+private const val SHOW_PERCENT_IN_NARROW = false // iOS 2x2 shows rings only
+private val WIDGET_CORNER = 24.dp
+private val RING_GREEN = 0xFF34C759.toInt()
+private val RING_RED = 0xFFFF3B30.toInt()
+private const val LOW_BATTERY = 0.20f
+// --------------------------------------------------------------------------------------------
+
 @Composable
 fun GlanceWidgetContent(
     state: WidgetRenderState,
-    context: android.content.Context,
+    context: Context,
 ) {
     val openApp = actionStartActivity(
         Intent(context, MainActivity::class.java).apply {
@@ -42,44 +55,106 @@ fun GlanceWidgetContent(
     )
 
     when (state) {
-        is WidgetRenderState.DualPod -> GlanceDualPod(state, GlanceModifier.clickable(openApp))
+        is WidgetRenderState.DualPod -> GlanceDualPod(state, context, GlanceModifier.clickable(openApp))
         is WidgetRenderState.SinglePod -> GlanceSinglePod(state, GlanceModifier.clickable(openApp))
         is WidgetRenderState.Message -> GlanceMessage(state, GlanceModifier.clickable(openApp))
         is WidgetRenderState.Loading -> GlanceLoading(state, GlanceModifier.clickable(openApp))
     }
 }
 
+// ---- DualPod ------------------------------------------------------------------------------
+
+/** One ring: phone / left pod / right pod / case. */
+private data class RingSpec(
+    val icon: Int,
+    val fraction: Float?, // null = unknown
+    val charging: Boolean,
+    val inEar: Boolean,
+    val estimate: String?,
+)
+
+/** Order: phone -> left pod -> right pod -> case */
+private fun dualPodRings(context: Context, state: WidgetRenderState.DualPod): List<RingSpec> {
+    val phone = readPhoneBattery(context)
+    return listOf(
+        RingSpec(R.drawable.ic_widget_phone_24, phone.fraction, phone.charging, false, null),
+        RingSpec(state.leftIcon, state.leftPercent.knownOrNull(), state.leftCharging, state.leftInEar, state.leftEstimate),
+        RingSpec(state.rightIcon, state.rightPercent.knownOrNull(), state.rightCharging, state.rightInEar, state.rightEstimate),
+        RingSpec(state.caseIcon, state.casePercent.knownOrNull(), state.caseCharging, false, null),
+    )
+}
+
+private fun Float.knownOrNull(): Float? = if (isKnownBattery(this)) this else null
+
 @Composable
 private fun GlanceDualPod(
     state: WidgetRenderState.DualPod,
+    context: Context,
     clickModifier: GlanceModifier,
 ) {
     val iconTint = ColorFilter.tint(fixedColor(state.resolvedIconColor))
 
     when (state.layout) {
+        // iOS medium widget: 4 rings in one row, percent below each
         BatteryLayout.WIDE -> {
-            val textStyle = TextStyle(color = fixedColor(state.resolvedTextColor), fontSize = 12.sp)
-            GlanceWidgetRoot(state.resolvedBgColor, clickModifier) {
+            val rings = dualPodRings(context, state)
+            GlanceWidgetRoot(
+                bgColor = state.resolvedBgColor,
+                clickModifier = clickModifier,
+                horizontalPadding = 12.dp,
+                verticalPadding = 12.dp,
+                corner = WIDGET_CORNER,
+            ) {
                 Row(
-                    modifier = GlanceModifier.fillMaxWidth().padding(top = 8.dp, bottom = 4.dp),
+                    modifier = GlanceModifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalAlignment = Alignment.CenterVertically,
+                    verticalAlignment = Alignment.Top,
                 ) {
-                    GlancePodItem(state.leftIcon, state.leftPercent, state.leftCharging, state.leftInEar, textStyle, iconTint, iconSize = 40, estimate = state.leftEstimate, estimateBelow = true, modifier = GlanceModifier.padding(end = 12.dp))
-                    GlancePodItem(state.caseIcon, state.casePercent, state.caseCharging, false, textStyle, iconTint, iconSize = 40, modifier = GlanceModifier.padding(end = 12.dp))
-                    GlancePodItem(state.rightIcon, state.rightPercent, state.rightCharging, state.rightInEar, textStyle, iconTint, iconSize = 40, estimate = state.rightEstimate, estimateBelow = true)
+                    rings.forEach { spec ->
+                        RingItem(
+                            context = context,
+                            spec = spec,
+                            ringDp = WIDE_RING_DP,
+                            textColor = state.resolvedTextColor,
+                            iconTint = iconTint,
+                            showPercent = true,
+                            modifier = GlanceModifier.defaultWeight(),
+                        )
+                    }
                 }
                 GlanceDeviceLabel(state.deviceLabel, state.theme.showDeviceLabel, state.resolvedTextColor)
             }
         }
 
+        // iOS small widget: 2x2 rings
         BatteryLayout.NARROW -> {
-            val textStyle = TextStyle(color = fixedColor(state.resolvedTextColor), fontSize = 12.sp)
-            GlanceWidgetRoot(state.resolvedBgColor, clickModifier) {
-                GlancePodItem(state.leftIcon, state.leftPercent, state.leftCharging, state.leftInEar, textStyle, iconTint, estimate = state.leftEstimate)
-                GlancePodItem(state.rightIcon, state.rightPercent, state.rightCharging, state.rightInEar, textStyle, iconTint, estimate = state.rightEstimate)
-                GlancePodItem(state.caseIcon, state.casePercent, state.caseCharging, false, textStyle, iconTint)
-                GlanceDeviceLabel(state.deviceLabel, state.theme.showDeviceLabel, state.resolvedTextColor)
+            val rings = dualPodRings(context, state)
+            GlanceWidgetRoot(
+                bgColor = state.resolvedBgColor,
+                clickModifier = clickModifier,
+                horizontalPadding = 12.dp,
+                verticalPadding = 12.dp,
+                corner = WIDGET_CORNER,
+            ) {
+                rings.chunked(2).forEach { rowItems ->
+                    Row(
+                        modifier = GlanceModifier.fillMaxWidth().padding(vertical = 4.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        rowItems.forEach { spec ->
+                            RingItem(
+                                context = context,
+                                spec = spec,
+                                ringDp = NARROW_RING_DP,
+                                textColor = state.resolvedTextColor,
+                                iconTint = iconTint,
+                                showPercent = SHOW_PERCENT_IN_NARROW,
+                                modifier = GlanceModifier.defaultWeight(),
+                            )
+                        }
+                    }
+                }
             }
         }
 
@@ -98,6 +173,85 @@ private fun GlanceDualPod(
         }
     }
 }
+
+@Composable
+private fun RingItem(
+    context: Context,
+    spec: RingSpec,
+    ringDp: Int,
+    textColor: Int,
+    iconTint: ColorFilter,
+    showPercent: Boolean,
+    modifier: GlanceModifier = GlanceModifier,
+) {
+    val percentText = spec.fraction?.let { "${(it * 100).roundToInt()}%" } ?: "—"
+    val ring = RingBitmap.create(
+        context = context,
+        sizeDp = ringDp,
+        fraction = spec.fraction,
+        progressColor = ringColor(spec),
+        trackColor = trackColor(textColor),
+        charging = spec.charging,
+    )
+    val textStyle = TextStyle(color = fixedColor(textColor), fontSize = 13.sp)
+
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = GlanceModifier.size(ringDp.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                provider = ImageProvider(ring),
+                contentDescription = percentText,
+                modifier = GlanceModifier.size(ringDp.dp),
+            )
+            Image(
+                provider = ImageProvider(spec.icon),
+                contentDescription = null,
+                modifier = GlanceModifier.size((ringDp * 0.45f).dp),
+                colorFilter = iconTint,
+            )
+        }
+
+        if (showPercent) {
+            Row(
+                modifier = GlanceModifier.padding(top = 4.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(text = percentText, style = textStyle, maxLines = 1)
+                if (spec.inEar) {
+                    Image(
+                        provider = ImageProvider(R.drawable.ic_baseline_hearing_24),
+                        contentDescription = null,
+                        modifier = GlanceModifier.size(12.dp).padding(start = 2.dp),
+                        colorFilter = iconTint,
+                    )
+                }
+            }
+            if (spec.estimate != null) {
+                Text(
+                    text = spec.estimate,
+                    style = TextStyle(color = fixedColor(textColor), fontSize = 10.sp),
+                    maxLines = 1,
+                )
+            }
+        }
+    }
+}
+
+/** Green normally, red when low and not charging (like iOS). */
+private fun ringColor(spec: RingSpec): Int {
+    val f = spec.fraction
+    return if (!spec.charging && f != null && f <= LOW_BATTERY) RING_RED else RING_GREEN
+}
+
+/** Text color at 25% alpha as the empty part of the ring. */
+private fun trackColor(textColor: Int): Int = (textColor and 0x00FFFFFF) or (0x40 shl 24)
+
+// ---- SinglePod / Message / Loading (unchanged) --------------------------------------------
 
 @Composable
 private fun GlanceSinglePod(
@@ -229,132 +383,19 @@ private fun GlanceLoading(
     }
 }
 
+// ---- Shared building blocks ---------------------------------------------------------------
+
 @Composable
 private fun GlanceWidgetRoot(
     bgColor: Int,
     clickModifier: GlanceModifier,
     horizontalPadding: Dp = 16.dp,
     verticalPadding: Dp = 4.dp,
+    corner: Dp = 0.dp,
     content: @Composable () -> Unit,
 ) {
-    Column(
-        modifier = clickModifier
-            .fillMaxSize()
-            .background(fixedColor(bgColor))
-            .padding(horizontal = horizontalPadding, vertical = verticalPadding),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        content()
-    }
-}
-
-@Composable
-private fun GlancePodItem(
-    icon: Int,
-    percent: Float,
-    charging: Boolean,
-    inEar: Boolean,
-    textStyle: TextStyle,
-    iconTint: ColorFilter,
-    iconSize: Int = 20,
-    estimate: String? = null,
-    estimateBelow: Boolean = false,
-    modifier: GlanceModifier = GlanceModifier,
-) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                provider = ImageProvider(icon),
-                contentDescription = null,
-                modifier = GlanceModifier.size(iconSize.dp),
-                colorFilter = iconTint,
-            )
-            Text(
-                text = formatGlancePercent(percent) + if (estimateBelow) "" else estimateSuffix(estimate),
-                style = textStyle,
-                maxLines = 1,
-                modifier = GlanceModifier.padding(horizontal = 4.dp),
-            )
-            if (charging) {
-                Image(
-                    provider = ImageProvider(R.drawable.ic_baseline_power_24),
-                    contentDescription = null,
-                    modifier = GlanceModifier.size(20.dp),
-                    colorFilter = iconTint,
-                )
-            }
-            if (inEar) {
-                Image(
-                    provider = ImageProvider(R.drawable.ic_baseline_hearing_24),
-                    contentDescription = null,
-                    modifier = GlanceModifier.size(20.dp),
-                    colorFilter = iconTint,
-                )
-            }
-        }
-        if (estimateBelow && estimate != null) {
-            Text(
-                text = estimate,
-                style = textStyle,
-                maxLines = 1,
-            )
-        }
-    }
-}
-
-@Composable
-private fun GlanceTinyPodItem(
-    icon: Int,
-    percent: Float,
-    textStyle: TextStyle,
-    iconTint: ColorFilter,
-    modifier: GlanceModifier = GlanceModifier,
-) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Image(
-            provider = ImageProvider(icon),
-            contentDescription = null,
-            modifier = GlanceModifier.size(14.dp),
-            colorFilter = iconTint,
-        )
-        Text(
-            text = formatGlancePercent(percent),
-            style = textStyle,
-            maxLines = 1,
-            modifier = GlanceModifier.padding(start = 4.dp),
-        )
-    }
-}
-
-@Composable
-private fun GlanceDeviceLabel(
-    label: String?,
-    visible: Boolean,
-    textColor: Int,
-) {
-    if (visible && label != null) {
-        Text(
-            text = label,
-            style = TextStyle(
-                color = fixedColor(textColor),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-            ),
-        )
-    }
-}
-
-private fun fixedColor(argb: Int): ColorProvider = ColorProvider(Color(argb))
-
-private fun formatGlancePercent(percent: Float): String =
-    if (isKnownBattery(percent)) "${(percent * 100).roundToInt()}%" else "—"
-
-private fun estimateSuffix(estimate: String?): String = estimate?.let { " · $it" } ?: ""
+    var modifier = clickModifier
+        .fillMaxSize()
+        .background(fixedColor(bgColor))
+    if (corner > 0.dp) {
+        modifier = modifier.cornerRadius(corner) // Andro
