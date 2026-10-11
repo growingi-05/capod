@@ -394,8 +394,71 @@ private fun GlanceWidgetRoot(
     corner: Dp = 0.dp,
     content: @Composable () -> Unit,
 ) {
-    var modifier = clickModifier
-        .fillMaxSize()
-        .background(fixedColor(bgColor))
-    if (corner > 0.dp) {
-        modifier = modifier.cornerRadius(corner) // Andro
+    Column(
+        modifier = clickModifier
+            .fillMaxSize()
+            .background(fixedColor(bgColor))
+            .withCorner(corner)
+            .padding(horizontal = horizontalPadding, vertical = verticalPadding),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        content()
+    }
+}
+
+@Composable
+private fun GlanceTinyPodItem(
+    icon: Int,
+    percent: Float,
+    textStyle: TextStyle,
+    iconTint: ColorFilter,
+    modifier: GlanceModifier = GlanceModifier,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Image(
+            provider = ImageProvider(icon),
+            contentDescription = null,
+            modifier = GlanceModifier.size(14.dp),
+            colorFilter = iconTint,
+        )
+        Text(
+            text = formatGlancePercent(percent),
+            style = textStyle,
+            maxLines = 1,
+            modifier = GlanceModifier.padding(start = 4.dp),
+        )
+    }
+}
+
+@Composable
+private fun GlanceDeviceLabel(
+    label: String?,
+    visible: Boolean,
+    textColor: Int,
+) {
+    if (visible && label != null) {
+        Text(
+            text = label,
+            style = TextStyle(
+                color = fixedColor(textColor),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+            ),
+        )
+    }
+}
+
+private fun fixedColor(argb: Int): ColorProvider = ColorProvider(Color(argb))
+
+private fun GlanceModifier.withCorner(corner: Dp): GlanceModifier =
+    if (corner > 0.dp) this.cornerRadius(corner) else this
+
+private fun formatGlancePercent(percent: Float): String =
+    if (isKnownBattery(percent)) "${(percent * 100).roundToInt()}%" else "—"
+
+private fun estimateSuffix(estimate: String?): String = estimate?.let { " · $it" } ?: ""
